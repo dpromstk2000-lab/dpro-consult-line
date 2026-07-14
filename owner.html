@@ -925,6 +925,461 @@
 
       .detail-summary { grid-template-columns: 1fr 1fr; }
     }
+  
+    /* =========================================================
+       STEP CONSULT-8-R1
+       PC管理画面 視認性改善
+       ========================================================= */
+
+    :root {
+      --sidebar: 288px;
+    }
+
+    body {
+      font-size: 16px;
+    }
+
+    .sidebar {
+      padding: 24px 17px;
+    }
+
+    .brand {
+      gap: 12px;
+      padding-bottom: 22px;
+    }
+
+    .brand-mark {
+      width: 46px;
+      height: 46px;
+      font-size: 21px;
+    }
+
+    .brand strong {
+      font-size: 15px;
+      line-height: 1.45;
+    }
+
+    .brand small {
+      margin-top: 3px;
+      font-size: 11px;
+    }
+
+    .nav-label {
+      margin-top: 25px;
+      margin-bottom: 9px;
+      font-size: 11px;
+    }
+
+    .nav-btn {
+      min-height: 48px;
+      padding: 11px 12px;
+      font-size: 13px;
+    }
+
+    .nav-icon {
+      width: 29px;
+      height: 29px;
+      font-size: 12px;
+    }
+
+    .sidebar-foot {
+      padding: 16px;
+    }
+
+    .sidebar-foot span {
+      font-size: 10px;
+    }
+
+    .sidebar-foot strong {
+      margin-top: 4px;
+      font-size: 12px;
+      line-height: 1.55;
+    }
+
+    .sidebar-foot button {
+      min-height: 38px;
+      font-size: 11px;
+    }
+
+    .topbar {
+      min-height: 74px;
+      padding: 11px 26px;
+    }
+
+    .page-heading h1 {
+      font-size: 23px;
+    }
+
+    .page-heading p {
+      margin-top: 4px;
+      font-size: 11px;
+    }
+
+    .container {
+      width: min(1460px, calc(100% - 38px));
+      margin-top: 20px;
+    }
+
+    .hero {
+      padding: 30px;
+    }
+
+    .hero-eyebrow {
+      padding: 6px 10px;
+      font-size: 10px;
+    }
+
+    .hero p {
+      margin-top: 14px;
+      font-size: 13px;
+      line-height: 1.75;
+    }
+
+    .hero-side {
+      padding: 19px;
+    }
+
+    .hero-side span {
+      font-size: 10px;
+    }
+
+    .hero-side strong {
+      margin-top: 3px;
+      font-size: 14px;
+    }
+
+    .toolbar {
+      padding: 13px;
+    }
+
+    .toolbar-note {
+      font-size: 10px;
+    }
+
+    .btn {
+      min-height: 44px;
+      padding: 9px 15px;
+      font-size: 11px;
+    }
+
+    .metric {
+      padding: 18px 17px;
+    }
+
+    .metric span {
+      font-size: 10px;
+    }
+
+    .metric strong {
+      margin-top: 6px;
+      font-size: 31px;
+    }
+
+    .metric small {
+      margin-top: 5px;
+      font-size: 9px;
+      line-height: 1.5;
+    }
+
+    .card {
+      padding: 21px;
+    }
+
+    .card-header {
+      margin-bottom: 15px;
+    }
+
+    .card-header h3 {
+      font-size: 17px;
+    }
+
+    .card-header p {
+      margin-top: 4px;
+      font-size: 10px;
+      line-height: 1.55;
+    }
+
+    .badge {
+      min-height: 30px;
+      padding: 6px 10px;
+      font-size: 10px;
+    }
+
+    .list {
+      gap: 10px;
+    }
+
+    .row {
+      gap: 12px;
+      padding: 14px;
+    }
+
+    .row-title {
+      gap: 8px;
+    }
+
+    .row-title strong {
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    .row-title small {
+      font-size: 9px;
+    }
+
+    .row-meta {
+      gap: 8px 15px;
+      margin-top: 6px;
+      font-size: 10px;
+      line-height: 1.55;
+    }
+
+    .row-actions {
+      gap: 7px;
+    }
+
+    .mini-btn {
+      min-height: 36px;
+      padding: 7px 11px;
+      font-size: 10px;
+    }
+
+    .status {
+      min-height: 27px;
+      padding: 5px 8px;
+      font-size: 9px;
+    }
+
+    .empty {
+      padding: 29px 17px;
+    }
+
+    .empty strong {
+      font-size: 13px;
+    }
+
+    .empty p {
+      margin-top: 6px;
+      font-size: 10px;
+    }
+
+    .search-box {
+      padding: 16px;
+    }
+
+    .input,
+    .select {
+      min-height: 47px;
+      padding: 10px 12px;
+      font-size: 13px;
+    }
+
+    .textarea {
+      min-height: 120px;
+      padding: 11px 12px;
+      font-size: 13px;
+      line-height: 1.7;
+    }
+
+    .label {
+      margin-bottom: 7px;
+      font-size: 11px;
+    }
+
+    .required {
+      padding: 2px 6px;
+      font-size: 8px;
+    }
+
+    .help {
+      margin-top: 6px;
+      font-size: 9px;
+    }
+
+    .result-group {
+      padding: 18px;
+    }
+
+    .result-group h3 {
+      margin-bottom: 11px;
+      font-size: 14px;
+    }
+
+    .calendar-toolbar .input {
+      max-width: 230px;
+    }
+
+    .dialog-head {
+      padding: 20px 22px;
+    }
+
+    .dialog-head h2 {
+      font-size: 20px;
+    }
+
+    .dialog-head p {
+      margin-top: 4px;
+      font-size: 10px;
+    }
+
+    .dialog-close {
+      width: 38px;
+      height: 38px;
+      font-size: 18px;
+    }
+
+    .dialog-body {
+      padding: 21px 22px 25px;
+    }
+
+    .dialog-tab {
+      min-height: 39px;
+      padding: 8px 13px;
+      font-size: 10px;
+    }
+
+    .detail-cell {
+      padding: 12px;
+    }
+
+    .detail-cell span {
+      font-size: 9px;
+    }
+
+    .detail-cell strong {
+      margin-top: 4px;
+      font-size: 11px;
+      line-height: 1.55;
+    }
+
+    .subsection {
+      margin-top: 17px;
+      padding-top: 17px;
+    }
+
+    .subsection h3 {
+      margin-bottom: 11px;
+      font-size: 14px;
+    }
+
+    .document-row {
+      padding: 12px;
+    }
+
+    .document-row strong {
+      font-size: 11px;
+    }
+
+    .document-row p {
+      margin-top: 4px;
+      font-size: 9px;
+      line-height: 1.55;
+    }
+
+    .template-card {
+      padding: 15px;
+    }
+
+    .template-card h3 {
+      font-size: 13px;
+    }
+
+    .template-card pre {
+      margin-top: 11px;
+      padding: 13px;
+      font-size: 10px;
+      line-height: 1.8;
+    }
+
+    .login-card {
+      width: min(510px, 100%);
+      padding: 29px;
+    }
+
+    .login-card h1 {
+      font-size: 25px;
+    }
+
+    .login-card p {
+      margin-top: 9px;
+      margin-bottom: 18px;
+      font-size: 11px;
+      line-height: 1.7;
+    }
+
+    .error-box {
+      padding: 12px 13px;
+      font-size: 10px;
+      line-height: 1.55;
+    }
+
+    @media (max-width: 1180px) {
+      .metrics {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 900px) {
+      :root {
+        --sidebar: 288px;
+      }
+
+      .topbar {
+        min-height: 68px;
+      }
+    }
+
+    @media (max-width: 620px) {
+      .topbar {
+        min-height: 62px;
+        padding: 9px 11px;
+      }
+
+      .page-heading h1 {
+        font-size: 19px;
+      }
+
+      .container {
+        width: min(100% - 20px, 1460px);
+      }
+
+      .hero h2 {
+        font-size: 29px;
+      }
+
+      .hero p {
+        font-size: 12px;
+      }
+
+      .metrics {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .metric strong {
+        font-size: 27px;
+      }
+
+      .card {
+        padding: 18px 15px;
+      }
+
+      .card-header h3 {
+        font-size: 16px;
+      }
+
+      .row-title strong {
+        font-size: 12px;
+      }
+
+      .row-meta {
+        font-size: 10px;
+      }
+
+      .detail-summary {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
   </style>
 </head>
 <body>
@@ -1027,7 +1482,7 @@
         <section class="page-section active" id="page-dashboard">
           <div class="hero">
             <div>
-              <div class="hero-eyebrow">STEP CONSULT-8 · OFFICE DASHBOARD</div>
+              <div class="hero-eyebrow">STEP CONSULT-8-R1 · READABILITY UPDATE</div>
               <h2>顧問先対応を、<br>今日やる順番で整理</h2>
               <p>
                 新着相談・手続き依頼・書類待ち・返信待ち・本日の面談・期限タスクを
