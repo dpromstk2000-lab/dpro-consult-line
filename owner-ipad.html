@@ -1332,6 +1332,286 @@
         width: 100%;
       }
     }
+  
+    /* =========================================================
+       STEP CONSULT-13
+       全画面視認性統一：受付iPad
+       ========================================================= */
+
+    body {
+      font-size: 18px;
+    }
+
+    .topbar-inner {
+      min-height: 84px;
+    }
+
+    .brand-mark {
+      width: 52px;
+      height: 52px;
+      font-size: 24px;
+    }
+
+    .brand-copy strong {
+      font-size: 18px;
+    }
+
+    .brand-copy span {
+      font-size: 12px;
+    }
+
+    .top-select {
+      min-height: 51px;
+      font-size: 14px;
+    }
+
+    .main {
+      width: min(1420px, calc(100% - 30px));
+      margin-top: 20px;
+    }
+
+    .hero {
+      padding: 34px;
+    }
+
+    .hero h1 {
+      font-size: clamp(35px, 4vw, 49px);
+    }
+
+    .hero p {
+      font-size: 15px;
+    }
+
+    .hero-side span {
+      font-size: 12px;
+    }
+
+    .hero-side strong {
+      font-size: 17px;
+    }
+
+    .menu-tabs {
+      padding: 12px;
+    }
+
+    .menu-btn {
+      min-height: 61px;
+      font-size: 15px;
+    }
+
+    .menu-icon {
+      width: 34px;
+      height: 34px;
+      font-size: 14px;
+    }
+
+    .toolbar {
+      padding: 15px;
+    }
+
+    .toolbar-note {
+      font-size: 12px;
+    }
+
+    .btn {
+      min-height: 52px;
+      padding: 11px 19px;
+      font-size: 14px;
+    }
+
+    .metric {
+      padding: 21px 19px;
+    }
+
+    .metric span {
+      font-size: 12px;
+    }
+
+    .metric strong {
+      font-size: 37px;
+    }
+
+    .metric small {
+      font-size: 11px;
+    }
+
+    .lane {
+      padding: 19px;
+    }
+
+    .lane-head h3 {
+      font-size: 19px;
+    }
+
+    .lane-head span {
+      font-size: 12px;
+    }
+
+    .appointment-main {
+      padding: 18px;
+    }
+
+    .appointment-time {
+      font-size: 23px;
+    }
+
+    .appointment-title h3 {
+      font-size: 18px;
+    }
+
+    .appointment-title small {
+      font-size: 11px;
+    }
+
+    .meta-cell {
+      padding: 11px 12px;
+    }
+
+    .meta-cell span {
+      font-size: 10px;
+    }
+
+    .meta-cell strong {
+      font-size: 13px;
+    }
+
+    .appointment-actions {
+      gap: 10px;
+      padding: 14px 18px 18px;
+    }
+
+    .touch-btn {
+      min-height: 57px;
+      font-size: 13px;
+    }
+
+    .card {
+      padding: 25px;
+    }
+
+    .card-header h2 {
+      font-size: 26px;
+    }
+
+    .card-header h3 {
+      font-size: 21px;
+    }
+
+    .card-header p {
+      font-size: 12px;
+    }
+
+    .badge {
+      min-height: 34px;
+      font-size: 12px;
+    }
+
+    .row {
+      padding: 17px;
+    }
+
+    .row-title strong {
+      font-size: 16px;
+    }
+
+    .row-title small {
+      font-size: 11px;
+    }
+
+    .row-meta {
+      font-size: 12px;
+      line-height: 1.7;
+    }
+
+    .mini-btn {
+      min-height: 43px;
+      font-size: 12px;
+    }
+
+    .status {
+      min-height: 31px;
+      font-size: 11px;
+    }
+
+    .input,
+    .select {
+      min-height: 54px;
+      font-size: 16px;
+    }
+
+    .textarea {
+      min-height: 145px;
+      font-size: 16px;
+    }
+
+    .label {
+      font-size: 14px;
+    }
+
+    .help {
+      font-size: 11px;
+    }
+
+    .intake-tab {
+      min-height: 54px;
+      font-size: 14px;
+    }
+
+    .selected-company strong {
+      font-size: 17px;
+    }
+
+    .selected-company span {
+      font-size: 12px;
+    }
+
+    .template-card h3 {
+      font-size: 17px;
+    }
+
+    .template-card pre {
+      font-size: 13px;
+    }
+
+    @media (max-width: 1180px) {
+      .metrics {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 580px) {
+      body {
+        font-size: 16px;
+      }
+
+      .hero h1 {
+        font-size: 31px;
+      }
+
+      .hero p {
+        font-size: 13px;
+      }
+
+      .menu-btn {
+        min-height: 54px;
+        font-size: 12px;
+      }
+
+      .card {
+        padding: 20px 16px;
+      }
+
+      .appointment-title h3 {
+        font-size: 16px;
+      }
+
+      .input,
+      .select,
+      .textarea {
+        font-size: 16px;
+      }
+    }
+
   </style>
 </head>
 <body>
@@ -1379,7 +1659,7 @@
     <main class="main">
       <section class="hero">
         <div>
-          <div class="hero-eyebrow">STEP CONSULT-10 · RECEPTION IPAD</div>
+          <div class="hero-eyebrow">STEP CONSULT-13 · UNIFIED READABILITY</div>
           <h1>来所受付から面談完了まで、<br>大きなボタンですぐ操作</h1>
           <p>
             本日の面談受付、顧問先検索、電話・来所による相談・手続き・面談登録を
@@ -1789,7 +2069,7 @@
     </main>
 
     <footer style="width:min(var(--content),calc(100% - 26px));margin:25px auto 0;color:var(--muted);font-size:10px;text-align:center">
-      DPRO 社労士・顧問先対応 LINE · STEP CONSULT-10
+      DPRO 社労士・顧問先対応 LINE · STEP CONSULT-13
     </footer>
   </div>
 

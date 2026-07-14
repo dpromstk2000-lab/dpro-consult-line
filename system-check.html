@@ -1054,6 +1054,278 @@
       }
     }
 
+  
+    /* =========================================================
+       STEP CONSULT-13
+       全画面視認性統一：システムチェック
+       ========================================================= */
+
+    :root {
+      --sidebar-width: 308px;
+    }
+
+    body {
+      font-size: 18px;
+    }
+
+    .sidebar {
+      padding: 26px 20px;
+    }
+
+    .brand-mark {
+      width: 49px;
+      height: 49px;
+      font-size: 23px;
+    }
+
+    .brand strong {
+      font-size: 17px;
+    }
+
+    .brand small {
+      font-size: 12px;
+    }
+
+    .side-label {
+      font-size: 13px;
+    }
+
+    .side-nav a {
+      min-height: 51px;
+      padding: 12px 13px;
+      font-size: 15px;
+    }
+
+    .side-nav svg {
+      width: 21px;
+      height: 21px;
+    }
+
+    .side-status-title {
+      font-size: 14px;
+    }
+
+    .side-status-value {
+      font-size: 15px;
+    }
+
+    .side-status p {
+      font-size: 12px;
+    }
+
+    .main {
+      padding: 32px;
+    }
+
+    .container {
+      width: min(1360px, 100%);
+    }
+
+    .hero {
+      min-height: 235px;
+      padding: 35px;
+    }
+
+    .eyebrow {
+      font-size: 12px;
+    }
+
+    .hero h1 {
+      font-size: clamp(34px, 4vw, 48px);
+    }
+
+    .hero p {
+      font-size: 15px;
+    }
+
+    .meta-item span {
+      font-size: 11px;
+    }
+
+    .meta-item strong {
+      font-size: 14px;
+    }
+
+    .toolbar {
+      padding: 15px;
+    }
+
+    .toolbar-note {
+      font-size: 12px;
+    }
+
+    .btn {
+      min-height: 49px;
+      padding: 10px 18px;
+      font-size: 13px;
+    }
+
+    .card {
+      padding: 24px;
+    }
+
+    .card-header h2,
+    .section-title h2 {
+      font-size: 23px;
+    }
+
+    .card-header p,
+    .section-title p {
+      font-size: 12px;
+    }
+
+    .input {
+      min-height: 52px;
+      font-size: 15px;
+    }
+
+    .check-list {
+      gap: 10px;
+    }
+
+    .check-row {
+      min-height: 61px;
+      padding: 13px 15px;
+    }
+
+    .check-icon {
+      width: 34px;
+      height: 34px;
+      font-size: 14px;
+    }
+
+    .check-name strong {
+      font-size: 14px;
+    }
+
+    .check-name small {
+      font-size: 11px;
+    }
+
+    .check-result {
+      font-size: 11px;
+    }
+
+    .demo-panel {
+      padding: 20px;
+    }
+
+    .metric {
+      padding: 16px;
+    }
+
+    .metric span {
+      font-size: 11px;
+    }
+
+    .metric strong {
+      font-size: 30px;
+    }
+
+    .url-row {
+      min-height: 59px;
+      padding: 12px 14px;
+    }
+
+    .url-name {
+      font-size: 13px;
+    }
+
+    .url-text {
+      font-size: 11px;
+    }
+
+    .mini-btn {
+      min-height: 38px;
+      font-size: 11px;
+    }
+
+    .manual-grid {
+      gap: 11px;
+    }
+
+    .manual-item {
+      min-height: 77px;
+      padding: 14px;
+    }
+
+    .manual-number {
+      width: 37px;
+      height: 37px;
+      font-size: 14px;
+    }
+
+    .manual-copy strong {
+      font-size: 14px;
+    }
+
+    .manual-copy small {
+      font-size: 11px;
+    }
+
+    .manual-state {
+      font-size: 11px;
+    }
+
+    .result-panel {
+      padding: 22px;
+    }
+
+    .result-mark {
+      width: 61px;
+      height: 61px;
+      font-size: 23px;
+    }
+
+    .result-copy strong {
+      font-size: 20px;
+    }
+
+    .result-copy p {
+      font-size: 12px;
+    }
+
+    .completion-note {
+      font-size: 12px;
+    }
+
+    @media (max-width: 900px) {
+      :root {
+        --sidebar-width: 308px;
+      }
+    }
+
+    @media (max-width: 720px) {
+      body {
+        font-size: 16px;
+      }
+
+      .main {
+        padding: 14px;
+      }
+
+      .hero {
+        padding: 24px;
+      }
+
+      .hero h1 {
+        font-size: 31px;
+      }
+
+      .hero p {
+        font-size: 13px;
+      }
+
+      .check-name strong,
+      .manual-copy strong {
+        font-size: 13px;
+      }
+
+      .url-text {
+        font-size: 10px;
+      }
+    }
+
   </style>
 </head>
 <body>
@@ -1063,7 +1335,7 @@
         <strong>DPRO 社労士・顧問先対応 LINE</strong><br>
         <span>内部システムチェック</span>
       </div>
-      <span>STEP CONSULT-11</span>
+      <span>STEP CONSULT-13</span>
     </header>
 
     <aside class="sidebar" aria-label="ページ内メニュー">
@@ -1121,7 +1393,7 @@
       <div class="container">
         <section class="hero" id="summary">
           <div class="hero-copy">
-            <div class="eyebrow">FINAL SYSTEM CHECK · STEP CONSULT-11</div>
+            <div class="eyebrow">FINAL SYSTEM CHECK · STEP CONSULT-13</div>
             <h1>完成・営業前システムチェック</h1>
             <p>
               API・Supabase・管理認証・顧問先マイページ・担当者画面・受付iPad・全画面URLをまとめて確認します。
@@ -1503,14 +1775,14 @@
           <article class="card completion-note">
             <strong>完成判定の範囲</strong>
             <p>
-              STEP CONSULT-11のOKは「営業デモ版として完成」を意味します。
+              STEP CONSULT-13のOKは「営業デモ版として完成」を意味します。
               実際の事務所で本番運用する前には、事務所情報・本番LINE/LIFF・管理権限・通知運用・個人情報の取扱ルールを本番用に確定してください。
             </p>
           </article>
         </section>
 
         <footer class="footer">
-          DPRO 社労士・顧問先対応 LINE · STEP CONSULT-11 · 内部確認用
+          DPRO 社労士・顧問先対応 LINE · STEP CONSULT-13 · 内部確認用
         </footer>
       </div>
     </main>
@@ -1551,7 +1823,7 @@
         "privacy",
       ];
 
-      const MANUAL_STORAGE_KEY = "dpro_consult_step11_manual_checks";
+      const MANUAL_STORAGE_KEY = "dpro_consult_step13_manual_checks";
 
       const state = {
         checks: Object.fromEntries(CHECK_IDS.map((id) => [id, "wait"])),
@@ -1576,38 +1848,38 @@
         {
           key: "system-check",
           name: "システムチェック",
-          url: "https://dpromstk2000-lab.github.io/dpro-consult-line/system-check.html?v=CONSULT-11",
+          url: "https://dpromstk2000-lab.github.io/dpro-consult-line/system-check.html?v=CONSULT-13",
           current: true,
           requiredPage: true,
         },
         {
           key: "index",
           name: "顧問先受付トップ",
-          url: "https://dpromstk2000-lab.github.io/dpro-consult-line/index.html?v=CONSULT-6",
+          url: "https://dpromstk2000-lab.github.io/dpro-consult-line/index.html?v=CONSULT-13",
           requiredPage: true,
         },
         {
           key: "member",
           name: "顧問先マイページ",
-          url: "https://dpromstk2000-lab.github.io/dpro-consult-line/member.html?v=CONSULT-7",
+          url: "https://dpromstk2000-lab.github.io/dpro-consult-line/member.html?v=CONSULT-13",
           requiredPage: true,
         },
         {
           key: "owner",
           name: "事務所PC管理",
-          url: "https://dpromstk2000-lab.github.io/dpro-consult-line/owner.html?v=CONSULT-8-R2",
+          url: "https://dpromstk2000-lab.github.io/dpro-consult-line/owner.html?v=CONSULT-12-R1",
           requiredPage: true,
         },
         {
           key: "staff",
           name: "担当者・スタッフ",
-          url: "https://dpromstk2000-lab.github.io/dpro-consult-line/staff.html?v=CONSULT-9-R1",
+          url: "https://dpromstk2000-lab.github.io/dpro-consult-line/staff.html?v=CONSULT-13",
           requiredPage: true,
         },
         {
           key: "owner-ipad",
           name: "受付iPad",
-          url: "https://dpromstk2000-lab.github.io/dpro-consult-line/owner-ipad.html?v=CONSULT-10",
+          url: "https://dpromstk2000-lab.github.io/dpro-consult-line/owner-ipad.html?v=CONSULT-13",
           requiredPage: true,
         },
         {
@@ -1747,7 +2019,7 @@
         if (autoComplete && state.demoPrepared && manualComplete) {
           panel.dataset.state = "ok";
           mark.textContent = "OK";
-          title.textContent = "STEP CONSULT-11 OK｜営業デモ版完成";
+          title.textContent = "STEP CONSULT-13 OK｜営業デモ版完成";
           message.textContent =
             "API・DB・全画面導線・顧問先マイページ・担当者画面・受付iPad・デモデータ・手動8項目の確認が完了しました。";
           sideText.textContent = "完成判定OK";
