@@ -1,0 +1,2388 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0f766e">
+  <meta name="description" content="DPRO社会保険労務士事務所の顧問先向け、労務相談・手続き依頼・面談予約受付画面です。">
+  <title>DPRO 社労士・顧問先対応 LINE｜相談・手続き受付</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f3f7f7;
+      --surface: #ffffff;
+      --surface-soft: #f7faf9;
+      --text: #172421;
+      --muted: #66736f;
+      --line: #dce7e4;
+      --primary: #0f766e;
+      --primary-dark: #0b5f58;
+      --primary-soft: #e8f7f3;
+      --accent: #2563eb;
+      --accent-soft: #edf4ff;
+      --success: #13795b;
+      --success-soft: #e8f7f0;
+      --warning: #a16207;
+      --warning-soft: #fff7dd;
+      --danger: #b42318;
+      --danger-soft: #fff0ee;
+      --shadow: 0 14px 34px rgba(15, 59, 54, .09);
+      --radius-xl: 24px;
+      --radius-lg: 18px;
+      --radius-md: 13px;
+      --content: 1080px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-width: 320px;
+      background:
+        radial-gradient(circle at top left, rgba(15, 118, 110, .10), transparent 26rem),
+        linear-gradient(#f7faf9, #f2f6f5);
+      color: var(--text);
+      font-family:
+        -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans JP",
+        "Hiragino Kaku Gothic ProN", "Yu Gothic", Meiryo, sans-serif;
+      line-height: 1.65;
+    }
+
+    button,
+    input,
+    select,
+    textarea {
+      font: inherit;
+    }
+
+    button,
+    a,
+    label {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    [hidden] {
+      display: none !important;
+    }
+
+    .app {
+      min-height: 100vh;
+      padding-bottom: calc(36px + env(safe-area-inset-bottom));
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      border-bottom: 1px solid rgba(220, 231, 228, .9);
+      background: rgba(255, 255, 255, .92);
+      backdrop-filter: blur(12px);
+    }
+
+    .topbar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      width: min(var(--content), calc(100% - 28px));
+      min-height: 66px;
+      margin: 0 auto;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      min-width: 0;
+      text-decoration: none;
+    }
+
+    .brand-mark {
+      display: grid;
+      place-items: center;
+      width: 42px;
+      height: 42px;
+      flex: 0 0 auto;
+      border-radius: 14px;
+      background: linear-gradient(145deg, #2dd4bf, #0f766e);
+      color: #ffffff;
+      box-shadow: 0 10px 24px rgba(15, 118, 110, .22);
+      font-size: 19px;
+      font-weight: 950;
+    }
+
+    .brand-copy {
+      min-width: 0;
+    }
+
+    .brand-copy strong {
+      display: block;
+      overflow: hidden;
+      font-size: 13px;
+      line-height: 1.35;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .brand-copy span {
+      display: block;
+      color: var(--muted);
+      font-size: 10px;
+    }
+
+    .top-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .top-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      min-height: 38px;
+      padding: 8px 12px;
+      border: 1px solid var(--line);
+      border-radius: 11px;
+      background: #ffffff;
+      color: var(--text);
+      text-decoration: none;
+      font-size: 11px;
+      font-weight: 850;
+    }
+
+    .top-link.primary {
+      border-color: var(--primary);
+      background: var(--primary);
+      color: #ffffff;
+    }
+
+    .hero {
+      width: min(var(--content), calc(100% - 28px));
+      margin: 22px auto 0;
+      overflow: hidden;
+      border-radius: var(--radius-xl);
+      background:
+        radial-gradient(circle at 85% 10%, rgba(255,255,255,.14), transparent 19rem),
+        linear-gradient(135deg, #0f766e, #0c5d57);
+      color: #ffffff;
+      box-shadow: var(--shadow);
+    }
+
+    .hero-inner {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: 26px;
+      padding: 34px;
+    }
+
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      margin-bottom: 14px;
+      padding: 6px 10px;
+      border: 1px solid rgba(255,255,255,.23);
+      border-radius: 999px;
+      background: rgba(255,255,255,.1);
+      font-size: 10px;
+      font-weight: 850;
+      letter-spacing: .08em;
+    }
+
+    .hero h1 {
+      margin: 0;
+      font-size: clamp(27px, 4vw, 43px);
+      line-height: 1.22;
+      letter-spacing: -.04em;
+    }
+
+    .hero p {
+      max-width: 650px;
+      margin: 15px 0 0;
+      color: rgba(255,255,255,.82);
+      font-size: 13px;
+    }
+
+    .hero-note {
+      align-self: stretch;
+      display: grid;
+      gap: 9px;
+      align-content: center;
+      padding: 18px;
+      border: 1px solid rgba(255,255,255,.16);
+      border-radius: 17px;
+      background: rgba(255,255,255,.09);
+    }
+
+    .hero-note strong {
+      font-size: 13px;
+    }
+
+    .hero-note span {
+      color: rgba(255,255,255,.74);
+      font-size: 10px;
+    }
+
+    .hero-note-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }
+
+    .hero-note-dot {
+      display: grid;
+      place-items: center;
+      width: 22px;
+      height: 22px;
+      flex: 0 0 auto;
+      border-radius: 7px;
+      background: rgba(255,255,255,.13);
+      font-size: 10px;
+      font-weight: 900;
+    }
+
+    .content {
+      width: min(var(--content), calc(100% - 28px));
+      margin: 18px auto 0;
+    }
+
+    .notice {
+      display: flex;
+      align-items: flex-start;
+      gap: 11px;
+      padding: 14px 16px;
+      border: 1px solid #efdca1;
+      border-radius: 14px;
+      background: var(--warning-soft);
+      color: #705007;
+      font-size: 11px;
+    }
+
+    .notice-icon {
+      display: grid;
+      place-items: center;
+      width: 26px;
+      height: 26px;
+      flex: 0 0 auto;
+      border-radius: 8px;
+      background: rgba(161,98,7,.11);
+      font-weight: 900;
+    }
+
+    .purpose-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .purpose-card {
+      position: relative;
+      min-width: 0;
+      padding: 20px;
+      border: 1px solid var(--line);
+      border-radius: 17px;
+      background: var(--surface);
+      box-shadow: 0 6px 18px rgba(15, 59, 54, .045);
+      cursor: pointer;
+      text-align: left;
+      transition: transform .16s ease, border-color .16s ease, box-shadow .16s ease;
+    }
+
+    .purpose-card:hover,
+    .purpose-card:focus-visible {
+      transform: translateY(-2px);
+      border-color: #9ecdc4;
+      box-shadow: 0 12px 26px rgba(15, 59, 54, .09);
+      outline: none;
+    }
+
+    .purpose-card.active {
+      border-color: var(--primary);
+      background: linear-gradient(180deg, #f2fbf8, #ffffff);
+      box-shadow: 0 12px 28px rgba(15,118,110,.12);
+    }
+
+    .purpose-icon {
+      display: grid;
+      place-items: center;
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
+      background: var(--primary-soft);
+      color: var(--primary);
+      font-size: 19px;
+      font-weight: 900;
+    }
+
+    .purpose-card h2 {
+      margin: 13px 0 5px;
+      font-size: 16px;
+      line-height: 1.4;
+    }
+
+    .purpose-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 10px;
+    }
+
+    .purpose-check {
+      position: absolute;
+      top: 13px;
+      right: 13px;
+      display: grid;
+      place-items: center;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: #eaf0ee;
+      color: transparent;
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+    .purpose-card.active .purpose-check {
+      background: var(--primary);
+      color: #ffffff;
+    }
+
+    .panel {
+      margin-top: 18px;
+      padding: 24px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-xl);
+      background: var(--surface);
+      box-shadow: var(--shadow);
+    }
+
+    .panel-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .panel-header h2 {
+      margin: 0;
+      font-size: 21px;
+      letter-spacing: -.025em;
+    }
+
+    .panel-header p {
+      margin: 5px 0 0;
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    .step-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      flex: 0 0 auto;
+      padding: 7px 10px;
+      border-radius: 999px;
+      background: var(--primary-soft);
+      color: var(--primary);
+      font-size: 10px;
+      font-weight: 900;
+    }
+
+    .section {
+      padding: 19px 0 4px;
+      border-top: 1px solid #edf2f0;
+    }
+
+    .section:first-of-type {
+      padding-top: 0;
+      border-top: 0;
+    }
+
+    .section-title {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      margin-bottom: 13px;
+    }
+
+    .section-number {
+      display: grid;
+      place-items: center;
+      width: 29px;
+      height: 29px;
+      flex: 0 0 auto;
+      border-radius: 10px;
+      background: var(--primary);
+      color: #ffffff;
+      font-size: 11px;
+      font-weight: 900;
+    }
+
+    .section-title h3 {
+      margin: 0;
+      font-size: 15px;
+    }
+
+    .section-title span {
+      display: block;
+      color: var(--muted);
+      font-size: 10px;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .form-grid.cols-3 {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .field {
+      min-width: 0;
+    }
+
+    .field.full {
+      grid-column: 1 / -1;
+    }
+
+    .label {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      margin-bottom: 6px;
+      font-size: 11px;
+      font-weight: 850;
+    }
+
+    .required {
+      padding: 2px 5px;
+      border-radius: 5px;
+      background: var(--danger-soft);
+      color: var(--danger);
+      font-size: 8px;
+      font-weight: 900;
+    }
+
+    .optional {
+      color: var(--muted);
+      font-size: 9px;
+      font-weight: 700;
+    }
+
+    .input,
+    .select,
+    .textarea {
+      width: 100%;
+      border: 1px solid #cddbd7;
+      border-radius: 11px;
+      background: #ffffff;
+      color: var(--text);
+      outline: none;
+      transition: border-color .15s ease, box-shadow .15s ease;
+    }
+
+    .input,
+    .select {
+      min-height: 45px;
+      padding: 10px 12px;
+    }
+
+    .textarea {
+      min-height: 120px;
+      padding: 11px 12px;
+      resize: vertical;
+    }
+
+    .input:focus,
+    .select:focus,
+    .textarea:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(15,118,110,.11);
+    }
+
+    .input[readonly] {
+      background: #f6f8f7;
+      color: var(--muted);
+    }
+
+    .help {
+      margin-top: 5px;
+      color: var(--muted);
+      font-size: 9px;
+    }
+
+    .quick-demo {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 13px;
+      padding: 12px;
+      border: 1px dashed #a9cfc7;
+      border-radius: 12px;
+      background: #f5fbf9;
+    }
+
+    .quick-demo strong {
+      margin-right: 2px;
+      font-size: 10px;
+    }
+
+    .quick-btn {
+      min-height: 34px;
+      padding: 7px 10px;
+      border: 1px solid #b9d7d1;
+      border-radius: 9px;
+      background: #ffffff;
+      color: var(--primary-dark);
+      cursor: pointer;
+      font-size: 9px;
+      font-weight: 850;
+    }
+
+    .quick-btn:hover {
+      border-color: var(--primary);
+    }
+
+    .choice-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 9px;
+    }
+
+    .choice-item {
+      position: relative;
+    }
+
+    .choice-item input {
+      position: absolute;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .choice-item label {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      padding: 9px 10px;
+      border: 1px solid #d4e0dd;
+      border-radius: 11px;
+      background: #ffffff;
+      color: var(--text);
+      cursor: pointer;
+      font-size: 10px;
+      font-weight: 800;
+      text-align: center;
+      transition: .15s ease;
+    }
+
+    .choice-item input:checked + label {
+      border-color: var(--primary);
+      background: var(--primary-soft);
+      color: var(--primary-dark);
+      box-shadow: inset 0 0 0 1px var(--primary);
+    }
+
+    .choice-item input:focus-visible + label {
+      outline: 3px solid rgba(37,99,235,.17);
+      outline-offset: 2px;
+    }
+
+    .document-box {
+      margin-top: 12px;
+      padding: 15px;
+      border: 1px solid #cfe4df;
+      border-radius: 13px;
+      background: #f5fbf9;
+    }
+
+    .document-box h4 {
+      margin: 0 0 5px;
+      font-size: 12px;
+    }
+
+    .document-box p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 9px;
+    }
+
+    .document-list {
+      display: grid;
+      gap: 7px;
+      margin: 12px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .document-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      padding: 9px 10px;
+      border: 1px solid #dfebe8;
+      border-radius: 10px;
+      background: #ffffff;
+      font-size: 10px;
+    }
+
+    .document-list li::before {
+      content: "✓";
+      display: grid;
+      place-items: center;
+      width: 20px;
+      height: 20px;
+      flex: 0 0 auto;
+      border-radius: 7px;
+      background: var(--primary-soft);
+      color: var(--primary);
+      font-size: 10px;
+      font-weight: 900;
+    }
+
+    .slot-status {
+      margin-top: 9px;
+      color: var(--muted);
+      font-size: 10px;
+      font-weight: 750;
+    }
+
+    .slot-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .slot-btn {
+      min-height: 42px;
+      padding: 8px;
+      border: 1px solid #d4e0dd;
+      border-radius: 10px;
+      background: #ffffff;
+      cursor: pointer;
+      font-size: 10px;
+      font-weight: 850;
+    }
+
+    .slot-btn:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+
+    .slot-btn.active {
+      border-color: var(--primary);
+      background: var(--primary);
+      color: #ffffff;
+      box-shadow: 0 7px 16px rgba(15,118,110,.18);
+    }
+
+    .agreement {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin-top: 16px;
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: var(--surface-soft);
+    }
+
+    .agreement input {
+      width: 18px;
+      height: 18px;
+      flex: 0 0 auto;
+      margin-top: 2px;
+      accent-color: var(--primary);
+    }
+
+    .agreement label {
+      font-size: 10px;
+    }
+
+    .agreement strong {
+      display: block;
+      margin-bottom: 2px;
+      font-size: 11px;
+    }
+
+    .action-bar {
+      position: sticky;
+      bottom: 12px;
+      z-index: 20;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      margin-top: 20px;
+      padding: 13px;
+      border: 1px solid rgba(220,231,228,.95);
+      border-radius: 16px;
+      background: rgba(255,255,255,.93);
+      box-shadow: 0 12px 30px rgba(15,59,54,.12);
+      backdrop-filter: blur(12px);
+    }
+
+    .action-copy strong {
+      display: block;
+      font-size: 12px;
+    }
+
+    .action-copy span {
+      color: var(--muted);
+      font-size: 9px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-height: 45px;
+      padding: 10px 16px;
+      border: 1px solid transparent;
+      border-radius: 11px;
+      cursor: pointer;
+      text-decoration: none;
+      font-size: 11px;
+      font-weight: 900;
+      transition: transform .14s ease, background .14s ease, opacity .14s ease;
+    }
+
+    .btn:hover:not(:disabled) {
+      transform: translateY(-1px);
+    }
+
+    .btn:disabled {
+      opacity: .56;
+      cursor: not-allowed;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: #ffffff;
+      box-shadow: 0 8px 20px rgba(15,118,110,.18);
+    }
+
+    .btn-primary:hover:not(:disabled) {
+      background: var(--primary-dark);
+    }
+
+    .btn-light {
+      border-color: var(--line);
+      background: #ffffff;
+      color: var(--text);
+    }
+
+    .btn-accent {
+      background: var(--accent);
+      color: #ffffff;
+    }
+
+    .error-box {
+      margin-top: 14px;
+      padding: 13px 14px;
+      border: 1px solid #f1bcb6;
+      border-radius: 12px;
+      background: var(--danger-soft);
+      color: var(--danger);
+      font-size: 10px;
+      font-weight: 750;
+    }
+
+    .loading-panel {
+      display: grid;
+      place-items: center;
+      min-height: 220px;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    .spinner {
+      width: 36px;
+      height: 36px;
+      margin: 0 auto 12px;
+      border: 4px solid #dfeae7;
+      border-top-color: var(--primary);
+      border-radius: 50%;
+      animation: spin .85s linear infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    .success-panel {
+      overflow: hidden;
+      margin-top: 18px;
+      border: 1px solid #a7dacd;
+      border-radius: var(--radius-xl);
+      background: #ffffff;
+      box-shadow: var(--shadow);
+    }
+
+    .success-head {
+      padding: 26px;
+      background: linear-gradient(135deg, #ecfaf6, #ffffff);
+      text-align: center;
+    }
+
+    .success-mark {
+      display: grid;
+      place-items: center;
+      width: 62px;
+      height: 62px;
+      margin: 0 auto 12px;
+      border-radius: 20px;
+      background: var(--success);
+      color: #ffffff;
+      box-shadow: 0 12px 28px rgba(19,121,91,.22);
+      font-size: 27px;
+      font-weight: 950;
+    }
+
+    .success-head h2 {
+      margin: 0;
+      font-size: 23px;
+    }
+
+    .success-head p {
+      margin: 7px 0 0;
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    .success-body {
+      padding: 22px;
+    }
+
+    .summary-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .summary-item {
+      padding: 12px;
+      border: 1px solid #e0eae7;
+      border-radius: 11px;
+      background: var(--surface-soft);
+    }
+
+    .summary-item span {
+      display: block;
+      color: var(--muted);
+      font-size: 9px;
+      font-weight: 750;
+    }
+
+    .summary-item strong {
+      display: block;
+      overflow-wrap: anywhere;
+      margin-top: 3px;
+      font-size: 11px;
+    }
+
+    .message-preview {
+      margin-top: 14px;
+      padding: 14px;
+      border: 1px solid #dfe8e6;
+      border-radius: 12px;
+      background: #f8faf9;
+    }
+
+    .message-preview-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+
+    .message-preview-header strong {
+      font-size: 11px;
+    }
+
+    .message-preview pre {
+      margin: 0;
+      white-space: pre-wrap;
+      word-break: break-word;
+      font: inherit;
+      color: #34423f;
+      font-size: 10px;
+      line-height: 1.8;
+    }
+
+    .success-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+      margin-top: 15px;
+    }
+
+    .footer {
+      width: min(var(--content), calc(100% - 28px));
+      margin: 24px auto 0;
+      color: var(--muted);
+      font-size: 9px;
+      text-align: center;
+    }
+
+    @media (max-width: 800px) {
+      .hero-inner {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-note {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .purpose-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .purpose-card {
+        display: grid;
+        grid-template-columns: 44px minmax(0, 1fr);
+        column-gap: 12px;
+        align-items: center;
+      }
+
+      .purpose-card h2 {
+        margin: 0 0 4px;
+      }
+
+      .purpose-card p {
+        grid-column: 2;
+      }
+
+      .form-grid.cols-3 {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .choice-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .slot-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 560px) {
+      .topbar-inner {
+        min-height: 60px;
+      }
+
+      .brand-copy span {
+        display: none;
+      }
+
+      .top-link:not(.primary) {
+        display: none;
+      }
+
+      .hero {
+        margin-top: 12px;
+      }
+
+      .hero-inner {
+        padding: 23px;
+      }
+
+      .hero-note {
+        grid-template-columns: 1fr;
+      }
+
+      .content,
+      .hero,
+      .footer {
+        width: min(100% - 20px, var(--content));
+      }
+
+      .panel {
+        padding: 18px 15px;
+        border-radius: 18px;
+      }
+
+      .panel-header {
+        display: block;
+      }
+
+      .step-badge {
+        margin-top: 8px;
+      }
+
+      .form-grid,
+      .form-grid.cols-3 {
+        grid-template-columns: 1fr;
+      }
+
+      .choice-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .slot-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .action-bar {
+        display: block;
+        bottom: 8px;
+      }
+
+      .action-copy {
+        margin-bottom: 9px;
+      }
+
+      .action-bar .btn {
+        width: 100%;
+      }
+
+      .summary-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .success-actions .btn {
+        flex: 1 1 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <header class="topbar">
+      <div class="topbar-inner">
+        <a class="brand" href="./index.html">
+          <div class="brand-mark">D</div>
+          <div class="brand-copy">
+            <strong id="brand-office-name">DPRO社会保険労務士事務所</strong>
+            <span>顧問先相談・手続き依頼・面談予約</span>
+          </div>
+        </a>
+
+        <div class="top-actions">
+          <a class="top-link" id="contact-office-link" href="#contact-info">事務所情報</a>
+          <a class="top-link primary" id="member-link" href="./member.html">対応状況を確認</a>
+        </div>
+      </div>
+    </header>
+
+    <section class="hero">
+      <div class="hero-inner">
+        <div>
+          <div class="hero-eyebrow">DPRO SHAROUSHI CLIENT PORTAL</div>
+          <h1>相談・手続き依頼を<br>LINEからかんたん受付</h1>
+          <p>
+            労務相談、入社・退職などの手続き依頼、面談予約を受け付けます。
+            受付後は必要事項を確認し、担当者からご連絡します。
+          </p>
+        </div>
+
+        <div class="hero-note">
+          <div class="hero-note-item">
+            <div class="hero-note-dot">1</div>
+            <div>
+              <strong>目的を選択</strong>
+              <span>相談・手続き・面談予約から選べます。</span>
+            </div>
+          </div>
+          <div class="hero-note-item">
+            <div class="hero-note-dot">2</div>
+            <div>
+              <strong>必要事項を入力</strong>
+              <span>顧問先番号と担当者情報を確認します。</span>
+            </div>
+          </div>
+          <div class="hero-note-item">
+            <div class="hero-note-dot">3</div>
+            <div>
+              <strong>担当者から連絡</strong>
+              <span>内容を確認後、事務所からご案内します。</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <main class="content">
+      <div class="notice" id="privacy-notice">
+        <div class="notice-icon">!</div>
+        <div>
+          <strong>機密情報は入力しないでください。</strong><br>
+          マイナンバー、本人確認書類、診断書、口座情報などは、この画面へ入力・添付しないでください。
+          必要な場合は担当者から安全な確認方法をご案内します。
+        </div>
+      </div>
+
+      <section class="purpose-grid" aria-label="受付内容を選択">
+        <button class="purpose-card active" type="button" data-purpose="consultation">
+          <span class="purpose-check">✓</span>
+          <span class="purpose-icon">相</span>
+          <h2>労務相談をしたい</h2>
+          <p>日常の労務管理、就業規則、助成金、産休・育休などの相談。</p>
+        </button>
+
+        <button class="purpose-card" type="button" data-purpose="procedure">
+          <span class="purpose-check">✓</span>
+          <span class="purpose-icon">手</span>
+          <h2>手続きを依頼したい</h2>
+          <p>入社・退職・社会保険・雇用保険などの手続き依頼。</p>
+        </button>
+
+        <button class="purpose-card" type="button" data-purpose="appointment">
+          <span class="purpose-check">✓</span>
+          <span class="purpose-icon">予</span>
+          <h2>面談を予約したい</h2>
+          <p>オンライン、来所、電話、訪問での相談日時を予約。</p>
+        </button>
+      </section>
+
+      <section class="panel" id="main-panel">
+        <div id="loading-panel" class="loading-panel">
+          <div>
+            <div class="spinner"></div>
+            <strong>受付画面を準備しています</strong>
+            <div style="margin-top:5px;font-size:10px">事務所設定を読み込んでいます。</div>
+          </div>
+        </div>
+
+        <form id="request-form" hidden novalidate>
+          <div class="panel-header">
+            <div>
+              <h2 id="form-title">労務相談受付</h2>
+              <p id="form-description">相談内容を事前にお知らせください。</p>
+            </div>
+            <div class="step-badge" id="form-purpose-badge">労務相談</div>
+          </div>
+
+          <section class="section">
+            <div class="section-title">
+              <div class="section-number">1</div>
+              <div>
+                <h3>顧問先・ご担当者情報</h3>
+                <span>顧問先番号と連絡先を入力してください。</span>
+              </div>
+            </div>
+
+            <div class="quick-demo">
+              <strong>営業デモ入力：</strong>
+              <button class="quick-btn" type="button" data-demo-company="1">株式会社サンプル建設</button>
+              <button class="quick-btn" type="button" data-demo-company="2">DPRO美容室</button>
+              <button class="quick-btn" type="button" data-demo-company="3">山田商事株式会社</button>
+              <button class="quick-btn" type="button" id="clear-identity-btn">入力を消去</button>
+            </div>
+
+            <div class="form-grid cols-3">
+              <div class="field">
+                <label class="label" for="company-code">
+                  顧問先番号 <span class="required">必須</span>
+                </label>
+                <input class="input" id="company-code" name="company_code" autocomplete="organization" placeholder="例：SR-COMPANY-001" required>
+                <div class="help">事務所から案内された顧問先番号です。</div>
+              </div>
+
+              <div class="field">
+                <label class="label" for="contact-name">
+                  ご担当者氏名 <span class="required">必須</span>
+                </label>
+                <input class="input" id="contact-name" name="contact_name" autocomplete="name" placeholder="例：佐藤 太郎" required>
+              </div>
+
+              <div class="field">
+                <label class="label" for="contact-phone">
+                  電話番号 <span class="required">必須</span>
+                </label>
+                <input class="input" id="contact-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="例：090-9999-1111" required>
+                <div class="help">ハイフンあり・なし、全角でも入力できます。</div>
+              </div>
+
+              <div class="field">
+                <label class="label" for="department">
+                  部署 <span class="optional">任意</span>
+                </label>
+                <input class="input" id="department" name="department" autocomplete="organization-title" placeholder="例：総務部">
+              </div>
+
+              <div class="field">
+                <label class="label" for="position-name">
+                  役職 <span class="optional">任意</span>
+                </label>
+                <input class="input" id="position-name" name="position_name" placeholder="例：総務課長">
+              </div>
+
+              <div class="field">
+                <label class="label" for="contact-email">
+                  メールアドレス <span class="optional">任意</span>
+                </label>
+                <input class="input" id="contact-email" name="email" type="email" autocomplete="email" placeholder="example@company.jp">
+              </div>
+            </div>
+          </section>
+
+          <section class="section" id="consultation-section">
+            <div class="section-title">
+              <div class="section-number">2</div>
+              <div>
+                <h3>相談内容</h3>
+                <span>現在の状況と相談したい内容を入力してください。</span>
+              </div>
+            </div>
+
+            <div class="form-grid">
+              <div class="field">
+                <label class="label" for="consultation-category">
+                  相談分類 <span class="required">必須</span>
+                </label>
+                <select class="select" id="consultation-category" name="category_code" required>
+                  <option value="">読み込み中...</option>
+                </select>
+              </div>
+
+              <div class="field">
+                <label class="label" for="urgency">
+                  緊急度 <span class="required">必須</span>
+                </label>
+                <select class="select" id="urgency" name="urgency">
+                  <option value="normal">通常</option>
+                  <option value="high">早めに確認してほしい</option>
+                  <option value="urgent">至急</option>
+                  <option value="low">急ぎではない</option>
+                </select>
+              </div>
+
+              <div class="field">
+                <label class="label" for="preferred-response-date">
+                  希望回答日 <span class="optional">任意</span>
+                </label>
+                <input class="input" id="preferred-response-date" name="preferred_response_date" type="date">
+              </div>
+
+              <div class="field">
+                <label class="label">希望連絡方法</label>
+                <div class="choice-grid">
+                  <div class="choice-item">
+                    <input id="contact-line" type="radio" name="preferred_contact_method" value="line" checked>
+                    <label for="contact-line">LINE</label>
+                  </div>
+                  <div class="choice-item">
+                    <input id="contact-phone-method" type="radio" name="preferred_contact_method" value="phone">
+                    <label for="contact-phone-method">電話</label>
+                  </div>
+                  <div class="choice-item">
+                    <input id="contact-meeting" type="radio" name="preferred_contact_method" value="meeting">
+                    <label for="contact-meeting">面談</label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="field full">
+                <label class="label" for="consultation-title">
+                  相談タイトル <span class="required">必須</span>
+                </label>
+                <input class="input" id="consultation-title" name="consultation_title" placeholder="例：就業規則の見直しについて" required>
+              </div>
+
+              <div class="field full">
+                <label class="label" for="consultation-details">
+                  相談内容 <span class="required">必須</span>
+                </label>
+                <textarea class="textarea" id="consultation-details" name="consultation_details" placeholder="現在の状況、確認したいこと、希望する対応時期などをご入力ください。" required></textarea>
+              </div>
+            </div>
+          </section>
+
+          <section class="section" id="procedure-section" hidden>
+            <div class="section-title">
+              <div class="section-number">2</div>
+              <div>
+                <h3>手続き依頼内容</h3>
+                <span>手続き種別と対象者の基本情報を入力してください。</span>
+              </div>
+            </div>
+
+            <div class="form-grid cols-3">
+              <div class="field">
+                <label class="label" for="procedure-type">
+                  手続き種別 <span class="required">必須</span>
+                </label>
+                <select class="select" id="procedure-type" name="procedure_code">
+                  <option value="">読み込み中...</option>
+                </select>
+              </div>
+
+              <div class="field">
+                <label class="label" for="employee-name">
+                  対象者氏名 <span class="required">必須</span>
+                </label>
+                <input class="input" id="employee-name" name="employee_name" placeholder="例：鈴木 健">
+              </div>
+
+              <div class="field">
+                <label class="label" for="employment-type">
+                  雇用区分 <span class="optional">任意</span>
+                </label>
+                <select class="select" id="employment-type" name="employment_type">
+                  <option value="">選択してください</option>
+                  <option value="正社員">正社員</option>
+                  <option value="契約社員">契約社員</option>
+                  <option value="パート・アルバイト">パート・アルバイト</option>
+                  <option value="役員">役員</option>
+                  <option value="その他">その他</option>
+                </select>
+              </div>
+
+              <div class="field">
+                <label class="label" for="effective-date">
+                  入社日・退職日・変更日 <span class="required">必須</span>
+                </label>
+                <input class="input" id="effective-date" name="effective_date" type="date">
+              </div>
+
+              <div class="field">
+                <label class="label" for="client-due-date">
+                  希望期限 <span class="optional">任意</span>
+                </label>
+                <input class="input" id="client-due-date" name="client_requested_due_date" type="date">
+              </div>
+
+              <div class="field">
+                <label class="label" for="procedure-title">
+                  依頼タイトル <span class="optional">自動入力可</span>
+                </label>
+                <input class="input" id="procedure-title" name="procedure_title" placeholder="例：鈴木 健様 入社手続き">
+              </div>
+
+              <div class="field full">
+                <label class="label" for="procedure-details">
+                  依頼内容・補足 <span class="optional">任意</span>
+                </label>
+                <textarea class="textarea" id="procedure-details" name="request_details" placeholder="現在分かっている内容、確認してほしいこと、準備できている情報などをご入力ください。"></textarea>
+              </div>
+            </div>
+
+            <div class="document-box">
+              <h4>必要事項の仮案内</h4>
+              <p id="document-notice">
+                以下は一般的なご案内です。対象者の状況により追加確認が必要になる場合があります。
+              </p>
+              <ul class="document-list" id="document-preview">
+                <li>手続き種別を選択すると、主な確認事項を表示します。</li>
+              </ul>
+            </div>
+          </section>
+
+          <section class="section" id="appointment-section" hidden>
+            <div class="section-title">
+              <div class="section-number">2</div>
+              <div>
+                <h3>面談予約内容</h3>
+                <span>相談方法、希望日、空き時間を選択してください。</span>
+              </div>
+            </div>
+
+            <div class="form-grid cols-3">
+              <div class="field">
+                <label class="label" for="service-id">
+                  相談メニュー <span class="required">必須</span>
+                </label>
+                <select class="select" id="service-id" name="service_id">
+                  <option value="">読み込み中...</option>
+                </select>
+              </div>
+
+              <div class="field">
+                <label class="label" for="appointment-staff">
+                  担当希望 <span class="optional">任意</span>
+                </label>
+                <select class="select" id="appointment-staff" name="assigned_staff_id">
+                  <option value="">おまかせ</option>
+                </select>
+              </div>
+
+              <div class="field">
+                <label class="label" for="appointment-date">
+                  希望日 <span class="required">必須</span>
+                </label>
+                <input class="input" id="appointment-date" name="appointment_date" type="date">
+              </div>
+
+              <div class="field full">
+                <label class="label" for="appointment-agenda">
+                  相談したい内容 <span class="required">必須</span>
+                </label>
+                <textarea class="textarea" id="appointment-agenda" name="agenda" placeholder="面談で相談したい内容をご入力ください。"></textarea>
+              </div>
+            </div>
+
+            <div class="slot-status" id="slot-status">
+              相談メニューと希望日を選択すると、空き時間を表示します。
+            </div>
+            <div class="slot-grid" id="slot-grid"></div>
+          </section>
+
+          <section class="section">
+            <div class="section-title">
+              <div class="section-number">3</div>
+              <div>
+                <h3>確認・送信</h3>
+                <span>入力内容と注意事項をご確認ください。</span>
+              </div>
+            </div>
+
+            <div class="agreement">
+              <input id="privacy-agreement" name="privacy_agreement" type="checkbox" required>
+              <label for="privacy-agreement">
+                <strong>注意事項を確認しました</strong>
+                マイナンバー、本人確認書類、診断書、口座情報などの高度な機密情報は入力していません。
+                必要書類の案内は一般的な内容であり、最終確認は担当者が行うことに同意します。
+              </label>
+            </div>
+
+            <div class="error-box" id="form-error" hidden aria-live="polite"></div>
+          </section>
+
+          <div class="action-bar">
+            <div class="action-copy">
+              <strong id="submit-action-title">労務相談を送信</strong>
+              <span>送信後、受付番号と確認文面を表示します。</span>
+            </div>
+            <button class="btn btn-primary" id="submit-btn" type="submit">相談内容を送信する</button>
+          </div>
+        </form>
+      </section>
+
+      <section class="success-panel" id="success-panel" hidden>
+        <div class="success-head">
+          <div class="success-mark">✓</div>
+          <h2 id="success-title">受付が完了しました</h2>
+          <p id="success-description">内容を確認後、担当者からご連絡します。</p>
+        </div>
+
+        <div class="success-body">
+          <div class="summary-grid" id="success-summary"></div>
+
+          <div class="document-box" id="success-documents" hidden>
+            <h4>必要事項・書類の仮案内</h4>
+            <p>
+              内容により追加の確認が必要になる場合があります。マイナンバー等はこの画面から送らないでください。
+            </p>
+            <ul class="document-list" id="success-document-list"></ul>
+          </div>
+
+          <div class="message-preview">
+            <div class="message-preview-header">
+              <strong>LINEで確認するための文面</strong>
+              <button class="btn btn-light" id="copy-message-btn" type="button">文面をコピー</button>
+            </div>
+            <pre id="success-message"></pre>
+          </div>
+
+          <div class="success-actions">
+            <a class="btn btn-accent" id="success-member-link" href="./member.html">対応状況を確認する</a>
+            <button class="btn btn-light" id="new-request-btn" type="button">別の受付を行う</button>
+            <a class="btn btn-light" id="success-home-link" href="./index.html">トップへ戻る</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel" id="contact-info">
+        <div class="panel-header" style="margin-bottom:0">
+          <div>
+            <h2 id="contact-office-name">DPRO社会保険労務士事務所</h2>
+            <p>
+              受付内容を確認後、営業時間内に担当者からご連絡します。
+              至急の場合は事務所へお電話ください。
+            </p>
+          </div>
+          <div class="step-badge" id="office-phone-badge">電話番号確認中</div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      DPRO 社労士・顧問先対応 LINE · STEP CONSULT-6
+    </footer>
+  </div>
+
+  <script src="./config.js?v=CONSULT-4-CONFIG-20260714"></script>
+  <script>
+    (() => {
+      "use strict";
+
+      const state = {
+        purpose: "consultation",
+        config: null,
+        options: null,
+        selectedSlot: null,
+        availability: null,
+        submitting: false,
+        lastResult: null,
+      };
+
+      const demoCompanies = {
+        "1": {
+          company_code: "SR-COMPANY-001",
+          contact_name: "佐藤 太郎",
+          phone: "090-9999-1111",
+          department: "総務部",
+          position_name: "総務課長",
+          email: "sato@sample-kensetsu.example",
+        },
+        "2": {
+          company_code: "SR-COMPANY-002",
+          contact_name: "田中 美咲",
+          phone: "090-9999-2222",
+          department: "本部",
+          position_name: "代表",
+          email: "tanaka@dpro-salon.example",
+        },
+        "3": {
+          company_code: "SR-COMPANY-003",
+          contact_name: "山本 一郎",
+          phone: "090-9999-3333",
+          department: "人事部",
+          position_name: "人事部長",
+          email: "yamamoto@yamada-shoji.example",
+        },
+      };
+
+      const documentGuides = {
+        hire: [
+          "氏名・ふりがな・生年月日",
+          "入社日・雇用区分",
+          "所定労働時間・給与などの雇用条件",
+          "扶養家族の有無",
+          "前職の雇用保険情報の有無",
+          "マイナンバーは別途安全な方法で確認します",
+        ],
+        leave: [
+          "氏名・退職日",
+          "最終出勤日",
+          "退職理由",
+          "離職票希望の有無",
+          "有給休暇の消化状況",
+        ],
+        social_insurance_join: [
+          "対象者の基本情報",
+          "加入予定日",
+          "雇用条件",
+          "扶養家族の有無",
+          "マイナンバーは別途安全な方法で確認します",
+        ],
+        social_insurance_loss: [
+          "対象者の基本情報",
+          "資格喪失日",
+          "退職・変更理由",
+          "保険証等の返却状況",
+        ],
+        employment_insurance_join: [
+          "対象者の基本情報",
+          "入社日・雇用条件",
+          "前職の雇用保険加入状況",
+        ],
+        employment_insurance_loss: [
+          "対象者の基本情報",
+          "退職日・退職理由",
+          "離職票希望の有無",
+        ],
+        dependent_change: [
+          "対象者氏名・続柄",
+          "扶養開始日または削除日",
+          "収入状況",
+          "同居・別居の状況",
+        ],
+        maternity_childcare: [
+          "対象者氏名",
+          "出産予定日",
+          "休業開始予定日",
+          "復職予定日",
+          "会社の連絡担当者",
+        ],
+        workers_compensation: [
+          "対象者氏名",
+          "発生日・発生場所",
+          "発生状況",
+          "受診状況",
+          "詳細な健康情報や診断書はこの画面へ送らないでください",
+        ],
+        other: [
+          "手続きの対象者",
+          "基準となる日付",
+          "現在分かっている内容",
+          "希望する対応期限",
+        ],
+      };
+
+      const $ = (selector) => document.querySelector(selector);
+      const $$ = (selector) => [...document.querySelectorAll(selector)];
+
+      function app() {
+        if (!window.DPRO_CONSULT) {
+          throw new Error("config.jsを読み込めませんでした。");
+        }
+        return window.DPRO_CONSULT;
+      }
+
+      function showError(message) {
+        const box = $("#form-error");
+        box.textContent = message;
+        box.hidden = false;
+        box.scrollIntoView({ behavior: "smooth", block: "center" });
+      }
+
+      function clearError() {
+        $("#form-error").hidden = true;
+        $("#form-error").textContent = "";
+      }
+
+      function getFormData() {
+        const form = $("#request-form");
+        const data = Object.fromEntries(new FormData(form).entries());
+
+        data.company_code = data.company_code?.trim();
+        data.contact_name = data.contact_name?.trim();
+        data.phone = data.phone?.trim();
+        data.department = data.department?.trim() || null;
+        data.position_name = data.position_name?.trim() || null;
+        data.email = data.email?.trim() || null;
+        data.line_user_id =
+          app().getQueryParam("line_user_id") ||
+          app().getStoredValue(app().STORAGE_KEYS.LINE_USER_ID) ||
+          null;
+
+        return data;
+      }
+
+      function setPurpose(purpose, options = {}) {
+        state.purpose = purpose;
+        state.selectedSlot = null;
+        state.availability = null;
+
+        $$(".purpose-card").forEach((card) => {
+          card.classList.toggle("active", card.dataset.purpose === purpose);
+        });
+
+        $("#consultation-section").hidden = purpose !== "consultation";
+        $("#procedure-section").hidden = purpose !== "procedure";
+        $("#appointment-section").hidden = purpose !== "appointment";
+
+        const texts = {
+          consultation: {
+            title: "労務相談受付",
+            description: "相談内容を事前にお知らせください。",
+            badge: "労務相談",
+            action: "労務相談を送信",
+            button: "相談内容を送信する",
+          },
+          procedure: {
+            title: "手続き依頼受付",
+            description: "入社・退職などの手続き内容をお知らせください。",
+            badge: "手続き依頼",
+            action: "手続き依頼を送信",
+            button: "手続き依頼を送信する",
+          },
+          appointment: {
+            title: "面談予約受付",
+            description: "相談方法と空き時間を選択してください。",
+            badge: "面談予約",
+            action: "面談予約を送信",
+            button: "面談予約を送信する",
+          },
+        };
+
+        const text = texts[purpose];
+        $("#form-title").textContent = text.title;
+        $("#form-description").textContent = text.description;
+        $("#form-purpose-badge").textContent = text.badge;
+        $("#submit-action-title").textContent = text.action;
+        $("#submit-btn").textContent = text.button;
+
+        if (!options.noScroll) {
+          $("#main-panel").scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+
+        clearError();
+      }
+
+      function fillDemoCompany(key) {
+        const demo = demoCompanies[key];
+        if (!demo) return;
+
+        $("#company-code").value = demo.company_code;
+        $("#contact-name").value = demo.contact_name;
+        $("#contact-phone").value = demo.phone;
+        $("#department").value = demo.department;
+        $("#position-name").value = demo.position_name;
+        $("#contact-email").value = demo.email;
+
+        app().showToast("営業デモ用の顧問先情報を入力しました。", {
+          type: "info",
+        });
+      }
+
+      function clearIdentity() {
+        [
+          "#company-code",
+          "#contact-name",
+          "#contact-phone",
+          "#department",
+          "#position-name",
+          "#contact-email",
+        ].forEach((selector) => {
+          $(selector).value = "";
+        });
+
+        app().showToast("顧問先情報を消去しました。", { type: "warning" });
+      }
+
+      function renderOptions() {
+        const consultationSelect = $("#consultation-category");
+        consultationSelect.innerHTML = `
+          <option value="">相談分類を選択してください</option>
+          ${(state.options.consultation_categories || [])
+            .map(
+              (item) =>
+                `<option value="${app().escapeHtml(item.category_code)}">${app().escapeHtml(item.category_name)}</option>`
+            )
+            .join("")}
+        `;
+
+        const procedureSelect = $("#procedure-type");
+        procedureSelect.innerHTML = `
+          <option value="">手続き種別を選択してください</option>
+          ${(state.options.procedure_types || [])
+            .map(
+              (item) =>
+                `<option value="${app().escapeHtml(item.procedure_code)}">${app().escapeHtml(item.procedure_name)}</option>`
+            )
+            .join("")}
+        `;
+
+        const serviceSelect = $("#service-id");
+        serviceSelect.innerHTML = `
+          <option value="">相談メニューを選択してください</option>
+          ${(state.options.services || [])
+            .map(
+              (item) =>
+                `<option value="${app().escapeHtml(item.id)}" data-method="${app().escapeHtml(item.consultation_method)}">${app().escapeHtml(item.service_name)}</option>`
+            )
+            .join("")}
+        `;
+
+        const staffSelect = $("#appointment-staff");
+        staffSelect.innerHTML = `
+          <option value="">おまかせ</option>
+          ${(state.options.staff || [])
+            .map(
+              (item) =>
+                `<option value="${app().escapeHtml(item.id)}">${app().escapeHtml(item.staff_name)}</option>`
+            )
+            .join("")}
+        `;
+      }
+
+      function renderDocumentGuide() {
+        const code = $("#procedure-type").value;
+        const list = documentGuides[code] || [
+          "手続き種別を選択すると、主な確認事項を表示します。",
+        ];
+
+        $("#document-preview").innerHTML = list
+          .map((item) => `<li>${app().escapeHtml(item)}</li>`)
+          .join("");
+      }
+
+      async function loadAvailability() {
+        const serviceId = $("#service-id").value;
+        const date = $("#appointment-date").value;
+        const staffId = $("#appointment-staff").value;
+
+        state.selectedSlot = null;
+        state.availability = null;
+        $("#slot-grid").innerHTML = "";
+
+        if (!serviceId || !date) {
+          $("#slot-status").textContent =
+            "相談メニューと希望日を選択すると、空き時間を表示します。";
+          return;
+        }
+
+        if (app().isPastDate(date)) {
+          $("#slot-status").textContent = "過去の日付は選択できません。";
+          return;
+        }
+
+        $("#slot-status").textContent = "空き時間を確認しています...";
+
+        try {
+          const result = await app().apiFetch(
+            app().API_ENDPOINTS.PUBLIC_AVAILABILITY,
+            {
+              query: {
+                service_id: serviceId,
+                date,
+                staff_id: staffId || undefined,
+              },
+            }
+          );
+
+          state.availability = result;
+          const slots = result.slots || [];
+
+          if (!result.is_open) {
+            $("#slot-status").textContent =
+              result.reason || "この日は受付していません。";
+            return;
+          }
+
+          if (slots.length === 0) {
+            $("#slot-status").textContent =
+              result.reason || "選択できる空き時間がありません。";
+            return;
+          }
+
+          $("#slot-status").textContent =
+            `${slots.length}件の空き時間があります。希望時間を選択してください。`;
+
+          $("#slot-grid").innerHTML = slots
+            .map(
+              (slot, index) => `
+                <button
+                  class="slot-btn"
+                  type="button"
+                  data-slot-index="${index}"
+                >
+                  ${app().escapeHtml(slot.time)}
+                </button>
+              `
+            )
+            .join("");
+        } catch (error) {
+          $("#slot-status").textContent =
+            error?.message || "空き時間を取得できませんでした。";
+        }
+      }
+
+      function selectSlot(index) {
+        const slot = state.availability?.slots?.[Number(index)];
+        if (!slot) return;
+
+        state.selectedSlot = slot;
+
+        $$(".slot-btn").forEach((button) => {
+          button.classList.toggle(
+            "active",
+            Number(button.dataset.slotIndex) === Number(index)
+          );
+        });
+
+        $("#slot-status").textContent =
+          `${app().formatDate(slot.start_at)} ${app().formatTime(slot.start_at)}を選択中です。`;
+      }
+
+      function validateCommon(data) {
+        if (!data.company_code) {
+          throw new Error("顧問先番号を入力してください。");
+        }
+        if (!data.contact_name) {
+          throw new Error("ご担当者氏名を入力してください。");
+        }
+        if (!data.phone) {
+          throw new Error("電話番号を入力してください。");
+        }
+        if (!app().normalizePhone(data.phone)) {
+          throw new Error("電話番号を確認してください。");
+        }
+        if (!$("#privacy-agreement").checked) {
+          throw new Error("注意事項を確認し、同意欄へチェックしてください。");
+        }
+      }
+
+      function buildConsultationPayload(data) {
+        validateCommon(data);
+
+        if (!data.category_code) {
+          throw new Error("相談分類を選択してください。");
+        }
+        if (!data.consultation_title?.trim()) {
+          throw new Error("相談タイトルを入力してください。");
+        }
+        if (!data.consultation_details?.trim()) {
+          throw new Error("相談内容を入力してください。");
+        }
+
+        return {
+          company_code: data.company_code,
+          contact_name: data.contact_name,
+          phone: data.phone,
+          department: data.department,
+          position_name: data.position_name,
+          email: data.email,
+          line_user_id: data.line_user_id,
+          category_code: data.category_code,
+          title: data.consultation_title.trim(),
+          consultation_details: data.consultation_details.trim(),
+          urgency: data.urgency || "normal",
+          preferred_response_date: data.preferred_response_date || null,
+          preferred_contact_method:
+            data.preferred_contact_method || "line",
+        };
+      }
+
+      function buildProcedurePayload(data) {
+        validateCommon(data);
+
+        if (!data.procedure_code) {
+          throw new Error("手続き種別を選択してください。");
+        }
+        if (!data.employee_name?.trim()) {
+          throw new Error("手続き対象者氏名を入力してください。");
+        }
+        if (!data.effective_date) {
+          throw new Error("入社日・退職日・変更日を入力してください。");
+        }
+
+        const procedureName =
+          $("#procedure-type").selectedOptions[0]?.textContent || "手続き";
+
+        return {
+          company_code: data.company_code,
+          contact_name: data.contact_name,
+          phone: data.phone,
+          department: data.department,
+          position_name: data.position_name,
+          email: data.email,
+          line_user_id: data.line_user_id,
+          procedure_code: data.procedure_code,
+          employee_name: data.employee_name.trim(),
+          employment_type: data.employment_type || null,
+          effective_date: data.effective_date,
+          client_requested_due_date: data.client_requested_due_date || null,
+          title:
+            data.procedure_title?.trim() ||
+            `${data.employee_name.trim()}様 ${procedureName}`,
+          request_details: data.request_details?.trim() || null,
+        };
+      }
+
+      function buildAppointmentPayload(data) {
+        validateCommon(data);
+
+        if (!data.service_id) {
+          throw new Error("相談メニューを選択してください。");
+        }
+        if (!state.selectedSlot) {
+          throw new Error("空き時間を選択してください。");
+        }
+        if (!data.agenda?.trim()) {
+          throw new Error("相談したい内容を入力してください。");
+        }
+
+        const selectedOption = $("#service-id").selectedOptions[0];
+
+        return {
+          company_code: data.company_code,
+          contact_name: data.contact_name,
+          phone: data.phone,
+          department: data.department,
+          position_name: data.position_name,
+          email: data.email,
+          line_user_id: data.line_user_id,
+          service_id: data.service_id,
+          assigned_staff_id: data.assigned_staff_id || null,
+          method: selectedOption?.dataset.method || "online",
+          start_at: state.selectedSlot.start_at,
+          end_at: state.selectedSlot.end_at,
+          agenda: data.agenda.trim(),
+          customer_notes: null,
+        };
+      }
+
+      function createMemberUrl(data) {
+        return app().buildPageUrl("MEMBER", {
+          company_code: data.company_code,
+          phone: app().normalizePhone(data.phone),
+          line_user_id: data.line_user_id || undefined,
+        });
+      }
+
+      function saveIdentity(data) {
+        app().setStoredValue(app().STORAGE_KEYS.COMPANY_CODE, data.company_code);
+        app().setStoredValue(
+          app().STORAGE_KEYS.CONTACT_PHONE,
+          app().normalizePhone(data.phone)
+        );
+
+        if (data.line_user_id) {
+          app().setStoredValue(
+            app().STORAGE_KEYS.LINE_USER_ID,
+            data.line_user_id
+          );
+        }
+      }
+
+      function formatSuccessMessage(result, data) {
+        if (state.purpose === "consultation") {
+          const item = result.consultation;
+          return `${data.contact_name}様
+
+労務相談を受け付けました。
+受付番号：${item.consultation_code}
+相談内容：${item.title}
+現在の状況：${item.status_label}
+
+内容を確認し、担当者よりご連絡いたします。`;
+        }
+
+        if (state.purpose === "procedure") {
+          const item = result.procedure_request;
+          return `${data.contact_name}様
+
+手続き依頼を受け付けました。
+受付番号：${item.procedure_request_code}
+依頼内容：${item.title}
+現在の状況：${item.status_label}
+
+必要事項を確認し、担当者よりご連絡いたします。
+マイナンバー等の高度な機密情報は、この画面やLINEへ送信しないでください。`;
+        }
+
+        const item = result.appointment;
+        return `${data.contact_name}様
+
+面談予約を受け付けました。
+予約番号：${item.appointment_code}
+相談メニュー：${item.service_name}
+日時：${app().formatDateTime(item.start_at)}
+方法：${item.method}
+現在の状況：${item.status_label}
+
+内容を確認し、担当者よりご連絡いたします。`;
+      }
+
+      function showSuccess(result, data) {
+        state.lastResult = { result, data };
+
+        $("#main-panel").hidden = true;
+        $("#success-panel").hidden = false;
+
+        const summary = [];
+
+        if (state.purpose === "consultation") {
+          const item = result.consultation;
+          $("#success-title").textContent = "労務相談を受け付けました";
+          $("#success-description").textContent =
+            "内容を確認後、担当者からご連絡します。";
+          summary.push(
+            ["受付番号", item.consultation_code],
+            ["相談タイトル", item.title],
+            ["現在の状況", item.status_label],
+            ["顧問先", item.company_name],
+            ["ご担当者", item.contact_name]
+          );
+        } else if (state.purpose === "procedure") {
+          const item = result.procedure_request;
+          $("#success-title").textContent = "手続き依頼を受け付けました";
+          $("#success-description").textContent =
+            "必要事項を確認後、担当者からご連絡します。";
+          summary.push(
+            ["受付番号", item.procedure_request_code],
+            ["依頼内容", item.title],
+            ["現在の状況", item.status_label],
+            ["事務所期限目安", app().formatDate(item.office_due_date)],
+            ["顧問先", item.company_name],
+            ["ご担当者", item.contact_name]
+          );
+
+          const documents = result.required_documents || [];
+          if (documents.length > 0) {
+            $("#success-documents").hidden = false;
+            $("#success-document-list").innerHTML = documents
+              .map(
+                (document) =>
+                  `<li><div><strong>${app().escapeHtml(document.document_name)}</strong>${
+                    document.description
+                      ? `<br><span style="color:var(--muted)">${app().escapeHtml(document.description)}</span>`
+                      : ""
+                  }${
+                    document.notice
+                      ? `<br><span style="color:var(--danger)">${app().escapeHtml(document.notice)}</span>`
+                      : ""
+                  }</div></li>`
+              )
+              .join("");
+          } else {
+            $("#success-documents").hidden = true;
+          }
+        } else {
+          const item = result.appointment;
+          $("#success-title").textContent = "面談予約を受け付けました";
+          $("#success-description").textContent =
+            "予約内容を確認後、担当者からご連絡します。";
+          summary.push(
+            ["予約番号", item.appointment_code],
+            ["相談メニュー", item.service_name],
+            ["日時", app().formatDateTime(item.start_at)],
+            ["相談方法", item.method],
+            ["現在の状況", item.status_label],
+            ["ご担当者", item.contact_name]
+          );
+          $("#success-documents").hidden = true;
+        }
+
+        $("#success-summary").innerHTML = summary
+          .map(
+            ([label, value]) => `
+              <div class="summary-item">
+                <span>${app().escapeHtml(label)}</span>
+                <strong>${app().escapeHtml(value ?? "—")}</strong>
+              </div>
+            `
+          )
+          .join("");
+
+        const message = formatSuccessMessage(result, data);
+        $("#success-message").textContent = message;
+
+        const memberUrl = createMemberUrl(data);
+        $("#success-member-link").href = memberUrl;
+        $("#member-link").href = memberUrl;
+
+        $("#success-panel").scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+      }
+
+      async function submitForm(event) {
+        event.preventDefault();
+        if (state.submitting) return;
+
+        clearError();
+
+        try {
+          const data = getFormData();
+          let endpoint;
+          let payload;
+
+          if (state.purpose === "consultation") {
+            endpoint = app().API_ENDPOINTS.PUBLIC_CONSULTATIONS;
+            payload = buildConsultationPayload(data);
+          } else if (state.purpose === "procedure") {
+            endpoint = app().API_ENDPOINTS.PUBLIC_PROCEDURE_REQUESTS;
+            payload = buildProcedurePayload(data);
+          } else {
+            endpoint = app().API_ENDPOINTS.PUBLIC_APPOINTMENTS;
+            payload = buildAppointmentPayload(data);
+          }
+
+          state.submitting = true;
+          app().setButtonLoading($("#submit-btn"), true, {
+            loadingText: "送信中...",
+          });
+
+          const result = await app().apiFetch(endpoint, {
+            method: "POST",
+            body: payload,
+            timeoutMs: 30000,
+          });
+
+          saveIdentity(data);
+          showSuccess(result, data);
+          app().showToast(result.message || "受付が完了しました。");
+        } catch (error) {
+          showError(error?.message || "送信できませんでした。");
+          app().showToast(error?.message || "送信できませんでした。", {
+            type: "error",
+          });
+        } finally {
+          state.submitting = false;
+          app().setButtonLoading($("#submit-btn"), false);
+        }
+      }
+
+      function resetFormForNewRequest() {
+        $("#success-panel").hidden = true;
+        $("#main-panel").hidden = false;
+        $("#request-form").reset();
+
+        const savedCompanyCode = app().getStoredValue(
+          app().STORAGE_KEYS.COMPANY_CODE
+        );
+        const savedPhone = app().getStoredValue(
+          app().STORAGE_KEYS.CONTACT_PHONE
+        );
+
+        $("#company-code").value = savedCompanyCode;
+        $("#contact-phone").value = savedPhone;
+        $("#preferred-response-date").min = app().todayJst();
+        $("#appointment-date").min = app().todayJst();
+        $("#slot-grid").innerHTML = "";
+        $("#slot-status").textContent =
+          "相談メニューと希望日を選択すると、空き時間を表示します。";
+        state.selectedSlot = null;
+        state.availability = null;
+        state.lastResult = null;
+        clearError();
+        setPurpose(state.purpose, { noScroll: true });
+
+        $("#main-panel").scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+
+      function bindEvents() {
+        $$(".purpose-card").forEach((card) => {
+          card.addEventListener("click", () => {
+            setPurpose(card.dataset.purpose);
+          });
+        });
+
+        $$("[data-demo-company]").forEach((button) => {
+          button.addEventListener("click", () => {
+            fillDemoCompany(button.dataset.demoCompany);
+          });
+        });
+
+        $("#clear-identity-btn").addEventListener("click", clearIdentity);
+        $("#procedure-type").addEventListener("change", renderDocumentGuide);
+
+        ["#service-id", "#appointment-date", "#appointment-staff"].forEach(
+          (selector) => {
+            $(selector).addEventListener("change", loadAvailability);
+          }
+        );
+
+        $("#slot-grid").addEventListener("click", (event) => {
+          const button = event.target.closest("[data-slot-index]");
+          if (button) {
+            selectSlot(button.dataset.slotIndex);
+          }
+        });
+
+        $("#request-form").addEventListener("submit", submitForm);
+
+        $("#copy-message-btn").addEventListener("click", async () => {
+          try {
+            await app().copyText($("#success-message").textContent);
+            app().showToast("確認文面をコピーしました。");
+          } catch (error) {
+            app().showToast(error?.message || "コピーできませんでした。", {
+              type: "error",
+            });
+          }
+        });
+
+        $("#new-request-btn").addEventListener("click", resetFormForNewRequest);
+
+        $("#contact-phone").addEventListener("blur", (event) => {
+          const value = app().formatPhone(event.target.value);
+          if (value) event.target.value = value;
+        });
+      }
+
+      async function bootstrap() {
+        try {
+          state.config = await app().apiFetch(
+            app().API_ENDPOINTS.PUBLIC_CONFIG
+          );
+          state.options = await app().apiFetch(
+            app().API_ENDPOINTS.PUBLIC_OPTIONS
+          );
+
+          renderOptions();
+          bindEvents();
+
+          const office = state.config.office || {};
+          $("#brand-office-name").textContent =
+            office.display_name || office.office_name || app().OFFICE_NAME;
+          $("#contact-office-name").textContent =
+            office.office_name || app().OFFICE_NAME;
+          $("#privacy-notice").innerHTML = `
+            <div class="notice-icon">!</div>
+            <div>
+              <strong>機密情報は入力しないでください。</strong><br>
+              ${app().escapeHtml(
+                state.config.settings?.privacy_notice ||
+                  "マイナンバー、本人確認書類、診断書などの高度な機密情報は、この画面へ入力・添付しないでください。"
+              )}
+            </div>
+          `;
+
+          $("#document-notice").textContent =
+            state.config.settings?.required_document_notice ||
+            "以下は一般的なご案内です。対象者の状況により追加確認が必要になる場合があります。";
+
+          const phoneText = office.phone
+            ? `電話 ${app().formatPhone(office.phone)}`
+            : "LINEでお問い合わせください";
+          $("#office-phone-badge").textContent = phoneText;
+
+          const savedCompanyCode =
+            app().getStoredValue(app().STORAGE_KEYS.COMPANY_CODE) ||
+            app().getQueryParam("company_code");
+          const savedPhone =
+            app().getStoredValue(app().STORAGE_KEYS.CONTACT_PHONE) ||
+            app().getQueryParam("phone");
+
+          if (savedCompanyCode) $("#company-code").value = savedCompanyCode;
+          if (savedPhone) $("#contact-phone").value = app().formatPhone(savedPhone);
+
+          $("#preferred-response-date").min = app().todayJst();
+          $("#appointment-date").min = app().todayJst();
+          $("#appointment-date").max = app().addDays(
+            app().todayJst(),
+            state.config.settings?.public_booking_days_ahead || 60
+          );
+
+          const purpose = app().getQueryParam("purpose", "consultation");
+          setPurpose(
+            ["consultation", "procedure", "appointment"].includes(purpose)
+              ? purpose
+              : "consultation",
+            { noScroll: true }
+          );
+
+          $("#loading-panel").hidden = true;
+          $("#request-form").hidden = false;
+        } catch (error) {
+          $("#loading-panel").innerHTML = `
+            <div>
+              <div style="font-size:38px;margin-bottom:8px">!</div>
+              <strong>受付画面を読み込めませんでした</strong>
+              <div style="margin-top:6px;font-size:10px;color:var(--danger)">
+                ${app().escapeHtml(error?.message || "通信環境を確認してください。")}
+              </div>
+              <button class="btn btn-primary" type="button" style="margin-top:14px" onclick="location.reload()">
+                再読み込み
+              </button>
+            </div>
+          `;
+        }
+      }
+
+      if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", bootstrap, {
+          once: true,
+        });
+      } else {
+        bootstrap();
+      }
+    })();
+  </script>
+</body>
+</html>
