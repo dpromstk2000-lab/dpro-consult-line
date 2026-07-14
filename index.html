@@ -1064,7 +1064,7 @@
     }
   
     /* =========================================================
-       STEP CONSULT-13
+       STEP CONSULT-15
        全画面視認性統一：顧問先受付トップ
        ========================================================= */
 
@@ -1306,6 +1306,53 @@
       }
     }
 
+  
+
+    /* =========================================================
+       STEP CONSULT-15
+       スマホ表示：ヒーロー2列崩れ修正
+       ========================================================= */
+
+    @media (max-width: 800px) {
+      .hero-inner {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 18px;
+      }
+
+      .hero-inner > * {
+        min-width: 0;
+      }
+
+      .hero h1,
+      .hero p,
+      .hero-note strong,
+      .hero-note span {
+        word-break: normal;
+        overflow-wrap: anywhere;
+      }
+
+      .hero-note {
+        width: 100%;
+        min-width: 0;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 560px) {
+      .hero-inner {
+        padding: 24px 19px;
+      }
+
+      .hero h1 {
+        font-size: 30px;
+        line-height: 1.28;
+      }
+
+      .hero-note {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
   </style>
 </head>
 <body>
@@ -1330,7 +1377,7 @@
     <section class="hero">
       <div class="hero-inner">
         <div>
-          <div class="hero-eyebrow">DPRO SHAROUSHI CLIENT PORTAL · STEP CONSULT-13</div>
+          <div class="hero-eyebrow">DPRO SHAROUSHI CLIENT PORTAL · STEP CONSULT-15</div>
           <h1>相談・手続き依頼を<br>LINEからかんたん受付</h1>
           <p>
             労務相談、入社・退職などの手続き依頼、面談予約を受け付けます。
@@ -1760,7 +1807,7 @@
     </main>
 
     <footer class="footer">
-      DPRO 社労士・顧問先対応 LINE · STEP CONSULT-13
+      DPRO 社労士・顧問先対応 LINE · STEP CONSULT-15
     </footer>
   </div>
 

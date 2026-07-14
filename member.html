@@ -1022,7 +1022,7 @@
     }
   
     /* =========================================================
-       STEP CONSULT-13
+       STEP CONSULT-15
        全画面視認性統一：顧問先マイページ
        ========================================================= */
 
@@ -1316,6 +1316,48 @@
       }
     }
 
+  
+
+    /* =========================================================
+       STEP CONSULT-15
+       スマホ表示：ヒーロー2列崩れ修正
+       ========================================================= */
+
+    @media (max-width: 860px) {
+      .hero-inner {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 18px;
+      }
+
+      .hero-inner > * {
+        min-width: 0;
+      }
+
+      .hero h1,
+      .hero p,
+      .hero-account span,
+      .hero-account strong {
+        word-break: normal;
+        overflow-wrap: anywhere;
+      }
+
+      .hero-account {
+        width: 100%;
+        min-width: 0;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .hero-inner {
+        padding: 24px 19px;
+      }
+
+      .hero h1 {
+        font-size: 30px;
+        line-height: 1.28;
+      }
+    }
+
   </style>
 </head>
 <body>
@@ -1340,7 +1382,7 @@
     <section class="hero">
       <div class="hero-inner">
         <div>
-          <div class="hero-eyebrow">DPRO SHAROUSHI CLIENT PORTAL · STEP CONSULT-13</div>
+          <div class="hero-eyebrow">DPRO SHAROUSHI CLIENT PORTAL · STEP CONSULT-15</div>
           <h1>相談・手続き・面談の<br>現在状況をまとめて確認</h1>
           <p>
             受付中の相談、手続きの進捗、必要書類、面談予定を確認できます。
@@ -1539,7 +1581,7 @@
     </main>
 
     <footer class="footer">
-      DPRO 社労士・顧問先対応 LINE · STEP CONSULT-13
+      DPRO 社労士・顧問先対応 LINE · STEP CONSULT-15
     </footer>
   </div>
 
