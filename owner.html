@@ -1665,6 +1665,517 @@
       }
     }
 
+  
+    /* =========================================================
+       STEP CONSULT-12
+       電話受付一体型検索 + 比較画面相当の視認性
+       ========================================================= */
+
+    :root {
+      --sidebar: 312px;
+    }
+
+    body {
+      font-size: 18px;
+    }
+
+    .sidebar {
+      padding: 26px 19px;
+    }
+
+    .brand-mark {
+      width: 50px;
+      height: 50px;
+      font-size: 23px;
+    }
+
+    .brand strong {
+      font-size: 17px;
+    }
+
+    .brand small {
+      font-size: 12px;
+    }
+
+    .nav-label {
+      font-size: 13px;
+    }
+
+    .nav-btn {
+      min-height: 54px;
+      padding: 13px 14px;
+      font-size: 15px;
+    }
+
+    .nav-icon {
+      width: 33px;
+      height: 33px;
+      font-size: 14px;
+    }
+
+    .sidebar-foot span {
+      font-size: 12px;
+    }
+
+    .sidebar-foot strong {
+      font-size: 14px;
+    }
+
+    .sidebar-foot button {
+      min-height: 44px;
+      font-size: 13px;
+    }
+
+    .topbar {
+      min-height: 82px;
+      padding: 12px 28px;
+    }
+
+    .page-heading h1 {
+      font-size: 28px;
+    }
+
+    .page-heading p {
+      font-size: 13px;
+    }
+
+    .container {
+      width: min(1340px, calc(100% - 42px));
+      margin-top: 22px;
+    }
+
+    .hero {
+      padding: 34px;
+    }
+
+    .hero h2 {
+      font-size: clamp(34px, 3vw, 46px);
+    }
+
+    .hero p {
+      font-size: 15px;
+    }
+
+    .hero-side span {
+      font-size: 12px;
+    }
+
+    .hero-side strong {
+      font-size: 17px;
+    }
+
+    .toolbar {
+      padding: 15px;
+    }
+
+    .toolbar-note {
+      font-size: 12px;
+    }
+
+    .btn {
+      min-height: 49px;
+      padding: 10px 18px;
+      font-size: 13px;
+    }
+
+    .metrics {
+      gap: 12px;
+    }
+
+    .metric {
+      padding: 21px 19px;
+    }
+
+    .metric span {
+      font-size: 12px;
+    }
+
+    .metric strong {
+      font-size: 37px;
+    }
+
+    .metric small {
+      font-size: 11px;
+    }
+
+    .grid {
+      gap: 17px;
+      margin-top: 17px;
+    }
+
+    .card {
+      padding: 27px;
+    }
+
+    .card-header {
+      margin-bottom: 18px;
+    }
+
+    .card-header h3 {
+      font-size: 21px;
+    }
+
+    .card-header p {
+      font-size: 12px;
+    }
+
+    .badge {
+      min-height: 34px;
+      font-size: 12px;
+    }
+
+    .list {
+      gap: 12px;
+    }
+
+    .row {
+      padding: 17px;
+    }
+
+    .row-title strong {
+      font-size: 16px;
+    }
+
+    .row-title small {
+      font-size: 11px;
+    }
+
+    .row-meta {
+      font-size: 12px;
+      line-height: 1.7;
+    }
+
+    .mini-btn {
+      min-height: 42px;
+      padding: 9px 14px;
+      font-size: 12px;
+    }
+
+    .status {
+      min-height: 31px;
+      font-size: 11px;
+    }
+
+    .empty strong {
+      font-size: 16px;
+    }
+
+    .empty p {
+      font-size: 12px;
+    }
+
+    .input,
+    .select {
+      min-height: 52px;
+      font-size: 15px;
+    }
+
+    .textarea {
+      min-height: 136px;
+      font-size: 15px;
+    }
+
+    .label {
+      font-size: 13px;
+    }
+
+    .help {
+      font-size: 11px;
+    }
+
+    dialog.wide {
+      width: min(1220px, calc(100% - 26px));
+    }
+
+    .dialog-head h2 {
+      font-size: 24px;
+    }
+
+    .dialog-head p {
+      font-size: 12px;
+    }
+
+    .dialog-tab {
+      min-height: 45px;
+      font-size: 12px;
+    }
+
+    .manual-customer-search {
+      margin-bottom: 18px;
+      padding: 19px;
+      border: 1px solid #b9d9d2;
+      border-radius: 15px;
+      background: linear-gradient(135deg, #f4fbf9, #eef8f6);
+    }
+
+    .manual-search-head {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 14px;
+      margin-bottom: 13px;
+    }
+
+    .manual-search-head h3 {
+      margin: 0;
+      font-size: 19px;
+    }
+
+    .manual-search-head p {
+      margin: 4px 0 0;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .manual-search-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto auto;
+      gap: 9px;
+    }
+
+    .manual-search-results {
+      display: grid;
+      gap: 10px;
+      margin-top: 14px;
+      padding-top: 14px;
+      border-top: 1px solid #d6e6e2;
+    }
+
+    .manual-search-results h4 {
+      margin: 4px 0 0;
+      font-size: 14px;
+    }
+
+    .manual-result-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      align-items: center;
+      gap: 13px;
+      padding: 14px;
+      border: 1px solid #dce8e5;
+      border-radius: 12px;
+      background: #ffffff;
+    }
+
+    .manual-result-main {
+      min-width: 0;
+    }
+
+    .manual-result-type {
+      display: inline-flex;
+      margin-bottom: 5px;
+      padding: 3px 7px;
+      border-radius: 999px;
+      background: var(--primary-soft);
+      color: var(--primary);
+      font-size: 10px;
+      font-weight: 900;
+    }
+
+    .manual-result-main strong {
+      display: block;
+      font-size: 15px;
+    }
+
+    .manual-result-main div,
+    .manual-result-main small {
+      display: block;
+      margin-top: 3px;
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    .manual-selected-customer {
+      margin-top: 15px;
+      padding: 17px;
+      border: 2px solid #4fae9f;
+      border-radius: 14px;
+      background: #ffffff;
+      box-shadow: 0 8px 22px rgba(15,118,110,.08);
+    }
+
+    .manual-selected-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 13px;
+    }
+
+    .manual-selected-head span {
+      display: block;
+      color: var(--primary);
+      font-size: 10px;
+      font-weight: 900;
+    }
+
+    .manual-selected-head strong {
+      display: block;
+      margin-top: 3px;
+      font-size: 18px;
+    }
+
+    .manual-selected-head small {
+      display: block;
+      margin-top: 3px;
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    .manual-customer-summary {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 8px;
+      margin-top: 14px;
+    }
+
+    .manual-customer-summary > div {
+      padding: 10px;
+      border: 1px solid #e2ebe8;
+      border-radius: 10px;
+      background: #f8fbfa;
+    }
+
+    .manual-customer-summary span,
+    .manual-recent-grid span {
+      display: block;
+      color: var(--muted);
+      font-size: 9px;
+      font-weight: 850;
+    }
+
+    .manual-customer-summary strong,
+    .manual-recent-grid strong {
+      display: block;
+      overflow-wrap: anywhere;
+      margin-top: 3px;
+      font-size: 12px;
+    }
+
+    .manual-history-summary {
+      margin-top: 12px;
+      padding-top: 12px;
+      border-top: 1px solid #e2ebe8;
+    }
+
+    .manual-history-counts {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 17px;
+      font-size: 11px;
+    }
+
+    .manual-history-counts strong {
+      font-size: 15px;
+      color: var(--primary);
+    }
+
+    .manual-recent-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .manual-recent-grid > div {
+      padding: 11px;
+      border-radius: 10px;
+      background: #f6f9f8;
+    }
+
+    .manual-recent-grid small {
+      display: block;
+      margin-top: 3px;
+      color: var(--muted);
+      font-size: 9px;
+    }
+
+    .login-actions {
+      grid-template-columns: minmax(0, 1fr) auto auto;
+    }
+
+    @media (max-width: 1450px) {
+      .metrics {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 900px) {
+      :root {
+        --sidebar: 312px;
+      }
+
+      .manual-search-row {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .manual-search-row .input {
+        grid-column: 1 / -1;
+      }
+
+      .manual-customer-summary,
+      .manual-recent-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 620px) {
+      .page-heading h1 {
+        font-size: 22px;
+      }
+
+      .hero h2 {
+        font-size: 31px;
+      }
+
+      .card {
+        padding: 20px 16px;
+      }
+
+      .row-title strong {
+        font-size: 14px;
+      }
+
+      .row-meta {
+        font-size: 11px;
+      }
+
+      .manual-search-head,
+      .manual-selected-head {
+        display: block;
+      }
+
+      .manual-search-head .badge,
+      .manual-selected-head .mini-btn {
+        margin-top: 10px;
+      }
+
+      .manual-search-row,
+      .manual-customer-summary,
+      .manual-recent-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .manual-search-row .input {
+        grid-column: auto;
+      }
+
+      .manual-result-row {
+        grid-template-columns: 1fr;
+      }
+
+      .manual-result-row .btn {
+        width: 100%;
+      }
+
+      .login-actions {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .login-actions .input {
+        grid-column: 1 / -1;
+      }
+    }
+
   </style>
 </head>
 <body>
@@ -1674,14 +2185,11 @@
       <h1>事務所管理画面</h1>
       <p>
         管理コードを入力して、DPRO社会保険労務士事務所の管理画面を開きます。
-        デモ管理コードは1234です。
       </p>
       <div class="login-actions">
         <input class="input" id="login-admin-code" type="password" inputmode="numeric" autocomplete="off" placeholder="管理コード">
         <button class="btn btn-primary" id="login-btn" type="button">開く</button>
-      </div>
-      <div style="margin-top:8px">
-        <button class="btn btn-light" id="fill-admin-code-btn" type="button">1234を入力</button>
+        <button class="btn btn-light" id="clear-login-code-btn" type="button">消去</button>
       </div>
       <div class="error-box" id="login-error" hidden></div>
     </div>
@@ -1767,7 +2275,7 @@
         <section class="page-section active" id="page-dashboard">
           <div class="hero">
             <div>
-              <div class="hero-eyebrow">STEP CONSULT-8-R2 · LARGE READABILITY</div>
+              <div class="hero-eyebrow">STEP CONSULT-12 · PHONE SEARCH + LARGE UI</div>
               <h2>顧問先対応を、<br>今日やる順番で整理</h2>
               <p>
                 新着相談・手続き依頼・書類待ち・返信待ち・本日の面談・期限タスクを
@@ -1927,7 +2435,7 @@
     <div class="dialog-body" id="detail-body"></div>
   </dialog>
 
-  <dialog id="manual-dialog">
+  <dialog class="wide" id="manual-dialog">
     <div class="dialog-head">
       <div>
         <h2>電話・来所受付</h2>
@@ -1936,6 +2444,46 @@
       <button class="dialog-close" type="button" data-close-dialog="manual-dialog">×</button>
     </div>
     <div class="dialog-body">
+      <section class="manual-customer-search">
+        <div class="manual-search-head">
+          <div>
+            <h3>既存顧問先を検索</h3>
+            <p>電話番号・会社名・顧問先番号・担当者名から検索し、選択すると受付フォームへ自動入力します。</p>
+          </div>
+          <span class="badge">電話番号正規化対応</span>
+        </div>
+
+        <div class="manual-search-row">
+          <input
+            class="input"
+            id="manual-customer-search-input"
+            placeholder="例：090-9999-1111／株式会社サンプル建設／SR-COMPANY-001／佐藤 太郎"
+          >
+          <button class="btn btn-primary" id="manual-customer-search-btn" type="button">既存顧問先を検索</button>
+          <button class="btn btn-light" id="manual-customer-clear-btn" type="button">選択を解除</button>
+        </div>
+
+        <div class="help" id="manual-customer-search-message">
+          ハイフン・空白・全角・+81形式の電話番号も同じ番号として検索します。
+        </div>
+
+        <div class="manual-search-results" id="manual-customer-search-results" hidden></div>
+
+        <div class="manual-selected-customer" id="manual-selected-customer" hidden>
+          <div class="manual-selected-head">
+            <div>
+              <span>選択中の既存顧問先</span>
+              <strong id="manual-selected-company-name">—</strong>
+              <small id="manual-selected-contact-line">—</small>
+            </div>
+            <button class="mini-btn" id="manual-selected-detail-btn" type="button">顧問先詳細</button>
+          </div>
+
+          <div class="manual-customer-summary" id="manual-customer-summary"></div>
+          <div class="manual-history-summary" id="manual-history-summary"></div>
+        </div>
+      </section>
+
       <div class="dialog-tabs">
         <button class="dialog-tab active" type="button" data-manual-pane="consultation">労務相談</button>
         <button class="dialog-tab" type="button" data-manual-pane="procedure">手続き依頼</button>
@@ -2050,6 +2598,7 @@
         currentPage: "dashboard",
         detail: null,
         search: null,
+        manualSelection: null,
       };
 
       const pageInfo = {
@@ -2615,10 +3164,273 @@
         $("#setting-privacy-notice").value = s.privacy_notice || "";
       }
 
+
       function openManual(pane = "consultation") {
         switchManualPane(pane);
         $("#manual-error").hidden = true;
         $("#manual-dialog").showModal();
+
+        setTimeout(() => {
+          $("#manual-customer-search-input")?.focus();
+        }, 0);
+      }
+
+      async function runManualCustomerSearch() {
+        const input = $("#manual-customer-search-input");
+        const button = $("#manual-customer-search-btn");
+        const results = $("#manual-customer-search-results");
+        const message = $("#manual-customer-search-message");
+        const q = input.value.trim();
+
+        if (!q) {
+          app().showToast("電話番号・会社名・顧問先番号・担当者名を入力してください。", {
+            type: "warning",
+          });
+          input.focus();
+          return;
+        }
+
+        app().setButtonLoading(button, true, { loadingText: "検索中..." });
+        results.hidden = true;
+        message.textContent = "既存顧問先を検索しています。";
+
+        try {
+          const data = await app().apiFetch(app().API_ENDPOINTS.ADMIN_SEARCH, {
+            admin: true,
+            query: { q },
+          });
+
+          const companies = data.companies || [];
+          const contacts = data.contacts || [];
+
+          if (!companies.length && !contacts.length) {
+            results.innerHTML = empty(
+              "該当する既存顧問先がありません",
+              "別の電話番号・会社名・顧問先番号・担当者名で検索してください。"
+            );
+            results.hidden = false;
+            message.textContent = "検索結果：0件";
+            return;
+          }
+
+          const contactRows = contacts.map((item) => `
+            <div class="manual-result-row">
+              <div class="manual-result-main">
+                <span class="manual-result-type">連絡担当者</span>
+                <strong>${esc(item.contact_name)}</strong>
+                <div>
+                  ${esc(item.contact_code || "")}
+                  ${item.department ? `・${esc(item.department)}` : ""}
+                  ${item.position_name ? `・${esc(item.position_name)}` : ""}
+                </div>
+                <small>${esc(app().formatPhone(item.phone || ""))} ${item.email ? `・${esc(item.email)}` : ""}</small>
+              </div>
+              <button class="btn btn-primary" type="button" data-manual-select-contact="${esc(item.id)}">
+                この担当者を選択
+              </button>
+            </div>
+          `).join("");
+
+          const companyRows = companies.map((item) => `
+            <div class="manual-result-row">
+              <div class="manual-result-main">
+                <span class="manual-result-type">顧問先企業</span>
+                <strong>${esc(item.company_name)}</strong>
+                <div>${esc(item.company_code)}・${esc(item.industry || "業種未設定")}</div>
+                <small>${esc(app().formatPhone(item.phone || ""))}</small>
+              </div>
+              <button class="btn btn-primary" type="button" data-manual-select-company="${esc(item.id)}">
+                この顧問先を選択
+              </button>
+            </div>
+          `).join("");
+
+          results.innerHTML = `
+            ${contacts.length ? `<h4>連絡担当者（${contacts.length}件）</h4>${contactRows}` : ""}
+            ${companies.length ? `<h4>顧問先企業（${companies.length}件）</h4>${companyRows}` : ""}
+          `;
+          results.hidden = false;
+          message.textContent = `検索結果：${contacts.length + companies.length}件`;
+        } catch (error) {
+          results.innerHTML = empty(
+            "検索できませんでした",
+            error?.message || "通信を確認してください。"
+          );
+          results.hidden = false;
+          message.textContent = "検索でエラーが発生しました。";
+        } finally {
+          app().setButtonLoading(button, false);
+        }
+      }
+
+      async function selectManualCompany(id) {
+        const detail = await app().apiFetch(
+          app().API_ENDPOINTS.ADMIN_COMPANY_DETAIL,
+          {
+            admin: true,
+            query: { id },
+          }
+        );
+
+        const contact =
+          (detail.contacts || []).find((item) => item.is_primary) ||
+          detail.contacts?.[0] ||
+          null;
+
+        applyManualCustomerSelection(detail.company, contact, detail);
+      }
+
+      async function selectManualContact(id) {
+        const detail = await app().apiFetch(
+          app().API_ENDPOINTS.ADMIN_CONTACT_DETAIL,
+          {
+            admin: true,
+            query: { id },
+          }
+        );
+
+        applyManualCustomerSelection(detail.company, detail.contact, detail);
+      }
+
+      function applyManualCustomerSelection(company, contact, detail) {
+        if (!company) {
+          app().showToast("顧問先情報を取得できませんでした。", {
+            type: "error",
+          });
+          return;
+        }
+
+        state.manualSelection = {
+          company,
+          contact,
+          detail,
+        };
+
+        const phone = contact?.phone || company.phone || "";
+        const assignedStaff =
+          state.staff.find((item) => item.id === company.assigned_staff_id) ||
+          null;
+
+        ["manual-consultation-form", "manual-procedure-form", "manual-appointment-form"]
+          .forEach((id) => {
+            const form = document.getElementById(id);
+            if (!form) return;
+
+            if (form.elements.company_code) {
+              form.elements.company_code.value = company.company_code || "";
+            }
+
+            if (form.elements.contact_name) {
+              form.elements.contact_name.value = contact?.contact_name || "";
+            }
+
+            if (form.elements.contact_phone) {
+              form.elements.contact_phone.value = app().formatPhone(phone);
+            }
+
+            if (
+              company.assigned_staff_id &&
+              form.elements.assigned_staff_id
+            ) {
+              form.elements.assigned_staff_id.value =
+                company.assigned_staff_id;
+            }
+          });
+
+        $("#manual-selected-company-name").textContent =
+          company.company_name || "顧問先";
+        $("#manual-selected-contact-line").textContent =
+          `${company.company_code || "—"}・${contact?.contact_name || "連絡担当者未登録"}・${app().formatPhone(phone) || "電話番号未登録"}`;
+
+        const consultations = detail.consultations || [];
+        const procedures = detail.procedure_requests || [];
+        const appointments = detail.appointments || [];
+        const tasks = detail.tasks || [];
+
+        $("#manual-customer-summary").innerHTML = `
+          <div><span>顧問先番号</span><strong>${esc(company.company_code || "—")}</strong></div>
+          <div><span>連絡担当者</span><strong>${esc(contact?.contact_name || "未登録")}</strong></div>
+          <div><span>登録電話番号</span><strong>${esc(app().formatPhone(phone) || "未登録")}</strong></div>
+          <div><span>担当社労士</span><strong>${esc(assignedStaff?.staff_name || "未設定")}</strong></div>
+          <div><span>業種</span><strong>${esc(company.industry || "未設定")}</strong></div>
+          <div><span>従業員規模</span><strong>${esc(company.employee_size || "未設定")}</strong></div>
+        `;
+
+        const latestConsultation = consultations[0];
+        const latestProcedure = procedures[0];
+        const nextAppointment =
+          appointments.find((item) => new Date(item.end_at).getTime() >= Date.now()) ||
+          appointments[0];
+
+        $("#manual-history-summary").innerHTML = `
+          <div class="manual-history-counts">
+            <span>相談履歴 <strong>${consultations.length}</strong>件</span>
+            <span>手続き履歴 <strong>${procedures.length}</strong>件</span>
+            <span>面談履歴 <strong>${appointments.length}</strong>件</span>
+            <span>未完了タスク <strong>${tasks.length}</strong>件</span>
+          </div>
+          <div class="manual-recent-grid">
+            <div>
+              <span>最近の相談</span>
+              <strong>${esc(latestConsultation?.title || "相談履歴なし")}</strong>
+              <small>${esc(latestConsultation?.status_label || "")}</small>
+            </div>
+            <div>
+              <span>最近の手続き</span>
+              <strong>${esc(latestProcedure?.title || "手続き履歴なし")}</strong>
+              <small>${esc(latestProcedure?.status_label || "")}</small>
+            </div>
+            <div>
+              <span>面談予定・履歴</span>
+              <strong>${esc(nextAppointment?.agenda || "面談履歴なし")}</strong>
+              <small>${esc(nextAppointment ? app().formatDateTime(nextAppointment.start_at) : "")}</small>
+            </div>
+          </div>
+        `;
+
+        $("#manual-selected-customer").hidden = false;
+        $("#manual-selected-detail-btn").dataset.detailId = company.id;
+        $("#manual-customer-search-message").textContent =
+          "既存顧問先を選択しました。3つの受付フォームへ自動入力済みです。";
+
+        app().showToast(
+          `${company.company_name}の登録情報を受付フォームへ入力しました。`
+        );
+      }
+
+      function clearManualCustomerSelection() {
+        state.manualSelection = null;
+        $("#manual-selected-customer").hidden = true;
+        $("#manual-selected-detail-btn").dataset.detailId = "";
+
+        ["manual-consultation-form", "manual-procedure-form", "manual-appointment-form"]
+          .forEach((id) => {
+            const form = document.getElementById(id);
+            if (!form) return;
+
+            if (form.elements.company_code) {
+              form.elements.company_code.value = "";
+            }
+
+            if (form.elements.contact_name) {
+              form.elements.contact_name.value = "";
+            }
+
+            if (form.elements.contact_phone) {
+              form.elements.contact_phone.value = "";
+            }
+
+            if (form.elements.assigned_staff_id) {
+              form.elements.assigned_staff_id.value = "";
+            }
+          });
+
+        $("#manual-customer-search-message").textContent =
+          "選択を解除しました。別の既存顧問先を検索できます。";
+
+        app().showToast("選択中の既存顧問先を解除しました。", {
+          type: "warning",
+        });
       }
 
       function switchManualPane(pane) {
@@ -2665,6 +3477,8 @@
           const result = await app().apiFetch(endpoint, { method: "POST", admin: true, body: payload, timeoutMs: 30000 });
           app().showToast(result.message || "登録しました。");
           form.reset();
+          state.manualSelection = null;
+          $("#manual-selected-customer").hidden = true;
           $("#manual-dialog").close();
           await loadCore({ silent: true });
         } catch (error) {
@@ -2867,7 +3681,14 @@ ${x.title}についてご連絡です。
       function bindEvents() {
         $("#login-btn").addEventListener("click", authenticate);
         $("#login-admin-code").addEventListener("keydown", e => { if (e.key === "Enter") authenticate(); });
-        $("#fill-admin-code-btn").addEventListener("click", () => { $("#login-admin-code").value = app().DEFAULT_ADMIN_CODE; });
+        $("#clear-login-code-btn").addEventListener("click", () => {
+          $("#login-admin-code").value = "";
+          app().removeAdminCode();
+          $("#login-error").hidden = true;
+          $("#login-error").textContent = "";
+          $("#login-admin-code").focus();
+          app().showToast("管理コードを消去しました。", { type: "warning" });
+        });
 
         $$(".nav-btn[data-page]").forEach(button => button.addEventListener("click", () => showPage(button.dataset.page)));
         $$("[data-page-jump]").forEach(button => button.addEventListener("click", () => showPage(button.dataset.pageJump)));
@@ -2905,6 +3726,19 @@ ${x.title}についてご連絡です。
         $$("[data-demo-manual]").forEach(b => b.addEventListener("click", fillManualDemo));
         $$("[data-close-dialog]").forEach(b => b.addEventListener("click", () => document.getElementById(b.dataset.closeDialog).close()));
 
+        $("#manual-customer-search-btn").addEventListener("click", runManualCustomerSearch);
+        $("#manual-customer-search-input").addEventListener("keydown", event => {
+          if (event.key === "Enter") {
+            event.preventDefault();
+            runManualCustomerSearch();
+          }
+        });
+        $("#manual-customer-clear-btn").addEventListener("click", clearManualCustomerSelection);
+        $("#manual-selected-detail-btn").addEventListener("click", async event => {
+          const id = event.currentTarget.dataset.detailId;
+          if (id) await openDetail("company", id);
+        });
+
         $("#manual-consultation-form").addEventListener("submit", e => { e.preventDefault(); submitManual("consultation", e.currentTarget); });
         $("#manual-procedure-form").addEventListener("submit", e => { e.preventDefault(); submitManual("procedure", e.currentTarget); });
         $("#manual-appointment-form").addEventListener("submit", e => { e.preventDefault(); submitManual("appointment", e.currentTarget); });
@@ -2924,8 +3758,12 @@ ${x.title}についてご連絡です。
           const copyConsultation = event.target.closest("[data-copy-consultation-message]");
           const copyProcedure = event.target.closest("[data-copy-procedure-message]");
           const copyAppointment = event.target.closest("[data-copy-appointment-message]");
+          const manualCompany = event.target.closest("[data-manual-select-company]");
+          const manualContact = event.target.closest("[data-manual-select-contact]");
 
-          if (detail) await openDetail(detail.dataset.detailType, detail.dataset.detailId);
+          if (manualCompany) await selectManualCompany(manualCompany.dataset.manualSelectCompany);
+          else if (manualContact) await selectManualContact(manualContact.dataset.manualSelectContact);
+          else if (detail) await openDetail(detail.dataset.detailType, detail.dataset.detailId);
           else if (task) await completeTask(task.dataset.completeTask);
           else if (quickAppointment) await quickAppointmentStatus(quickAppointment.dataset.appointmentQuick, quickAppointment.dataset.status);
           else if (saveDoc) await saveDocument(saveDoc.dataset.saveDocument);
