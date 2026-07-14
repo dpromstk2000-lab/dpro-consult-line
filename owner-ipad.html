@@ -1,0 +1,3310 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0d3b37">
+  <meta name="robots" content="noindex,nofollow">
+  <title>DPRO 社労士・顧問先対応 LINE｜受付iPad</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f2f7f6;
+      --surface: #ffffff;
+      --surface-soft: #f7faf9;
+      --text: #172421;
+      --muted: #65746f;
+      --line: #d8e5e1;
+      --primary: #0f766e;
+      --primary-dark: #0a5d56;
+      --primary-soft: #e7f7f3;
+      --accent: #2563eb;
+      --accent-soft: #edf4ff;
+      --success: #13795b;
+      --success-soft: #e8f7f0;
+      --warning: #a16207;
+      --warning-soft: #fff7dd;
+      --danger: #b42318;
+      --danger-soft: #fff0ee;
+      --neutral: #64748b;
+      --shadow: 0 14px 34px rgba(15, 59, 54, .09);
+      --radius-xl: 24px;
+      --radius-lg: 18px;
+      --radius-md: 13px;
+      --content: 1380px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-width: 320px;
+      background:
+        radial-gradient(circle at 10% 0%, rgba(15,118,110,.10), transparent 30rem),
+        var(--bg);
+      color: var(--text);
+      font-family:
+        -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans JP",
+        "Hiragino Kaku Gothic ProN", "Yu Gothic", Meiryo, sans-serif;
+      font-size: 17px;
+      line-height: 1.65;
+    }
+
+    button,
+    input,
+    select,
+    textarea {
+      font: inherit;
+    }
+
+    button,
+    a,
+    summary {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    [hidden] {
+      display: none !important;
+    }
+
+    .app {
+      min-height: 100vh;
+      padding-bottom: calc(42px + env(safe-area-inset-bottom));
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 60;
+      border-bottom: 1px solid rgba(216,229,225,.92);
+      background: rgba(255,255,255,.94);
+      backdrop-filter: blur(13px);
+    }
+
+    .topbar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      width: min(var(--content), calc(100% - 26px));
+      min-height: 78px;
+      margin: 0 auto;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+      text-decoration: none;
+    }
+
+    .brand-mark {
+      display: grid;
+      place-items: center;
+      width: 48px;
+      height: 48px;
+      flex: 0 0 auto;
+      border-radius: 15px;
+      background: linear-gradient(145deg, #2dd4bf, #0f766e);
+      color: #ffffff;
+      box-shadow: 0 10px 24px rgba(15,118,110,.24);
+      font-size: 22px;
+      font-weight: 950;
+    }
+
+    .brand-copy {
+      min-width: 0;
+    }
+
+    .brand-copy strong {
+      display: block;
+      overflow: hidden;
+      font-size: 16px;
+      line-height: 1.4;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .brand-copy span {
+      display: block;
+      margin-top: 2px;
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    .top-actions {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+    }
+
+    .top-select {
+      min-width: 210px;
+      min-height: 47px;
+      padding: 10px 12px;
+      border: 1px solid #cbdad6;
+      border-radius: 11px;
+      background: #ffffff;
+      color: var(--text);
+      outline: none;
+      font-size: 13px;
+      font-weight: 850;
+    }
+
+    .top-select:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(15,118,110,.11);
+    }
+
+    .main {
+      width: min(var(--content), calc(100% - 26px));
+      margin: 17px auto 0;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0,1fr) 360px;
+      gap: 24px;
+      overflow: hidden;
+      padding: 29px;
+      border-radius: var(--radius-xl);
+      background:
+        radial-gradient(circle at 88% 0%, rgba(255,255,255,.14), transparent 19rem),
+        linear-gradient(135deg, #0f766e, #0a5d56);
+      color: #ffffff;
+      box-shadow: var(--shadow);
+    }
+
+    .hero-eyebrow {
+      display: inline-flex;
+      padding: 6px 10px;
+      border: 1px solid rgba(255,255,255,.22);
+      border-radius: 999px;
+      background: rgba(255,255,255,.09);
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: .08em;
+    }
+
+    .hero h1 {
+      margin: 12px 0 0;
+      font-size: clamp(29px, 4vw, 44px);
+      line-height: 1.18;
+      letter-spacing: -.045em;
+    }
+
+    .hero p {
+      max-width: 760px;
+      margin: 14px 0 0;
+      color: rgba(255,255,255,.82);
+      font-size: 14px;
+      line-height: 1.75;
+    }
+
+    .hero-side {
+      display: grid;
+      align-content: center;
+      gap: 10px;
+      padding: 19px;
+      border: 1px solid rgba(255,255,255,.16);
+      border-radius: 17px;
+      background: rgba(255,255,255,.09);
+    }
+
+    .hero-side span {
+      display: block;
+      color: rgba(255,255,255,.62);
+      font-size: 10px;
+      font-weight: 900;
+    }
+
+    .hero-side strong {
+      display: block;
+      overflow-wrap: anywhere;
+      margin-top: 3px;
+      font-size: 15px;
+    }
+
+    .menu-tabs {
+      position: sticky;
+      top: 89px;
+      z-index: 45;
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0,1fr));
+      gap: 9px;
+      margin-top: 14px;
+      padding: 10px;
+      border: 1px solid rgba(216,229,225,.94);
+      border-radius: 16px;
+      background: rgba(255,255,255,.94);
+      box-shadow: 0 9px 24px rgba(15,59,54,.08);
+      backdrop-filter: blur(12px);
+    }
+
+    .menu-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      min-height: 55px;
+      padding: 10px 12px;
+      border: 1px solid transparent;
+      border-radius: 12px;
+      background: transparent;
+      color: var(--muted);
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .menu-btn.active {
+      background: var(--primary);
+      color: #ffffff;
+      box-shadow: 0 8px 20px rgba(15,118,110,.18);
+    }
+
+    .menu-icon {
+      display: grid;
+      place-items: center;
+      width: 31px;
+      height: 31px;
+      border-radius: 9px;
+      background: rgba(15,118,110,.09);
+      color: var(--primary);
+      font-size: 12px;
+      font-weight: 950;
+    }
+
+    .menu-btn.active .menu-icon {
+      background: rgba(255,255,255,.15);
+      color: #ffffff;
+    }
+
+    .page-section {
+      display: none;
+      margin-top: 14px;
+    }
+
+    .page-section.active {
+      display: block;
+    }
+
+    .toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 9px;
+      padding: 13px;
+      border: 1px solid var(--line);
+      border-radius: 15px;
+      background: #ffffff;
+      box-shadow: 0 5px 18px rgba(15,59,54,.045);
+    }
+
+    .toolbar-note {
+      margin-left: auto;
+      color: var(--muted);
+      font-size: 10px;
+      font-weight: 800;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-height: 48px;
+      padding: 10px 17px;
+      border: 1px solid transparent;
+      border-radius: 11px;
+      cursor: pointer;
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 900;
+      transition: transform .14s ease, opacity .14s ease, background .14s ease;
+    }
+
+    .btn:hover:not(:disabled) {
+      transform: translateY(-1px);
+    }
+
+    .btn:disabled {
+      opacity: .56;
+      cursor: not-allowed;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: #ffffff;
+      box-shadow: 0 8px 20px rgba(15,118,110,.19);
+    }
+
+    .btn-accent {
+      background: var(--accent);
+      color: #ffffff;
+    }
+
+    .btn-success {
+      background: var(--success);
+      color: #ffffff;
+    }
+
+    .btn-light {
+      border-color: var(--line);
+      background: #ffffff;
+      color: var(--text);
+    }
+
+    .btn-warning {
+      border-color: #ecd58c;
+      background: var(--warning-soft);
+      color: var(--warning);
+    }
+
+    .btn-danger {
+      border-color: #efbbb5;
+      background: var(--danger-soft);
+      color: var(--danger);
+    }
+
+    .metrics {
+      display: grid;
+      grid-template-columns: repeat(6, minmax(0,1fr));
+      gap: 10px;
+      margin-top: 13px;
+    }
+
+    .metric {
+      min-width: 0;
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 15px;
+      background: #ffffff;
+      box-shadow: 0 5px 18px rgba(15,59,54,.04);
+    }
+
+    .metric span {
+      display: block;
+      color: var(--muted);
+      font-size: 10px;
+      font-weight: 850;
+    }
+
+    .metric strong {
+      display: block;
+      margin-top: 5px;
+      font-size: 31px;
+      line-height: 1.1;
+      letter-spacing: -.04em;
+    }
+
+    .metric small {
+      display: block;
+      margin-top: 5px;
+      color: var(--muted);
+      font-size: 9px;
+      line-height: 1.45;
+    }
+
+    .grid {
+      display: grid;
+      gap: 14px;
+      margin-top: 14px;
+    }
+
+    .grid-2 {
+      grid-template-columns: repeat(2, minmax(0,1fr));
+    }
+
+    .grid-3 {
+      grid-template-columns: repeat(3, minmax(0,1fr));
+    }
+
+    .card {
+      min-width: 0;
+      padding: 21px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      background: #ffffff;
+      box-shadow: 0 6px 20px rgba(15,59,54,.045);
+    }
+
+    .card-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 13px;
+      margin-bottom: 15px;
+    }
+
+    .card-header h2,
+    .card-header h3 {
+      margin: 0;
+      letter-spacing: -.025em;
+    }
+
+    .card-header h2 {
+      font-size: 22px;
+    }
+
+    .card-header h3 {
+      font-size: 18px;
+    }
+
+    .card-header p {
+      margin: 5px 0 0;
+      color: var(--muted);
+      font-size: 11px;
+      line-height: 1.6;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 31px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: var(--primary-soft);
+      color: var(--primary);
+      font-size: 10px;
+      font-weight: 900;
+      white-space: nowrap;
+    }
+
+    .reception-columns {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap: 13px;
+      margin-top: 14px;
+    }
+
+    .lane {
+      min-width: 0;
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: rgba(255,255,255,.70);
+    }
+
+    .lane-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 11px;
+    }
+
+    .lane-head h3 {
+      margin: 0;
+      font-size: 16px;
+    }
+
+    .lane-head span {
+      color: var(--muted);
+      font-size: 10px;
+      font-weight: 850;
+    }
+
+    .list {
+      display: grid;
+      gap: 10px;
+    }
+
+    .appointment-card {
+      overflow: hidden;
+      border: 1px solid #dfe9e6;
+      border-radius: 14px;
+      background: #ffffff;
+      box-shadow: 0 5px 15px rgba(15,59,54,.04);
+    }
+
+    .appointment-main {
+      padding: 15px;
+    }
+
+    .appointment-head {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 11px;
+    }
+
+    .appointment-title {
+      min-width: 0;
+    }
+
+    .appointment-time {
+      display: block;
+      color: var(--primary);
+      font-size: 18px;
+      font-weight: 950;
+      letter-spacing: -.02em;
+    }
+
+    .appointment-title h3 {
+      margin: 4px 0 0;
+      overflow-wrap: anywhere;
+      font-size: 15px;
+      line-height: 1.45;
+    }
+
+    .appointment-title small {
+      display: block;
+      margin-top: 3px;
+      color: var(--muted);
+      font-size: 9px;
+      font-weight: 800;
+    }
+
+    .status {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 29px;
+      padding: 5px 9px;
+      border-radius: 999px;
+      background: #eef2f1;
+      color: var(--neutral);
+      font-size: 9px;
+      font-weight: 900;
+      white-space: nowrap;
+    }
+
+    .status.active {
+      background: var(--primary-soft);
+      color: var(--primary);
+    }
+
+    .status.warning {
+      background: var(--warning-soft);
+      color: var(--warning);
+    }
+
+    .status.done {
+      background: var(--success-soft);
+      color: var(--success);
+    }
+
+    .status.danger {
+      background: var(--danger-soft);
+      color: var(--danger);
+    }
+
+    .appointment-meta {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0,1fr));
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .meta-cell {
+      min-width: 0;
+      padding: 9px 10px;
+      border: 1px solid #e5ecea;
+      border-radius: 10px;
+      background: var(--surface-soft);
+    }
+
+    .meta-cell span {
+      display: block;
+      color: var(--muted);
+      font-size: 8px;
+      font-weight: 800;
+    }
+
+    .meta-cell strong {
+      display: block;
+      overflow-wrap: anywhere;
+      margin-top: 3px;
+      font-size: 10px;
+      line-height: 1.5;
+    }
+
+    .appointment-actions {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0,1fr));
+      gap: 8px;
+      padding: 12px 15px 15px;
+      border-top: 1px solid #edf2f0;
+      background: #fbfdfc;
+    }
+
+    .touch-btn {
+      min-height: 50px;
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      border-radius: 11px;
+      background: #ffffff;
+      color: var(--text);
+      cursor: pointer;
+      font-size: 11px;
+      font-weight: 900;
+    }
+
+    .touch-btn.primary {
+      border-color: var(--primary);
+      background: var(--primary);
+      color: #ffffff;
+    }
+
+    .touch-btn.success {
+      border-color: var(--success);
+      background: var(--success);
+      color: #ffffff;
+    }
+
+    .touch-btn.warning {
+      border-color: #e2c35f;
+      background: var(--warning-soft);
+      color: var(--warning);
+    }
+
+    .touch-btn.danger {
+      border-color: #efbbb5;
+      background: var(--danger-soft);
+      color: var(--danger);
+    }
+
+    .row {
+      display: grid;
+      grid-template-columns: minmax(0,1fr) auto;
+      align-items: center;
+      gap: 12px;
+      padding: 14px;
+      border: 1px solid #e3ebe9;
+      border-radius: 12px;
+      background: var(--surface-soft);
+    }
+
+    .row-main {
+      min-width: 0;
+    }
+
+    .row-title {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .row-title strong {
+      overflow-wrap: anywhere;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    .row-title small {
+      color: var(--muted);
+      font-size: 9px;
+      font-weight: 800;
+    }
+
+    .row-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 15px;
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: 10px;
+      line-height: 1.55;
+    }
+
+    .row-actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 7px;
+    }
+
+    .mini-btn {
+      min-height: 38px;
+      padding: 8px 12px;
+      border: 1px solid var(--line);
+      border-radius: 9px;
+      background: #ffffff;
+      color: var(--text);
+      cursor: pointer;
+      font-size: 10px;
+      font-weight: 900;
+    }
+
+    .mini-btn.primary {
+      border-color: var(--primary);
+      background: var(--primary);
+      color: #ffffff;
+    }
+
+    .mini-btn.success {
+      border-color: var(--success);
+      background: var(--success);
+      color: #ffffff;
+    }
+
+    .empty {
+      padding: 28px 16px;
+      border: 1px dashed #cbdad6;
+      border-radius: 13px;
+      background: #fafcfb;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    .empty strong {
+      display: block;
+      color: var(--text);
+      font-size: 13px;
+    }
+
+    .empty p {
+      margin: 6px 0 0;
+      font-size: 10px;
+    }
+
+    .search-box {
+      display: grid;
+      grid-template-columns: minmax(0,1fr) auto;
+      gap: 9px;
+      padding: 15px;
+      border: 1px solid var(--line);
+      border-radius: 15px;
+      background: #ffffff;
+      box-shadow: var(--shadow);
+    }
+
+    .input,
+    .select,
+    .textarea {
+      width: 100%;
+      border: 1px solid #cddbd7;
+      border-radius: 11px;
+      background: #ffffff;
+      color: var(--text);
+      outline: none;
+    }
+
+    .input,
+    .select {
+      min-height: 49px;
+      padding: 10px 13px;
+      font-size: 14px;
+    }
+
+    .textarea {
+      min-height: 122px;
+      padding: 11px 13px;
+      resize: vertical;
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    .input:focus,
+    .select:focus,
+    .textarea:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(15,118,110,.11);
+    }
+
+    .field {
+      min-width: 0;
+    }
+
+    .field.full {
+      grid-column: 1 / -1;
+    }
+
+    .label {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 7px;
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+    .required {
+      padding: 2px 6px;
+      border-radius: 5px;
+      background: var(--danger-soft);
+      color: var(--danger);
+      font-size: 8px;
+      font-weight: 900;
+    }
+
+    .help {
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: 10px;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0,1fr));
+      gap: 12px;
+    }
+
+    .form-grid.cols-3 {
+      grid-template-columns: repeat(3, minmax(0,1fr));
+    }
+
+    .selected-company {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 14px;
+      padding: 14px;
+      border: 1px solid #b9dcd4;
+      border-radius: 13px;
+      background: #f2fbf8;
+    }
+
+    .selected-company strong {
+      display: block;
+      font-size: 14px;
+    }
+
+    .selected-company span {
+      display: block;
+      margin-top: 3px;
+      color: var(--muted);
+      font-size: 10px;
+    }
+
+    .intake-tabs {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap: 8px;
+      margin-bottom: 15px;
+      padding: 8px;
+      border-radius: 13px;
+      background: #eef4f2;
+    }
+
+    .intake-tab {
+      min-height: 48px;
+      padding: 9px 12px;
+      border: 0;
+      border-radius: 10px;
+      background: transparent;
+      color: var(--muted);
+      cursor: pointer;
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+    .intake-tab.active {
+      background: #ffffff;
+      color: var(--primary);
+      box-shadow: 0 4px 12px rgba(15,59,54,.07);
+    }
+
+    .intake-pane {
+      display: none;
+    }
+
+    .intake-pane.active {
+      display: block;
+    }
+
+    .template-card {
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: 13px;
+      background: #ffffff;
+    }
+
+    .template-card + .template-card {
+      margin-top: 10px;
+    }
+
+    .template-card h3 {
+      margin: 0;
+      font-size: 15px;
+    }
+
+    .template-card pre {
+      margin: 11px 0 0;
+      padding: 13px;
+      border-radius: 10px;
+      background: #f6f8f7;
+      white-space: pre-wrap;
+      word-break: break-word;
+      font: inherit;
+      font-size: 11px;
+      line-height: 1.8;
+    }
+
+    .template-actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .loading {
+      display: grid;
+      place-items: center;
+      min-height: 260px;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    .spinner {
+      width: 40px;
+      height: 40px;
+      margin: 0 auto 12px;
+      border: 4px solid #dfeae7;
+      border-top-color: var(--primary);
+      border-radius: 50%;
+      animation: spin .85s linear infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    dialog {
+      width: min(900px, calc(100% - 24px));
+      max-height: calc(100vh - 26px);
+      padding: 0;
+      overflow: auto;
+      border: 0;
+      border-radius: 20px;
+      background: #ffffff;
+      box-shadow: 0 28px 90px rgba(15,23,42,.31);
+    }
+
+    dialog.wide {
+      width: min(1120px, calc(100% - 24px));
+    }
+
+    dialog::backdrop {
+      background: rgba(15,23,42,.58);
+      backdrop-filter: blur(3px);
+    }
+
+    .dialog-head {
+      position: sticky;
+      top: 0;
+      z-index: 4;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 20px 22px;
+      border-bottom: 1px solid var(--line);
+      background: rgba(255,255,255,.96);
+      backdrop-filter: blur(10px);
+    }
+
+    .dialog-head h2 {
+      margin: 0;
+      font-size: 21px;
+    }
+
+    .dialog-head p {
+      margin: 4px 0 0;
+      color: var(--muted);
+      font-size: 10px;
+    }
+
+    .dialog-close {
+      display: grid;
+      place-items: center;
+      width: 40px;
+      height: 40px;
+      border: 1px solid var(--line);
+      border-radius: 11px;
+      background: #ffffff;
+      cursor: pointer;
+      font-size: 19px;
+    }
+
+    .dialog-body {
+      padding: 21px 22px 25px;
+    }
+
+    .detail-summary {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0,1fr));
+      gap: 9px;
+      margin-bottom: 15px;
+    }
+
+    .detail-cell {
+      min-width: 0;
+      padding: 12px;
+      border: 1px solid #e3ebe9;
+      border-radius: 10px;
+      background: var(--surface-soft);
+    }
+
+    .detail-cell span {
+      display: block;
+      color: var(--muted);
+      font-size: 9px;
+      font-weight: 800;
+    }
+
+    .detail-cell strong {
+      display: block;
+      overflow-wrap: anywhere;
+      margin-top: 4px;
+      font-size: 11px;
+      line-height: 1.55;
+    }
+
+    .subsection {
+      margin-top: 17px;
+      padding-top: 17px;
+      border-top: 1px solid #e9efed;
+    }
+
+    .subsection:first-child {
+      margin-top: 0;
+      padding-top: 0;
+      border-top: 0;
+    }
+
+    .subsection h3 {
+      margin: 0 0 11px;
+      font-size: 15px;
+    }
+
+    .dialog-actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 8px;
+      margin-top: 15px;
+    }
+
+    .login-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      display: grid;
+      place-items: center;
+      padding: 18px;
+      background:
+        radial-gradient(circle at top left, rgba(45,212,191,.18), transparent 28rem),
+        #0d332f;
+    }
+
+    .login-card {
+      width: min(530px, 100%);
+      padding: 30px;
+      border: 1px solid rgba(255,255,255,.13);
+      border-radius: 21px;
+      background: rgba(255,255,255,.97);
+      box-shadow: 0 28px 90px rgba(0,0,0,.28);
+    }
+
+    .login-card .brand-mark {
+      margin-bottom: 14px;
+    }
+
+    .login-card h1 {
+      margin: 0;
+      font-size: 27px;
+    }
+
+    .login-card p {
+      margin: 9px 0 18px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.75;
+    }
+
+    .login-actions {
+      display: grid;
+      grid-template-columns: minmax(0,1fr) auto auto;
+      gap: 8px;
+    }
+
+    .error-box {
+      margin-top: 12px;
+      padding: 12px 13px;
+      border: 1px solid #efbbb5;
+      border-radius: 10px;
+      background: var(--danger-soft);
+      color: var(--danger);
+      font-size: 11px;
+      font-weight: 800;
+      line-height: 1.55;
+    }
+
+    @media (max-width: 1180px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-side {
+        grid-template-columns: repeat(3, minmax(0,1fr));
+      }
+
+      .metrics {
+        grid-template-columns: repeat(3, minmax(0,1fr));
+      }
+
+      .reception-columns {
+        grid-template-columns: 1fr;
+      }
+
+      .lane {
+        padding: 17px;
+      }
+    }
+
+    @media (max-width: 820px) {
+      .topbar-inner {
+        align-items: flex-start;
+        padding: 10px 0;
+      }
+
+      .top-actions {
+        flex-wrap: wrap;
+        justify-content: flex-end;
+      }
+
+      .top-select {
+        min-width: 165px;
+      }
+
+      .menu-tabs {
+        top: 100px;
+        grid-template-columns: repeat(2, minmax(0,1fr));
+      }
+
+      .grid-2,
+      .grid-3 {
+        grid-template-columns: 1fr;
+      }
+
+      .form-grid.cols-3 {
+        grid-template-columns: repeat(2, minmax(0,1fr));
+      }
+
+      .detail-summary {
+        grid-template-columns: repeat(2, minmax(0,1fr));
+      }
+    }
+
+    @media (max-width: 580px) {
+      body {
+        font-size: 16px;
+      }
+
+      .topbar-inner,
+      .main {
+        width: min(100% - 18px, var(--content));
+      }
+
+      .topbar-inner {
+        display: block;
+      }
+
+      .top-actions {
+        justify-content: flex-start;
+        margin-top: 9px;
+      }
+
+      .top-select {
+        flex: 1 1 160px;
+        min-width: 0;
+      }
+
+      .brand-copy span {
+        display: none;
+      }
+
+      .hero {
+        padding: 21px;
+        border-radius: 18px;
+      }
+
+      .hero h1 {
+        font-size: 29px;
+      }
+
+      .hero p {
+        font-size: 12px;
+      }
+
+      .hero-side {
+        grid-template-columns: 1fr;
+      }
+
+      .menu-tabs {
+        position: static;
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .menu-btn {
+        min-height: 52px;
+        font-size: 11px;
+      }
+
+      .metrics {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .metric strong {
+        font-size: 27px;
+      }
+
+      .card {
+        padding: 18px 15px;
+      }
+
+      .search-box {
+        grid-template-columns: 1fr;
+      }
+
+      .form-grid,
+      .form-grid.cols-3 {
+        grid-template-columns: 1fr;
+      }
+
+      .field.full {
+        grid-column: auto;
+      }
+
+      .intake-tabs {
+        grid-template-columns: 1fr;
+      }
+
+      .row {
+        grid-template-columns: 1fr;
+      }
+
+      .row-actions {
+        justify-content: flex-start;
+      }
+
+      .appointment-meta {
+        grid-template-columns: 1fr;
+      }
+
+      .appointment-actions {
+        grid-template-columns: 1fr;
+      }
+
+      .selected-company {
+        display: block;
+      }
+
+      .selected-company .btn {
+        width: 100%;
+        margin-top: 10px;
+      }
+
+      .login-actions {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .login-actions .input {
+        grid-column: 1 / -1;
+      }
+
+      .login-actions .btn {
+        width: 100%;
+      }
+
+      .dialog-actions {
+        display: grid;
+        grid-template-columns: 1fr;
+      }
+
+      .dialog-actions .btn {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="login-overlay" id="login-overlay">
+    <div class="login-card">
+      <div class="brand-mark">D</div>
+      <h1>受付・来所対応画面</h1>
+      <p>
+        管理コードを入力すると、本日の来所受付、面談開始・完了、
+        顧問先検索、電話・来所受付をタブレットから操作できます。
+      </p>
+
+      <div class="login-actions">
+        <input class="input" id="login-admin-code" type="password" inputmode="numeric" autocomplete="off" placeholder="管理コード">
+        <button class="btn btn-primary" id="login-btn" type="button">開く</button>
+        <button class="btn btn-light" id="clear-login-code-btn" type="button">消去</button>
+      </div>
+
+      <div class="error-box" id="login-error" hidden></div>
+    </div>
+  </div>
+
+  <div class="app">
+    <header class="topbar">
+      <div class="topbar-inner">
+        <a class="brand" href="./owner-ipad.html">
+          <div class="brand-mark">D</div>
+          <div class="brand-copy">
+            <strong id="brand-office-name">DPRO社会保険労務士事務所</strong>
+            <span>受付・来所対応 iPad</span>
+          </div>
+        </a>
+
+        <div class="top-actions">
+          <select class="top-select" id="staff-filter" aria-label="担当者で絞り込み">
+            <option value="">全担当者</option>
+          </select>
+          <button class="btn btn-light" id="owner-link-btn" type="button">PC管理</button>
+          <button class="btn btn-light" id="staff-link-btn" type="button">担当者画面</button>
+          <button class="btn btn-primary" id="refresh-btn" type="button">更新</button>
+        </div>
+      </div>
+    </header>
+
+    <main class="main">
+      <section class="hero">
+        <div>
+          <div class="hero-eyebrow">STEP CONSULT-10 · RECEPTION IPAD</div>
+          <h1>来所受付から面談完了まで、<br>大きなボタンですぐ操作</h1>
+          <p>
+            本日の面談受付、顧問先検索、電話・来所による相談・手続き・面談登録を
+            受付カウンターのタブレットから行えます。
+          </p>
+        </div>
+
+        <div class="hero-side">
+          <div>
+            <span>表示日</span>
+            <strong id="hero-date">—</strong>
+          </div>
+          <div>
+            <span>担当者表示</span>
+            <strong id="hero-staff">全担当者</strong>
+          </div>
+          <div>
+            <span>最終更新</span>
+            <strong id="hero-updated">未取得</strong>
+          </div>
+        </div>
+      </section>
+
+      <nav class="menu-tabs" aria-label="受付メニュー">
+        <button class="menu-btn active" type="button" data-page="today">
+          <span class="menu-icon">今</span> 今日の受付
+        </button>
+        <button class="menu-btn" type="button" data-page="search">
+          <span class="menu-icon">検</span> 顧問先検索
+        </button>
+        <button class="menu-btn" type="button" data-page="intake">
+          <span class="menu-icon">受</span> 電話・来所受付
+        </button>
+        <button class="menu-btn" type="button" data-page="templates">
+          <span class="menu-icon">文</span> 案内文面
+        </button>
+      </nav>
+
+      <section class="page-section active" id="page-today">
+        <div class="toolbar">
+          <input class="input" id="work-date" type="date" style="max-width:220px">
+          <button class="btn btn-primary" id="load-date-btn" type="button">この日を表示</button>
+          <button class="btn btn-light" id="today-btn" type="button">今日へ戻る</button>
+          <button class="btn btn-light" type="button" data-page-jump="search">顧問先を検索</button>
+          <button class="btn btn-accent" type="button" data-page-jump="intake">電話・来所受付</button>
+          <span class="toolbar-note" id="load-status">受付データを読み込んでいます。</span>
+        </div>
+
+        <div class="metrics">
+          <div class="metric">
+            <span>本日の面談</span>
+            <strong id="metric-total">0</strong>
+            <small>キャンセル以外</small>
+          </div>
+          <div class="metric">
+            <span>受付前</span>
+            <strong id="metric-waiting">0</strong>
+            <small>予約受付・予約確定</small>
+          </div>
+          <div class="metric">
+            <span>来所済み</span>
+            <strong id="metric-arrived">0</strong>
+            <small>面談開始待ち</small>
+          </div>
+          <div class="metric">
+            <span>面談中</span>
+            <strong id="metric-meeting">0</strong>
+            <small>現在対応中</small>
+          </div>
+          <div class="metric">
+            <span>面談完了</span>
+            <strong id="metric-completed">0</strong>
+            <small>本日完了</small>
+          </div>
+          <div class="metric">
+            <span>本日期限タスク</span>
+            <strong id="metric-tasks">0</strong>
+            <small>受付・確認・フォロー</small>
+          </div>
+        </div>
+
+        <div class="reception-columns">
+          <section class="lane">
+            <div class="lane-head">
+              <h3>受付前</h3>
+              <span id="lane-waiting-count">0件</span>
+            </div>
+            <div class="list" id="lane-waiting"></div>
+          </section>
+
+          <section class="lane">
+            <div class="lane-head">
+              <h3>来所済み・面談中</h3>
+              <span id="lane-active-count">0件</span>
+            </div>
+            <div class="list" id="lane-active"></div>
+          </section>
+
+          <section class="lane">
+            <div class="lane-head">
+              <h3>完了・その他</h3>
+              <span id="lane-done-count">0件</span>
+            </div>
+            <div class="list" id="lane-done"></div>
+          </section>
+        </div>
+
+        <div class="grid grid-2">
+          <article class="card">
+            <div class="card-header">
+              <div>
+                <h3>本日期限タスク</h3>
+                <p>受付確認、面談準備、顧問先フォロー等です。</p>
+              </div>
+              <span class="badge" id="today-task-badge">0件</span>
+            </div>
+            <div class="list" id="today-task-list"></div>
+          </article>
+
+          <article class="card">
+            <div class="card-header">
+              <div>
+                <h3>受付スタッフ向けクイック操作</h3>
+                <p>受付カウンターで頻繁に使う操作です。</p>
+              </div>
+            </div>
+            <div class="grid grid-2" style="margin-top:0">
+              <button class="btn btn-primary" type="button" data-page-jump="search">既存顧問先を検索</button>
+              <button class="btn btn-accent" type="button" data-page-jump="intake">電話相談を登録</button>
+              <button class="btn btn-light" id="copy-arrival-guide-btn" type="button">来所案内文面をコピー</button>
+              <button class="btn btn-light" id="system-check-btn" type="button">システムチェック</button>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="page-section" id="page-search">
+        <div class="search-box">
+          <input class="input" id="search-input" placeholder="会社名・顧問先番号・担当者名・電話番号・従業員名・受付番号で検索">
+          <button class="btn btn-primary" id="search-btn" type="button">検索</button>
+        </div>
+
+        <div class="help" style="margin:8px 2px 0">
+          電話番号は、ハイフン・空白・全角・+81形式でも同じ番号として検索します。
+        </div>
+
+        <div class="grid" id="search-results">
+          <div class="empty">
+            <strong>検索キーワードを入力してください</strong>
+            <p>既存顧問先を選択すると、電話・来所受付フォームへ自動入力できます。</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="page-section" id="page-intake">
+        <article class="card">
+          <div class="card-header">
+            <div>
+              <h2>電話・来所受付</h2>
+              <p>先に顧問先検索から選択すると、顧問先番号・担当者・電話番号を自動入力できます。</p>
+            </div>
+            <span class="badge">既存顧問先検索対応</span>
+          </div>
+
+          <div class="selected-company" id="selected-company">
+            <div>
+              <strong id="selected-company-name">顧問先が選択されていません</strong>
+              <span id="selected-company-detail">顧問先検索から選択するか、フォームへ直接入力してください。</span>
+            </div>
+            <button class="btn btn-light" id="clear-selected-company-btn" type="button">選択を解除</button>
+          </div>
+
+          <div class="intake-tabs">
+            <button class="intake-tab active" type="button" data-intake="consultation">労務相談</button>
+            <button class="intake-tab" type="button" data-intake="procedure">手続き依頼</button>
+            <button class="intake-tab" type="button" data-intake="appointment">面談予約</button>
+          </div>
+
+          <section class="intake-pane active" id="intake-consultation">
+            <form id="consultation-form">
+              <div class="form-grid cols-3">
+                <div class="field">
+                  <label class="label">顧問先番号 <span class="required">必須</span></label>
+                  <input class="input" name="company_code" placeholder="SR-COMPANY-001" required>
+                </div>
+                <div class="field">
+                  <label class="label">連絡担当者 <span class="required">必須</span></label>
+                  <input class="input" name="contact_name" placeholder="佐藤 太郎" required>
+                </div>
+                <div class="field">
+                  <label class="label">電話番号 <span class="required">必須</span></label>
+                  <input class="input" name="contact_phone" type="tel" placeholder="090-9999-1111" required>
+                </div>
+                <div class="field">
+                  <label class="label">相談分類 <span class="required">必須</span></label>
+                  <select class="select" name="category_code" id="consultation-category" required></select>
+                </div>
+                <div class="field">
+                  <label class="label">緊急度</label>
+                  <select class="select" name="urgency">
+                    <option value="normal">通常</option>
+                    <option value="high">早めに確認</option>
+                    <option value="urgent">至急</option>
+                    <option value="low">急ぎではない</option>
+                  </select>
+                </div>
+                <div class="field">
+                  <label class="label">受付方法</label>
+                  <select class="select" name="source">
+                    <option value="phone">電話</option>
+                    <option value="office">来所</option>
+                    <option value="email">メール</option>
+                    <option value="staff">スタッフ入力</option>
+                  </select>
+                </div>
+                <div class="field">
+                  <label class="label">担当者</label>
+                  <select class="select" name="assigned_staff_id" data-staff-select>
+                    <option value="">顧問先担当者</option>
+                  </select>
+                </div>
+                <div class="field">
+                  <label class="label">希望回答日</label>
+                  <input class="input" name="preferred_response_date" type="date">
+                </div>
+                <div class="field">
+                  <label class="label">次回連絡日</label>
+                  <input class="input" name="next_contact_date" type="date">
+                </div>
+                <div class="field full">
+                  <label class="label">相談タイトル <span class="required">必須</span></label>
+                  <input class="input" name="title" placeholder="例：就業規則の見直しについて" required>
+                </div>
+                <div class="field full">
+                  <label class="label">相談内容 <span class="required">必須</span></label>
+                  <textarea class="textarea" name="consultation_details" placeholder="相談者から聞き取った内容を入力してください。" required></textarea>
+                </div>
+              </div>
+
+              <div class="dialog-actions">
+                <button class="btn btn-primary" type="submit">相談受付を登録</button>
+              </div>
+            </form>
+          </section>
+
+          <section class="intake-pane" id="intake-procedure">
+            <form id="procedure-form">
+              <div class="form-grid cols-3">
+                <div class="field">
+                  <label class="label">顧問先番号 <span class="required">必須</span></label>
+                  <input class="input" name="company_code" placeholder="SR-COMPANY-001" required>
+                </div>
+                <div class="field">
+                  <label class="label">連絡担当者 <span class="required">必須</span></label>
+                  <input class="input" name="contact_name" required>
+                </div>
+                <div class="field">
+                  <label class="label">電話番号 <span class="required">必須</span></label>
+                  <input class="input" name="contact_phone" type="tel" required>
+                </div>
+                <div class="field">
+                  <label class="label">手続き種別 <span class="required">必須</span></label>
+                  <select class="select" name="procedure_code" id="procedure-type" required></select>
+                </div>
+                <div class="field">
+                  <label class="label">対象者氏名 <span class="required">必須</span></label>
+                  <input class="input" name="employee_name" required>
+                </div>
+                <div class="field">
+                  <label class="label">雇用区分</label>
+                  <select class="select" name="employment_type">
+                    <option value="">選択してください</option>
+                    <option>正社員</option>
+                    <option>契約社員</option>
+                    <option>パート・アルバイト</option>
+                    <option>役員</option>
+                    <option>その他</option>
+                  </select>
+                </div>
+                <div class="field">
+                  <label class="label">基準日 <span class="required">必須</span></label>
+                  <input class="input" name="effective_date" type="date" required>
+                </div>
+                <div class="field">
+                  <label class="label">事務所期限</label>
+                  <input class="input" name="office_due_date" type="date">
+                </div>
+                <div class="field">
+                  <label class="label">担当者</label>
+                  <select class="select" name="assigned_staff_id" data-staff-select>
+                    <option value="">顧問先担当者</option>
+                  </select>
+                </div>
+                <div class="field">
+                  <label class="label">受付方法</label>
+                  <select class="select" name="source">
+                    <option value="phone">電話</option>
+                    <option value="office">来所</option>
+                    <option value="email">メール</option>
+                    <option value="staff">スタッフ入力</option>
+                  </select>
+                </div>
+                <div class="field full">
+                  <label class="label">依頼タイトル</label>
+                  <input class="input" name="title" placeholder="未入力の場合は自動作成します">
+                </div>
+                <div class="field full">
+                  <label class="label">依頼内容・受付メモ</label>
+                  <textarea class="textarea" name="request_details" placeholder="聞き取った内容や注意事項を入力してください。"></textarea>
+                </div>
+              </div>
+
+              <div class="dialog-actions">
+                <button class="btn btn-primary" type="submit">手続き依頼を登録</button>
+              </div>
+            </form>
+          </section>
+
+          <section class="intake-pane" id="intake-appointment">
+            <form id="appointment-form">
+              <div class="form-grid cols-3">
+                <div class="field">
+                  <label class="label">顧問先番号 <span class="required">必須</span></label>
+                  <input class="input" name="company_code" placeholder="SR-COMPANY-001" required>
+                </div>
+                <div class="field">
+                  <label class="label">連絡担当者 <span class="required">必須</span></label>
+                  <input class="input" name="contact_name" required>
+                </div>
+                <div class="field">
+                  <label class="label">電話番号 <span class="required">必須</span></label>
+                  <input class="input" name="contact_phone" type="tel" required>
+                </div>
+                <div class="field">
+                  <label class="label">相談メニュー <span class="required">必須</span></label>
+                  <select class="select" name="service_id" id="appointment-service" required></select>
+                </div>
+                <div class="field">
+                  <label class="label">担当者 <span class="required">必須</span></label>
+                  <select class="select" name="assigned_staff_id" id="appointment-staff" required></select>
+                </div>
+                <div class="field">
+                  <label class="label">相談方法</label>
+                  <select class="select" name="method">
+                    <option value="office">来所</option>
+                    <option value="online">オンライン</option>
+                    <option value="phone">電話</option>
+                    <option value="visit">訪問</option>
+                  </select>
+                </div>
+                <div class="field">
+                  <label class="label">開始日時 <span class="required">必須</span></label>
+                  <input class="input" name="start_at" type="datetime-local" required>
+                </div>
+                <div class="field">
+                  <label class="label">終了日時</label>
+                  <input class="input" name="end_at" type="datetime-local">
+                </div>
+                <div class="field">
+                  <label class="label">状態</label>
+                  <select class="select" name="status">
+                    <option value="confirmed">予約確定</option>
+                    <option value="arrived">来所済み</option>
+                    <option value="reserved">予約受付</option>
+                  </select>
+                </div>
+                <div class="field full">
+                  <label class="label">相談内容 <span class="required">必須</span></label>
+                  <textarea class="textarea" name="agenda" placeholder="面談で確認する内容を入力してください。" required></textarea>
+                </div>
+                <div class="field full">
+                  <label class="label">場所・面談URL</label>
+                  <input class="input" name="location_or_url" placeholder="会議室名または https://...">
+                </div>
+              </div>
+
+              <div class="dialog-actions">
+                <button class="btn btn-primary" type="submit">面談予約を登録</button>
+              </div>
+            </form>
+          </section>
+
+          <div class="error-box" id="intake-error" hidden></div>
+        </article>
+      </section>
+
+      <section class="page-section" id="page-templates">
+        <article class="card">
+          <div class="card-header">
+            <div>
+              <h2>案内文面</h2>
+              <p>コピー後、LINE公式アカウント等へ貼り付けて使用します。</p>
+            </div>
+            <button class="btn btn-light" id="reload-templates-btn" type="button">再読込</button>
+          </div>
+
+          <div id="templates-list">
+            <div class="loading">
+              <div>
+                <div class="spinner"></div>
+                <strong>文面を読み込んでいます</strong>
+              </div>
+            </div>
+          </div>
+        </article>
+      </section>
+    </main>
+
+    <footer style="width:min(var(--content),calc(100% - 26px));margin:25px auto 0;color:var(--muted);font-size:10px;text-align:center">
+      DPRO 社労士・顧問先対応 LINE · STEP CONSULT-10
+    </footer>
+  </div>
+
+  <dialog class="wide" id="detail-dialog">
+    <div class="dialog-head">
+      <div>
+        <h2 id="detail-title">詳細</h2>
+        <p id="detail-subtitle">詳細を読み込んでいます。</p>
+      </div>
+      <button class="dialog-close" type="button" data-close-dialog="detail-dialog">×</button>
+    </div>
+    <div class="dialog-body" id="detail-body"></div>
+  </dialog>
+
+  <script src="./config.js?v=CONSULT-4-CONFIG-20260714"></script>
+  <script>
+    (() => {
+      "use strict";
+
+      const state = {
+        staff: [],
+        options: null,
+        publicConfig: null,
+        today: null,
+        appointments: [],
+        tasks: [],
+        templates: [],
+        selectedCompany: null,
+        selectedContact: null,
+        currentPage: "today",
+      };
+
+      const $ = (selector) => document.querySelector(selector);
+      const $$ = (selector) => [...document.querySelectorAll(selector)];
+
+      function app() {
+        if (!window.DPRO_CONSULT) {
+          throw new Error("config.jsを読み込めませんでした。");
+        }
+        return window.DPRO_CONSULT;
+      }
+
+      function esc(value) {
+        return app().escapeHtml(value ?? "");
+      }
+
+      function empty(title, message) {
+        return `
+          <div class="empty">
+            <strong>${esc(title)}</strong>
+            <p>${esc(message)}</p>
+          </div>
+        `;
+      }
+
+      function statusClass(status) {
+        if (["completed"].includes(status)) return "done";
+        if (["cancelled", "no_show", "cancel_requested"].includes(status)) {
+          return "danger";
+        }
+        if (["arrived", "in_meeting", "change_requested"].includes(status)) {
+          return "warning";
+        }
+        return "active";
+      }
+
+      function methodLabel(value) {
+        return (
+          {
+            office: "来所",
+            online: "オンライン",
+            phone: "電話",
+            visit: "訪問",
+            other: "その他",
+          }[value] ||
+          value ||
+          "—"
+        );
+      }
+
+      function showPage(page) {
+        state.currentPage = page;
+
+        $$(".page-section").forEach((section) => {
+          section.classList.toggle("active", section.id === `page-${page}`);
+        });
+
+        $$(".menu-btn[data-page]").forEach((button) => {
+          button.classList.toggle("active", button.dataset.page === page);
+        });
+
+        if (page === "templates" && !state.templates.length) {
+          loadTemplates();
+        }
+      }
+
+      function setLoginError(message) {
+        $("#login-error").textContent = message;
+        $("#login-error").hidden = false;
+      }
+
+      async function authenticate() {
+        const code = $("#login-admin-code").value.trim();
+
+        if (!code) {
+          setLoginError("管理コードを入力してください。");
+          return;
+        }
+
+        app().saveAdminCode(code);
+        app().setButtonLoading($("#login-btn"), true, {
+          loadingText: "確認中...",
+        });
+
+        try {
+          await loadFoundation();
+          $("#login-overlay").hidden = true;
+          $("#login-error").hidden = true;
+          app().showToast("受付・来所対応画面を開きました。");
+        } catch (error) {
+          app().removeAdminCode();
+          setLoginError(error?.message || "管理コードを確認してください。");
+        } finally {
+          app().setButtonLoading($("#login-btn"), false);
+        }
+      }
+
+      async function loadFoundation() {
+        const [config, options, staffResult] = await Promise.all([
+          app().apiFetch(app().API_ENDPOINTS.PUBLIC_CONFIG),
+          app().apiFetch(app().API_ENDPOINTS.PUBLIC_OPTIONS),
+          app().apiFetch(app().API_ENDPOINTS.ADMIN_STAFF, {
+            admin: true,
+          }),
+        ]);
+
+        state.publicConfig = config;
+        state.options = options;
+        state.staff = (staffResult.staff || []).filter(
+          (item) => item.is_active !== false
+        );
+
+        $("#brand-office-name").textContent =
+          config.office?.office_name || app().OFFICE_NAME;
+
+        renderOptions();
+        await loadToday({ silent: true });
+      }
+
+      function renderOptions() {
+        $("#staff-filter").innerHTML = `
+          <option value="">全担当者</option>
+          ${state.staff
+            .map(
+              (item) => `
+                <option value="${esc(item.id)}">
+                  ${esc(item.staff_name)}
+                </option>
+              `
+            )
+            .join("")}
+        `;
+
+        $("#consultation-category").innerHTML = `
+          <option value="">相談分類を選択</option>
+          ${(state.options?.consultation_categories || [])
+            .map(
+              (item) => `
+                <option value="${esc(item.category_code)}">
+                  ${esc(item.category_name)}
+                </option>
+              `
+            )
+            .join("")}
+        `;
+
+        $("#procedure-type").innerHTML = `
+          <option value="">手続き種別を選択</option>
+          ${(state.options?.procedure_types || [])
+            .map(
+              (item) => `
+                <option value="${esc(item.procedure_code)}">
+                  ${esc(item.procedure_name)}
+                </option>
+              `
+            )
+            .join("")}
+        `;
+
+        $("#appointment-service").innerHTML = `
+          <option value="">相談メニューを選択</option>
+          ${(state.options?.services || [])
+            .map(
+              (item) => `
+                <option value="${esc(item.id)}">
+                  ${esc(item.service_name)}
+                </option>
+              `
+            )
+            .join("")}
+        `;
+
+        $("#appointment-staff").innerHTML = `
+          <option value="">担当者を選択</option>
+          ${state.staff
+            .map(
+              (item) => `
+                <option value="${esc(item.id)}">
+                  ${esc(item.staff_name)}
+                </option>
+              `
+            )
+            .join("")}
+        `;
+
+        $$("[data-staff-select]").forEach((select) => {
+          select.innerHTML = `
+            <option value="">顧問先担当者</option>
+            ${state.staff
+              .map(
+                (item) => `
+                  <option value="${esc(item.id)}">
+                    ${esc(item.staff_name)}
+                  </option>
+                `
+              )
+              .join("")}
+          `;
+        });
+      }
+
+      async function loadToday(options = {}) {
+        const date = $("#work-date").value || app().todayJst();
+        const staffId = $("#staff-filter").value;
+
+        $("#work-date").value = date;
+        $("#load-status").textContent = "受付データを読み込んでいます。";
+
+        const result = await app().apiFetch(
+          app().API_ENDPOINTS.IPAD_TODAY,
+          {
+            admin: true,
+            query: {
+              date,
+              staff_id: staffId || undefined,
+            },
+            timeoutMs: 30000,
+          }
+        );
+
+        state.today = result;
+        state.tasks = result.tasks || [];
+
+        const appointments = result.appointments || [];
+
+        const details = await Promise.all(
+          appointments.map(async (appointment) => {
+            try {
+              const detail = await app().apiFetch(
+                app().API_ENDPOINTS.ADMIN_APPOINTMENT_DETAIL,
+                {
+                  admin: true,
+                  query: { id: appointment.id },
+                }
+              );
+
+              return {
+                ...appointment,
+                company: detail.company || null,
+                contact: detail.contact || null,
+                staff: detail.staff || null,
+                service: detail.service || null,
+              };
+            } catch {
+              return appointment;
+            }
+          })
+        );
+
+        state.appointments = details;
+
+        renderToday();
+
+        $("#hero-date").textContent = app().formatDate(date);
+        $("#hero-staff").textContent =
+          staffId
+            ? state.staff.find((item) => item.id === staffId)?.staff_name || "担当者"
+            : "全担当者";
+        $("#hero-updated").textContent = new Date().toLocaleTimeString(
+          "ja-JP",
+          { hour: "2-digit", minute: "2-digit" }
+        );
+        $("#load-status").textContent =
+          `${app().formatDate(date)}の受付状況を表示中`;
+
+        if (!options.silent) {
+          app().showToast("受付状況を更新しました。");
+        }
+      }
+
+      function renderToday() {
+        const appointments = state.appointments;
+        const tasks = state.tasks;
+
+        const waiting = appointments.filter((item) =>
+          ["reserved", "confirmed"].includes(item.status)
+        );
+        const arrived = appointments.filter(
+          (item) => item.status === "arrived"
+        );
+        const meeting = appointments.filter(
+          (item) => item.status === "in_meeting"
+        );
+        const completed = appointments.filter(
+          (item) => item.status === "completed"
+        );
+        const doneOther = appointments.filter(
+          (item) =>
+            ![
+              "reserved",
+              "confirmed",
+              "arrived",
+              "in_meeting",
+            ].includes(item.status)
+        );
+
+        $("#metric-total").textContent = appointments.length;
+        $("#metric-waiting").textContent = waiting.length;
+        $("#metric-arrived").textContent = arrived.length;
+        $("#metric-meeting").textContent = meeting.length;
+        $("#metric-completed").textContent = completed.length;
+        $("#metric-tasks").textContent = tasks.length;
+
+        $("#lane-waiting-count").textContent = `${waiting.length}件`;
+        $("#lane-active-count").textContent =
+          `${arrived.length + meeting.length}件`;
+        $("#lane-done-count").textContent = `${doneOther.length}件`;
+        $("#today-task-badge").textContent = `${tasks.length}件`;
+
+        renderAppointmentCards(waiting, "#lane-waiting");
+        renderAppointmentCards([...arrived, ...meeting], "#lane-active");
+        renderAppointmentCards(doneOther, "#lane-done");
+        renderTasks(tasks);
+      }
+
+      function renderAppointmentCards(items, selector) {
+        const container = $(selector);
+
+        if (!items.length) {
+          container.innerHTML = empty(
+            "該当する面談はありません",
+            "現在、この区分に表示する面談はありません。"
+          );
+          return;
+        }
+
+        container.innerHTML = items
+          .map((item) => {
+            const companyName =
+              item.company?.company_name || "顧問先情報を確認中";
+            const contactName = item.contact?.contact_name || "—";
+            const staffName =
+              item.staff?.staff_name ||
+              state.staff.find(
+                (staff) => staff.id === item.assigned_staff_id
+              )?.staff_name ||
+              "—";
+
+            return `
+              <article class="appointment-card">
+                <div class="appointment-main">
+                  <div class="appointment-head">
+                    <div class="appointment-title">
+                      <span class="appointment-time">
+                        ${esc(app().formatTime(item.start_at))}
+                      </span>
+                      <h3>${esc(companyName)}</h3>
+                      <small>${esc(item.appointment_code)}・${esc(
+                        item.agenda || "面談予約"
+                      )}</small>
+                    </div>
+                    <span class="status ${statusClass(item.status)}">
+                      ${esc(
+                        item.status_label ||
+                          app().statusLabel("appointment", item.status)
+                      )}
+                    </span>
+                  </div>
+
+                  <div class="appointment-meta">
+                    <div class="meta-cell">
+                      <span>連絡担当者</span>
+                      <strong>${esc(contactName)}</strong>
+                    </div>
+                    <div class="meta-cell">
+                      <span>担当</span>
+                      <strong>${esc(staffName)}</strong>
+                    </div>
+                    <div class="meta-cell">
+                      <span>相談方法</span>
+                      <strong>${esc(methodLabel(item.method))}</strong>
+                    </div>
+                    <div class="meta-cell">
+                      <span>場所・URL</span>
+                      <strong>${esc(
+                        item.location || item.meeting_url || "担当者から案内"
+                      )}</strong>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="appointment-actions">
+                  ${
+                    ["reserved", "confirmed"].includes(item.status)
+                      ? `
+                        <button
+                          class="touch-btn primary"
+                          type="button"
+                          data-appointment-status="${esc(item.id)}"
+                          data-next-status="arrived"
+                        >
+                          来所受付
+                        </button>
+                      `
+                      : ""
+                  }
+                  ${
+                    item.status === "arrived"
+                      ? `
+                        <button
+                          class="touch-btn primary"
+                          type="button"
+                          data-appointment-status="${esc(item.id)}"
+                          data-next-status="in_meeting"
+                        >
+                          面談開始
+                        </button>
+                      `
+                      : ""
+                  }
+                  ${
+                    item.status === "in_meeting"
+                      ? `
+                        <button
+                          class="touch-btn success"
+                          type="button"
+                          data-appointment-status="${esc(item.id)}"
+                          data-next-status="completed"
+                        >
+                          面談完了
+                        </button>
+                      `
+                      : ""
+                  }
+                  ${
+                    !["completed", "cancelled", "no_show"].includes(
+                      item.status
+                    )
+                      ? `
+                        <button
+                          class="touch-btn danger"
+                          type="button"
+                          data-appointment-status="${esc(item.id)}"
+                          data-next-status="no_show"
+                        >
+                          来所なし
+                        </button>
+                      `
+                      : ""
+                  }
+                  <button
+                    class="touch-btn"
+                    type="button"
+                    data-detail-type="appointment"
+                    data-detail-id="${esc(item.id)}"
+                  >
+                    詳細確認
+                  </button>
+                </div>
+              </article>
+            `;
+          })
+          .join("");
+      }
+
+      function renderTasks(items) {
+        const container = $("#today-task-list");
+
+        if (!items.length) {
+          container.innerHTML = empty(
+            "本日期限タスクはありません",
+            "受付で確認が必要な本日期限タスクはありません。"
+          );
+          return;
+        }
+
+        container.innerHTML = items
+          .map(
+            (item) => `
+              <div class="row">
+                <div class="row-main">
+                  <div class="row-title">
+                    <strong>${esc(item.title)}</strong>
+                    <span class="status ${statusClass(item.status)}">
+                      ${esc(
+                        item.status_label ||
+                          app().statusLabel("task", item.status)
+                      )}
+                    </span>
+                  </div>
+                  <div class="row-meta">
+                    <span>期限：${esc(app().formatDateTime(item.due_at))}</span>
+                    <span>${esc(item.description || "")}</span>
+                  </div>
+                </div>
+                <div class="row-actions">
+                  ${
+                    item.appointment_id
+                      ? `
+                        <button
+                          class="mini-btn"
+                          data-detail-type="appointment"
+                          data-detail-id="${esc(item.appointment_id)}"
+                        >
+                          面談詳細
+                        </button>
+                      `
+                      : ""
+                  }
+                  <button
+                    class="mini-btn success"
+                    data-task-complete="${esc(item.id)}"
+                  >
+                    完了
+                  </button>
+                </div>
+              </div>
+            `
+          )
+          .join("");
+      }
+
+      async function updateAppointmentStatus(id, status) {
+        const staffId = $("#staff-filter").value || null;
+
+        const result = await app().apiFetch(
+          app().API_ENDPOINTS.IPAD_APPOINTMENT_STATUS,
+          {
+            method: "POST",
+            admin: true,
+            body: {
+              id,
+              status,
+              staff_id: staffId,
+              progress_title: {
+                arrived: "来所受付",
+                in_meeting: "面談を開始",
+                completed: "面談完了",
+                no_show: "来所なし",
+              }[status] || "受付状況を更新",
+              visible_to_client: true,
+            },
+          }
+        );
+
+        app().showToast(result.message);
+        await loadToday({ silent: true });
+      }
+
+      async function completeTask(id) {
+        const result = await app().apiFetch(
+          app().API_ENDPOINTS.ADMIN_TASK_STATUS,
+          {
+            method: "POST",
+            admin: true,
+            body: {
+              id,
+              status: "completed",
+            },
+          }
+        );
+
+        app().showToast(result.message);
+        await loadToday({ silent: true });
+      }
+
+      async function runSearch() {
+        const query = $("#search-input").value.trim();
+
+        if (!query) {
+          app().showToast("検索キーワードを入力してください。", {
+            type: "warning",
+          });
+          return;
+        }
+
+        app().setButtonLoading($("#search-btn"), true, {
+          loadingText: "検索中...",
+        });
+
+        try {
+          const result = await app().apiFetch(
+            app().API_ENDPOINTS.ADMIN_SEARCH,
+            {
+              admin: true,
+              query: { q: query },
+            }
+          );
+
+          renderSearchResults(result);
+        } catch (error) {
+          $("#search-results").innerHTML = empty(
+            "検索できませんでした",
+            error?.message || "通信を確認してください。"
+          );
+        } finally {
+          app().setButtonLoading($("#search-btn"), false);
+        }
+      }
+
+      function renderSearchResults(result) {
+        const groups = [];
+
+        if ((result.companies || []).length) {
+          groups.push(`
+            <article class="card">
+              <div class="card-header">
+                <div>
+                  <h3>顧問先企業</h3>
+                  <p>会社を選択すると、登録済み連絡担当者を確認できます。</p>
+                </div>
+                <span class="badge">${result.companies.length}件</span>
+              </div>
+              <div class="list">
+                ${result.companies
+                  .map(
+                    (item) => `
+                      <div class="row">
+                        <div class="row-main">
+                          <div class="row-title">
+                            <strong>${esc(item.company_name)}</strong>
+                            <small>${esc(item.company_code)}</small>
+                            <span class="status active">
+                              ${esc(
+                                app().statusLabel(
+                                  "company",
+                                  item.company_status
+                                )
+                              )}
+                            </span>
+                          </div>
+                          <div class="row-meta">
+                            <span>${esc(item.industry || "業種未設定")}</span>
+                            <span>${esc(
+                              app().formatPhone(item.phone || "")
+                            )}</span>
+                          </div>
+                        </div>
+                        <div class="row-actions">
+                          <button
+                            class="mini-btn"
+                            data-detail-type="company"
+                            data-detail-id="${esc(item.id)}"
+                          >
+                            詳細
+                          </button>
+                          <button
+                            class="mini-btn primary"
+                            data-select-company="${esc(item.id)}"
+                          >
+                            この顧問先で受付
+                          </button>
+                        </div>
+                      </div>
+                    `
+                  )
+                  .join("")}
+              </div>
+            </article>
+          `);
+        }
+
+        if ((result.contacts || []).length) {
+          groups.push(`
+            <article class="card">
+              <div class="card-header">
+                <div>
+                  <h3>連絡担当者</h3>
+                  <p>登録済み担当者を直接選択できます。</p>
+                </div>
+                <span class="badge">${result.contacts.length}件</span>
+              </div>
+              <div class="list">
+                ${result.contacts
+                  .map(
+                    (item) => `
+                      <div class="row">
+                        <div class="row-main">
+                          <div class="row-title">
+                            <strong>${esc(item.contact_name)}</strong>
+                            <small>${esc(item.contact_code)}</small>
+                          </div>
+                          <div class="row-meta">
+                            <span>${esc(item.department || "")} ${esc(
+                              item.position_name || ""
+                            )}</span>
+                            <span>${esc(
+                              app().formatPhone(item.phone || "")
+                            )}</span>
+                          </div>
+                        </div>
+                        <div class="row-actions">
+                          <button
+                            class="mini-btn"
+                            data-detail-type="contact"
+                            data-detail-id="${esc(item.id)}"
+                          >
+                            詳細
+                          </button>
+                          <button
+                            class="mini-btn primary"
+                            data-select-contact="${esc(item.id)}"
+                          >
+                            この担当者で受付
+                          </button>
+                        </div>
+                      </div>
+                    `
+                  )
+                  .join("")}
+              </div>
+            </article>
+          `);
+        }
+
+        if ((result.employees || []).length) {
+          groups.push(`
+            <article class="card">
+              <div class="card-header">
+                <div>
+                  <h3>手続き対象者</h3>
+                  <p>従業員名から関連する顧問先を確認できます。</p>
+                </div>
+                <span class="badge">${result.employees.length}件</span>
+              </div>
+              <div class="list">
+                ${result.employees
+                  .map(
+                    (item) => `
+                      <div class="row">
+                        <div class="row-main">
+                          <div class="row-title">
+                            <strong>${esc(item.employee_name)}</strong>
+                            <small>${esc(item.employee_code)}</small>
+                          </div>
+                          <div class="row-meta">
+                            <span>${esc(item.employment_type || "")}</span>
+                            <span>${esc(item.current_procedure_type || "")}</span>
+                            <span>${esc(item.procedure_status || "")}</span>
+                          </div>
+                        </div>
+                      </div>
+                    `
+                  )
+                  .join("")}
+              </div>
+            </article>
+          `);
+        }
+
+        if (!groups.length) {
+          $("#search-results").innerHTML = empty(
+            "該当するデータはありません",
+            "会社名・顧問先番号・電話番号などを変えて検索してください。"
+          );
+          return;
+        }
+
+        $("#search-results").innerHTML = groups.join("");
+      }
+
+      async function selectCompany(id) {
+        const result = await app().apiFetch(
+          app().API_ENDPOINTS.ADMIN_COMPANY_DETAIL,
+          {
+            admin: true,
+            query: { id },
+          }
+        );
+
+        const contact =
+          (result.contacts || []).find((item) => item.is_primary) ||
+          result.contacts?.[0] ||
+          null;
+
+        state.selectedCompany = result.company;
+        state.selectedContact = contact;
+
+        fillSelectedCompany();
+        showPage("intake");
+        app().showToast("顧問先情報を受付フォームへ入力しました。");
+      }
+
+      async function selectContact(id) {
+        const result = await app().apiFetch(
+          app().API_ENDPOINTS.ADMIN_CONTACT_DETAIL,
+          {
+            admin: true,
+            query: { id },
+          }
+        );
+
+        state.selectedCompany = result.company;
+        state.selectedContact = result.contact;
+
+        fillSelectedCompany();
+        showPage("intake");
+        app().showToast("連絡担当者情報を受付フォームへ入力しました。");
+      }
+
+      function fillSelectedCompany() {
+        const company = state.selectedCompany;
+        const contact = state.selectedContact;
+
+        $("#selected-company-name").textContent =
+          company?.company_name || "顧問先が選択されていません";
+        $("#selected-company-detail").textContent = company
+          ? `${company.company_code}・${contact?.contact_name || "連絡担当者未選択"}・${app().formatPhone(contact?.phone || company.phone || "")}`
+          : "顧問先検索から選択するか、フォームへ直接入力してください。";
+
+        [
+          "#consultation-form",
+          "#procedure-form",
+          "#appointment-form",
+        ].forEach((selector) => {
+          const form = $(selector);
+          if (!form) return;
+
+          form.elements.company_code.value =
+            company?.company_code || "";
+          form.elements.contact_name.value =
+            contact?.contact_name || "";
+          form.elements.contact_phone.value =
+            contact?.phone || company?.phone || "";
+        });
+
+        const assignedStaffId =
+          company?.assigned_staff_id || "";
+
+        $$("[data-staff-select]").forEach((select) => {
+          if (assignedStaffId) select.value = assignedStaffId;
+        });
+
+        if (assignedStaffId) {
+          $("#appointment-staff").value = assignedStaffId;
+        }
+      }
+
+      function clearSelectedCompany() {
+        state.selectedCompany = null;
+        state.selectedContact = null;
+
+        [
+          "#consultation-form",
+          "#procedure-form",
+          "#appointment-form",
+        ].forEach((selector) => {
+          const form = $(selector);
+          if (!form) return;
+
+          form.elements.company_code.value = "";
+          form.elements.contact_name.value = "";
+          form.elements.contact_phone.value = "";
+        });
+
+        fillSelectedCompany();
+        app().showToast("選択中の顧問先を解除しました。", {
+          type: "warning",
+        });
+      }
+
+      async function submitIntake(type, form) {
+        const data = Object.fromEntries(new FormData(form).entries());
+        let endpoint;
+        const payload = { ...data };
+
+        if (type === "consultation") {
+          endpoint =
+            app().API_ENDPOINTS.ADMIN_CONSULTATION_MANUAL_CREATE;
+        } else if (type === "procedure") {
+          endpoint =
+            app().API_ENDPOINTS.ADMIN_PROCEDURE_MANUAL_CREATE;
+        } else {
+          endpoint =
+            app().API_ENDPOINTS.ADMIN_APPOINTMENT_MANUAL_CREATE;
+
+          payload.start_at = new Date(data.start_at).toISOString();
+          payload.end_at = data.end_at
+            ? new Date(data.end_at).toISOString()
+            : null;
+
+          const locationOrUrl = data.location_or_url?.trim();
+
+          delete payload.location_or_url;
+
+          if (locationOrUrl?.startsWith("http")) {
+            payload.meeting_url = locationOrUrl;
+          } else {
+            payload.location = locationOrUrl || null;
+          }
+
+          payload.source = "office";
+        }
+
+        const button = form.querySelector('[type="submit"]');
+
+        app().setButtonLoading(button, true, {
+          loadingText: "登録中...",
+        });
+        $("#intake-error").hidden = true;
+
+        try {
+          const result = await app().apiFetch(endpoint, {
+            method: "POST",
+            admin: true,
+            body: payload,
+            timeoutMs: 30000,
+          });
+
+          app().showToast(result.message || "受付を登録しました。");
+
+          form.reset();
+
+          if (state.selectedCompany) {
+            fillSelectedCompany();
+          }
+
+          if (type === "appointment") {
+            $("#appointment-form").elements.status.value = "confirmed";
+            $("#appointment-form").elements.method.value = "office";
+          }
+
+          await loadToday({ silent: true });
+          showPage("today");
+        } catch (error) {
+          $("#intake-error").textContent =
+            error?.message || "受付を登録できませんでした。";
+          $("#intake-error").hidden = false;
+        } finally {
+          app().setButtonLoading(button, false);
+        }
+      }
+
+      async function loadTemplates() {
+        $("#templates-list").innerHTML = `
+          <div class="loading">
+            <div>
+              <div class="spinner"></div>
+              <strong>文面を読み込んでいます</strong>
+            </div>
+          </div>
+        `;
+
+        try {
+          const result = await app().apiFetch(
+            app().API_ENDPOINTS.ADMIN_TEMPLATES,
+            { admin: true }
+          );
+
+          state.templates = result.templates || [];
+
+          $("#templates-list").innerHTML = state.templates.length
+            ? state.templates
+                .map(
+                  (item) => `
+                    <article class="template-card">
+                      <h3>${esc(item.template_name)}</h3>
+                      <pre>${esc(item.body_text)}</pre>
+                      <div class="template-actions">
+                        <button
+                          class="btn btn-primary"
+                          type="button"
+                          data-copy-template="${esc(item.id)}"
+                        >
+                          文面をコピー
+                        </button>
+                      </div>
+                    </article>
+                  `
+                )
+                .join("")
+            : empty(
+                "案内文面がありません",
+                "PC管理画面の文面テンプレートを確認してください。"
+              );
+        } catch (error) {
+          $("#templates-list").innerHTML = empty(
+            "文面を取得できませんでした",
+            error?.message || "通信を確認してください。"
+          );
+        }
+      }
+
+      async function copyTemplate(id) {
+        const template = state.templates.find((item) => item.id === id);
+        if (!template) return;
+
+        await app().copyText(template.body_text);
+
+        await app()
+          .apiFetch(app().API_ENDPOINTS.ADMIN_MESSAGE_LOG_COPY, {
+            method: "POST",
+            admin: true,
+            body: {
+              template_id: id,
+              message_body: template.body_text,
+            },
+          })
+          .catch(() => null);
+
+        app().showToast("文面をコピーしました。");
+      }
+
+      async function copyArrivalGuide() {
+        const text = `${state.publicConfig?.office?.office_name || app().OFFICE_NAME}です。
+
+本日の面談についてご案内します。
+ご来所されましたら、受付スタッフへ会社名とお名前をお伝えください。
+
+マイナンバー、本人確認書類、診断書などの高度な機密情報は、LINEへ送信せず、担当者が案内する方法でご提出ください。
+
+お気をつけてお越しください。`;
+
+        await app().copyText(text);
+        app().showToast("来所案内文面をコピーしました。");
+      }
+
+      async function openDetail(type, id) {
+        const endpoint = {
+          appointment: app().API_ENDPOINTS.ADMIN_APPOINTMENT_DETAIL,
+          company: app().API_ENDPOINTS.ADMIN_COMPANY_DETAIL,
+          contact: app().API_ENDPOINTS.ADMIN_CONTACT_DETAIL,
+        }[type];
+
+        $("#detail-title").textContent = "詳細を読み込み中";
+        $("#detail-subtitle").textContent = "情報を取得しています。";
+        $("#detail-body").innerHTML = `
+          <div class="loading">
+            <div>
+              <div class="spinner"></div>
+              <strong>詳細を取得しています</strong>
+            </div>
+          </div>
+        `;
+        $("#detail-dialog").showModal();
+
+        try {
+          const result = await app().apiFetch(endpoint, {
+            admin: true,
+            query: { id },
+          });
+
+          if (type === "appointment") {
+            renderAppointmentDetail(result);
+          } else if (type === "company") {
+            renderCompanyDetail(result);
+          } else {
+            renderContactDetail(result);
+          }
+        } catch (error) {
+          $("#detail-title").textContent =
+            "詳細を取得できませんでした";
+          $("#detail-body").innerHTML = empty(
+            "エラー",
+            error?.message || "通信を確認してください。"
+          );
+        }
+      }
+
+      function detailCells(cells) {
+        return `
+          <div class="detail-summary">
+            ${cells
+              .map(
+                ([label, value]) => `
+                  <div class="detail-cell">
+                    <span>${esc(label)}</span>
+                    <strong>${esc(value ?? "—")}</strong>
+                  </div>
+                `
+              )
+              .join("")}
+          </div>
+        `;
+      }
+
+      function renderAppointmentDetail(result) {
+        const item = result.appointment;
+
+        $("#detail-title").textContent = item.agenda || "面談予約";
+        $("#detail-subtitle").textContent =
+          `${item.appointment_code}・${result.company?.company_name || ""}`;
+
+        $("#detail-body").innerHTML = `
+          ${detailCells([
+            ["顧問先", result.company?.company_name],
+            ["連絡担当者", result.contact?.contact_name],
+            ["担当者", result.staff?.staff_name],
+            ["相談メニュー", result.service?.service_name],
+            ["開始日時", app().formatDateTime(item.start_at)],
+            ["終了日時", app().formatDateTime(item.end_at)],
+            ["相談方法", methodLabel(item.method)],
+            ["現在状況", item.status_label],
+          ])}
+
+          <div class="subsection">
+            <h3>相談内容</h3>
+            <div class="row">
+              <div class="row-main">
+                <div class="row-meta" style="white-space:pre-wrap">
+                  ${esc(item.agenda || "—")}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="dialog-actions">
+            ${
+              ["reserved", "confirmed"].includes(item.status)
+                ? `
+                  <button
+                    class="btn btn-primary"
+                    data-appointment-status="${esc(item.id)}"
+                    data-next-status="arrived"
+                  >
+                    来所受付
+                  </button>
+                `
+                : ""
+            }
+            ${
+              item.status === "arrived"
+                ? `
+                  <button
+                    class="btn btn-primary"
+                    data-appointment-status="${esc(item.id)}"
+                    data-next-status="in_meeting"
+                  >
+                    面談開始
+                  </button>
+                `
+                : ""
+            }
+            ${
+              item.status === "in_meeting"
+                ? `
+                  <button
+                    class="btn btn-success"
+                    data-appointment-status="${esc(item.id)}"
+                    data-next-status="completed"
+                  >
+                    面談完了
+                  </button>
+                `
+                : ""
+            }
+            <button class="btn btn-light" type="button" data-close-dialog="detail-dialog">閉じる</button>
+          </div>
+        `;
+      }
+
+      function renderCompanyDetail(result) {
+        const company = result.company;
+        const contacts = result.contacts || [];
+
+        $("#detail-title").textContent = company.company_name;
+        $("#detail-subtitle").textContent =
+          `${company.company_code}・顧問先詳細`;
+
+        $("#detail-body").innerHTML = `
+          ${detailCells([
+            ["顧問先番号", company.company_code],
+            ["電話番号", app().formatPhone(company.phone || "")],
+            ["業種", company.industry],
+            ["従業員規模", company.employee_size],
+            ["契約区分", company.contract_type],
+            ["顧問状態", company.company_status],
+            ["メール", company.email],
+            ["所在地", company.address],
+          ])}
+
+          <div class="subsection">
+            <h3>連絡担当者</h3>
+            <div class="list">
+              ${
+                contacts.length
+                  ? contacts
+                      .map(
+                        (contact) => `
+                          <div class="row">
+                            <div class="row-main">
+                              <div class="row-title">
+                                <strong>${esc(contact.contact_name)}</strong>
+                                <small>${esc(contact.contact_code)}</small>
+                              </div>
+                              <div class="row-meta">
+                                <span>${esc(contact.department || "")} ${esc(
+                                  contact.position_name || ""
+                                )}</span>
+                                <span>${esc(
+                                  app().formatPhone(contact.phone || "")
+                                )}</span>
+                              </div>
+                            </div>
+                            <div class="row-actions">
+                              <button
+                                class="mini-btn primary"
+                                data-select-contact="${esc(contact.id)}"
+                              >
+                                この担当者で受付
+                              </button>
+                            </div>
+                          </div>
+                        `
+                      )
+                      .join("")
+                  : empty(
+                      "連絡担当者がいません",
+                      "PC管理画面で担当者を登録してください。"
+                    )
+              }
+            </div>
+          </div>
+
+          <div class="dialog-actions">
+            <button
+              class="btn btn-primary"
+              data-select-company="${esc(company.id)}"
+            >
+              この顧問先で受付
+            </button>
+            <button class="btn btn-light" type="button" data-close-dialog="detail-dialog">閉じる</button>
+          </div>
+        `;
+      }
+
+      function renderContactDetail(result) {
+        const contact = result.contact;
+
+        $("#detail-title").textContent = contact.contact_name;
+        $("#detail-subtitle").textContent =
+          `${result.company?.company_name || ""}・連絡担当者詳細`;
+
+        $("#detail-body").innerHTML = `
+          ${detailCells([
+            ["会社", result.company?.company_name],
+            ["顧問先番号", result.company?.company_code],
+            ["担当者番号", contact.contact_code],
+            ["部署", contact.department],
+            ["役職", contact.position_name],
+            ["電話番号", app().formatPhone(contact.phone || "")],
+            ["メール", contact.email],
+            ["LINE連携", contact.line_user_id ? "連携済み" : "未連携"],
+          ])}
+
+          <div class="dialog-actions">
+            <button
+              class="btn btn-primary"
+              data-select-contact="${esc(contact.id)}"
+            >
+              この担当者で受付
+            </button>
+            <button class="btn btn-light" type="button" data-close-dialog="detail-dialog">閉じる</button>
+          </div>
+        `;
+      }
+
+      function bindEvents() {
+        $("#login-btn").addEventListener("click", authenticate);
+
+        $("#login-admin-code").addEventListener("keydown", (event) => {
+          if (event.key === "Enter") authenticate();
+        });
+
+        $("#clear-login-code-btn").addEventListener("click", () => {
+          $("#login-admin-code").value = "";
+          app().removeAdminCode();
+          $("#login-error").hidden = true;
+          $("#login-error").textContent = "";
+          $("#login-admin-code").focus();
+          app().showToast("管理コードを消去しました。", {
+            type: "warning",
+          });
+        });
+
+        $$(".menu-btn[data-page]").forEach((button) => {
+          button.addEventListener("click", () =>
+            showPage(button.dataset.page)
+          );
+        });
+
+        $$("[data-page-jump]").forEach((button) => {
+          button.addEventListener("click", () =>
+            showPage(button.dataset.pageJump)
+          );
+        });
+
+        $("#staff-filter").addEventListener("change", async () => {
+          await loadToday();
+        });
+
+        $("#refresh-btn").addEventListener("click", async (event) => {
+          app().setButtonLoading(event.currentTarget, true, {
+            loadingText: "更新中...",
+          });
+
+          try {
+            await loadToday();
+          } finally {
+            app().setButtonLoading(event.currentTarget, false);
+          }
+        });
+
+        $("#load-date-btn").addEventListener("click", async (event) => {
+          app().setButtonLoading(event.currentTarget, true, {
+            loadingText: "読込中...",
+          });
+
+          try {
+            await loadToday();
+          } finally {
+            app().setButtonLoading(event.currentTarget, false);
+          }
+        });
+
+        $("#today-btn").addEventListener("click", async () => {
+          $("#work-date").value = app().todayJst();
+          await loadToday();
+        });
+
+        $("#search-btn").addEventListener("click", runSearch);
+        $("#search-input").addEventListener("keydown", (event) => {
+          if (event.key === "Enter") runSearch();
+        });
+
+        $$(".intake-tab").forEach((button) => {
+          button.addEventListener("click", () => {
+            const pane = button.dataset.intake;
+
+            $$(".intake-tab").forEach((item) => {
+              item.classList.toggle("active", item === button);
+            });
+
+            $$(".intake-pane").forEach((section) => {
+              section.classList.toggle(
+                "active",
+                section.id === `intake-${pane}`
+              );
+            });
+          });
+        });
+
+        $("#clear-selected-company-btn").addEventListener(
+          "click",
+          clearSelectedCompany
+        );
+
+        $("#consultation-form").addEventListener("submit", (event) => {
+          event.preventDefault();
+          submitIntake("consultation", event.currentTarget);
+        });
+
+        $("#procedure-form").addEventListener("submit", (event) => {
+          event.preventDefault();
+          submitIntake("procedure", event.currentTarget);
+        });
+
+        $("#appointment-form").addEventListener("submit", (event) => {
+          event.preventDefault();
+          submitIntake("appointment", event.currentTarget);
+        });
+
+        $("#reload-templates-btn").addEventListener(
+          "click",
+          loadTemplates
+        );
+
+        $("#copy-arrival-guide-btn").addEventListener(
+          "click",
+          copyArrivalGuide
+        );
+
+        $("#system-check-btn").addEventListener("click", () => {
+          window.open(
+            "./system-check.html?v=CONSULT-5",
+            "_blank",
+            "noopener"
+          );
+        });
+
+        $("#owner-link-btn").addEventListener("click", () => {
+          window.open(
+            "./owner.html?v=CONSULT-8-R2",
+            "_blank",
+            "noopener"
+          );
+        });
+
+        $("#staff-link-btn").addEventListener("click", () => {
+          window.open(
+            "./staff.html?v=CONSULT-9-R1",
+            "_blank",
+            "noopener"
+          );
+        });
+
+        document.addEventListener("click", async (event) => {
+          const appointmentStatus = event.target.closest(
+            "[data-appointment-status]"
+          );
+          const taskComplete = event.target.closest(
+            "[data-task-complete]"
+          );
+          const detail = event.target.closest("[data-detail-type]");
+          const selectCompanyButton = event.target.closest(
+            "[data-select-company]"
+          );
+          const selectContactButton = event.target.closest(
+            "[data-select-contact]"
+          );
+          const copyTemplateButton = event.target.closest(
+            "[data-copy-template]"
+          );
+          const closeDialogButton = event.target.closest(
+            "[data-close-dialog]"
+          );
+
+          try {
+            if (appointmentStatus) {
+              await updateAppointmentStatus(
+                appointmentStatus.dataset.appointmentStatus,
+                appointmentStatus.dataset.nextStatus
+              );
+
+              if ($("#detail-dialog").open) {
+                $("#detail-dialog").close();
+              }
+            } else if (taskComplete) {
+              await completeTask(taskComplete.dataset.taskComplete);
+            } else if (detail) {
+              await openDetail(
+                detail.dataset.detailType,
+                detail.dataset.detailId
+              );
+            } else if (selectCompanyButton) {
+              await selectCompany(
+                selectCompanyButton.dataset.selectCompany
+              );
+
+              if ($("#detail-dialog").open) {
+                $("#detail-dialog").close();
+              }
+            } else if (selectContactButton) {
+              await selectContact(
+                selectContactButton.dataset.selectContact
+              );
+
+              if ($("#detail-dialog").open) {
+                $("#detail-dialog").close();
+              }
+            } else if (copyTemplateButton) {
+              await copyTemplate(
+                copyTemplateButton.dataset.copyTemplate
+              );
+            } else if (closeDialogButton) {
+              document
+                .getElementById(
+                  closeDialogButton.dataset.closeDialog
+                )
+                ?.close();
+            }
+          } catch (error) {
+            app().showToast(
+              error?.message || "処理できませんでした。",
+              { type: "error" }
+            );
+          }
+        });
+      }
+
+      async function bootstrap() {
+        bindEvents();
+        $("#work-date").value = app().todayJst();
+
+        if (app().hasAdminCode()) {
+          $("#login-admin-code").value = app().getAdminCode();
+
+          try {
+            await loadFoundation();
+            $("#login-overlay").hidden = true;
+          } catch {
+            app().removeAdminCode();
+            $("#login-overlay").hidden = false;
+          }
+        }
+      }
+
+      if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", bootstrap, {
+          once: true,
+        });
+      } else {
+        bootstrap();
+      }
+    })();
+  </script>
+</body>
+</html>
