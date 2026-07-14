@@ -979,7 +979,7 @@
 
     .login-actions {
       display: grid;
-      grid-template-columns: minmax(0,1fr) auto;
+      grid-template-columns: minmax(0,1fr) auto auto;
       gap: 8px;
     }
 
@@ -1127,6 +1127,21 @@
         width: 100%;
       }
     }
+  
+    @media (max-width: 520px) {
+      .login-actions {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .login-actions .input {
+        grid-column: 1 / -1;
+      }
+
+      .login-actions .btn {
+        width: 100%;
+      }
+    }
+
   </style>
 </head>
 <body>
@@ -1136,14 +1151,12 @@
       <h1>担当者ワーク画面</h1>
       <p>
         管理コードを入力すると、担当社労士・事務スタッフごとの
-        面談・相談・手続き・タスクを確認できます。デモ管理コードは1234です。
+        面談・相談・手続き・タスクを確認できます。
       </p>
       <div class="login-actions">
         <input class="input" id="login-admin-code" type="password" inputmode="numeric" autocomplete="off" placeholder="管理コード">
         <button class="btn btn-primary" id="login-btn" type="button">開く</button>
-      </div>
-      <div style="margin-top:9px">
-        <button class="btn btn-light" id="fill-admin-code-btn" type="button">1234を入力</button>
+        <button class="btn btn-light" id="clear-login-code-btn" type="button">消去</button>
       </div>
       <div class="error-box" id="login-error" hidden></div>
     </div>
@@ -1216,7 +1229,7 @@
         <section class="page-section active" id="page-today">
           <div class="hero">
             <div>
-              <div class="hero-eyebrow">STEP CONSULT-9 · STAFF WORK</div>
+              <div class="hero-eyebrow">STEP CONSULT-9-R1 · STAFF ID FIX</div>
               <h2>今日やる仕事を、<br>担当者ごとにまとめて確認</h2>
               <p>
                 本日の面談、期限タスク、担当中の労務相談・手続きを一画面に集約。
@@ -1539,10 +1552,11 @@
 
       function selectedStaffRole() {
         return {
+          admin: "代表・管理者",
           owner: "代表・管理者",
           sharoushi: "社会保険労務士",
           assistant: "事務スタッフ",
-          staff: "担当スタッフ",
+          staff: "事務スタッフ",
         }[state.selectedStaff?.role] || state.selectedStaff?.role || "担当スタッフ";
       }
 
@@ -1595,10 +1609,11 @@
               <option value="${esc(item.id)}">
                 ${esc(item.staff_name)}（${esc(
                   {
+                    admin: "管理者",
                     owner: "管理者",
                     sharoushi: "社労士",
                     assistant: "事務",
-                    staff: "スタッフ",
+                    staff: "事務",
                   }[item.role] || item.role || "担当"
                 )}）
               </option>
@@ -2878,8 +2893,15 @@ ${item.title}についてご連絡です。
         $("#login-admin-code").addEventListener("keydown", (event) => {
           if (event.key === "Enter") authenticate();
         });
-        $("#fill-admin-code-btn").addEventListener("click", () => {
-          $("#login-admin-code").value = app().DEFAULT_ADMIN_CODE;
+        $("#clear-login-code-btn").addEventListener("click", () => {
+          $("#login-admin-code").value = "";
+          app().removeAdminCode();
+          $("#login-error").hidden = true;
+          $("#login-error").textContent = "";
+          app().showToast("管理コードを消去しました。", {
+            type: "warning",
+          });
+          $("#login-admin-code").focus();
         });
 
         $$(".nav-btn[data-page]").forEach((button) => {
