@@ -1,0 +1,2166 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0f766e">
+  <meta name="robots" content="noindex,nofollow">
+  <title>DPRO 社労士・顧問先対応 LINE｜システムチェック</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f4f7f9;
+      --surface: #ffffff;
+      --surface-soft: #f8fafc;
+      --text: #17212b;
+      --muted: #637083;
+      --line: #dbe4ea;
+      --primary: #0f766e;
+      --primary-dark: #0b5f58;
+      --primary-soft: #e8f6f3;
+      --accent: #2563eb;
+      --success: #13795b;
+      --success-soft: #e8f7f0;
+      --warning: #a16207;
+      --warning-soft: #fff7dd;
+      --danger: #b42318;
+      --danger-soft: #fff0ee;
+      --neutral: #64748b;
+      --shadow: 0 12px 32px rgba(15, 23, 42, .08);
+      --radius-xl: 22px;
+      --radius-lg: 16px;
+      --radius-md: 12px;
+      --sidebar-width: 282px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-width: 320px;
+      background:
+        radial-gradient(circle at top left, rgba(15, 118, 110, .08), transparent 28rem),
+        var(--bg);
+      color: var(--text);
+      font-family:
+        -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans JP",
+        "Hiragino Kaku Gothic ProN", "Yu Gothic", Meiryo, sans-serif;
+      line-height: 1.65;
+    }
+
+    button, input {
+      font: inherit;
+    }
+
+    button, a {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .app {
+      min-height: 100vh;
+    }
+
+    .sidebar {
+      position: fixed;
+      inset: 0 auto 0 0;
+      width: var(--sidebar-width);
+      padding: 24px 18px;
+      overflow-y: auto;
+      background: #0d2e2c;
+      color: #ffffff;
+      z-index: 20;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 4px 8px 22px;
+      border-bottom: 1px solid rgba(255,255,255,.13);
+    }
+
+    .brand-mark {
+      display: grid;
+      place-items: center;
+      flex: 0 0 auto;
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
+      background: linear-gradient(145deg, #2dd4bf, #0f766e);
+      box-shadow: 0 10px 24px rgba(0, 0, 0, .18);
+      font-size: 20px;
+      font-weight: 900;
+      letter-spacing: -.04em;
+    }
+
+    .brand strong {
+      display: block;
+      font-size: 15px;
+      line-height: 1.4;
+    }
+
+    .brand small {
+      color: rgba(255,255,255,.67);
+      font-size: 11px;
+    }
+
+    .side-label {
+      margin: 24px 10px 8px;
+      color: rgba(255,255,255,.5);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    .side-nav {
+      display: grid;
+      gap: 5px;
+    }
+
+    .side-nav a {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-height: 44px;
+      padding: 10px 12px;
+      border-radius: 11px;
+      color: rgba(255,255,255,.76);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 700;
+      transition: .16s ease;
+    }
+
+    .side-nav a:hover,
+    .side-nav a:focus-visible {
+      background: rgba(255,255,255,.1);
+      color: #ffffff;
+      outline: none;
+    }
+
+    .side-nav svg {
+      width: 18px;
+      height: 18px;
+      flex: 0 0 auto;
+    }
+
+    .side-status {
+      margin-top: 26px;
+      padding: 16px;
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 15px;
+      background: rgba(255,255,255,.06);
+    }
+
+    .side-status-title {
+      margin-bottom: 8px;
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .side-status-value {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #d7fff7;
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .side-status p {
+      margin: 8px 0 0;
+      color: rgba(255,255,255,.58);
+      font-size: 11px;
+      line-height: 1.6;
+    }
+
+    .main {
+      margin-left: var(--sidebar-width);
+      padding: 28px;
+    }
+
+    .container {
+      width: min(1240px, 100%);
+      margin: 0 auto;
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      justify-content: space-between;
+      gap: 24px;
+      min-height: 214px;
+      padding: 30px;
+      border-radius: var(--radius-xl);
+      background:
+        linear-gradient(135deg, rgba(15,118,110,.96), rgba(9,78,73,.98));
+      color: #ffffff;
+      box-shadow: var(--shadow);
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      top: -90px;
+      right: -50px;
+      width: 310px;
+      height: 310px;
+      border: 60px solid rgba(255,255,255,.07);
+      border-radius: 50%;
+    }
+
+    .hero-copy {
+      position: relative;
+      z-index: 1;
+      max-width: 760px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      margin-bottom: 13px;
+      padding: 5px 10px;
+      border: 1px solid rgba(255,255,255,.22);
+      border-radius: 999px;
+      background: rgba(255,255,255,.1);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .08em;
+    }
+
+    .hero h1 {
+      margin: 0;
+      font-size: clamp(26px, 4vw, 42px);
+      line-height: 1.24;
+      letter-spacing: -.035em;
+    }
+
+    .hero p {
+      max-width: 680px;
+      margin: 14px 0 0;
+      color: rgba(255,255,255,.78);
+      font-size: 14px;
+    }
+
+    .hero-meta {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      align-content: start;
+      gap: 9px;
+      flex: 0 0 270px;
+    }
+
+    .meta-item {
+      padding: 11px 13px;
+      border: 1px solid rgba(255,255,255,.16);
+      border-radius: 12px;
+      background: rgba(255,255,255,.09);
+    }
+
+    .meta-item span {
+      display: block;
+      color: rgba(255,255,255,.6);
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: .08em;
+    }
+
+    .meta-item strong {
+      display: block;
+      overflow-wrap: anywhere;
+      margin-top: 2px;
+      font-size: 12px;
+    }
+
+    .toolbar {
+      position: sticky;
+      top: 12px;
+      z-index: 10;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 10px;
+      margin: 18px 0;
+      padding: 13px;
+      border: 1px solid rgba(219,228,234,.92);
+      border-radius: 16px;
+      background: rgba(255,255,255,.9);
+      box-shadow: 0 8px 24px rgba(15,23,42,.07);
+      backdrop-filter: blur(12px);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-height: 42px;
+      padding: 9px 15px;
+      border: 1px solid transparent;
+      border-radius: 11px;
+      cursor: pointer;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 800;
+      transition: transform .14s ease, box-shadow .14s ease, background .14s ease;
+    }
+
+    .btn:hover:not(:disabled) {
+      transform: translateY(-1px);
+    }
+
+    .btn:focus-visible {
+      outline: 3px solid rgba(37,99,235,.22);
+      outline-offset: 2px;
+    }
+
+    .btn:disabled {
+      opacity: .58;
+      cursor: not-allowed;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: #ffffff;
+      box-shadow: 0 8px 18px rgba(15,118,110,.18);
+    }
+
+    .btn-primary:hover:not(:disabled) {
+      background: var(--primary-dark);
+    }
+
+    .btn-accent {
+      background: var(--accent);
+      color: #ffffff;
+      box-shadow: 0 8px 18px rgba(37,99,235,.16);
+    }
+
+    .btn-light {
+      border-color: var(--line);
+      background: #ffffff;
+      color: var(--text);
+    }
+
+    .btn-danger-light {
+      border-color: #f5c2bd;
+      background: var(--danger-soft);
+      color: var(--danger);
+    }
+
+    .btn svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    .toolbar-note {
+      margin-left: auto;
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    .grid {
+      display: grid;
+      gap: 18px;
+    }
+
+    .grid-2 {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .grid-3 {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .section {
+      scroll-margin-top: 90px;
+      margin-top: 18px;
+    }
+
+    .section-title {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 14px;
+      margin: 0 2px 10px;
+    }
+
+    .section-title h2 {
+      margin: 0;
+      font-size: 19px;
+      letter-spacing: -.02em;
+    }
+
+    .section-title p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    .card {
+      min-width: 0;
+      padding: 20px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      background: var(--surface);
+      box-shadow: 0 5px 18px rgba(15,23,42,.045);
+    }
+
+    .card-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 14px;
+      margin-bottom: 16px;
+    }
+
+    .card-header h3 {
+      margin: 0;
+      font-size: 15px;
+    }
+
+    .card-header p {
+      margin: 4px 0 0;
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    .status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      flex: 0 0 auto;
+      min-height: 29px;
+      padding: 5px 9px;
+      border-radius: 999px;
+      font-size: 10px;
+      font-weight: 900;
+      white-space: nowrap;
+    }
+
+    .status-pill::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: currentColor;
+    }
+
+    .status-wait {
+      background: #eef2f7;
+      color: var(--neutral);
+    }
+
+    .status-loading {
+      background: #eaf2ff;
+      color: var(--accent);
+    }
+
+    .status-ok {
+      background: var(--success-soft);
+      color: var(--success);
+    }
+
+    .status-warning {
+      background: var(--warning-soft);
+      color: var(--warning);
+    }
+
+    .status-ng {
+      background: var(--danger-soft);
+      color: var(--danger);
+    }
+
+    .auth-row {
+      display: grid;
+      grid-template-columns: minmax(140px, 1fr) auto auto auto;
+      gap: 9px;
+    }
+
+    .input {
+      width: 100%;
+      min-height: 43px;
+      padding: 9px 12px;
+      border: 1px solid #cbd6df;
+      border-radius: 10px;
+      background: #ffffff;
+      color: var(--text);
+      outline: none;
+      font-weight: 700;
+    }
+
+    .input:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(15,118,110,.12);
+    }
+
+    .help {
+      margin: 11px 0 0;
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    .check-list {
+      display: grid;
+      gap: 9px;
+    }
+
+    .check-row {
+      display: grid;
+      grid-template-columns: 28px minmax(0, 1fr) auto;
+      align-items: center;
+      gap: 10px;
+      min-height: 54px;
+      padding: 9px 11px;
+      border: 1px solid #e5ebf0;
+      border-radius: 11px;
+      background: var(--surface-soft);
+    }
+
+    .check-icon {
+      display: grid;
+      place-items: center;
+      width: 28px;
+      height: 28px;
+      border-radius: 9px;
+      background: #e9eef3;
+      color: var(--neutral);
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .check-row[data-state="ok"] .check-icon {
+      background: var(--success-soft);
+      color: var(--success);
+    }
+
+    .check-row[data-state="loading"] .check-icon {
+      background: #eaf2ff;
+      color: var(--accent);
+    }
+
+    .check-row[data-state="warning"] .check-icon {
+      background: var(--warning-soft);
+      color: var(--warning);
+    }
+
+    .check-row[data-state="ng"] .check-icon {
+      background: var(--danger-soft);
+      color: var(--danger);
+    }
+
+    .check-name {
+      min-width: 0;
+    }
+
+    .check-name strong {
+      display: block;
+      font-size: 12px;
+    }
+
+    .check-name small {
+      display: block;
+      overflow-wrap: anywhere;
+      margin-top: 2px;
+      color: var(--muted);
+      font-size: 10px;
+    }
+
+    .check-result {
+      max-width: 190px;
+      overflow-wrap: anywhere;
+      color: var(--muted);
+      font-size: 10px;
+      font-weight: 800;
+      text-align: right;
+    }
+
+    .metrics {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .metric {
+      min-width: 0;
+      padding: 14px;
+      border: 1px solid #e2e9ee;
+      border-radius: 12px;
+      background: var(--surface-soft);
+    }
+
+    .metric span {
+      display: block;
+      color: var(--muted);
+      font-size: 10px;
+      font-weight: 800;
+    }
+
+    .metric strong {
+      display: block;
+      margin-top: 4px;
+      font-size: 24px;
+      line-height: 1.2;
+      letter-spacing: -.03em;
+    }
+
+    .metric small {
+      display: block;
+      margin-top: 3px;
+      color: var(--muted);
+      font-size: 9px;
+    }
+
+    .demo-panel {
+      padding: 17px;
+      border: 1px solid #bee5da;
+      border-radius: 14px;
+      background: linear-gradient(135deg, #f2fbf8, #ffffff);
+    }
+
+    .demo-panel h4 {
+      margin: 0 0 6px;
+      font-size: 14px;
+    }
+
+    .demo-panel p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    .demo-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+      margin-top: 13px;
+    }
+
+    .url-list {
+      display: grid;
+      gap: 9px;
+    }
+
+    .url-row {
+      display: grid;
+      grid-template-columns: 152px minmax(0, 1fr) auto auto;
+      align-items: center;
+      gap: 9px;
+      padding: 10px 11px;
+      border: 1px solid #e3eaf0;
+      border-radius: 11px;
+      background: var(--surface-soft);
+    }
+
+    .url-name {
+      font-size: 11px;
+      font-weight: 900;
+    }
+
+    .url-text {
+      min-width: 0;
+      overflow: hidden;
+      color: var(--muted);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 10px;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .mini-btn {
+      min-width: 56px;
+      min-height: 34px;
+      padding: 6px 9px;
+      border: 1px solid var(--line);
+      border-radius: 9px;
+      background: #ffffff;
+      color: var(--text);
+      cursor: pointer;
+      font-size: 10px;
+      font-weight: 900;
+    }
+
+    .mini-btn:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+
+    .page-badge {
+      display: inline-flex;
+      justify-content: center;
+      min-width: 62px;
+      padding: 4px 7px;
+      border-radius: 999px;
+      background: #eef2f7;
+      color: var(--neutral);
+      font-size: 9px;
+      font-weight: 900;
+    }
+
+    .page-badge.ok {
+      background: var(--success-soft);
+      color: var(--success);
+    }
+
+    .page-badge.future {
+      background: var(--warning-soft);
+      color: var(--warning);
+    }
+
+    .result-panel {
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr);
+      gap: 16px;
+      align-items: center;
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      background: var(--surface);
+    }
+
+    .result-mark {
+      display: grid;
+      place-items: center;
+      width: 74px;
+      height: 74px;
+      border-radius: 22px;
+      background: #eef2f7;
+      color: var(--neutral);
+      font-size: 31px;
+      font-weight: 950;
+    }
+
+    .result-panel[data-state="ok"] {
+      border-color: #a8decf;
+      background: linear-gradient(135deg, #f0fbf7, #ffffff);
+    }
+
+    .result-panel[data-state="ok"] .result-mark {
+      background: var(--success-soft);
+      color: var(--success);
+    }
+
+    .result-panel[data-state="warning"] {
+      border-color: #ead48d;
+      background: linear-gradient(135deg, #fffaf0, #ffffff);
+    }
+
+    .result-panel[data-state="warning"] .result-mark {
+      background: var(--warning-soft);
+      color: var(--warning);
+    }
+
+    .result-panel[data-state="ng"] {
+      border-color: #efbbb5;
+      background: linear-gradient(135deg, #fff5f3, #ffffff);
+    }
+
+    .result-panel[data-state="ng"] .result-mark {
+      background: var(--danger-soft);
+      color: var(--danger);
+    }
+
+    .result-copy h3 {
+      margin: 0;
+      font-size: 20px;
+    }
+
+    .result-copy p {
+      margin: 6px 0 0;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .raw {
+      display: none;
+      max-height: 330px;
+      overflow: auto;
+      margin: 12px 0 0;
+      padding: 13px;
+      border-radius: 11px;
+      background: #0f172a;
+      color: #cbd5e1;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 10px;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+
+    .raw.open {
+      display: block;
+    }
+
+    .footer {
+      padding: 26px 6px 8px;
+      color: var(--muted);
+      font-size: 10px;
+      text-align: center;
+    }
+
+    .mobile-header {
+      display: none;
+    }
+
+    @media (max-width: 1020px) {
+      .sidebar {
+        display: none;
+      }
+
+      .mobile-header {
+        position: sticky;
+        top: 0;
+        z-index: 30;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        min-height: 58px;
+        padding: 9px 14px;
+        background: #0d2e2c;
+        color: #ffffff;
+        box-shadow: 0 4px 16px rgba(15,23,42,.16);
+      }
+
+      .mobile-header strong {
+        font-size: 12px;
+      }
+
+      .mobile-header span {
+        color: rgba(255,255,255,.62);
+        font-size: 9px;
+      }
+
+      .main {
+        margin-left: 0;
+        padding: 16px;
+      }
+
+      .hero {
+        min-height: 0;
+      }
+
+      .hero-meta {
+        flex-basis: 220px;
+      }
+    }
+
+    @media (max-width: 780px) {
+      .hero {
+        display: block;
+        padding: 23px;
+      }
+
+      .hero-meta {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        margin-top: 20px;
+      }
+
+      .grid-2,
+      .grid-3 {
+        grid-template-columns: 1fr;
+      }
+
+      .metrics {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .auth-row {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .auth-row .input {
+        grid-column: 1 / -1;
+      }
+
+      .url-row {
+        grid-template-columns: 1fr auto auto;
+      }
+
+      .url-name,
+      .url-text {
+        grid-column: 1 / -1;
+      }
+
+      .toolbar-note {
+        width: 100%;
+        margin-left: 0;
+      }
+    }
+
+    @media (max-width: 460px) {
+      .main {
+        padding: 12px;
+      }
+
+      .hero {
+        border-radius: 17px;
+      }
+
+      .hero h1 {
+        font-size: 25px;
+      }
+
+      .hero-meta {
+        grid-template-columns: 1fr;
+      }
+
+      .toolbar {
+        top: 64px;
+      }
+
+      .toolbar .btn {
+        flex: 1 1 calc(50% - 8px);
+      }
+
+      .metrics {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .check-row {
+        grid-template-columns: 28px minmax(0, 1fr);
+      }
+
+      .check-result {
+        grid-column: 2;
+        max-width: none;
+        text-align: left;
+      }
+
+      .result-panel {
+        grid-template-columns: 1fr;
+      }
+
+      .result-mark {
+        width: 58px;
+        height: 58px;
+        border-radius: 17px;
+        font-size: 25px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <header class="mobile-header">
+      <div>
+        <strong>DPRO 社労士・顧問先対応 LINE</strong><br>
+        <span>内部システムチェック</span>
+      </div>
+      <span>STEP CONSULT-5</span>
+    </header>
+
+    <aside class="sidebar" aria-label="ページ内メニュー">
+      <div class="brand">
+        <div class="brand-mark">D</div>
+        <div>
+          <strong>DPRO 社労士・顧問先対応 LINE</strong>
+          <small>Internal System Check</small>
+        </div>
+      </div>
+
+      <div class="side-label">確認メニュー</div>
+      <nav class="side-nav">
+        <a href="#summary">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 13h6V4H4v9Zm0 7h6v-4H4v4Zm10 0h6v-9h-6v9Zm0-16v4h6V4h-6Z"/></svg>
+          全体状況
+        </a>
+        <a href="#admin-code">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          管理コード
+        </a>
+        <a href="#core-check">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 11 3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+          API・DB確認
+        </a>
+        <a href="#demo">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><polyline points="3.29 7 12 12 20.71 7"/><line x1="12" y1="22" x2="12" y2="12"/></svg>
+          営業前デモ準備
+        </a>
+        <a href="#urls">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.07.07l2-2a5 5 0 0 0-7.07-7.07l-1.15 1.15"/><path d="M14 11a5 5 0 0 0-7.07-.07l-2 2A5 5 0 0 0 12 20l1.15-1.15"/></svg>
+          画面・URL
+        </a>
+        <a href="#final">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m8 12 2.5 2.5L16 9"/></svg>
+          最終判定
+        </a>
+      </nav>
+
+      <div class="side-status">
+        <div class="side-status-title">現在の判定</div>
+        <div class="side-status-value">
+          <span id="side-status-dot">●</span>
+          <span id="side-status-text">確認前</span>
+        </div>
+        <p>営業前は「一括チェック」と「デモ準備」を実行してください。</p>
+      </div>
+    </aside>
+
+    <main class="main">
+      <div class="container">
+        <section class="hero" id="summary">
+          <div class="hero-copy">
+            <div class="eyebrow">INTERNAL CHECK · STEP CONSULT-5</div>
+            <h1>営業前システムチェック</h1>
+            <p>
+              API・Supabase・管理認証・デモデータ・各画面URLをまとめて確認します。
+              この画面は営業担当・開発担当向けの内部確認用です。
+            </p>
+          </div>
+          <div class="hero-meta">
+            <div class="meta-item">
+              <span>OFFICE CODE</span>
+              <strong id="hero-office-code">dpro_consult_demo</strong>
+            </div>
+            <div class="meta-item">
+              <span>CONFIG VERSION</span>
+              <strong id="hero-config-version">確認中</strong>
+            </div>
+            <div class="meta-item">
+              <span>WORKER VERSION</span>
+              <strong id="hero-worker-version">未確認</strong>
+            </div>
+          </div>
+        </section>
+
+        <div class="toolbar">
+          <button class="btn btn-primary" id="run-all-btn" type="button">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 11 3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+            一括チェック
+          </button>
+          <button class="btn btn-accent" id="prepare-demo-top-btn" type="button">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M2 12h20"/></svg>
+            営業前デモ準備
+          </button>
+          <button class="btn btn-light" id="copy-all-urls-btn" type="button">
+            URLをまとめてコピー
+          </button>
+          <span class="toolbar-note" id="last-checked">最終確認：まだ実行していません</span>
+        </div>
+
+        <section class="section grid grid-2" id="admin-code">
+          <article class="card">
+            <div class="card-header">
+              <div>
+                <h3>管理コード</h3>
+                <p>管理画面・デモ準備APIの認証に使用します。</p>
+              </div>
+              <span class="status-pill status-wait" id="admin-code-status">未保存</span>
+            </div>
+
+            <div class="auth-row">
+              <input
+                class="input"
+                id="admin-code-input"
+                type="password"
+                inputmode="numeric"
+                autocomplete="off"
+                placeholder="管理コードを入力"
+                aria-label="管理コード"
+              >
+              <button class="btn btn-primary" id="save-admin-code-btn" type="button">保存</button>
+              <button class="btn btn-light" id="fill-demo-code-btn" type="button">1234入力</button>
+              <button class="btn btn-danger-light" id="remove-admin-code-btn" type="button">消去</button>
+            </div>
+            <p class="help">
+              デモ管理コードは <strong>1234</strong> です。保存・消去後は画面に反応を表示します。
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="card-header">
+              <div>
+                <h3>接続情報</h3>
+                <p>現在参照しているWorkerとGitHub Pagesです。</p>
+              </div>
+              <span class="status-pill status-wait" id="connection-status">未確認</span>
+            </div>
+            <div class="check-list">
+              <div class="check-row" data-state="wait">
+                <div class="check-icon">W</div>
+                <div class="check-name">
+                  <strong>Cloudflare Worker</strong>
+                  <small id="worker-url-text">読み込み中</small>
+                </div>
+                <div class="check-result" id="worker-url-result">—</div>
+              </div>
+              <div class="check-row" data-state="wait">
+                <div class="check-icon">G</div>
+                <div class="check-name">
+                  <strong>GitHub Pages</strong>
+                  <small id="github-url-text">読み込み中</small>
+                </div>
+                <div class="check-result" id="github-url-result">—</div>
+              </div>
+            </div>
+          </article>
+        </section>
+
+        <section class="section" id="core-check">
+          <div class="section-title">
+            <div>
+              <h2>API・DB・共通機能チェック</h2>
+              <p>営業前に必要な基盤項目を確認します。</p>
+            </div>
+            <button class="btn btn-light" id="toggle-raw-btn" type="button">通信結果を表示</button>
+          </div>
+
+          <article class="card">
+            <div class="check-list">
+              <div class="check-row" id="check-config" data-state="wait">
+                <div class="check-icon">1</div>
+                <div class="check-name">
+                  <strong>config.js 読み込み</strong>
+                  <small>DPRO_CONSULT共通設定が利用できること</small>
+                </div>
+                <div class="check-result">未確認</div>
+              </div>
+
+              <div class="check-row" id="check-health" data-state="wait">
+                <div class="check-icon">2</div>
+                <div class="check-name">
+                  <strong>Worker API接続</strong>
+                  <small>/api/health が正常応答すること</small>
+                </div>
+                <div class="check-result">未確認</div>
+              </div>
+
+              <div class="check-row" id="check-db" data-state="wait">
+                <div class="check-icon">3</div>
+                <div class="check-name">
+                  <strong>Supabase接続</strong>
+                  <small>Worker経由で事務所データを取得できること</small>
+                </div>
+                <div class="check-result">未確認</div>
+              </div>
+
+              <div class="check-row" id="check-office" data-state="wait">
+                <div class="check-icon">4</div>
+                <div class="check-name">
+                  <strong>office_code確認</strong>
+                  <small>dpro_consult_demo が取得できること</small>
+                </div>
+                <div class="check-result">未確認</div>
+              </div>
+
+              <div class="check-row" id="check-public-config" data-state="wait">
+                <div class="check-icon">5</div>
+                <div class="check-name">
+                  <strong>公開設定取得</strong>
+                  <small>営業時間・注意書き・受付設定を取得できること</small>
+                </div>
+                <div class="check-result">未確認</div>
+              </div>
+
+              <div class="check-row" id="check-options" data-state="wait">
+                <div class="check-icon">6</div>
+                <div class="check-name">
+                  <strong>相談・手続きマスタ</strong>
+                  <small>相談分類・手続き種別・予約メニューを取得できること</small>
+                </div>
+                <div class="check-result">未確認</div>
+              </div>
+
+              <div class="check-row" id="check-admin" data-state="wait">
+                <div class="check-icon">7</div>
+                <div class="check-name">
+                  <strong>管理コード認証</strong>
+                  <small>管理コードで管理APIへ接続できること</small>
+                </div>
+                <div class="check-result">未確認</div>
+              </div>
+
+              <div class="check-row" id="check-dashboard" data-state="wait">
+                <div class="check-icon">8</div>
+                <div class="check-name">
+                  <strong>管理ダッシュボード</strong>
+                  <small>顧問先・相談・手続き・面談・タスク件数を取得できること</small>
+                </div>
+                <div class="check-result">未確認</div>
+              </div>
+
+              <div class="check-row" id="check-phone" data-state="wait">
+                <div class="check-icon">9</div>
+                <div class="check-name">
+                  <strong>電話番号正規化</strong>
+                  <small>ハイフン・空白・全角・+81を同一判定できること</small>
+                </div>
+                <div class="check-result">未確認</div>
+              </div>
+
+              <div class="check-row" id="check-linebreak" data-state="wait">
+                <div class="check-icon">10</div>
+                <div class="check-name">
+                  <strong>LINE文面改行補正</strong>
+                  <small>「\n」が文字のまま表示されないこと</small>
+                </div>
+                <div class="check-result">未確認</div>
+              </div>
+            </div>
+
+            <pre class="raw" id="raw-output" aria-live="polite">通信結果はまだありません。</pre>
+          </article>
+        </section>
+
+        <section class="section" id="demo">
+          <div class="section-title">
+            <div>
+              <h2>営業前デモ準備</h2>
+              <p>デモ日付・面談・期限・タスクを今日に合わせて整えます。</p>
+            </div>
+          </div>
+
+          <div class="grid grid-2">
+            <article class="card">
+              <div class="demo-panel">
+                <h4>営業前デモデータを整える</h4>
+                <p>
+                  既存のデモ顧問先3社を維持し、面談・書類待ち・返信待ち・期限タスクを
+                  今日のデモで見せやすい状態へ戻します。
+                </p>
+                <div class="demo-actions">
+                  <button class="btn btn-accent" id="prepare-demo-btn" type="button">
+                    営業前デモ準備を実行
+                  </button>
+                  <button class="btn btn-light" id="refresh-dashboard-btn" type="button">
+                    件数だけ再確認
+                  </button>
+                </div>
+              </div>
+
+              <div style="margin-top:14px" class="check-list">
+                <div class="check-row" id="check-demo" data-state="wait">
+                  <div class="check-icon">D</div>
+                  <div class="check-name">
+                    <strong>デモ準備API</strong>
+                    <small>デモ事務所限定・production_guard有効</small>
+                  </div>
+                  <div class="check-result">未実行</div>
+                </div>
+              </div>
+            </article>
+
+            <article class="card">
+              <div class="card-header">
+                <div>
+                  <h3>デモ表示件数</h3>
+                  <p>ダッシュボードAPIから取得した現在値です。</p>
+                </div>
+                <span class="status-pill status-wait" id="dashboard-count-status">未取得</span>
+              </div>
+
+              <div class="metrics">
+                <div class="metric">
+                  <span>顧問先企業</span>
+                  <strong id="metric-companies">—</strong>
+                  <small>目安：3社</small>
+                </div>
+                <div class="metric">
+                  <span>本日の面談</span>
+                  <strong id="metric-appointments">—</strong>
+                  <small>目安：1件</small>
+                </div>
+                <div class="metric">
+                  <span>書類待ち</span>
+                  <strong id="metric-documents">—</strong>
+                  <small>目安：1件以上</small>
+                </div>
+                <div class="metric">
+                  <span>返信待ち</span>
+                  <strong id="metric-waiting-client">—</strong>
+                  <small>目安：1件以上</small>
+                </div>
+                <div class="metric">
+                  <span>対応中手続き</span>
+                  <strong id="metric-procedures">—</strong>
+                  <small>目安：2件</small>
+                </div>
+                <div class="metric">
+                  <span>相談案件</span>
+                  <strong id="metric-consultations">—</strong>
+                  <small>目安：1件</small>
+                </div>
+                <div class="metric">
+                  <span>書類要確認</span>
+                  <strong id="metric-document-attention">—</strong>
+                  <small>案内・一部受領等</small>
+                </div>
+                <div class="metric">
+                  <span>未完了タスク</span>
+                  <strong id="metric-tasks">—</strong>
+                  <small>目安：4件</small>
+                </div>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="section" id="urls">
+          <div class="section-title">
+            <div>
+              <h2>確認URL</h2>
+              <p>次STEP以降で各画面を追加すると、自動で存在確認できます。</p>
+            </div>
+            <button class="btn btn-light" id="check-pages-btn" type="button">画面存在確認</button>
+          </div>
+
+          <article class="card">
+            <div class="url-list" id="url-list"></div>
+            <p class="help">
+              `index.html`・`member.html`・`owner.html`・`staff.html`・`owner-ipad.html` は次STEP以降で作成します。
+              現時点で「今後作成」と表示されても異常ではありません。
+            </p>
+          </article>
+        </section>
+
+        <section class="section" id="final">
+          <div class="section-title">
+            <div>
+              <h2>最終判定</h2>
+              <p>API基盤10項目とデモ準備状況から判定します。</p>
+            </div>
+          </div>
+
+          <div class="result-panel" id="final-result" data-state="wait">
+            <div class="result-mark" id="final-result-mark">—</div>
+            <div class="result-copy">
+              <h3 id="final-result-title">一括チェックを実行してください</h3>
+              <p id="final-result-message">
+                管理コードを保存し、上部の「一括チェック」を押してください。
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <footer class="footer">
+          DPRO 社労士・顧問先対応 LINE · STEP CONSULT-5 · 内部確認用
+        </footer>
+      </div>
+    </main>
+  </div>
+
+  <script src="./config.js?v=CONSULT-4-CONFIG-20260714"></script>
+  <script>
+    (() => {
+      "use strict";
+
+      const CHECK_IDS = [
+        "config",
+        "health",
+        "db",
+        "office",
+        "public-config",
+        "options",
+        "admin",
+        "dashboard",
+        "phone",
+        "linebreak",
+      ];
+
+      const state = {
+        checks: Object.fromEntries(CHECK_IDS.map((id) => [id, "wait"])),
+        health: null,
+        publicConfig: null,
+        options: null,
+        dashboard: null,
+        demoPrepared: false,
+        raw: [],
+      };
+
+      const $ = (selector) => document.querySelector(selector);
+
+      const urls = [
+        {
+          key: "system-check",
+          name: "システムチェック",
+          url: "https://dpromstk2000-lab.github.io/dpro-consult-line/system-check.html",
+          current: true,
+        },
+        {
+          key: "index",
+          name: "顧問先受付トップ",
+          url: "https://dpromstk2000-lab.github.io/dpro-consult-line/index.html",
+          future: true,
+        },
+        {
+          key: "member",
+          name: "顧問先マイページ",
+          url: "https://dpromstk2000-lab.github.io/dpro-consult-line/member.html",
+          future: true,
+        },
+        {
+          key: "owner",
+          name: "事務所PC管理",
+          url: "https://dpromstk2000-lab.github.io/dpro-consult-line/owner.html",
+          future: true,
+        },
+        {
+          key: "staff",
+          name: "担当者・スタッフ",
+          url: "https://dpromstk2000-lab.github.io/dpro-consult-line/staff.html",
+          future: true,
+        },
+        {
+          key: "owner-ipad",
+          name: "受付iPad",
+          url: "https://dpromstk2000-lab.github.io/dpro-consult-line/owner-ipad.html",
+          future: true,
+        },
+        {
+          key: "health",
+          name: "Worker health",
+          url: "https://dpro-consult-line-api.dpromstk2000.workers.dev/api/health",
+        },
+        {
+          key: "config",
+          name: "config.js",
+          url: "https://dpromstk2000-lab.github.io/dpro-consult-line/config.js?v=CONSULT-4-CONFIG-20260714",
+        },
+      ];
+
+      function config() {
+        if (!window.DPRO_CONSULT) {
+          throw new Error("config.jsを読み込めませんでした。GitHubへの配置を確認してください。");
+        }
+        return window.DPRO_CONSULT;
+      }
+
+      function setPill(element, type, text) {
+        if (!element) return;
+        element.className = `status-pill status-${type}`;
+        element.textContent = text;
+      }
+
+      function setCheck(id, checkState, resultText) {
+        state.checks[id] = checkState;
+
+        const row = $(`#check-${id}`);
+        if (!row) return;
+
+        row.dataset.state = checkState;
+        const icon = row.querySelector(".check-icon");
+        const result = row.querySelector(".check-result");
+
+        if (icon) {
+          icon.textContent =
+            checkState === "ok"
+              ? "✓"
+              : checkState === "ng"
+                ? "!"
+                : checkState === "loading"
+                  ? "…"
+                  : checkState === "warning"
+                    ? "△"
+                    : "—";
+        }
+
+        if (result) {
+          result.textContent = resultText || (
+            checkState === "ok"
+              ? "OK"
+              : checkState === "ng"
+                ? "エラー"
+                : checkState === "loading"
+                  ? "確認中"
+                  : "未確認"
+          );
+        }
+
+        updateFinalResult();
+      }
+
+      function addRaw(label, payload) {
+        state.raw.unshift({
+          time: new Date().toLocaleTimeString("ja-JP"),
+          label,
+          payload,
+        });
+
+        state.raw = state.raw.slice(0, 12);
+        $("#raw-output").textContent = state.raw
+          .map((item) =>
+            `[${item.time}] ${item.label}\n${JSON.stringify(item.payload, null, 2)}`
+          )
+          .join("\n\n----------------------------------------\n\n");
+      }
+
+      function errorMessage(error) {
+        return (
+          error?.message ||
+          error?.payload?.error ||
+          "確認中にエラーが発生しました。"
+        );
+      }
+
+      function updateAdminStatus() {
+        let stored = false;
+
+        try {
+          stored = config().hasAdminCode();
+        } catch {
+          stored = false;
+        }
+
+        if (stored) {
+          setPill($("#admin-code-status"), "ok", "保存済み");
+          $("#admin-code-input").value = config().getAdminCode();
+        } else {
+          setPill($("#admin-code-status"), "wait", "未保存");
+          $("#admin-code-input").value = "";
+        }
+      }
+
+      function updateFinalResult() {
+        const values = CHECK_IDS.map((id) => state.checks[id]);
+        const okCount = values.filter((value) => value === "ok").length;
+        const hasNg = values.includes("ng");
+        const pending = values.some((value) =>
+          ["wait", "loading"].includes(value)
+        );
+
+        const panel = $("#final-result");
+        const mark = $("#final-result-mark");
+        const title = $("#final-result-title");
+        const message = $("#final-result-message");
+        const sideText = $("#side-status-text");
+        const sideDot = $("#side-status-dot");
+
+        if (hasNg) {
+          panel.dataset.state = "ng";
+          mark.textContent = "!";
+          title.textContent = `確認エラーがあります（${okCount}/10 OK）`;
+          message.textContent =
+            "赤い項目の内容を確認してください。通信結果を表示すると詳細を確認できます。";
+          sideText.textContent = "要修正";
+          sideDot.style.color = "#ff9289";
+          return;
+        }
+
+        if (!pending && okCount === CHECK_IDS.length) {
+          panel.dataset.state = state.demoPrepared ? "ok" : "warning";
+          mark.textContent = state.demoPrepared ? "OK" : "✓";
+          title.textContent = state.demoPrepared
+            ? "営業前チェック完了"
+            : "API基盤は正常です";
+          message.textContent = state.demoPrepared
+            ? "API・DB・管理認証・デモデータの確認が完了しました。営業デモを開始できます。"
+            : "API基盤10項目は正常です。営業前に「営業前デモ準備」を実行してください。";
+          sideText.textContent = state.demoPrepared ? "営業準備OK" : "基盤OK";
+          sideDot.style.color = state.demoPrepared ? "#6ee7c8" : "#f9d77e";
+          return;
+        }
+
+        panel.dataset.state = "wait";
+        mark.textContent = okCount ? `${okCount}` : "—";
+        title.textContent = okCount
+          ? `確認中です（${okCount}/10 OK）`
+          : "一括チェックを実行してください";
+        message.textContent =
+          "管理コードを保存し、上部の「一括チェック」を押してください。";
+        sideText.textContent = "確認前";
+        sideDot.style.color = "rgba(255,255,255,.5)";
+      }
+
+      function updateMetrics(dashboard) {
+        const counts = dashboard?.counts || {};
+
+        $("#metric-companies").textContent = counts.active_companies ?? "—";
+        $("#metric-appointments").textContent = counts.today_appointments ?? "—";
+        $("#metric-documents").textContent = counts.waiting_documents ?? "—";
+        $("#metric-waiting-client").textContent = counts.waiting_client ?? "—";
+        $("#metric-procedures").textContent =
+          dashboard?.active_procedure_requests?.length ?? "—";
+        $("#metric-consultations").textContent =
+          dashboard?.recent_consultations?.length ?? "—";
+        $("#metric-document-attention").textContent =
+          counts.document_attention ?? "—";
+        $("#metric-tasks").textContent = counts.open_tasks ?? "—";
+
+        const isGood =
+          Number(counts.active_companies || 0) >= 3 &&
+          Number(counts.today_appointments || 0) >= 1 &&
+          Number(counts.waiting_documents || 0) >= 1 &&
+          Number(counts.waiting_client || 0) >= 1 &&
+          Number(counts.open_tasks || 0) >= 4;
+
+        setPill(
+          $("#dashboard-count-status"),
+          isGood ? "ok" : "warning",
+          isGood ? "デモ件数OK" : "件数を確認",
+        );
+      }
+
+      async function checkConfig() {
+        setCheck("config", "loading", "確認中");
+
+        try {
+          const app = config();
+          $("#hero-config-version").textContent = app.VERSION;
+          $("#hero-office-code").textContent = app.OFFICE_CODE;
+          $("#worker-url-text").textContent = app.API_BASE_URL;
+          $("#github-url-text").textContent = app.GITHUB_PAGES_BASE_URL;
+          $("#worker-url-result").textContent = "設定済み";
+          $("#github-url-result").textContent = "設定済み";
+          setCheck("config", "ok", app.VERSION);
+          return app;
+        } catch (error) {
+          setCheck("config", "ng", errorMessage(error));
+          throw error;
+        }
+      }
+
+      async function checkHealth() {
+        setCheck("health", "loading", "接続中");
+        setCheck("db", "loading", "確認中");
+        setCheck("office", "loading", "確認中");
+        setPill($("#connection-status"), "loading", "接続中");
+
+        try {
+          const result = await config().apiFetch(
+            config().API_ENDPOINTS.HEALTH
+          );
+
+          state.health = result;
+          addRaw("GET /api/health", result);
+
+          setCheck("health", result.ok ? "ok" : "ng", result.version || "応答あり");
+          setCheck(
+            "db",
+            result.database?.ok ? "ok" : "ng",
+            result.database?.ok ? result.database.office_name : "DB接続NG",
+          );
+          setCheck(
+            "office",
+            result.database?.office_code === config().OFFICE_CODE ? "ok" : "ng",
+            result.database?.office_code || "未取得",
+          );
+
+          $("#hero-worker-version").textContent = result.version || "不明";
+          $("#worker-url-result").textContent = "API OK";
+          setPill($("#connection-status"), "ok", "API・DB OK");
+
+          return result;
+        } catch (error) {
+          addRaw("GET /api/health ERROR", {
+            message: errorMessage(error),
+            details: error?.details || null,
+          });
+          setCheck("health", "ng", errorMessage(error));
+          setCheck("db", "ng", "Worker接続を確認");
+          setCheck("office", "ng", "取得できません");
+          setPill($("#connection-status"), "ng", "接続エラー");
+          throw error;
+        }
+      }
+
+      async function checkPublicConfig() {
+        setCheck("public-config", "loading", "取得中");
+
+        try {
+          const result = await config().apiFetch(
+            config().API_ENDPOINTS.PUBLIC_CONFIG
+          );
+          state.publicConfig = result;
+          addRaw("GET /api/public/config", result);
+
+          const hours = result.business_hours?.length || 0;
+          setCheck(
+            "public-config",
+            result.office && hours > 0 ? "ok" : "warning",
+            `営業時間 ${hours}日分`,
+          );
+          return result;
+        } catch (error) {
+          setCheck("public-config", "ng", errorMessage(error));
+          throw error;
+        }
+      }
+
+      async function checkOptions() {
+        setCheck("options", "loading", "取得中");
+
+        try {
+          const result = await config().apiFetch(
+            config().API_ENDPOINTS.PUBLIC_OPTIONS
+          );
+          state.options = result;
+          addRaw("GET /api/public/consultation-options", result);
+
+          const categoryCount = result.consultation_categories?.length || 0;
+          const procedureCount = result.procedure_types?.length || 0;
+          const serviceCount = result.services?.length || 0;
+
+          const good =
+            categoryCount > 0 && procedureCount > 0 && serviceCount > 0;
+
+          setCheck(
+            "options",
+            good ? "ok" : "warning",
+            `相談${categoryCount}・手続${procedureCount}・予約${serviceCount}`,
+          );
+          return result;
+        } catch (error) {
+          setCheck("options", "ng", errorMessage(error));
+          throw error;
+        }
+      }
+
+      async function checkDashboard() {
+        setCheck("admin", "loading", "認証中");
+        setCheck("dashboard", "loading", "取得中");
+
+        try {
+          config().requireSavedAdminCode();
+
+          const result = await config().apiFetch(
+            config().API_ENDPOINTS.ADMIN_DASHBOARD,
+            { admin: true }
+          );
+
+          state.dashboard = result;
+          addRaw("GET /api/admin/dashboard", result);
+          updateMetrics(result);
+
+          setCheck("admin", "ok", "管理コード認証OK");
+          setCheck(
+            "dashboard",
+            result.ok ? "ok" : "ng",
+            `顧問先 ${result.counts?.active_companies ?? 0}社`,
+          );
+
+          return result;
+        } catch (error) {
+          addRaw("GET /api/admin/dashboard ERROR", {
+            message: errorMessage(error),
+            details: error?.details || null,
+          });
+
+          const isAuthError = Number(error?.status || 0) === 401;
+          setCheck(
+            "admin",
+            "ng",
+            isAuthError ? "管理コードを確認" : errorMessage(error),
+          );
+          setCheck("dashboard", "ng", "管理API未確認");
+          throw error;
+        }
+      }
+
+      function checkPhoneNormalization() {
+        setCheck("phone", "loading", "確認中");
+
+        try {
+          const variants = [
+            "090-1111-2222",
+            "09011112222",
+            "090 1111 2222",
+            "０９０ー１１１１ー２２２２",
+            "+81 90-1111-2222",
+          ];
+
+          const normalized = variants.map((value) =>
+            config().normalizePhone(value)
+          );
+          const allSame = normalized.every(
+            (value) => value === "09011112222"
+          );
+
+          setCheck(
+            "phone",
+            allSame ? "ok" : "ng",
+            allSame ? "5形式が一致" : normalized.join(" / "),
+          );
+          return allSame;
+        } catch (error) {
+          setCheck("phone", "ng", errorMessage(error));
+          return false;
+        }
+      }
+
+      function checkLineBreaks() {
+        setCheck("linebreak", "loading", "確認中");
+
+        try {
+          const source = "1行目\\n2行目";
+          const normalized = config().normalizeLineBreaks(source);
+          const ok =
+            normalized.includes("\n") &&
+            !normalized.includes("\\n");
+
+          setCheck(
+            "linebreak",
+            ok ? "ok" : "ng",
+            ok ? "改行へ変換OK" : "変換NG",
+          );
+          return ok;
+        } catch (error) {
+          setCheck("linebreak", "ng", errorMessage(error));
+          return false;
+        }
+      }
+
+      async function runAllChecks(button = null) {
+        if (button) {
+          config().setButtonLoading(button, true, {
+            loadingText: "一括確認中...",
+          });
+        }
+
+        try {
+          await checkConfig();
+
+          const results = await Promise.allSettled([
+            checkHealth(),
+            checkPublicConfig(),
+            checkOptions(),
+          ]);
+
+          checkPhoneNormalization();
+          checkLineBreaks();
+
+          try {
+            await checkDashboard();
+          } catch {
+            // 個別項目へ表示済み
+          }
+
+          const failedPublic = results.some(
+            (item) => item.status === "rejected"
+          );
+
+          $("#last-checked").textContent =
+            `最終確認：${new Date().toLocaleString("ja-JP")}`;
+
+          if (!failedPublic && !Object.values(state.checks).includes("ng")) {
+            config().showToast("一括チェックが完了しました。");
+          } else {
+            config().showToast(
+              "確認が必要な項目があります。",
+              { type: "warning" }
+            );
+          }
+        } finally {
+          if (button) {
+            config().setButtonLoading(button, false);
+          }
+          updateFinalResult();
+        }
+      }
+
+      async function prepareDemo(button = null) {
+        if (button) {
+          config().setButtonLoading(button, true, {
+            loadingText: "デモ準備中...",
+          });
+        }
+
+        const topButton = $("#prepare-demo-top-btn");
+        if (topButton && topButton !== button) {
+          topButton.disabled = true;
+        }
+
+        const secondButton = $("#prepare-demo-btn");
+        if (secondButton && secondButton !== button) {
+          secondButton.disabled = true;
+        }
+
+        const row = $("#check-demo");
+        row.dataset.state = "loading";
+        row.querySelector(".check-icon").textContent = "…";
+        row.querySelector(".check-result").textContent = "準備中";
+
+        try {
+          config().requireSavedAdminCode();
+
+          const result = await config().apiFetch(
+            config().API_ENDPOINTS.ADMIN_DEMO_PREPARE,
+            {
+              method: "POST",
+              admin: true,
+              body: {},
+              timeoutMs: 30000,
+            }
+          );
+
+          state.demoPrepared = true;
+          addRaw("POST /api/admin/demo/prepare", result);
+
+          row.dataset.state = "ok";
+          row.querySelector(".check-icon").textContent = "✓";
+          row.querySelector(".check-result").textContent =
+            `${result.date || ""} 準備完了`;
+
+          await checkDashboard();
+
+          config().showToast("営業前デモ準備が完了しました。");
+        } catch (error) {
+          state.demoPrepared = false;
+          row.dataset.state = "ng";
+          row.querySelector(".check-icon").textContent = "!";
+          row.querySelector(".check-result").textContent =
+            errorMessage(error);
+
+          addRaw("POST /api/admin/demo/prepare ERROR", {
+            message: errorMessage(error),
+            details: error?.details || null,
+          });
+
+          config().showToast(errorMessage(error), { type: "error" });
+        } finally {
+          if (button) {
+            config().setButtonLoading(button, false);
+          }
+          if (topButton) topButton.disabled = false;
+          if (secondButton) secondButton.disabled = false;
+          updateFinalResult();
+        }
+      }
+
+      function renderUrls() {
+        const list = $("#url-list");
+
+        list.innerHTML = urls
+          .map((item) => `
+            <div class="url-row" data-page-key="${item.key}">
+              <div class="url-name">${config().escapeHtml(item.name)}</div>
+              <div class="url-text" title="${config().escapeHtml(item.url)}">
+                ${config().escapeHtml(item.url)}
+              </div>
+              <span class="page-badge ${item.current ? "ok" : item.future ? "future" : ""}">
+                ${item.current ? "現在画面" : item.future ? "今後作成" : "確認対象"}
+              </span>
+              <div style="display:flex; gap:6px">
+                <button class="mini-btn" type="button" data-copy-url="${config().escapeHtml(item.url)}">コピー</button>
+                <button class="mini-btn" type="button" data-open-url="${config().escapeHtml(item.url)}">開く</button>
+              </div>
+            </div>
+          `)
+          .join("");
+
+        list.addEventListener("click", async (event) => {
+          const copyButton = event.target.closest("[data-copy-url]");
+          const openButton = event.target.closest("[data-open-url]");
+
+          if (copyButton) {
+            try {
+              await config().copyText(copyButton.dataset.copyUrl);
+              config().showToast("URLをコピーしました。");
+            } catch (error) {
+              config().showToast(errorMessage(error), { type: "error" });
+            }
+          }
+
+          if (openButton) {
+            window.open(
+              openButton.dataset.openUrl,
+              "_blank",
+              "noopener,noreferrer"
+            );
+          }
+        });
+      }
+
+      async function checkPages(button = null) {
+        if (button) {
+          config().setButtonLoading(button, true, {
+            loadingText: "確認中...",
+          });
+        }
+
+        try {
+          await Promise.all(
+            urls.map(async (item) => {
+              const row = document.querySelector(
+                `[data-page-key="${item.key}"]`
+              );
+              const badge = row?.querySelector(".page-badge");
+              if (!badge) return;
+
+              badge.className = "page-badge";
+              badge.textContent = "確認中";
+
+              try {
+                const response = await fetch(item.url, {
+                  method: "GET",
+                  cache: "no-store",
+                });
+
+                if (response.ok) {
+                  badge.classList.add("ok");
+                  badge.textContent = "表示OK";
+                } else if (item.future && response.status === 404) {
+                  badge.classList.add("future");
+                  badge.textContent = "今後作成";
+                } else {
+                  badge.textContent = `HTTP ${response.status}`;
+                }
+              } catch {
+                if (item.future) {
+                  badge.classList.add("future");
+                  badge.textContent = "今後作成";
+                } else {
+                  badge.textContent = "接続NG";
+                }
+              }
+            })
+          );
+
+          config().showToast("画面URLの存在確認が完了しました。");
+        } finally {
+          if (button) {
+            config().setButtonLoading(button, false);
+          }
+        }
+      }
+
+      async function copyAllUrls() {
+        const text = [
+          "DPRO 社労士・顧問先対応 LINE 確認URL",
+          "",
+          ...urls.map((item) => `${item.name}\n${item.url}`),
+          "",
+          "管理コード：1234",
+          `office_code：${config().OFFICE_CODE}`,
+        ].join("\n");
+
+        await config().copyText(text);
+        config().showToast("確認URLをまとめてコピーしました。");
+      }
+
+      function bindEvents() {
+        $("#run-all-btn").addEventListener("click", (event) =>
+          runAllChecks(event.currentTarget)
+        );
+
+        $("#prepare-demo-top-btn").addEventListener("click", (event) =>
+          prepareDemo(event.currentTarget)
+        );
+
+        $("#prepare-demo-btn").addEventListener("click", (event) =>
+          prepareDemo(event.currentTarget)
+        );
+
+        $("#refresh-dashboard-btn").addEventListener("click", async (event) => {
+          const button = event.currentTarget;
+          config().setButtonLoading(button, true, {
+            loadingText: "再確認中...",
+          });
+
+          try {
+            await checkDashboard();
+            config().showToast("ダッシュボード件数を更新しました。");
+          } catch (error) {
+            config().showToast(errorMessage(error), { type: "error" });
+          } finally {
+            config().setButtonLoading(button, false);
+          }
+        });
+
+        $("#save-admin-code-btn").addEventListener("click", () => {
+          try {
+            const value = $("#admin-code-input").value.trim();
+            config().saveAdminCode(value);
+            updateAdminStatus();
+            setCheck("admin", "wait", "保存済み・未確認");
+            setCheck("dashboard", "wait", "未確認");
+            config().showToast("管理コードを保存しました。");
+          } catch (error) {
+            config().showToast(errorMessage(error), { type: "error" });
+          }
+        });
+
+        $("#fill-demo-code-btn").addEventListener("click", () => {
+          $("#admin-code-input").value = config().DEFAULT_ADMIN_CODE;
+          config().showToast("デモ管理コード1234を入力しました。", {
+            type: "info",
+          });
+        });
+
+        $("#remove-admin-code-btn").addEventListener("click", () => {
+          config().removeAdminCode();
+          updateAdminStatus();
+          setCheck("admin", "wait", "管理コード未保存");
+          setCheck("dashboard", "wait", "未確認");
+          state.demoPrepared = false;
+          config().showToast("管理コードを消去しました。", {
+            type: "warning",
+          });
+        });
+
+        $("#copy-all-urls-btn").addEventListener("click", async () => {
+          try {
+            await copyAllUrls();
+          } catch (error) {
+            config().showToast(errorMessage(error), { type: "error" });
+          }
+        });
+
+        $("#check-pages-btn").addEventListener("click", (event) =>
+          checkPages(event.currentTarget)
+        );
+
+        $("#toggle-raw-btn").addEventListener("click", (event) => {
+          const output = $("#raw-output");
+          output.classList.toggle("open");
+          event.currentTarget.textContent = output.classList.contains("open")
+            ? "通信結果を閉じる"
+            : "通信結果を表示";
+        });
+      }
+
+      async function bootstrap() {
+        try {
+          await checkConfig();
+          updateAdminStatus();
+          renderUrls();
+          bindEvents();
+
+          checkPhoneNormalization();
+          checkLineBreaks();
+
+          await Promise.allSettled([
+            checkHealth(),
+            checkPublicConfig(),
+            checkOptions(),
+          ]);
+
+          if (config().hasAdminCode()) {
+            try {
+              await checkDashboard();
+            } catch {
+              // 表示済み
+            }
+          }
+
+          await checkPages();
+        } catch (error) {
+          console.error(error);
+        } finally {
+          updateFinalResult();
+        }
+      }
+
+      if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", bootstrap, {
+          once: true,
+        });
+      } else {
+        bootstrap();
+      }
+    })();
+  </script>
+</body>
+</html>
