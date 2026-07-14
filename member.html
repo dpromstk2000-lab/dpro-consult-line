@@ -1,0 +1,2259 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0f766e">
+  <meta name="description" content="DPRO社会保険労務士事務所の顧問先向けマイページです。相談・手続き・面談・必要書類・進捗を確認できます。">
+  <title>DPRO 社労士・顧問先対応 LINE｜対応状況</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f3f7f7;
+      --surface: #ffffff;
+      --surface-soft: #f7faf9;
+      --text: #172421;
+      --muted: #66736f;
+      --line: #dce7e4;
+      --primary: #0f766e;
+      --primary-dark: #0b5f58;
+      --primary-soft: #e8f7f3;
+      --accent: #2563eb;
+      --accent-soft: #edf4ff;
+      --success: #13795b;
+      --success-soft: #e8f7f0;
+      --warning: #a16207;
+      --warning-soft: #fff7dd;
+      --danger: #b42318;
+      --danger-soft: #fff0ee;
+      --neutral: #64748b;
+      --shadow: 0 14px 34px rgba(15, 59, 54, .09);
+      --radius-xl: 24px;
+      --radius-lg: 18px;
+      --radius-md: 13px;
+      --content: 1120px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-width: 320px;
+      background:
+        radial-gradient(circle at top left, rgba(15,118,110,.10), transparent 27rem),
+        linear-gradient(#f8fbfa, #f2f6f5);
+      color: var(--text);
+      font-family:
+        -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans JP",
+        "Hiragino Kaku Gothic ProN", "Yu Gothic", Meiryo, sans-serif;
+      line-height: 1.65;
+    }
+
+    button,
+    input,
+    select,
+    textarea {
+      font: inherit;
+    }
+
+    button,
+    a,
+    summary {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    [hidden] {
+      display: none !important;
+    }
+
+    .app {
+      min-height: 100vh;
+      padding-bottom: calc(38px + env(safe-area-inset-bottom));
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      border-bottom: 1px solid rgba(220,231,228,.9);
+      background: rgba(255,255,255,.92);
+      backdrop-filter: blur(12px);
+    }
+
+    .topbar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      width: min(var(--content), calc(100% - 28px));
+      min-height: 66px;
+      margin: 0 auto;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      min-width: 0;
+      text-decoration: none;
+    }
+
+    .brand-mark {
+      display: grid;
+      place-items: center;
+      width: 42px;
+      height: 42px;
+      flex: 0 0 auto;
+      border-radius: 14px;
+      background: linear-gradient(145deg, #2dd4bf, #0f766e);
+      color: #ffffff;
+      box-shadow: 0 10px 24px rgba(15,118,110,.22);
+      font-size: 19px;
+      font-weight: 950;
+    }
+
+    .brand-copy {
+      min-width: 0;
+    }
+
+    .brand-copy strong {
+      display: block;
+      overflow: hidden;
+      font-size: 13px;
+      line-height: 1.35;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .brand-copy span {
+      display: block;
+      color: var(--muted);
+      font-size: 10px;
+    }
+
+    .top-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .top-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 38px;
+      padding: 8px 12px;
+      border: 1px solid var(--line);
+      border-radius: 11px;
+      background: #ffffff;
+      color: var(--text);
+      text-decoration: none;
+      font-size: 10px;
+      font-weight: 850;
+    }
+
+    .top-link.primary {
+      border-color: var(--primary);
+      background: var(--primary);
+      color: #ffffff;
+    }
+
+    .hero {
+      width: min(var(--content), calc(100% - 28px));
+      margin: 22px auto 0;
+      overflow: hidden;
+      border-radius: var(--radius-xl);
+      background:
+        radial-gradient(circle at 88% 8%, rgba(255,255,255,.14), transparent 18rem),
+        linear-gradient(135deg, #0f766e, #0c5d57);
+      color: #ffffff;
+      box-shadow: var(--shadow);
+    }
+
+    .hero-inner {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 320px;
+      gap: 26px;
+      padding: 34px;
+    }
+
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      margin-bottom: 14px;
+      padding: 6px 10px;
+      border: 1px solid rgba(255,255,255,.23);
+      border-radius: 999px;
+      background: rgba(255,255,255,.1);
+      font-size: 10px;
+      font-weight: 850;
+      letter-spacing: .08em;
+    }
+
+    .hero h1 {
+      margin: 0;
+      font-size: clamp(27px, 4vw, 43px);
+      line-height: 1.22;
+      letter-spacing: -.04em;
+    }
+
+    .hero p {
+      max-width: 660px;
+      margin: 15px 0 0;
+      color: rgba(255,255,255,.82);
+      font-size: 13px;
+    }
+
+    .hero-account {
+      align-self: center;
+      padding: 18px;
+      border: 1px solid rgba(255,255,255,.17);
+      border-radius: 17px;
+      background: rgba(255,255,255,.09);
+    }
+
+    .hero-account span {
+      display: block;
+      color: rgba(255,255,255,.62);
+      font-size: 9px;
+      font-weight: 800;
+      letter-spacing: .06em;
+    }
+
+    .hero-account strong {
+      display: block;
+      overflow-wrap: anywhere;
+      margin-top: 3px;
+      font-size: 14px;
+    }
+
+    .hero-account .company-name {
+      margin-bottom: 12px;
+      font-size: 17px;
+    }
+
+    .content {
+      width: min(var(--content), calc(100% - 28px));
+      margin: 18px auto 0;
+    }
+
+    .notice {
+      display: flex;
+      align-items: flex-start;
+      gap: 11px;
+      padding: 14px 16px;
+      border: 1px solid #efdca1;
+      border-radius: 14px;
+      background: var(--warning-soft);
+      color: #705007;
+      font-size: 11px;
+    }
+
+    .notice-icon {
+      display: grid;
+      place-items: center;
+      width: 26px;
+      height: 26px;
+      flex: 0 0 auto;
+      border-radius: 8px;
+      background: rgba(161,98,7,.11);
+      font-weight: 900;
+    }
+
+    .login-panel,
+    .panel {
+      margin-top: 18px;
+      padding: 24px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-xl);
+      background: var(--surface);
+      box-shadow: var(--shadow);
+    }
+
+    .login-panel {
+      max-width: 760px;
+      margin-right: auto;
+      margin-left: auto;
+    }
+
+    .panel-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 18px;
+    }
+
+    .panel-header h2 {
+      margin: 0;
+      font-size: 21px;
+      letter-spacing: -.025em;
+    }
+
+    .panel-header p {
+      margin: 5px 0 0;
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      flex: 0 0 auto;
+      min-height: 30px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: var(--primary-soft);
+      color: var(--primary);
+      font-size: 9px;
+      font-weight: 900;
+      white-space: nowrap;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 13px;
+    }
+
+    .field {
+      min-width: 0;
+    }
+
+    .field.full {
+      grid-column: 1 / -1;
+    }
+
+    .label {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 6px;
+      font-size: 11px;
+      font-weight: 850;
+    }
+
+    .required {
+      padding: 2px 5px;
+      border-radius: 5px;
+      background: var(--danger-soft);
+      color: var(--danger);
+      font-size: 8px;
+      font-weight: 900;
+    }
+
+    .input,
+    .textarea,
+    .select {
+      width: 100%;
+      border: 1px solid #cddbd7;
+      border-radius: 11px;
+      background: #ffffff;
+      color: var(--text);
+      outline: none;
+    }
+
+    .input,
+    .select {
+      min-height: 45px;
+      padding: 10px 12px;
+    }
+
+    .textarea {
+      min-height: 112px;
+      padding: 11px 12px;
+      resize: vertical;
+    }
+
+    .input:focus,
+    .textarea:focus,
+    .select:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(15,118,110,.11);
+    }
+
+    .help {
+      margin-top: 5px;
+      color: var(--muted);
+      font-size: 9px;
+    }
+
+    .demo-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 14px;
+      padding: 12px;
+      border: 1px dashed #a9cfc7;
+      border-radius: 12px;
+      background: #f5fbf9;
+    }
+
+    .demo-row strong {
+      font-size: 10px;
+    }
+
+    .demo-btn {
+      min-height: 34px;
+      padding: 7px 10px;
+      border: 1px solid #b9d7d1;
+      border-radius: 9px;
+      background: #ffffff;
+      color: var(--primary-dark);
+      cursor: pointer;
+      font-size: 9px;
+      font-weight: 850;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      min-height: 43px;
+      padding: 9px 15px;
+      border: 1px solid transparent;
+      border-radius: 11px;
+      cursor: pointer;
+      text-decoration: none;
+      font-size: 10px;
+      font-weight: 900;
+      transition: transform .14s ease, background .14s ease, opacity .14s ease;
+    }
+
+    .btn:hover:not(:disabled) {
+      transform: translateY(-1px);
+    }
+
+    .btn:disabled {
+      opacity: .56;
+      cursor: not-allowed;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: #ffffff;
+      box-shadow: 0 8px 20px rgba(15,118,110,.18);
+    }
+
+    .btn-primary:hover:not(:disabled) {
+      background: var(--primary-dark);
+    }
+
+    .btn-accent {
+      background: var(--accent);
+      color: #ffffff;
+    }
+
+    .btn-light {
+      border-color: var(--line);
+      background: #ffffff;
+      color: var(--text);
+    }
+
+    .btn-warning {
+      border-color: #ecd58c;
+      background: var(--warning-soft);
+      color: var(--warning);
+    }
+
+    .btn-danger {
+      border-color: #f0beb8;
+      background: var(--danger-soft);
+      color: var(--danger);
+    }
+
+    .login-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+      margin-top: 15px;
+    }
+
+    .error-box {
+      margin-top: 13px;
+      padding: 13px;
+      border: 1px solid #f1bcb6;
+      border-radius: 12px;
+      background: var(--danger-soft);
+      color: var(--danger);
+      font-size: 10px;
+      font-weight: 750;
+    }
+
+    .dashboard {
+      margin-top: 18px;
+    }
+
+    .summary-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 11px;
+    }
+
+    .summary-card {
+      min-width: 0;
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: 15px;
+      background: var(--surface);
+      box-shadow: 0 5px 18px rgba(15,59,54,.045);
+    }
+
+    .summary-card span {
+      display: block;
+      color: var(--muted);
+      font-size: 9px;
+      font-weight: 800;
+    }
+
+    .summary-card strong {
+      display: block;
+      margin-top: 4px;
+      font-size: 26px;
+      line-height: 1.15;
+      letter-spacing: -.04em;
+    }
+
+    .summary-card small {
+      display: block;
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: 8px;
+    }
+
+    .quick-actions {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .quick-action {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-height: 68px;
+      padding: 13px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: #ffffff;
+      text-decoration: none;
+      box-shadow: 0 5px 16px rgba(15,59,54,.04);
+      transition: .15s ease;
+    }
+
+    .quick-action:hover {
+      transform: translateY(-1px);
+      border-color: #9ecdc4;
+    }
+
+    .quick-icon {
+      display: grid;
+      place-items: center;
+      width: 38px;
+      height: 38px;
+      flex: 0 0 auto;
+      border-radius: 12px;
+      background: var(--primary-soft);
+      color: var(--primary);
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .quick-action strong {
+      display: block;
+      font-size: 10px;
+    }
+
+    .quick-action span {
+      display: block;
+      margin-top: 2px;
+      color: var(--muted);
+      font-size: 8px;
+    }
+
+    .section-tabs {
+      position: sticky;
+      top: 77px;
+      z-index: 30;
+      display: flex;
+      gap: 7px;
+      margin-top: 16px;
+      padding: 8px;
+      overflow-x: auto;
+      border: 1px solid rgba(220,231,228,.94);
+      border-radius: 14px;
+      background: rgba(255,255,255,.93);
+      box-shadow: 0 8px 22px rgba(15,59,54,.07);
+      backdrop-filter: blur(12px);
+      scrollbar-width: none;
+    }
+
+    .section-tabs::-webkit-scrollbar {
+      display: none;
+    }
+
+    .tab-btn {
+      flex: 0 0 auto;
+      min-height: 37px;
+      padding: 8px 12px;
+      border: 1px solid transparent;
+      border-radius: 10px;
+      background: transparent;
+      color: var(--muted);
+      cursor: pointer;
+      font-size: 9px;
+      font-weight: 900;
+      white-space: nowrap;
+    }
+
+    .tab-btn.active {
+      background: var(--primary);
+      color: #ffffff;
+    }
+
+    .tab-section {
+      scroll-margin-top: 130px;
+      margin-top: 16px;
+    }
+
+    .list {
+      display: grid;
+      gap: 11px;
+    }
+
+    .item-card {
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 15px;
+      background: #ffffff;
+      box-shadow: 0 5px 18px rgba(15,59,54,.04);
+    }
+
+    .item-main {
+      padding: 16px;
+    }
+
+    .item-head {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .item-title {
+      min-width: 0;
+    }
+
+    .item-title small {
+      display: block;
+      color: var(--muted);
+      font-size: 8px;
+      font-weight: 750;
+    }
+
+    .item-title h3 {
+      margin: 3px 0 0;
+      overflow-wrap: anywhere;
+      font-size: 14px;
+      line-height: 1.45;
+    }
+
+    .status {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex: 0 0 auto;
+      min-height: 28px;
+      padding: 5px 9px;
+      border-radius: 999px;
+      background: #eef2f1;
+      color: var(--neutral);
+      font-size: 8px;
+      font-weight: 900;
+      white-space: nowrap;
+    }
+
+    .status.active {
+      background: var(--primary-soft);
+      color: var(--primary);
+    }
+
+    .status.warning {
+      background: var(--warning-soft);
+      color: var(--warning);
+    }
+
+    .status.done {
+      background: var(--success-soft);
+      color: var(--success);
+    }
+
+    .status.danger {
+      background: var(--danger-soft);
+      color: var(--danger);
+    }
+
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .meta {
+      min-width: 0;
+      padding: 9px 10px;
+      border: 1px solid #e5ecea;
+      border-radius: 10px;
+      background: var(--surface-soft);
+    }
+
+    .meta span {
+      display: block;
+      color: var(--muted);
+      font-size: 7px;
+      font-weight: 800;
+    }
+
+    .meta strong {
+      display: block;
+      overflow-wrap: anywhere;
+      margin-top: 2px;
+      font-size: 9px;
+    }
+
+    .item-description {
+      margin-top: 11px;
+      padding: 11px;
+      border-radius: 10px;
+      background: #f7faf9;
+      color: #394641;
+      font-size: 9px;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+
+    .item-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    details {
+      border-top: 1px solid #edf2f0;
+      background: #fbfdfc;
+    }
+
+    details summary {
+      padding: 11px 16px;
+      cursor: pointer;
+      color: var(--primary-dark);
+      font-size: 9px;
+      font-weight: 900;
+      list-style: none;
+    }
+
+    details summary::-webkit-details-marker {
+      display: none;
+    }
+
+    details summary::after {
+      content: "＋";
+      float: right;
+    }
+
+    details[open] summary::after {
+      content: "－";
+    }
+
+    .details-body {
+      padding: 0 16px 15px;
+    }
+
+    .document-list,
+    .progress-list {
+      display: grid;
+      gap: 8px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .document-item,
+    .progress-item {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      align-items: start;
+      gap: 10px;
+      padding: 10px;
+      border: 1px solid #e2ebe8;
+      border-radius: 10px;
+      background: #ffffff;
+    }
+
+    .document-item strong,
+    .progress-item strong {
+      display: block;
+      font-size: 9px;
+    }
+
+    .document-item p,
+    .progress-item p {
+      margin: 3px 0 0;
+      color: var(--muted);
+      font-size: 8px;
+    }
+
+    .empty {
+      padding: 28px 18px;
+      border: 1px dashed #cbdad6;
+      border-radius: 14px;
+      background: #fafcfb;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    .empty strong {
+      display: block;
+      color: var(--text);
+      font-size: 12px;
+    }
+
+    .empty p {
+      margin: 5px 0 0;
+      font-size: 9px;
+    }
+
+    .loading {
+      display: grid;
+      place-items: center;
+      min-height: 260px;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    .spinner {
+      width: 38px;
+      height: 38px;
+      margin: 0 auto 12px;
+      border: 4px solid #dfeae7;
+      border-top-color: var(--primary);
+      border-radius: 50%;
+      animation: spin .85s linear infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    dialog {
+      width: min(560px, calc(100% - 24px));
+      max-height: calc(100vh - 28px);
+      padding: 0;
+      overflow: auto;
+      border: 0;
+      border-radius: 19px;
+      background: #ffffff;
+      box-shadow: 0 26px 80px rgba(15,23,42,.28);
+    }
+
+    dialog::backdrop {
+      background: rgba(15,23,42,.56);
+      backdrop-filter: blur(3px);
+    }
+
+    .dialog-head {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 19px 20px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .dialog-head h2 {
+      margin: 0;
+      font-size: 17px;
+    }
+
+    .dialog-head p {
+      margin: 4px 0 0;
+      color: var(--muted);
+      font-size: 9px;
+    }
+
+    .dialog-close {
+      display: grid;
+      place-items: center;
+      width: 34px;
+      height: 34px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: #ffffff;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .dialog-body {
+      padding: 20px;
+    }
+
+    .dialog-actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 8px;
+      margin-top: 14px;
+    }
+
+    .footer {
+      width: min(var(--content), calc(100% - 28px));
+      margin: 25px auto 0;
+      color: var(--muted);
+      font-size: 9px;
+      text-align: center;
+    }
+
+    @media (max-width: 860px) {
+      .hero-inner {
+        grid-template-columns: 1fr;
+      }
+
+      .summary-grid,
+      .quick-actions {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .meta-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 560px) {
+      .topbar-inner {
+        min-height: 60px;
+      }
+
+      .brand-copy span,
+      .top-link:not(.primary) {
+        display: none;
+      }
+
+      .hero,
+      .content,
+      .footer {
+        width: min(100% - 20px, var(--content));
+      }
+
+      .hero {
+        margin-top: 12px;
+      }
+
+      .hero-inner {
+        padding: 23px;
+      }
+
+      .login-panel,
+      .panel {
+        padding: 18px 15px;
+        border-radius: 18px;
+      }
+
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .field.full {
+        grid-column: auto;
+      }
+
+      .summary-grid,
+      .quick-actions {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .summary-card strong {
+        font-size: 22px;
+      }
+
+      .section-tabs {
+        top: 68px;
+      }
+
+      .item-head {
+        display: block;
+      }
+
+      .status {
+        margin-top: 8px;
+      }
+
+      .meta-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .item-actions .btn {
+        flex: 1 1 calc(50% - 8px);
+      }
+
+      .dialog-actions {
+        display: grid;
+        grid-template-columns: 1fr;
+      }
+
+      .dialog-actions .btn {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <header class="topbar">
+      <div class="topbar-inner">
+        <a class="brand" href="./index.html">
+          <div class="brand-mark">D</div>
+          <div class="brand-copy">
+            <strong id="brand-office-name">DPRO社会保険労務士事務所</strong>
+            <span>顧問先マイページ</span>
+          </div>
+        </a>
+
+        <div class="top-actions">
+          <button class="top-link" id="reload-btn" type="button">更新</button>
+          <a class="top-link primary" href="./index.html">新しい受付</a>
+        </div>
+      </div>
+    </header>
+
+    <section class="hero">
+      <div class="hero-inner">
+        <div>
+          <div class="hero-eyebrow">DPRO SHAROUSHI CLIENT PORTAL</div>
+          <h1>相談・手続き・面談の<br>現在状況をまとめて確認</h1>
+          <p>
+            受付中の相談、手続きの進捗、必要書類、面談予定を確認できます。
+            日程変更やキャンセルは、直接変更ではなく事務所へ希望を送信します。
+          </p>
+        </div>
+
+        <div class="hero-account" id="hero-account">
+          <span>顧問先</span>
+          <strong class="company-name" id="hero-company-name">未確認</strong>
+          <span>ご担当者</span>
+          <strong id="hero-contact-name">本人確認後に表示します</strong>
+        </div>
+      </div>
+    </section>
+
+    <main class="content">
+      <div class="notice">
+        <div class="notice-icon">!</div>
+        <div>
+          <strong>機密情報はこの画面やLINEへ送らないでください。</strong><br>
+          マイナンバー、本人確認書類、診断書、口座情報などは、担当者が案内する安全な方法で確認します。
+        </div>
+      </div>
+
+      <section class="login-panel" id="login-panel">
+        <div class="panel-header">
+          <div>
+            <h2>顧問先確認</h2>
+            <p>顧問先番号と登録済みの電話番号を入力してください。</p>
+          </div>
+          <span class="badge">本人確認</span>
+        </div>
+
+        <div class="demo-row">
+          <strong>営業デモ：</strong>
+          <button class="demo-btn" type="button" data-demo="1">株式会社サンプル建設</button>
+          <button class="demo-btn" type="button" data-demo="2">DPRO美容室</button>
+          <button class="demo-btn" type="button" data-demo="3">山田商事株式会社</button>
+        </div>
+
+        <form id="login-form" novalidate>
+          <div class="form-grid">
+            <div class="field">
+              <label class="label" for="company-code">
+                顧問先番号 <span class="required">必須</span>
+              </label>
+              <input class="input" id="company-code" name="company_code" autocomplete="organization" placeholder="例：SR-COMPANY-001" required>
+              <div class="help">事務所から案内された顧問先番号です。</div>
+            </div>
+
+            <div class="field">
+              <label class="label" for="contact-phone">
+                登録電話番号 <span class="required">必須</span>
+              </label>
+              <input class="input" id="contact-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="例：090-9999-1111" required>
+              <div class="help">ハイフンあり・なし、全角、+81表記にも対応します。</div>
+            </div>
+          </div>
+
+          <div class="login-actions">
+            <button class="btn btn-primary" id="login-btn" type="submit">対応状況を表示</button>
+            <button class="btn btn-light" id="clear-login-btn" type="button">保存情報を消去</button>
+          </div>
+
+          <div class="error-box" id="login-error" hidden aria-live="polite"></div>
+        </form>
+      </section>
+
+      <section class="loading" id="loading-panel" hidden>
+        <div>
+          <div class="spinner"></div>
+          <strong>対応状況を読み込んでいます</strong>
+          <div style="margin-top:5px;font-size:9px">相談・手続き・面談・必要書類を確認しています。</div>
+        </div>
+      </section>
+
+      <section class="dashboard" id="dashboard" hidden>
+        <div class="summary-grid">
+          <div class="summary-card">
+            <span>対応中の相談</span>
+            <strong id="count-consultations">0</strong>
+            <small>完了・終了以外</small>
+          </div>
+          <div class="summary-card">
+            <span>対応中の手続き</span>
+            <strong id="count-procedures">0</strong>
+            <small>書類待ち・確認中など</small>
+          </div>
+          <div class="summary-card">
+            <span>今後の面談</span>
+            <strong id="count-appointments">0</strong>
+            <small>キャンセル以外</small>
+          </div>
+          <div class="summary-card">
+            <span>要確認書類</span>
+            <strong id="count-documents">0</strong>
+            <small>案内済み・追加確認など</small>
+          </div>
+        </div>
+
+        <div class="quick-actions">
+          <a class="quick-action" href="./index.html?purpose=consultation">
+            <div class="quick-icon">相</div>
+            <div>
+              <strong>新しい労務相談</strong>
+              <span>相談内容を送信</span>
+            </div>
+          </a>
+          <a class="quick-action" href="./index.html?purpose=procedure">
+            <div class="quick-icon">手</div>
+            <div>
+              <strong>新しい手続き依頼</strong>
+              <span>入社・退職など</span>
+            </div>
+          </a>
+          <a class="quick-action" href="./index.html?purpose=appointment">
+            <div class="quick-icon">予</div>
+            <div>
+              <strong>面談を予約</strong>
+              <span>空き時間を確認</span>
+            </div>
+          </a>
+          <button class="quick-action" id="copy-general-inquiry-btn" type="button">
+            <div class="quick-icon">問</div>
+            <div>
+              <strong>問い合わせ文面</strong>
+              <span>LINE用文面をコピー</span>
+            </div>
+          </button>
+        </div>
+
+        <nav class="section-tabs" aria-label="マイページメニュー">
+          <button class="tab-btn active" type="button" data-target="appointments-section">面談予定</button>
+          <button class="tab-btn" type="button" data-target="procedures-section">手続き依頼</button>
+          <button class="tab-btn" type="button" data-target="consultations-section">労務相談</button>
+          <button class="tab-btn" type="button" data-target="employees-section">対象者</button>
+          <button class="tab-btn" type="button" data-target="progress-section">事務所からの連絡</button>
+        </nav>
+
+        <section class="panel tab-section" id="appointments-section">
+          <div class="panel-header">
+            <div>
+              <h2>面談予定</h2>
+              <p>来所・オンライン・電話・訪問の予約状況です。</p>
+            </div>
+            <span class="badge" id="appointments-badge">0件</span>
+          </div>
+          <div class="list" id="appointments-list"></div>
+        </section>
+
+        <section class="panel tab-section" id="procedures-section">
+          <div class="panel-header">
+            <div>
+              <h2>手続き依頼</h2>
+              <p>現在状況と必要書類・確認事項を表示します。</p>
+            </div>
+            <span class="badge" id="procedures-badge">0件</span>
+          </div>
+          <div class="list" id="procedures-list"></div>
+        </section>
+
+        <section class="panel tab-section" id="consultations-section">
+          <div class="panel-header">
+            <div>
+              <h2>労務相談</h2>
+              <p>送信した相談と事務所の対応状況です。</p>
+            </div>
+            <span class="badge" id="consultations-badge">0件</span>
+          </div>
+          <div class="list" id="consultations-list"></div>
+        </section>
+
+        <section class="panel tab-section" id="employees-section">
+          <div class="panel-header">
+            <div>
+              <h2>手続き対象者</h2>
+              <p>このシステムには必要最小限の情報のみ表示します。</p>
+            </div>
+            <span class="badge" id="employees-badge">0名</span>
+          </div>
+          <div class="list" id="employees-list"></div>
+        </section>
+
+        <section class="panel tab-section" id="progress-section">
+          <div class="panel-header">
+            <div>
+              <h2>事務所からの連絡・進捗</h2>
+              <p>顧問先へ公開された進捗連絡を新しい順に表示します。</p>
+            </div>
+            <span class="badge" id="progress-badge">0件</span>
+          </div>
+          <div class="list" id="progress-list"></div>
+        </section>
+      </section>
+    </main>
+
+    <footer class="footer">
+      DPRO 社労士・顧問先対応 LINE · STEP CONSULT-7
+    </footer>
+  </div>
+
+  <dialog id="appointment-request-dialog">
+    <form id="appointment-request-form" method="dialog">
+      <div class="dialog-head">
+        <div>
+          <h2 id="appointment-dialog-title">面談日程の変更希望</h2>
+          <p id="appointment-dialog-description">事務所へ希望内容を送信します。</p>
+        </div>
+        <button class="dialog-close" id="appointment-dialog-close" type="button" aria-label="閉じる">×</button>
+      </div>
+
+      <div class="dialog-body">
+        <input id="appointment-request-code" type="hidden">
+        <input id="appointment-request-type" type="hidden">
+
+        <div class="field">
+          <label class="label" for="appointment-request-reason">
+            希望内容・理由 <span class="required">必須</span>
+          </label>
+          <textarea class="textarea" id="appointment-request-reason" placeholder="例：7月20日午後への変更を希望します。"></textarea>
+        </div>
+
+        <div class="error-box" id="appointment-dialog-error" hidden></div>
+
+        <div class="dialog-actions">
+          <button class="btn btn-light" id="appointment-dialog-cancel" type="button">閉じる</button>
+          <button class="btn btn-primary" id="appointment-request-submit" type="submit">希望を送信</button>
+        </div>
+      </div>
+    </form>
+  </dialog>
+
+  <script src="./config.js?v=CONSULT-4-CONFIG-20260714"></script>
+  <script>
+    (() => {
+      "use strict";
+
+      const state = {
+        profile: null,
+        loading: false,
+        identity: {
+          company_code: "",
+          phone: "",
+          line_user_id: "",
+        },
+      };
+
+      const demoAccounts = {
+        "1": { company_code: "SR-COMPANY-001", phone: "090-9999-1111" },
+        "2": { company_code: "SR-COMPANY-002", phone: "090-9999-2222" },
+        "3": { company_code: "SR-COMPANY-003", phone: "090-9999-3333" },
+      };
+
+      const $ = (selector) => document.querySelector(selector);
+      const $$ = (selector) => [...document.querySelectorAll(selector)];
+
+      function app() {
+        if (!window.DPRO_CONSULT) {
+          throw new Error("config.jsを読み込めませんでした。");
+        }
+        return window.DPRO_CONSULT;
+      }
+
+      function escape(value) {
+        return app().escapeHtml(value ?? "");
+      }
+
+      function showLoginError(message) {
+        const box = $("#login-error");
+        box.textContent = message;
+        box.hidden = false;
+      }
+
+      function clearLoginError() {
+        $("#login-error").hidden = true;
+        $("#login-error").textContent = "";
+      }
+
+      function setLoading(loading) {
+        state.loading = loading;
+        $("#loading-panel").hidden = !loading;
+        $("#login-panel").hidden = loading || Boolean(state.profile);
+        $("#dashboard").hidden = loading || !state.profile;
+        app().setButtonLoading($("#login-btn"), loading, {
+          loadingText: "確認中...",
+        });
+      }
+
+      function statusClass(type, status) {
+        if (
+          ["completed", "closed", "answered", "documents_received", "submitted"].includes(status)
+        ) {
+          return "done";
+        }
+
+        if (
+          ["cancelled", "no_show", "cancel_requested"].includes(status)
+        ) {
+          return "danger";
+        }
+
+        if (
+          ["waiting_client", "waiting_documents", "additional_required", "change_requested"].includes(status)
+        ) {
+          return "warning";
+        }
+
+        return "active";
+      }
+
+      function emptyHtml(title, message) {
+        return `
+          <div class="empty">
+            <strong>${escape(title)}</strong>
+            <p>${escape(message)}</p>
+          </div>
+        `;
+      }
+
+      function currentIdentityFromInputs() {
+        return {
+          company_code: $("#company-code").value.trim(),
+          phone: app().normalizePhone($("#contact-phone").value),
+          line_user_id:
+            app().getQueryParam("line_user_id") ||
+            app().getStoredValue(app().STORAGE_KEYS.LINE_USER_ID) ||
+            "",
+        };
+      }
+
+      function saveIdentity(identity) {
+        app().setStoredValue(
+          app().STORAGE_KEYS.COMPANY_CODE,
+          identity.company_code
+        );
+        app().setStoredValue(
+          app().STORAGE_KEYS.CONTACT_PHONE,
+          identity.phone
+        );
+
+        if (identity.line_user_id) {
+          app().setStoredValue(
+            app().STORAGE_KEYS.LINE_USER_ID,
+            identity.line_user_id
+          );
+        }
+      }
+
+      function clearIdentity() {
+        app().setStoredValue(app().STORAGE_KEYS.COMPANY_CODE, "");
+        app().setStoredValue(app().STORAGE_KEYS.CONTACT_PHONE, "");
+        app().setStoredValue(app().STORAGE_KEYS.LINE_USER_ID, "");
+        $("#company-code").value = "";
+        $("#contact-phone").value = "";
+        state.profile = null;
+        state.identity = {
+          company_code: "",
+          phone: "",
+          line_user_id: "",
+        };
+        $("#dashboard").hidden = true;
+        $("#login-panel").hidden = false;
+        $("#hero-company-name").textContent = "未確認";
+        $("#hero-contact-name").textContent = "本人確認後に表示します";
+        app().showToast("保存した顧問先情報を消去しました。", {
+          type: "warning",
+        });
+      }
+
+      async function loadProfile(options = {}) {
+        const identity = options.identity || currentIdentityFromInputs();
+
+        if (!identity.line_user_id) {
+          if (!identity.company_code) {
+            showLoginError("顧問先番号を入力してください。");
+            return;
+          }
+
+          if (!identity.phone) {
+            showLoginError("登録電話番号を入力してください。");
+            return;
+          }
+        }
+
+        clearLoginError();
+        state.profile = null;
+        setLoading(true);
+
+        try {
+          const result = await app().apiFetch(
+            app().API_ENDPOINTS.MEMBER_PROFILE,
+            {
+              query: {
+                line_user_id: identity.line_user_id || undefined,
+                company_code: identity.line_user_id
+                  ? undefined
+                  : identity.company_code,
+                phone: identity.line_user_id ? undefined : identity.phone,
+              },
+              timeoutMs: 30000,
+            }
+          );
+
+          state.profile = result;
+          state.identity = {
+            company_code: result.company.company_code,
+            phone: app().normalizePhone(result.contact.phone),
+            line_user_id: identity.line_user_id,
+          };
+
+          saveIdentity(state.identity);
+          renderProfile(result);
+          setLoading(false);
+
+          if (!options.silent) {
+            app().showToast("対応状況を表示しました。");
+          }
+        } catch (error) {
+          state.profile = null;
+          setLoading(false);
+          showLoginError(
+            error?.message ||
+              "顧問先番号と電話番号を確認してください。"
+          );
+          app().showToast(
+            error?.message || "対応状況を取得できませんでした。",
+            { type: "error" }
+          );
+        }
+      }
+
+      function renderProfile(profile) {
+        $("#brand-office-name").textContent =
+          profile.office?.office_name || app().OFFICE_NAME;
+        $("#hero-company-name").textContent =
+          profile.company?.company_name || "—";
+        $("#hero-contact-name").textContent =
+          profile.contact?.contact_name || "—";
+
+        const activeConsultations = (profile.consultations || []).filter(
+          (item) => !["completed", "closed"].includes(item.status)
+        );
+        const activeProcedures = (profile.procedure_requests || []).filter(
+          (item) => !["completed", "cancelled", "closed"].includes(item.status)
+        );
+        const upcomingAppointments = (profile.appointments || []).filter(
+          (item) =>
+            !["cancelled", "no_show"].includes(item.status) &&
+            new Date(item.end_at).getTime() >= Date.now()
+        );
+        const attentionDocuments = (profile.procedure_requests || [])
+          .flatMap((item) => item.documents || [])
+          .filter((document) =>
+            ["guided", "partially_received", "additional_required"].includes(
+              document.status
+            )
+          );
+
+        $("#count-consultations").textContent = activeConsultations.length;
+        $("#count-procedures").textContent = activeProcedures.length;
+        $("#count-appointments").textContent = upcomingAppointments.length;
+        $("#count-documents").textContent = attentionDocuments.length;
+
+        renderAppointments(profile.appointments || []);
+        renderProcedures(profile.procedure_requests || []);
+        renderConsultations(profile.consultations || []);
+        renderEmployees(profile.employees || []);
+        renderProgress(profile.progress || []);
+
+        $("#login-panel").hidden = true;
+        $("#dashboard").hidden = false;
+      }
+
+      function renderAppointments(items) {
+        $("#appointments-badge").textContent = `${items.length}件`;
+
+        if (!items.length) {
+          $("#appointments-list").innerHTML = emptyHtml(
+            "面談予約はありません",
+            "新しい面談予約は受付トップから行えます。"
+          );
+          return;
+        }
+
+        const sorted = [...items].sort(
+          (a, b) => new Date(b.start_at) - new Date(a.start_at)
+        );
+
+        $("#appointments-list").innerHTML = sorted
+          .map((item) => {
+            const isFuture = new Date(item.end_at).getTime() >= Date.now();
+            const canRequest =
+              isFuture &&
+              ![
+                "completed",
+                "cancelled",
+                "no_show",
+                "change_requested",
+                "cancel_requested",
+              ].includes(item.status);
+
+            return `
+              <article class="item-card">
+                <div class="item-main">
+                  <div class="item-head">
+                    <div class="item-title">
+                      <small>${escape(item.appointment_code)}</small>
+                      <h3>${escape(item.agenda || "面談予約")}</h3>
+                    </div>
+                    <span class="status ${statusClass("appointment", item.status)}">
+                      ${escape(item.status_label || app().statusLabel("appointment", item.status))}
+                    </span>
+                  </div>
+
+                  <div class="meta-grid">
+                    <div class="meta">
+                      <span>日時</span>
+                      <strong>${escape(app().formatDateTime(item.start_at))}</strong>
+                    </div>
+                    <div class="meta">
+                      <span>相談方法</span>
+                      <strong>${escape(methodLabel(item.method))}</strong>
+                    </div>
+                    <div class="meta">
+                      <span>予約状況</span>
+                      <strong>${escape(item.status_label || app().statusLabel("appointment", item.status))}</strong>
+                    </div>
+                    <div class="meta">
+                      <span>場所・URL</span>
+                      <strong>${escape(item.location || item.meeting_url || "担当者から案内")}</strong>
+                    </div>
+                  </div>
+
+                  ${
+                    item.customer_notes
+                      ? `<div class="item-description">${escape(item.customer_notes)}</div>`
+                      : ""
+                  }
+
+                  <div class="item-actions">
+                    <button
+                      class="btn btn-light"
+                      type="button"
+                      data-copy-appointment="${escape(item.appointment_code)}"
+                    >
+                      確認文面をコピー
+                    </button>
+                    ${
+                      canRequest
+                        ? `
+                          <button
+                            class="btn btn-warning"
+                            type="button"
+                            data-appointment-change="${escape(item.appointment_code)}"
+                          >
+                            日程変更を相談
+                          </button>
+                          <button
+                            class="btn btn-danger"
+                            type="button"
+                            data-appointment-cancel="${escape(item.appointment_code)}"
+                          >
+                            キャンセルを相談
+                          </button>
+                        `
+                        : ""
+                    }
+                  </div>
+                </div>
+              </article>
+            `;
+          })
+          .join("");
+      }
+
+      function renderProcedures(items) {
+        $("#procedures-badge").textContent = `${items.length}件`;
+
+        if (!items.length) {
+          $("#procedures-list").innerHTML = emptyHtml(
+            "手続き依頼はありません",
+            "入社・退職などの手続き依頼は受付トップから送信できます。"
+          );
+          return;
+        }
+
+        $("#procedures-list").innerHTML = items
+          .map((item) => {
+            const documents = item.documents || [];
+            const documentHtml = documents.length
+              ? `
+                <ul class="document-list">
+                  ${documents
+                    .map(
+                      (document) => `
+                        <li class="document-item">
+                          <div>
+                            <strong>${escape(
+                              document.document?.document_name ||
+                                document.custom_document_name ||
+                                "確認事項"
+                            )}</strong>
+                            ${
+                              document.document?.description
+                                ? `<p>${escape(document.document.description)}</p>`
+                                : ""
+                            }
+                            ${
+                              document.document?.do_not_upload
+                                ? `<p style="color:var(--danger)">この画面やLINEへ送信しないでください。</p>`
+                                : ""
+                            }
+                            ${
+                              document.notes
+                                ? `<p>${escape(document.notes)}</p>`
+                                : ""
+                            }
+                          </div>
+                          <span class="status ${statusClass("document", document.status)}">
+                            ${escape(document.status_label || app().statusLabel("document", document.status))}
+                          </span>
+                        </li>
+                      `
+                    )
+                    .join("")}
+                </ul>
+              `
+              : emptyHtml(
+                  "必要書類の案内はまだありません",
+                  "内容確認後、担当者が必要事項をご案内します。"
+                );
+
+            return `
+              <article class="item-card">
+                <div class="item-main">
+                  <div class="item-head">
+                    <div class="item-title">
+                      <small>${escape(item.procedure_request_code)}</small>
+                      <h3>${escape(item.title)}</h3>
+                    </div>
+                    <span class="status ${statusClass("procedure", item.status)}">
+                      ${escape(item.status_label || app().statusLabel("procedure", item.status))}
+                    </span>
+                  </div>
+
+                  <div class="meta-grid">
+                    <div class="meta">
+                      <span>受付日</span>
+                      <strong>${escape(app().formatDate(item.received_at))}</strong>
+                    </div>
+                    <div class="meta">
+                      <span>基準日</span>
+                      <strong>${escape(app().formatDate(item.effective_date))}</strong>
+                    </div>
+                    <div class="meta">
+                      <span>事務所期限目安</span>
+                      <strong>${escape(app().formatDate(item.office_due_date))}</strong>
+                    </div>
+                    <div class="meta">
+                      <span>次回連絡予定</span>
+                      <strong>${escape(app().formatDate(item.next_contact_date))}</strong>
+                    </div>
+                  </div>
+
+                  ${
+                    item.request_details
+                      ? `<div class="item-description">${escape(item.request_details)}</div>`
+                      : ""
+                  }
+
+                  <div class="item-actions">
+                    <button
+                      class="btn btn-light"
+                      type="button"
+                      data-copy-procedure="${escape(item.procedure_request_code)}"
+                    >
+                      問い合わせ文面をコピー
+                    </button>
+                  </div>
+                </div>
+
+                <details>
+                  <summary>必要書類・確認事項を表示</summary>
+                  <div class="details-body">${documentHtml}</div>
+                </details>
+              </article>
+            `;
+          })
+          .join("");
+      }
+
+      function renderConsultations(items) {
+        $("#consultations-badge").textContent = `${items.length}件`;
+
+        if (!items.length) {
+          $("#consultations-list").innerHTML = emptyHtml(
+            "労務相談はありません",
+            "新しい相談は受付トップから送信できます。"
+          );
+          return;
+        }
+
+        $("#consultations-list").innerHTML = items
+          .map(
+            (item) => `
+              <article class="item-card">
+                <div class="item-main">
+                  <div class="item-head">
+                    <div class="item-title">
+                      <small>${escape(item.consultation_code)}</small>
+                      <h3>${escape(item.title)}</h3>
+                    </div>
+                    <span class="status ${statusClass("consultation", item.status)}">
+                      ${escape(item.status_label || app().statusLabel("consultation", item.status))}
+                    </span>
+                  </div>
+
+                  <div class="meta-grid">
+                    <div class="meta">
+                      <span>受付日</span>
+                      <strong>${escape(app().formatDate(item.received_at))}</strong>
+                    </div>
+                    <div class="meta">
+                      <span>緊急度</span>
+                      <strong>${escape(urgencyLabel(item.urgency))}</strong>
+                    </div>
+                    <div class="meta">
+                      <span>希望回答日</span>
+                      <strong>${escape(app().formatDate(item.preferred_response_date))}</strong>
+                    </div>
+                    <div class="meta">
+                      <span>次回連絡予定</span>
+                      <strong>${escape(app().formatDate(item.next_contact_date))}</strong>
+                    </div>
+                  </div>
+
+                  <div class="item-description">${escape(item.consultation_details)}</div>
+
+                  ${
+                    item.response_summary
+                      ? `
+                        <details style="margin-top:12px;border:1px solid #e3ebe9;border-radius:10px">
+                          <summary>事務所からの回答概要</summary>
+                          <div class="details-body">
+                            <div class="item-description" style="margin-top:0">
+                              ${escape(item.response_summary)}
+                            </div>
+                          </div>
+                        </details>
+                      `
+                      : ""
+                  }
+
+                  <div class="item-actions">
+                    <button
+                      class="btn btn-light"
+                      type="button"
+                      data-copy-consultation="${escape(item.consultation_code)}"
+                    >
+                      追加相談文面をコピー
+                    </button>
+                  </div>
+                </div>
+              </article>
+            `
+          )
+          .join("");
+      }
+
+      function renderEmployees(items) {
+        $("#employees-badge").textContent = `${items.length}名`;
+
+        if (!items.length) {
+          $("#employees-list").innerHTML = emptyHtml(
+            "登録された対象者はいません",
+            "手続き依頼に関連する対象者が表示されます。"
+          );
+          return;
+        }
+
+        $("#employees-list").innerHTML = items
+          .map(
+            (item) => `
+              <article class="item-card">
+                <div class="item-main">
+                  <div class="item-head">
+                    <div class="item-title">
+                      <small>${escape(item.employee_code)}</small>
+                      <h3>${escape(item.employee_name)}</h3>
+                    </div>
+                    <span class="status active">${escape(item.procedure_status || "確認中")}</span>
+                  </div>
+
+                  <div class="meta-grid">
+                    <div class="meta">
+                      <span>雇用区分</span>
+                      <strong>${escape(item.employment_type || "—")}</strong>
+                    </div>
+                    <div class="meta">
+                      <span>入社日</span>
+                      <strong>${escape(app().formatDate(item.hire_date))}</strong>
+                    </div>
+                    <div class="meta">
+                      <span>退職日</span>
+                      <strong>${escape(app().formatDate(item.leave_date))}</strong>
+                    </div>
+                    <div class="meta">
+                      <span>手続き</span>
+                      <strong>${escape(item.current_procedure_type || "—")}</strong>
+                    </div>
+                  </div>
+                </div>
+              </article>
+            `
+          )
+          .join("");
+      }
+
+      function renderProgress(items) {
+        $("#progress-badge").textContent = `${items.length}件`;
+
+        if (!items.length) {
+          $("#progress-list").innerHTML = emptyHtml(
+            "公開された進捗連絡はまだありません",
+            "担当者が顧問先向けに公開した進捗を表示します。"
+          );
+          return;
+        }
+
+        $("#progress-list").innerHTML = `
+          <ul class="progress-list">
+            ${items
+              .map(
+                (item) => `
+                  <li class="progress-item">
+                    <div>
+                      <strong>${escape(item.progress_title)}</strong>
+                      ${
+                        item.progress_note
+                          ? `<p>${escape(item.progress_note)}</p>`
+                          : ""
+                      }
+                      <p>${escape(app().formatDateTime(item.created_at))}</p>
+                    </div>
+                    ${
+                      item.status_to
+                        ? `<span class="status active">${escape(item.status_to)}</span>`
+                        : ""
+                    }
+                  </li>
+                `
+              )
+              .join("")}
+          </ul>
+        `;
+      }
+
+      function methodLabel(method) {
+        return {
+          office: "事務所来所",
+          online: "オンライン",
+          phone: "電話",
+          visit: "訪問",
+          other: "その他",
+        }[method] || method || "—";
+      }
+
+      function urgencyLabel(urgency) {
+        return {
+          low: "急ぎではない",
+          normal: "通常",
+          high: "早め",
+          urgent: "至急",
+        }[urgency] || urgency || "—";
+      }
+
+      function findAppointment(code) {
+        return state.profile?.appointments?.find(
+          (item) => item.appointment_code === code
+        );
+      }
+
+      function findProcedure(code) {
+        return state.profile?.procedure_requests?.find(
+          (item) => item.procedure_request_code === code
+        );
+      }
+
+      function findConsultation(code) {
+        return state.profile?.consultations?.find(
+          (item) => item.consultation_code === code
+        );
+      }
+
+      function openAppointmentRequest(type, code) {
+        const appointment = findAppointment(code);
+        if (!appointment) return;
+
+        $("#appointment-request-code").value = code;
+        $("#appointment-request-type").value = type;
+        $("#appointment-request-reason").value = "";
+        $("#appointment-dialog-error").hidden = true;
+
+        const isChange = type === "change";
+        $("#appointment-dialog-title").textContent = isChange
+          ? "面談日程の変更希望"
+          : "面談キャンセル希望";
+        $("#appointment-dialog-description").textContent =
+          `${app().formatDateTime(appointment.start_at)}の面談について、事務所へ希望を送信します。`;
+        $("#appointment-request-submit").textContent = isChange
+          ? "変更希望を送信"
+          : "キャンセル希望を送信";
+
+        $("#appointment-request-dialog").showModal();
+      }
+
+      async function submitAppointmentRequest(event) {
+        event.preventDefault();
+
+        const type = $("#appointment-request-type").value;
+        const code = $("#appointment-request-code").value;
+        const reason = $("#appointment-request-reason").value.trim();
+        const errorBox = $("#appointment-dialog-error");
+
+        if (!reason) {
+          errorBox.textContent = "希望内容・理由を入力してください。";
+          errorBox.hidden = false;
+          return;
+        }
+
+        errorBox.hidden = true;
+        const button = $("#appointment-request-submit");
+        app().setButtonLoading(button, true, { loadingText: "送信中..." });
+
+        try {
+          const endpoint =
+            type === "change"
+              ? app().API_ENDPOINTS.PUBLIC_CHANGE_REQUEST
+              : app().API_ENDPOINTS.PUBLIC_CANCEL_REQUEST;
+
+          const payload = {
+            company_code: state.identity.company_code,
+            phone: state.identity.phone,
+            line_user_id: state.identity.line_user_id || null,
+            appointment_code: code,
+            reason,
+          };
+
+          const result = await app().apiFetch(endpoint, {
+            method: "POST",
+            body: payload,
+          });
+
+          $("#appointment-request-dialog").close();
+          app().showToast(result.message || "希望を送信しました。");
+          await loadProfile({ identity: state.identity, silent: true });
+        } catch (error) {
+          errorBox.textContent =
+            error?.message || "希望を送信できませんでした。";
+          errorBox.hidden = false;
+        } finally {
+          app().setButtonLoading(button, false);
+        }
+      }
+
+      async function copyAppointmentMessage(code) {
+        const item = findAppointment(code);
+        if (!item) return;
+
+        const text = `${state.profile.company.company_name}
+${state.profile.contact.contact_name}です。
+
+以下の面談予約について確認です。
+予約番号：${item.appointment_code}
+日時：${app().formatDateTime(item.start_at)}
+方法：${methodLabel(item.method)}
+相談内容：${item.agenda || "—"}
+
+確認事項があればご連絡ください。`;
+
+        await app().copyText(text);
+        app().showToast("面談確認文面をコピーしました。");
+      }
+
+      async function copyProcedureMessage(code) {
+        const item = findProcedure(code);
+        if (!item) return;
+
+        const text = `${state.profile.company.company_name}
+${state.profile.contact.contact_name}です。
+
+以下の手続き依頼について確認です。
+受付番号：${item.procedure_request_code}
+依頼内容：${item.title}
+現在の状況：${item.status_label || app().statusLabel("procedure", item.status)}
+
+不足している情報や次に必要な対応があれば教えてください。`;
+
+        await app().copyText(text);
+        app().showToast("手続き問い合わせ文面をコピーしました。");
+      }
+
+      async function copyConsultationMessage(code) {
+        const item = findConsultation(code);
+        if (!item) return;
+
+        const text = `${state.profile.company.company_name}
+${state.profile.contact.contact_name}です。
+
+以下の相談について追加で確認したいことがあります。
+受付番号：${item.consultation_code}
+相談内容：${item.title}
+現在の状況：${item.status_label || app().statusLabel("consultation", item.status)}
+
+【追加内容】
+`;
+
+        await app().copyText(text);
+        app().showToast("追加相談文面をコピーしました。");
+      }
+
+      async function copyGeneralInquiry() {
+        if (!state.profile) return;
+
+        const text = `${state.profile.office.office_name} ご担当者様
+
+${state.profile.company.company_name}
+${state.profile.contact.contact_name}です。
+
+【問い合わせ内容】
+
+
+よろしくお願いします。`;
+
+        await app().copyText(text);
+        app().showToast("問い合わせ文面をコピーしました。");
+      }
+
+      function bindDynamicActions() {
+        $("#dashboard").addEventListener("click", async (event) => {
+          const change = event.target.closest("[data-appointment-change]");
+          const cancel = event.target.closest("[data-appointment-cancel]");
+          const appointmentCopy = event.target.closest(
+            "[data-copy-appointment]"
+          );
+          const procedureCopy = event.target.closest("[data-copy-procedure]");
+          const consultationCopy = event.target.closest(
+            "[data-copy-consultation]"
+          );
+
+          try {
+            if (change) {
+              openAppointmentRequest(
+                "change",
+                change.dataset.appointmentChange
+              );
+            } else if (cancel) {
+              openAppointmentRequest(
+                "cancel",
+                cancel.dataset.appointmentCancel
+              );
+            } else if (appointmentCopy) {
+              await copyAppointmentMessage(
+                appointmentCopy.dataset.copyAppointment
+              );
+            } else if (procedureCopy) {
+              await copyProcedureMessage(
+                procedureCopy.dataset.copyProcedure
+              );
+            } else if (consultationCopy) {
+              await copyConsultationMessage(
+                consultationCopy.dataset.copyConsultation
+              );
+            }
+          } catch (error) {
+            app().showToast(
+              error?.message || "文面をコピーできませんでした。",
+              { type: "error" }
+            );
+          }
+        });
+      }
+
+      function bindEvents() {
+        $("#login-form").addEventListener("submit", (event) => {
+          event.preventDefault();
+          loadProfile();
+        });
+
+        $$("[data-demo]").forEach((button) => {
+          button.addEventListener("click", () => {
+            const demo = demoAccounts[button.dataset.demo];
+            $("#company-code").value = demo.company_code;
+            $("#contact-phone").value = demo.phone;
+            app().showToast("営業デモ用の顧問先情報を入力しました。", {
+              type: "info",
+            });
+          });
+        });
+
+        $("#clear-login-btn").addEventListener("click", clearIdentity);
+
+        $("#contact-phone").addEventListener("blur", (event) => {
+          const value = app().formatPhone(event.target.value);
+          if (value) event.target.value = value;
+        });
+
+        $("#reload-btn").addEventListener("click", async (event) => {
+          if (!state.profile) {
+            loadProfile();
+            return;
+          }
+
+          app().setButtonLoading(event.currentTarget, true, {
+            loadingText: "更新中...",
+          });
+
+          try {
+            await loadProfile({ identity: state.identity, silent: true });
+            app().showToast("対応状況を更新しました。");
+          } finally {
+            app().setButtonLoading(event.currentTarget, false);
+          }
+        });
+
+        $(".section-tabs").addEventListener("click", (event) => {
+          const button = event.target.closest("[data-target]");
+          if (!button) return;
+
+          $$(".tab-btn").forEach((item) =>
+            item.classList.toggle("active", item === button)
+          );
+
+          document
+            .getElementById(button.dataset.target)
+            ?.scrollIntoView({ behavior: "smooth", block: "start" });
+        });
+
+        $("#copy-general-inquiry-btn").addEventListener(
+          "click",
+          copyGeneralInquiry
+        );
+
+        $("#appointment-dialog-close").addEventListener("click", () =>
+          $("#appointment-request-dialog").close()
+        );
+        $("#appointment-dialog-cancel").addEventListener("click", () =>
+          $("#appointment-request-dialog").close()
+        );
+        $("#appointment-request-form").addEventListener(
+          "submit",
+          submitAppointmentRequest
+        );
+
+        bindDynamicActions();
+      }
+
+      async function bootstrap() {
+        bindEvents();
+
+        const config = await app().apiFetch(
+          app().API_ENDPOINTS.PUBLIC_CONFIG
+        ).catch(() => null);
+
+        if (config?.office?.office_name) {
+          $("#brand-office-name").textContent = config.office.office_name;
+        }
+
+        const queryIdentity = {
+          company_code:
+            app().getQueryParam("company_code") ||
+            app().getStoredValue(app().STORAGE_KEYS.COMPANY_CODE),
+          phone:
+            app().getQueryParam("phone") ||
+            app().getStoredValue(app().STORAGE_KEYS.CONTACT_PHONE),
+          line_user_id:
+            app().getQueryParam("line_user_id") ||
+            app().getStoredValue(app().STORAGE_KEYS.LINE_USER_ID),
+        };
+
+        $("#company-code").value = queryIdentity.company_code || "";
+        $("#contact-phone").value = queryIdentity.phone
+          ? app().formatPhone(queryIdentity.phone)
+          : "";
+
+        if (
+          queryIdentity.line_user_id ||
+          (queryIdentity.company_code && queryIdentity.phone)
+        ) {
+          await loadProfile({
+            identity: {
+              company_code: queryIdentity.company_code,
+              phone: app().normalizePhone(queryIdentity.phone),
+              line_user_id: queryIdentity.line_user_id,
+            },
+            silent: true,
+          });
+        }
+      }
+
+      if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", bootstrap, {
+          once: true,
+        });
+      } else {
+        bootstrap();
+      }
+    })();
+  </script>
+</body>
+</html>
