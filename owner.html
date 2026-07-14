@@ -2176,6 +2176,339 @@
       }
     }
 
+  
+    /* =========================================================
+       STEP CONSULT-12-R1
+       電話・来所受付ダイアログの視認性をさらに改善
+       ========================================================= */
+
+    dialog.wide#manual-dialog {
+      width: min(1320px, calc(100% - 20px));
+    }
+
+    #manual-dialog .dialog-head {
+      padding: 24px 28px;
+    }
+
+    #manual-dialog .dialog-head h2 {
+      font-size: 32px;
+      letter-spacing: -.02em;
+    }
+
+    #manual-dialog .dialog-head p {
+      margin-top: 6px;
+      font-size: 14px;
+      line-height: 1.75;
+    }
+
+    #manual-dialog .dialog-close {
+      width: 46px;
+      height: 46px;
+      font-size: 22px;
+    }
+
+    #manual-dialog .dialog-body {
+      padding: 24px 28px 30px;
+    }
+
+    #manual-dialog .dialog-tabs {
+      gap: 10px;
+      margin-top: 18px;
+      margin-bottom: 18px;
+      padding: 8px;
+      border-radius: 16px;
+      background: #eef4f2;
+    }
+
+    #manual-dialog .dialog-tab {
+      min-height: 54px;
+      padding: 12px 18px;
+      border-radius: 12px;
+      font-size: 14px;
+      font-weight: 900;
+    }
+
+    #manual-dialog .manual-customer-search {
+      padding: 24px;
+      border-radius: 18px;
+    }
+
+    #manual-dialog .manual-search-head h3 {
+      font-size: 24px;
+    }
+
+    #manual-dialog .manual-search-head p {
+      font-size: 13px;
+      line-height: 1.8;
+    }
+
+    #manual-dialog .manual-search-results h4 {
+      font-size: 16px;
+      margin-top: 6px;
+    }
+
+    #manual-dialog .manual-result-row {
+      padding: 18px;
+      border-radius: 14px;
+    }
+
+    #manual-dialog .manual-result-main strong {
+      font-size: 18px;
+      line-height: 1.5;
+    }
+
+    #manual-dialog .manual-result-main div,
+    #manual-dialog .manual-result-main small {
+      font-size: 12px;
+      line-height: 1.8;
+    }
+
+    #manual-dialog .manual-selected-customer {
+      padding: 20px;
+      border-radius: 16px;
+    }
+
+    #manual-dialog .manual-selected-head strong {
+      font-size: 24px;
+    }
+
+    #manual-dialog .manual-selected-head small {
+      font-size: 12px;
+      line-height: 1.7;
+    }
+
+    #manual-dialog .manual-customer-summary {
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    #manual-dialog .manual-customer-summary > div {
+      padding: 12px 13px;
+      border-radius: 12px;
+    }
+
+    #manual-dialog .manual-customer-summary span,
+    #manual-dialog .manual-recent-grid span {
+      font-size: 10px;
+    }
+
+    #manual-dialog .manual-customer-summary strong,
+    #manual-dialog .manual-recent-grid strong {
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    #manual-dialog .manual-history-counts {
+      font-size: 12px;
+      line-height: 1.8;
+    }
+
+    #manual-dialog .manual-history-counts strong {
+      font-size: 17px;
+    }
+
+    #manual-dialog .manual-recent-grid {
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    #manual-dialog .manual-recent-grid > div {
+      padding: 13px;
+      border-radius: 12px;
+    }
+
+    #manual-dialog .manual-recent-grid small {
+      font-size: 10px;
+      line-height: 1.7;
+    }
+
+    #manual-dialog .form-grid {
+      gap: 14px;
+      margin-top: 6px;
+    }
+
+    #manual-dialog .field {
+      padding: 14px;
+      border: 1px solid #e1ebe8;
+      border-radius: 14px;
+      background: #fbfdfc;
+    }
+
+    #manual-dialog .field.full {
+      grid-column: 1 / -1;
+    }
+
+    #manual-dialog .label {
+      margin-bottom: 9px;
+      font-size: 14px;
+      font-weight: 900;
+    }
+
+    #manual-dialog .required {
+      font-size: 9px;
+    }
+
+    #manual-dialog .input,
+    #manual-dialog .select {
+      min-height: 56px;
+      padding: 12px 15px;
+      border-radius: 12px;
+      font-size: 16px;
+    }
+
+    #manual-dialog .textarea {
+      min-height: 160px;
+      padding: 14px 15px;
+      border-radius: 12px;
+      font-size: 16px;
+      line-height: 1.8;
+    }
+
+    #manual-dialog .help {
+      font-size: 12px;
+      line-height: 1.75;
+    }
+
+    #manual-dialog .dialog-actions {
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    #manual-dialog .dialog-actions .btn {
+      min-height: 54px;
+      padding: 12px 22px;
+      font-size: 14px;
+    }
+
+    #manual-dialog #manual-error {
+      margin-top: 14px;
+      font-size: 12px;
+      line-height: 1.7;
+    }
+
+    #manual-dialog .empty {
+      padding: 30px 18px;
+      border-radius: 14px;
+    }
+
+    #manual-dialog .empty strong {
+      font-size: 16px;
+    }
+
+    #manual-dialog .empty p {
+      font-size: 12px;
+      line-height: 1.8;
+    }
+
+    @media (max-width: 1100px) {
+      dialog.wide#manual-dialog {
+        width: min(100% - 16px, 1320px);
+      }
+
+      #manual-dialog .dialog-head h2 {
+        font-size: 28px;
+      }
+
+      #manual-dialog .manual-search-head {
+        display: block;
+      }
+
+      #manual-dialog .manual-search-head .badge {
+        margin-top: 10px;
+      }
+
+      #manual-dialog .manual-customer-summary,
+      #manual-dialog .manual-recent-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 760px) {
+      #manual-dialog .dialog-head {
+        padding: 20px 18px;
+      }
+
+      #manual-dialog .dialog-body {
+        padding: 18px 16px 24px;
+      }
+
+      #manual-dialog .dialog-head h2 {
+        font-size: 24px;
+      }
+
+      #manual-dialog .dialog-head p {
+        font-size: 12px;
+      }
+
+      #manual-dialog .dialog-tabs {
+        grid-template-columns: 1fr;
+      }
+
+      #manual-dialog .dialog-tab {
+        min-height: 50px;
+        font-size: 13px;
+      }
+
+      #manual-dialog .manual-customer-search {
+        padding: 18px 14px;
+      }
+
+      #manual-dialog .manual-search-head h3 {
+        font-size: 20px;
+      }
+
+      #manual-dialog .manual-result-main strong {
+        font-size: 16px;
+      }
+
+      #manual-dialog .manual-selected-head {
+        display: block;
+      }
+
+      #manual-dialog .manual-selected-head .mini-btn {
+        width: 100%;
+        margin-top: 10px;
+      }
+
+      #manual-dialog .manual-selected-head strong {
+        font-size: 21px;
+      }
+
+      #manual-dialog .manual-customer-summary,
+      #manual-dialog .manual-recent-grid,
+      #manual-dialog .form-grid,
+      #manual-dialog .form-grid.cols-3 {
+        grid-template-columns: 1fr;
+      }
+
+      #manual-dialog .field.full {
+        grid-column: auto;
+      }
+
+      #manual-dialog .field {
+        padding: 12px;
+      }
+
+      #manual-dialog .input,
+      #manual-dialog .select {
+        min-height: 52px;
+        font-size: 15px;
+      }
+
+      #manual-dialog .textarea {
+        min-height: 150px;
+        font-size: 15px;
+      }
+
+      #manual-dialog .dialog-actions {
+        grid-template-columns: 1fr;
+      }
+
+      #manual-dialog .dialog-actions .btn {
+        width: 100%;
+      }
+    }
+
   </style>
 </head>
 <body>
@@ -2275,7 +2608,7 @@
         <section class="page-section active" id="page-dashboard">
           <div class="hero">
             <div>
-              <div class="hero-eyebrow">STEP CONSULT-12 · PHONE SEARCH + LARGE UI</div>
+              <div class="hero-eyebrow">STEP CONSULT-12-R1 · MANUAL DIALOG READABILITY</div>
               <h2>顧問先対応を、<br>今日やる順番で整理</h2>
               <p>
                 新着相談・手続き依頼・書類待ち・返信待ち・本日の面談・期限タスクを
