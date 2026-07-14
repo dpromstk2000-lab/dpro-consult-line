@@ -487,7 +487,7 @@
 
     .auth-row {
       display: grid;
-      grid-template-columns: minmax(140px, 1fr) auto auto auto;
+      grid-template-columns: minmax(140px, 1fr) auto auto;
       gap: 9px;
     }
 
@@ -950,6 +950,110 @@
         font-size: 25px;
       }
     }
+
+    .manual-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .manual-item {
+      display: grid;
+      grid-template-columns: 34px minmax(0, 1fr) auto;
+      align-items: center;
+      gap: 11px;
+      min-height: 76px;
+      padding: 13px;
+      border: 1px solid var(--line);
+      border-radius: 13px;
+      background: var(--surface-soft);
+      color: var(--text);
+      cursor: pointer;
+      text-align: left;
+      transition: .15s ease;
+    }
+
+    .manual-item:hover {
+      border-color: #a9ccc5;
+      transform: translateY(-1px);
+    }
+
+    .manual-item[data-checked="true"] {
+      border-color: #9bd7c8;
+      background: var(--success-soft);
+    }
+
+    .manual-number {
+      display: grid;
+      place-items: center;
+      width: 34px;
+      height: 34px;
+      border-radius: 10px;
+      background: #e8eeec;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 950;
+    }
+
+    .manual-item[data-checked="true"] .manual-number {
+      background: var(--success);
+      color: #ffffff;
+    }
+
+    .manual-copy strong {
+      display: block;
+      font-size: 13px;
+    }
+
+    .manual-copy small {
+      display: block;
+      margin-top: 3px;
+      color: var(--muted);
+      font-size: 10px;
+      line-height: 1.55;
+    }
+
+    .manual-state {
+      min-width: 58px;
+      padding: 5px 8px;
+      border-radius: 999px;
+      background: #edf1f0;
+      color: var(--neutral);
+      font-size: 9px;
+      font-weight: 900;
+      text-align: center;
+      white-space: nowrap;
+    }
+
+    .manual-item[data-checked="true"] .manual-state {
+      background: var(--success);
+      color: #ffffff;
+    }
+
+    .completion-note {
+      margin-top: 12px;
+      border-color: #d6e5e1;
+      background: #fbfdfc;
+    }
+
+    .completion-note strong {
+      display: block;
+      font-size: 13px;
+    }
+
+    .completion-note p {
+      margin: 6px 0 0;
+      color: var(--muted);
+      font-size: 11px;
+      line-height: 1.7;
+    }
+
+    @media (max-width: 780px) {
+      .manual-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
   </style>
 </head>
 <body>
@@ -959,7 +1063,7 @@
         <strong>DPRO 社労士・顧問先対応 LINE</strong><br>
         <span>内部システムチェック</span>
       </div>
-      <span>STEP CONSULT-5</span>
+      <span>STEP CONSULT-11</span>
     </header>
 
     <aside class="sidebar" aria-label="ページ内メニュー">
@@ -993,6 +1097,10 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.07.07l2-2a5 5 0 0 0-7.07-7.07l-1.15 1.15"/><path d="M14 11a5 5 0 0 0-7.07-.07l-2 2A5 5 0 0 0 12 20l1.15-1.15"/></svg>
           画面・URL
         </a>
+        <a href="#manual">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="m8 12 2.5 2.5L16 9"/></svg>
+          手動チェック
+        </a>
         <a href="#final">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m8 12 2.5 2.5L16 9"/></svg>
           最終判定
@@ -1005,7 +1113,7 @@
           <span id="side-status-dot">●</span>
           <span id="side-status-text">確認前</span>
         </div>
-        <p>営業前は「一括チェック」と「デモ準備」を実行してください。</p>
+        <p>「一括チェック」「デモ準備」「手動8項目」を確認してください。</p>
       </div>
     </aside>
 
@@ -1013,11 +1121,11 @@
       <div class="container">
         <section class="hero" id="summary">
           <div class="hero-copy">
-            <div class="eyebrow">INTERNAL CHECK · STEP CONSULT-5</div>
-            <h1>営業前システムチェック</h1>
+            <div class="eyebrow">FINAL SYSTEM CHECK · STEP CONSULT-11</div>
+            <h1>完成・営業前システムチェック</h1>
             <p>
-              API・Supabase・管理認証・デモデータ・各画面URLをまとめて確認します。
-              この画面は営業担当・開発担当向けの内部確認用です。
+              API・Supabase・管理認証・顧問先マイページ・担当者画面・受付iPad・全画面URLをまとめて確認します。
+              この画面は営業担当・開発担当向けの最終内部確認用です。
             </p>
           </div>
           <div class="hero-meta">
@@ -1072,11 +1180,10 @@
                 aria-label="管理コード"
               >
               <button class="btn btn-primary" id="save-admin-code-btn" type="button">保存</button>
-              <button class="btn btn-light" id="fill-demo-code-btn" type="button">1234入力</button>
               <button class="btn btn-danger-light" id="remove-admin-code-btn" type="button">消去</button>
             </div>
             <p class="help">
-              デモ管理コードは <strong>1234</strong> です。保存・消去後は画面に反応を表示します。
+              管理コードを手入力してください。保存・消去後は画面に反応を表示します。
             </p>
           </article>
 
@@ -1122,91 +1229,82 @@
             <div class="check-list">
               <div class="check-row" id="check-config" data-state="wait">
                 <div class="check-icon">1</div>
-                <div class="check-name">
-                  <strong>config.js 読み込み</strong>
-                  <small>DPRO_CONSULT共通設定が利用できること</small>
-                </div>
+                <div class="check-name"><strong>config.js 読み込み</strong><small>DPRO_CONSULT共通設定が利用できること</small></div>
                 <div class="check-result">未確認</div>
               </div>
-
               <div class="check-row" id="check-health" data-state="wait">
                 <div class="check-icon">2</div>
-                <div class="check-name">
-                  <strong>Worker API接続</strong>
-                  <small>/api/health が正常応答すること</small>
-                </div>
+                <div class="check-name"><strong>Worker API接続</strong><small>/api/health が正常応答すること</small></div>
                 <div class="check-result">未確認</div>
               </div>
-
               <div class="check-row" id="check-db" data-state="wait">
                 <div class="check-icon">3</div>
-                <div class="check-name">
-                  <strong>Supabase接続</strong>
-                  <small>Worker経由で事務所データを取得できること</small>
-                </div>
+                <div class="check-name"><strong>Supabase接続</strong><small>Worker経由で事務所データを取得できること</small></div>
                 <div class="check-result">未確認</div>
               </div>
-
               <div class="check-row" id="check-office" data-state="wait">
                 <div class="check-icon">4</div>
-                <div class="check-name">
-                  <strong>office_code確認</strong>
-                  <small>dpro_consult_demo が取得できること</small>
-                </div>
+                <div class="check-name"><strong>office_code確認</strong><small>dpro_consult_demo が取得できること</small></div>
                 <div class="check-result">未確認</div>
               </div>
-
               <div class="check-row" id="check-public-config" data-state="wait">
                 <div class="check-icon">5</div>
-                <div class="check-name">
-                  <strong>公開設定取得</strong>
-                  <small>営業時間・注意書き・受付設定を取得できること</small>
-                </div>
+                <div class="check-name"><strong>公開設定取得</strong><small>営業時間・注意書き・受付設定を取得できること</small></div>
                 <div class="check-result">未確認</div>
               </div>
-
               <div class="check-row" id="check-options" data-state="wait">
                 <div class="check-icon">6</div>
-                <div class="check-name">
-                  <strong>相談・手続きマスタ</strong>
-                  <small>相談分類・手続き種別・予約メニューを取得できること</small>
-                </div>
+                <div class="check-name"><strong>相談・手続きマスタ</strong><small>相談分類・手続き種別・予約メニューを取得できること</small></div>
                 <div class="check-result">未確認</div>
               </div>
-
               <div class="check-row" id="check-admin" data-state="wait">
                 <div class="check-icon">7</div>
-                <div class="check-name">
-                  <strong>管理コード認証</strong>
-                  <small>管理コードで管理APIへ接続できること</small>
-                </div>
+                <div class="check-name"><strong>管理コード認証</strong><small>管理コードで管理APIへ接続できること</small></div>
                 <div class="check-result">未確認</div>
               </div>
-
               <div class="check-row" id="check-dashboard" data-state="wait">
                 <div class="check-icon">8</div>
-                <div class="check-name">
-                  <strong>管理ダッシュボード</strong>
-                  <small>顧問先・相談・手続き・面談・タスク件数を取得できること</small>
-                </div>
+                <div class="check-name"><strong>PC管理ダッシュボード</strong><small>顧問先・相談・手続き・面談・タスク件数を取得できること</small></div>
                 <div class="check-result">未確認</div>
               </div>
-
-              <div class="check-row" id="check-phone" data-state="wait">
+              <div class="check-row" id="check-staff-master" data-state="wait">
                 <div class="check-icon">9</div>
-                <div class="check-name">
-                  <strong>電話番号正規化</strong>
-                  <small>ハイフン・空白・全角・+81を同一判定できること</small>
-                </div>
+                <div class="check-name"><strong>担当者マスタ</strong><small>社労士・事務スタッフを取得できること</small></div>
                 <div class="check-result">未確認</div>
               </div>
-
-              <div class="check-row" id="check-linebreak" data-state="wait">
+              <div class="check-row" id="check-member" data-state="wait">
                 <div class="check-icon">10</div>
-                <div class="check-name">
-                  <strong>LINE文面改行補正</strong>
-                  <small>「\n」が文字のまま表示されないこと</small>
-                </div>
+                <div class="check-name"><strong>顧問先マイページ</strong><small>デモ顧問先の相談・手続き・書類情報を取得できること</small></div>
+                <div class="check-result">未確認</div>
+              </div>
+              <div class="check-row" id="check-search" data-state="wait">
+                <div class="check-icon">11</div>
+                <div class="check-name"><strong>既存顧問先検索</strong><small>電話番号正規化検索で会社・担当者を取得できること</small></div>
+                <div class="check-result">未確認</div>
+              </div>
+              <div class="check-row" id="check-staff-work" data-state="wait">
+                <div class="check-icon">12</div>
+                <div class="check-name"><strong>担当者ワークAPI</strong><small>担当相談・手続き・タスクを取得できること</small></div>
+                <div class="check-result">未確認</div>
+              </div>
+              <div class="check-row" id="check-ipad" data-state="wait">
+                <div class="check-icon">13</div>
+                <div class="check-name"><strong>受付iPad API</strong><small>本日の面談・受付タスクを取得できること</small></div>
+                <div class="check-result">未確認</div>
+              </div>
+              <div class="check-row" id="check-phone" data-state="wait">
+                <div class="check-icon">14</div>
+                <div class="check-name"><strong>電話番号正規化</strong><small>ハイフン・空白・全角・+81を同一判定できること</small></div>
+                <div class="check-result">未確認</div>
+              </div>
+              <div class="check-row" id="check-linebreak" data-state="wait">
+                <div class="check-icon">15</div>
+                <div class="check-name"><strong>LINE文面改行補正</strong><small>「\n」が文字のまま表示されないこと</small></div>
+                <div class="check-result">未確認</div>
+              </div>
+              <div class="check-row" id="check-pages" data-state="wait">
+                <div class="check-icon">16</div>
+                <div class="check-name"><strong>全画面URL導線</strong><small>受付・マイページ・PC・担当者・iPad・system-checkが表示できること</small></div>
                 <div class="check-result">未確認</div>
               </div>
             </div>
@@ -1312,7 +1410,7 @@
           <div class="section-title">
             <div>
               <h2>確認URL</h2>
-              <p>次STEP以降で各画面を追加すると、自動で存在確認できます。</p>
+              <p>完成した全画面を自動で存在確認します。</p>
             </div>
             <button class="btn btn-light" id="check-pages-btn" type="button">画面存在確認</button>
           </div>
@@ -1320,9 +1418,67 @@
           <article class="card">
             <div class="url-list" id="url-list"></div>
             <p class="help">
-              `index.html`・`member.html`・`owner.html`・`staff.html`・`owner-ipad.html` は次STEP以降で作成します。
-              現時点で「今後作成」と表示されても異常ではありません。
+              すべて「表示OK」になることを確認してください。各URLはそのままコピー・別タブ表示できます。
             </p>
+          </article>
+        </section>
+
+        <section class="section" id="manual">
+          <div class="section-title">
+            <div>
+              <h2>手動チェック 8項目</h2>
+              <p>実際の画面操作を確認した項目を押して「確認済み」にします。</p>
+            </div>
+            <div style="display:flex;gap:8px;flex-wrap:wrap">
+              <button class="btn btn-primary" id="manual-all-btn" type="button">8項目を確認済みにする</button>
+              <button class="btn btn-light" id="manual-reset-btn" type="button">手動チェックをリセット</button>
+            </div>
+          </div>
+
+          <article class="card">
+            <div class="manual-grid" id="manual-grid">
+              <button class="manual-item" type="button" data-manual-key="index">
+                <span class="manual-number">1</span>
+                <span class="manual-copy"><strong>顧問先受付トップ</strong><small>労務相談・手続き依頼・面談予約の3入口と送信操作</small></span>
+                <span class="manual-state">未確認</span>
+              </button>
+              <button class="manual-item" type="button" data-manual-key="member">
+                <span class="manual-number">2</span>
+                <span class="manual-copy"><strong>顧問先マイページ</strong><small>株式会社サンプル建設の本人確認・手続き・必要書類表示</small></span>
+                <span class="manual-state">未確認</span>
+              </button>
+              <button class="manual-item" type="button" data-manual-key="owner">
+                <span class="manual-number">3</span>
+                <span class="manual-copy"><strong>PC管理画面</strong><small>案件詳細・進捗更新・必要書類・LINE文面・今日やること</small></span>
+                <span class="manual-state">未確認</span>
+              </button>
+              <button class="manual-item" type="button" data-manual-key="staff">
+                <span class="manual-number">4</span>
+                <span class="manual-copy"><strong>担当者ワーク画面</strong><small>担当者切替・面談・相談・手続き・タスク件数の切替</small></span>
+                <span class="manual-state">未確認</span>
+              </button>
+              <button class="manual-item" type="button" data-manual-key="ipad">
+                <span class="manual-number">5</span>
+                <span class="manual-copy"><strong>受付iPad画面</strong><small>来所受付→面談開始→面談完了の列移動</small></span>
+                <span class="manual-state">未確認</span>
+              </button>
+              <button class="manual-item" type="button" data-manual-key="search">
+                <span class="manual-number">6</span>
+                <span class="manual-copy"><strong>既存顧問先検索</strong><small>090-9999-1111で検索し、受付フォームへ自動入力</small></span>
+                <span class="manual-state">未確認</span>
+              </button>
+              <button class="manual-item" type="button" data-manual-key="copy">
+                <span class="manual-number">7</span>
+                <span class="manual-copy"><strong>LINE文面コピー</strong><small>コピー操作後に完了メッセージが表示されること</small></span>
+                <span class="manual-state">未確認</span>
+              </button>
+              <button class="manual-item" type="button" data-manual-key="privacy">
+                <span class="manual-number">8</span>
+                <span class="manual-copy"><strong>機密情報ガード</strong><small>マイナンバー等をLINE・画面へ送らない注意表示</small></span>
+                <span class="manual-state">未確認</span>
+              </button>
+            </div>
+            <p class="help" id="manual-summary">手動チェック：0 / 8</p>
           </article>
         </section>
 
@@ -1330,7 +1486,7 @@
           <div class="section-title">
             <div>
               <h2>最終判定</h2>
-              <p>API基盤10項目とデモ準備状況から判定します。</p>
+              <p>自動チェック16項目・全画面URL・営業前デモ準備・手動確認8項目から完成判定します。</p>
             </div>
           </div>
 
@@ -1343,10 +1499,18 @@
               </p>
             </div>
           </div>
+
+          <article class="card completion-note">
+            <strong>完成判定の範囲</strong>
+            <p>
+              STEP CONSULT-11のOKは「営業デモ版として完成」を意味します。
+              実際の事務所で本番運用する前には、事務所情報・本番LINE/LIFF・管理権限・通知運用・個人情報の取扱ルールを本番用に確定してください。
+            </p>
+          </article>
         </section>
 
         <footer class="footer">
-          DPRO 社労士・顧問先対応 LINE · STEP CONSULT-5 · 内部確認用
+          DPRO 社労士・顧問先対応 LINE · STEP CONSULT-11 · 内部確認用
         </footer>
       </div>
     </main>
@@ -1366,16 +1530,42 @@
         "options",
         "admin",
         "dashboard",
+        "staff-master",
+        "member",
+        "search",
+        "staff-work",
+        "ipad",
         "phone",
         "linebreak",
+        "pages",
       ];
+
+      const MANUAL_KEYS = [
+        "index",
+        "member",
+        "owner",
+        "staff",
+        "ipad",
+        "search",
+        "copy",
+        "privacy",
+      ];
+
+      const MANUAL_STORAGE_KEY = "dpro_consult_step11_manual_checks";
 
       const state = {
         checks: Object.fromEntries(CHECK_IDS.map((id) => [id, "wait"])),
+        manual: Object.fromEntries(MANUAL_KEYS.map((key) => [key, false])),
         health: null,
         publicConfig: null,
         options: null,
         dashboard: null,
+        staff: [],
+        member: null,
+        search: null,
+        staffWork: null,
+        ipad: null,
+        pageResults: {},
         demoPrepared: false,
         raw: [],
       };
@@ -1386,38 +1576,39 @@
         {
           key: "system-check",
           name: "システムチェック",
-          url: "https://dpromstk2000-lab.github.io/dpro-consult-line/system-check.html",
+          url: "https://dpromstk2000-lab.github.io/dpro-consult-line/system-check.html?v=CONSULT-11",
           current: true,
+          requiredPage: true,
         },
         {
           key: "index",
           name: "顧問先受付トップ",
-          url: "https://dpromstk2000-lab.github.io/dpro-consult-line/index.html",
-          future: true,
+          url: "https://dpromstk2000-lab.github.io/dpro-consult-line/index.html?v=CONSULT-6",
+          requiredPage: true,
         },
         {
           key: "member",
           name: "顧問先マイページ",
-          url: "https://dpromstk2000-lab.github.io/dpro-consult-line/member.html",
-          future: true,
+          url: "https://dpromstk2000-lab.github.io/dpro-consult-line/member.html?v=CONSULT-7",
+          requiredPage: true,
         },
         {
           key: "owner",
           name: "事務所PC管理",
-          url: "https://dpromstk2000-lab.github.io/dpro-consult-line/owner.html",
-          future: true,
+          url: "https://dpromstk2000-lab.github.io/dpro-consult-line/owner.html?v=CONSULT-8-R2",
+          requiredPage: true,
         },
         {
           key: "staff",
           name: "担当者・スタッフ",
-          url: "https://dpromstk2000-lab.github.io/dpro-consult-line/staff.html",
-          future: true,
+          url: "https://dpromstk2000-lab.github.io/dpro-consult-line/staff.html?v=CONSULT-9-R1",
+          requiredPage: true,
         },
         {
           key: "owner-ipad",
           name: "受付iPad",
-          url: "https://dpromstk2000-lab.github.io/dpro-consult-line/owner-ipad.html",
-          future: true,
+          url: "https://dpromstk2000-lab.github.io/dpro-consult-line/owner-ipad.html?v=CONSULT-10",
+          requiredPage: true,
         },
         {
           key: "health",
@@ -1530,6 +1721,8 @@
         const pending = values.some((value) =>
           ["wait", "loading"].includes(value)
         );
+        const manualCount = MANUAL_KEYS.filter((key) => state.manual[key]).length;
+        const manualComplete = manualCount === MANUAL_KEYS.length;
 
         const panel = $("#final-result");
         const mark = $("#final-result-mark");
@@ -1541,7 +1734,7 @@
         if (hasNg) {
           panel.dataset.state = "ng";
           mark.textContent = "!";
-          title.textContent = `確認エラーがあります（${okCount}/10 OK）`;
+          title.textContent = `確認エラーがあります（${okCount}/16 OK）`;
           message.textContent =
             "赤い項目の内容を確認してください。通信結果を表示すると詳細を確認できます。";
           sideText.textContent = "要修正";
@@ -1549,24 +1742,45 @@
           return;
         }
 
-        if (!pending && okCount === CHECK_IDS.length) {
-          panel.dataset.state = state.demoPrepared ? "ok" : "warning";
-          mark.textContent = state.demoPrepared ? "OK" : "✓";
-          title.textContent = state.demoPrepared
-            ? "営業前チェック完了"
-            : "API基盤は正常です";
-          message.textContent = state.demoPrepared
-            ? "API・DB・管理認証・デモデータの確認が完了しました。営業デモを開始できます。"
-            : "API基盤10項目は正常です。営業前に「営業前デモ準備」を実行してください。";
-          sideText.textContent = state.demoPrepared ? "営業準備OK" : "基盤OK";
-          sideDot.style.color = state.demoPrepared ? "#6ee7c8" : "#f9d77e";
+        const autoComplete = !pending && okCount === CHECK_IDS.length;
+
+        if (autoComplete && state.demoPrepared && manualComplete) {
+          panel.dataset.state = "ok";
+          mark.textContent = "OK";
+          title.textContent = "STEP CONSULT-11 OK｜営業デモ版完成";
+          message.textContent =
+            "API・DB・全画面導線・顧問先マイページ・担当者画面・受付iPad・デモデータ・手動8項目の確認が完了しました。";
+          sideText.textContent = "完成判定OK";
+          sideDot.style.color = "#6ee7c8";
+          return;
+        }
+
+        if (autoComplete && state.demoPrepared && !manualComplete) {
+          panel.dataset.state = "warning";
+          mark.textContent = `${manualCount}/8`;
+          title.textContent = "自動チェック・デモ準備は完了しています";
+          message.textContent =
+            `最後に手動チェックを確認してください（${manualCount}/8確認済み）。`;
+          sideText.textContent = "手動確認待ち";
+          sideDot.style.color = "#f9d77e";
+          return;
+        }
+
+        if (autoComplete && !state.demoPrepared) {
+          panel.dataset.state = "warning";
+          mark.textContent = "16";
+          title.textContent = "自動チェック16項目は正常です";
+          message.textContent =
+            "営業前に「営業前デモ準備」を実行し、手動チェック8項目を確認してください。";
+          sideText.textContent = "デモ準備待ち";
+          sideDot.style.color = "#f9d77e";
           return;
         }
 
         panel.dataset.state = "wait";
         mark.textContent = okCount ? `${okCount}` : "—";
         title.textContent = okCount
-          ? `確認中です（${okCount}/10 OK）`
+          ? `確認中です（${okCount}/16 OK）`
           : "一括チェックを実行してください";
         message.textContent =
           "管理コードを保存し、上部の「一括チェック」を押してください。";
@@ -1759,6 +1973,165 @@
         }
       }
 
+      async function checkStaffAndWork() {
+        setCheck("staff-master", "loading", "取得中");
+        setCheck("staff-work", "loading", "取得中");
+        setCheck("ipad", "loading", "取得中");
+
+        try {
+          config().requireSavedAdminCode();
+
+          const staffResult = await config().apiFetch(
+            config().API_ENDPOINTS.ADMIN_STAFF,
+            { admin: true }
+          );
+          state.staff = (staffResult.staff || []).filter(
+            (item) => item.is_active !== false
+          );
+          addRaw("GET /api/admin/staff", staffResult);
+
+          const staff = state.staff.find(
+            (item) => ["admin", "owner", "sharoushi"].includes(item.role)
+          ) || state.staff[0];
+
+          if (!staff?.id) {
+            setCheck("staff-master", "ng", "有効な担当者が0名");
+            setCheck("staff-work", "ng", "担当者IDなし");
+            setCheck("ipad", "ng", "担当者IDなし");
+            return;
+          }
+
+          setCheck(
+            "staff-master",
+            state.staff.length >= 3 ? "ok" : "warning",
+            `有効 ${state.staff.length}名`
+          );
+
+          const [workResult, ipadResult] = await Promise.all([
+            config().apiFetch(config().API_ENDPOINTS.STAFF_WORK, {
+              admin: true,
+              query: { staff_id: staff.id },
+            }),
+            config().apiFetch(config().API_ENDPOINTS.IPAD_TODAY, {
+              admin: true,
+              query: {
+                staff_id: staff.id,
+                date: config().todayJst(),
+              },
+            }),
+          ]);
+
+          state.staffWork = workResult;
+          state.ipad = ipadResult;
+          addRaw("GET /api/staff/work", workResult);
+          addRaw("GET /api/ipad/today", ipadResult);
+
+          const workCount =
+            (workResult.consultations?.length || 0) +
+            (workResult.procedure_requests?.length || 0) +
+            (workResult.tasks?.length || 0);
+
+          setCheck(
+            "staff-work",
+            workResult.ok ? "ok" : "ng",
+            `${staff.staff_name}・案件 ${workCount}件`
+          );
+          setCheck(
+            "ipad",
+            ipadResult.ok ? "ok" : "ng",
+            `面談 ${ipadResult.appointments?.length || 0}・タスク ${ipadResult.tasks?.length || 0}`
+          );
+        } catch (error) {
+          addRaw("STAFF / IPAD API ERROR", {
+            message: errorMessage(error),
+            details: error?.details || null,
+          });
+          if (state.checks["staff-master"] === "loading") {
+            setCheck("staff-master", "ng", errorMessage(error));
+          }
+          if (state.checks["staff-work"] === "loading") {
+            setCheck("staff-work", "ng", errorMessage(error));
+          }
+          if (state.checks.ipad === "loading") {
+            setCheck("ipad", "ng", errorMessage(error));
+          }
+        }
+      }
+
+      async function checkMemberProfile() {
+        setCheck("member", "loading", "取得中");
+
+        try {
+          const result = await config().apiFetch(
+            config().API_ENDPOINTS.MEMBER_PROFILE,
+            {
+              query: {
+                company_code: "SR-COMPANY-001",
+                phone: "090-9999-1111",
+              },
+            }
+          );
+
+          state.member = result;
+          addRaw("GET /api/member/profile", result);
+
+          const good =
+            result.ok &&
+            result.company?.company_code === "SR-COMPANY-001" &&
+            Boolean(result.contact?.contact_name);
+
+          setCheck(
+            "member",
+            good ? "ok" : "ng",
+            good
+              ? `${result.company.company_name}・手続 ${result.procedure_requests?.length || 0}`
+              : "デモ顧問先を確認"
+          );
+        } catch (error) {
+          addRaw("GET /api/member/profile ERROR", {
+            message: errorMessage(error),
+            details: error?.details || null,
+          });
+          setCheck("member", "ng", errorMessage(error));
+        }
+      }
+
+      async function checkSearchApi() {
+        setCheck("search", "loading", "検索中");
+
+        try {
+          config().requireSavedAdminCode();
+
+          const result = await config().apiFetch(
+            config().API_ENDPOINTS.ADMIN_SEARCH,
+            {
+              admin: true,
+              query: { q: "090-9999-1111" },
+            }
+          );
+
+          state.search = result;
+          addRaw("GET /api/admin/search?q=090-9999-1111", result);
+
+          const count =
+            (result.companies?.length || 0) +
+            (result.contacts?.length || 0);
+          const good = result.ok && count > 0;
+
+          setCheck(
+            "search",
+            good ? "ok" : "ng",
+            good ? `会社・担当者 ${count}件` : "検索結果0件"
+          );
+        } catch (error) {
+          addRaw("GET /api/admin/search ERROR", {
+            message: errorMessage(error),
+            details: error?.details || null,
+          });
+          setCheck("search", "ng", errorMessage(error));
+        }
+      }
+
       function checkPhoneNormalization() {
         setCheck("phone", "loading", "確認中");
 
@@ -1822,22 +2195,34 @@
         try {
           await checkConfig();
 
-          const results = await Promise.allSettled([
+          const publicResults = await Promise.allSettled([
             checkHealth(),
             checkPublicConfig(),
             checkOptions(),
+            checkMemberProfile(),
           ]);
 
           checkPhoneNormalization();
           checkLineBreaks();
 
-          try {
-            await checkDashboard();
-          } catch {
-            // 個別項目へ表示済み
+          if (config().hasAdminCode()) {
+            await Promise.allSettled([
+              checkDashboard(),
+              checkStaffAndWork(),
+              checkSearchApi(),
+            ]);
+          } else {
+            setCheck("admin", "ng", "管理コード未保存");
+            setCheck("dashboard", "ng", "管理コード未保存");
+            setCheck("staff-master", "ng", "管理コード未保存");
+            setCheck("staff-work", "ng", "管理コード未保存");
+            setCheck("ipad", "ng", "管理コード未保存");
+            setCheck("search", "ng", "管理コード未保存");
           }
 
-          const failedPublic = results.some(
+          await checkPages();
+
+          const failedPublic = publicResults.some(
             (item) => item.status === "rejected"
           );
 
@@ -1845,7 +2230,7 @@
             `最終確認：${new Date().toLocaleString("ja-JP")}`;
 
           if (!failedPublic && !Object.values(state.checks).includes("ng")) {
-            config().showToast("一括チェックが完了しました。");
+            config().showToast("自動チェック16項目が完了しました。");
           } else {
             config().showToast(
               "確認が必要な項目があります。",
@@ -1939,8 +2324,8 @@
               <div class="url-text" title="${config().escapeHtml(item.url)}">
                 ${config().escapeHtml(item.url)}
               </div>
-              <span class="page-badge ${item.current ? "ok" : item.future ? "future" : ""}">
-                ${item.current ? "現在画面" : item.future ? "今後作成" : "確認対象"}
+              <span class="page-badge ${item.current ? "ok" : ""}">
+                ${item.current ? "現在画面" : "確認対象"}
               </span>
               <div style="display:flex; gap:6px">
                 <button class="mini-btn" type="button" data-copy-url="${config().escapeHtml(item.url)}">コピー</button>
@@ -1980,6 +2365,9 @@
           });
         }
 
+        setCheck("pages", "loading", "画面確認中");
+        state.pageResults = {};
+
         try {
           await Promise.all(
             urls.map(async (item) => {
@@ -1993,32 +2381,50 @@
               badge.textContent = "確認中";
 
               try {
-                const response = await fetch(item.url, {
-                  method: "GET",
-                  cache: "no-store",
-                });
+                const separator = item.url.includes("?") ? "&" : "?";
+                const response = await fetch(
+                  `${item.url}${separator}_check=${Date.now()}`,
+                  {
+                    method: "GET",
+                    cache: "no-store",
+                  }
+                );
+
+                state.pageResults[item.key] = response.ok;
 
                 if (response.ok) {
                   badge.classList.add("ok");
                   badge.textContent = "表示OK";
-                } else if (item.future && response.status === 404) {
-                  badge.classList.add("future");
-                  badge.textContent = "今後作成";
                 } else {
                   badge.textContent = `HTTP ${response.status}`;
                 }
               } catch {
-                if (item.future) {
-                  badge.classList.add("future");
-                  badge.textContent = "今後作成";
-                } else {
-                  badge.textContent = "接続NG";
-                }
+                state.pageResults[item.key] = false;
+                badge.textContent = "接続NG";
               }
             })
           );
 
-          config().showToast("画面URLの存在確認が完了しました。");
+          const required = urls.filter((item) => item.requiredPage);
+          const okCount = required.filter(
+            (item) => state.pageResults[item.key]
+          ).length;
+          const good = okCount === required.length;
+
+          setCheck(
+            "pages",
+            good ? "ok" : "ng",
+            `${okCount} / ${required.length}画面`
+          );
+
+          if (button) {
+            config().showToast(
+              good
+                ? "全画面URLの存在確認が完了しました。"
+                : "表示できない画面があります。",
+              good ? {} : { type: "warning" }
+            );
+          }
         } finally {
           if (button) {
             config().setButtonLoading(button, false);
@@ -2038,6 +2444,75 @@
 
         await config().copyText(text);
         config().showToast("確認URLをまとめてコピーしました。");
+      }
+
+      function loadManualChecks() {
+        try {
+          const saved = JSON.parse(
+            localStorage.getItem(MANUAL_STORAGE_KEY) || "{}"
+          );
+          MANUAL_KEYS.forEach((key) => {
+            state.manual[key] = saved[key] === true;
+          });
+        } catch {
+          state.manual = Object.fromEntries(
+            MANUAL_KEYS.map((key) => [key, false])
+          );
+        }
+
+        renderManualChecks();
+      }
+
+      function saveManualChecks() {
+        try {
+          localStorage.setItem(
+            MANUAL_STORAGE_KEY,
+            JSON.stringify(state.manual)
+          );
+        } catch {
+          // 保存できない環境でも画面上の確認は継続する。
+        }
+      }
+
+      function renderManualChecks() {
+        MANUAL_KEYS.forEach((key) => {
+          const item = document.querySelector(
+            `[data-manual-key="${key}"]`
+          );
+          if (!item) return;
+
+          const checked = state.manual[key] === true;
+          item.dataset.checked = checked ? "true" : "false";
+          item.querySelector(".manual-state").textContent =
+            checked ? "確認済み" : "未確認";
+        });
+
+        const count = MANUAL_KEYS.filter(
+          (key) => state.manual[key]
+        ).length;
+        $("#manual-summary").textContent =
+          `手動チェック：${count} / ${MANUAL_KEYS.length}`;
+        updateFinalResult();
+      }
+
+      function toggleManualCheck(key) {
+        state.manual[key] = !state.manual[key];
+        saveManualChecks();
+        renderManualChecks();
+      }
+
+      function setAllManualChecks(value) {
+        MANUAL_KEYS.forEach((key) => {
+          state.manual[key] = value;
+        });
+        saveManualChecks();
+        renderManualChecks();
+        config().showToast(
+          value
+            ? "手動チェック8項目を確認済みにしました。"
+            : "手動チェックをリセットしました。",
+          value ? {} : { type: "warning" }
+        );
       }
 
       function bindEvents() {
@@ -2076,17 +2551,14 @@
             updateAdminStatus();
             setCheck("admin", "wait", "保存済み・未確認");
             setCheck("dashboard", "wait", "未確認");
+            setCheck("staff-master", "wait", "未確認");
+            setCheck("staff-work", "wait", "未確認");
+            setCheck("ipad", "wait", "未確認");
+            setCheck("search", "wait", "未確認");
             config().showToast("管理コードを保存しました。");
           } catch (error) {
             config().showToast(errorMessage(error), { type: "error" });
           }
-        });
-
-        $("#fill-demo-code-btn").addEventListener("click", () => {
-          $("#admin-code-input").value = config().DEFAULT_ADMIN_CODE;
-          config().showToast("デモ管理コード1234を入力しました。", {
-            type: "info",
-          });
         });
 
         $("#remove-admin-code-btn").addEventListener("click", () => {
@@ -2094,6 +2566,10 @@
           updateAdminStatus();
           setCheck("admin", "wait", "管理コード未保存");
           setCheck("dashboard", "wait", "未確認");
+          setCheck("staff-master", "wait", "未確認");
+          setCheck("staff-work", "wait", "未確認");
+          setCheck("ipad", "wait", "未確認");
+          setCheck("search", "wait", "未確認");
           state.demoPrepared = false;
           config().showToast("管理コードを消去しました。", {
             type: "warning",
@@ -2112,6 +2588,20 @@
           checkPages(event.currentTarget)
         );
 
+        $("#manual-grid").addEventListener("click", (event) => {
+          const item = event.target.closest("[data-manual-key]");
+          if (!item) return;
+          toggleManualCheck(item.dataset.manualKey);
+        });
+
+        $("#manual-all-btn").addEventListener("click", () => {
+          setAllManualChecks(true);
+        });
+
+        $("#manual-reset-btn").addEventListener("click", () => {
+          setAllManualChecks(false);
+        });
+
         $("#toggle-raw-btn").addEventListener("click", (event) => {
           const output = $("#raw-output");
           output.classList.toggle("open");
@@ -2126,6 +2616,7 @@
           await checkConfig();
           updateAdminStatus();
           renderUrls();
+          loadManualChecks();
           bindEvents();
 
           checkPhoneNormalization();
@@ -2135,14 +2626,15 @@
             checkHealth(),
             checkPublicConfig(),
             checkOptions(),
+            checkMemberProfile(),
           ]);
 
           if (config().hasAdminCode()) {
-            try {
-              await checkDashboard();
-            } catch {
-              // 表示済み
-            }
+            await Promise.allSettled([
+              checkDashboard(),
+              checkStaffAndWork(),
+              checkSearchApi(),
+            ]);
           }
 
           await checkPages();
