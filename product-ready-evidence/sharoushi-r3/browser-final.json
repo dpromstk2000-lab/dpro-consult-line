@@ -1,0 +1,151 @@
+{
+  "ok": false,
+  "checkedAt": "2026-08-23T09:47:20.117Z",
+  "formalSourceCommitExpected": "7c024207744f09b6f954a4d54f304dda4fecf2ce",
+  "safeDemoBase": "https://ropwvdnohadwxfbkcopx.supabase.co/functions/v1/dpro-sharoushi-safe-demo/",
+  "policy": {
+    "pageErrorsMustBeZero": true,
+    "blockingConsoleMustBeZero": true,
+    "nonblockingConsoleIsRecorded": true,
+    "horizontalOverflowMustBeFalse": true,
+    "documentScriptStylesheetHttpErrorsMustBeZero": true,
+    "technicalExposureMustBeFalse": true
+  },
+  "total": 6,
+  "passed": 0,
+  "failed": 6,
+  "results": [
+    {
+      "key": "pc-owner",
+      "file": "owner.html",
+      "width": 1440,
+      "height": 1000,
+      "url": "https://ropwvdnohadwxfbkcopx.supabase.co/functions/v1/dpro-sharoushi-safe-demo/owner.html",
+      "httpStatus": 200,
+      "navigationError": "",
+      "overflow": true,
+      "innerWidth": 1440,
+      "documentScrollWidth": 5379,
+      "bodyScrollWidth": 5371,
+      "pageErrors": [],
+      "consoleErrors": [
+        "Refused to apply inline style because it violates the following Content Security Policy directive: \"default-src 'none'\". Either the 'unsafe-inline' keyword, a hash ('sha256-4Su6mBWzEIFnH4pAGMOuaeBrstwJN4Z3pq/s1Kn4/KQ='), or a nonce ('nonce-...') is required to enable inline execution. Note that hashes do not apply to event handlers, style attributes and javascript: navigations unless the 'unsafe-hashes' keyword is present. Note also that 'style-src' was not explicitly set, so 'default-src' is used as a fallback.\n"
+      ],
+      "blockingConsoleErrors": [],
+      "httpErrors": [],
+      "criticalResourceErrors": [],
+      "technicalExposure": false,
+      "ok": false
+    },
+    {
+      "key": "mobile390",
+      "file": "index.html",
+      "width": 390,
+      "height": 844,
+      "url": "https://ropwvdnohadwxfbkcopx.supabase.co/functions/v1/dpro-sharoushi-safe-demo/index.html",
+      "httpStatus": 200,
+      "navigationError": "",
+      "overflow": true,
+      "innerWidth": 390,
+      "documentScrollWidth": 2016,
+      "bodyScrollWidth": 2008,
+      "pageErrors": [],
+      "consoleErrors": [
+        "Refused to apply inline style because it violates the following Content Security Policy directive: \"default-src 'none'\". Either the 'unsafe-inline' keyword, a hash ('sha256-4Su6mBWzEIFnH4pAGMOuaeBrstwJN4Z3pq/s1Kn4/KQ='), or a nonce ('nonce-...') is required to enable inline execution. Note that hashes do not apply to event handlers, style attributes and javascript: navigations unless the 'unsafe-hashes' keyword is present. Note also that 'style-src' was not explicitly set, so 'default-src' is used as a fallback.\n"
+      ],
+      "blockingConsoleErrors": [],
+      "httpErrors": [],
+      "criticalResourceErrors": [],
+      "technicalExposure": false,
+      "ok": false
+    },
+    {
+      "key": "mobile320-member",
+      "file": "member.html",
+      "width": 320,
+      "height": 720,
+      "url": "https://ropwvdnohadwxfbkcopx.supabase.co/functions/v1/dpro-sharoushi-safe-demo/member.html",
+      "httpStatus": 200,
+      "navigationError": "",
+      "overflow": true,
+      "innerWidth": 320,
+      "documentScrollWidth": 1580,
+      "bodyScrollWidth": 1572,
+      "pageErrors": [],
+      "consoleErrors": [
+        "Refused to apply inline style because it violates the following Content Security Policy directive: \"default-src 'none'\". Either the 'unsafe-inline' keyword, a hash ('sha256-4Su6mBWzEIFnH4pAGMOuaeBrstwJN4Z3pq/s1Kn4/KQ='), or a nonce ('nonce-...') is required to enable inline execution. Note that hashes do not apply to event handlers, style attributes and javascript: navigations unless the 'unsafe-hashes' keyword is present. Note also that 'style-src' was not explicitly set, so 'default-src' is used as a fallback.\n"
+      ],
+      "blockingConsoleErrors": [],
+      "httpErrors": [],
+      "criticalResourceErrors": [],
+      "technicalExposure": false,
+      "ok": false
+    },
+    {
+      "key": "ipad-owner",
+      "file": "owner-ipad.html",
+      "width": 1024,
+      "height": 768,
+      "url": "https://ropwvdnohadwxfbkcopx.supabase.co/functions/v1/dpro-sharoushi-safe-demo/owner-ipad.html",
+      "httpStatus": 200,
+      "navigationError": "",
+      "overflow": true,
+      "innerWidth": 1024,
+      "documentScrollWidth": 1442,
+      "bodyScrollWidth": 1434,
+      "pageErrors": [],
+      "consoleErrors": [
+        "Refused to apply inline style because it violates the following Content Security Policy directive: \"default-src 'none'\". Either the 'unsafe-inline' keyword, a hash ('sha256-4Su6mBWzEIFnH4pAGMOuaeBrstwJN4Z3pq/s1Kn4/KQ='), or a nonce ('nonce-...') is required to enable inline execution. Note that hashes do not apply to event handlers, style attributes and javascript: navigations unless the 'unsafe-hashes' keyword is present. Note also that 'style-src' was not explicitly set, so 'default-src' is used as a fallback.\n"
+      ],
+      "blockingConsoleErrors": [],
+      "httpErrors": [],
+      "criticalResourceErrors": [],
+      "technicalExposure": false,
+      "ok": false
+    },
+    {
+      "key": "pc-staff",
+      "file": "staff.html",
+      "width": 1440,
+      "height": 1000,
+      "url": "https://ropwvdnohadwxfbkcopx.supabase.co/functions/v1/dpro-sharoushi-safe-demo/staff.html",
+      "httpStatus": 200,
+      "navigationError": "",
+      "overflow": true,
+      "innerWidth": 1440,
+      "documentScrollWidth": 1622,
+      "bodyScrollWidth": 1614,
+      "pageErrors": [],
+      "consoleErrors": [
+        "Refused to apply inline style because it violates the following Content Security Policy directive: \"default-src 'none'\". Either the 'unsafe-inline' keyword, a hash ('sha256-4Su6mBWzEIFnH4pAGMOuaeBrstwJN4Z3pq/s1Kn4/KQ='), or a nonce ('nonce-...') is required to enable inline execution. Note that hashes do not apply to event handlers, style attributes and javascript: navigations unless the 'unsafe-hashes' keyword is present. Note also that 'style-src' was not explicitly set, so 'default-src' is used as a fallback.\n"
+      ],
+      "blockingConsoleErrors": [],
+      "httpErrors": [],
+      "criticalResourceErrors": [],
+      "technicalExposure": false,
+      "ok": false
+    },
+    {
+      "key": "system-check",
+      "file": "system-check.html",
+      "width": 1440,
+      "height": 1000,
+      "url": "https://ropwvdnohadwxfbkcopx.supabase.co/functions/v1/dpro-sharoushi-safe-demo/system-check.html",
+      "httpStatus": 200,
+      "navigationError": "",
+      "overflow": true,
+      "innerWidth": 1440,
+      "documentScrollWidth": 2395,
+      "bodyScrollWidth": 2387,
+      "pageErrors": [],
+      "consoleErrors": [
+        "Refused to apply inline style because it violates the following Content Security Policy directive: \"default-src 'none'\". Either the 'unsafe-inline' keyword, a hash ('sha256-4Su6mBWzEIFnH4pAGMOuaeBrstwJN4Z3pq/s1Kn4/KQ='), or a nonce ('nonce-...') is required to enable inline execution. Note that hashes do not apply to event handlers, style attributes and javascript: navigations unless the 'unsafe-hashes' keyword is present. Note also that 'style-src' was not explicitly set, so 'default-src' is used as a fallback.\n"
+      ],
+      "blockingConsoleErrors": [],
+      "httpErrors": [],
+      "criticalResourceErrors": [],
+      "technicalExposure": false,
+      "ok": false
+    }
+  ]
+}
