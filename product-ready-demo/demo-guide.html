@@ -1,0 +1,235 @@
+<!doctype html>
+<!-- DPRO LIVE DEMO COMMON TEMPLATE V1.0 LOCK / CONFIGURABLE TEMPLATE -->
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<title id="pageTitle">DPRO 公開操作デモ・画面一覧</title>
+<style>
+:root{
+  --bg:#eef7f5;--card:#fff;--ink:#172b27;--muted:#647772;--line:#d6e6e2;
+  --brand:#0f766e;--deep:#0b5f58;--brand2:#49a89e;--soft:#e8f7f3;
+  --shadow:0 16px 46px rgba(15,95,88,.11)
+}
+*{box-sizing:border-box}
+html{background:var(--bg);scroll-behavior:smooth}
+body{margin:0;min-height:100vh;color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans JP","Yu Gothic UI",Meiryo,sans-serif;line-height:1.65;background:linear-gradient(180deg,#fff 0%,var(--bg) 100%)}
+a{color:inherit}.page{width:min(1140px,calc(100% - 24px));margin:0 auto;padding:20px 0 48px}
+.hero{position:relative;overflow:hidden;padding:34px;border-radius:28px;color:#fff;background:linear-gradient(135deg,var(--deep),var(--brand) 63%,var(--brand2));box-shadow:0 23px 58px rgba(35,30,27,.20)}
+.hero:after{content:"";position:absolute;right:-95px;bottom:-150px;width:290px;height:290px;border-radius:50%;background:rgba(255,255,255,.07)}
+.kicker{position:relative;z-index:1;font-size:11px;font-weight:1000;letter-spacing:.14em;opacity:.9}
+.hero h1{position:relative;z-index:1;margin:10px 0 0;font-size:clamp(28px,5vw,49px);line-height:1.24}
+.hero p{position:relative;z-index:1;max-width:830px;margin:13px 0 0;font-size:14px;opacity:.93}
+.hero-actions{position:relative;z-index:1;display:flex;gap:9px;flex-wrap:wrap;margin-top:20px}
+.button{min-height:45px;display:inline-flex;align-items:center;justify-content:center;padding:9px 15px;border-radius:999px;text-decoration:none;font-size:12px;font-weight:950}
+.button-light{color:var(--deep);background:#fff}.button-ghost{color:#fff;border:1px solid rgba(255,255,255,.35);background:rgba(255,255,255,.09)}
+.notice{margin-top:15px;padding:15px 17px;border:1px solid #e5cda3;border-radius:15px;background:#fff5e5;color:#725013;font-size:12px;font-weight:760}
+.demo-info{margin-top:16px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.demo-info>div{padding:14px;border:1px solid var(--line);border-radius:15px;background:rgba(255,255,255,.96);box-shadow:var(--shadow)}
+.demo-info small{display:block;color:var(--brand);font-size:9px;font-weight:1000;letter-spacing:.08em}.demo-info strong{display:block;margin-top:4px;font-size:14px}
+.section-head{margin:32px 0 15px}.section-head small{color:var(--brand);font-size:10px;font-weight:1000;letter-spacing:.12em}.section-head h2{margin:5px 0 0;font-size:clamp(23px,4vw,34px)}.section-head p{max-width:840px;margin:7px 0 0;color:var(--muted);font-size:13px}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}
+.card{min-width:0;padding:20px;border:1px solid var(--line);border-radius:20px;background:rgba(255,255,255,.98);box-shadow:var(--shadow)}
+.card-number{color:var(--brand);font-size:10px;font-weight:1000;letter-spacing:.1em}.card h3{margin:7px 0 0;font-size:21px;line-height:1.4}.card p{margin:8px 0 0;color:var(--muted);font-size:12px}
+.pills{display:flex;gap:6px;flex-wrap:wrap;margin-top:12px}.pills span{padding:5px 8px;border-radius:999px;background:var(--soft);color:var(--deep);font-size:9px;font-weight:900}
+.card-note{margin-top:13px;padding:11px;border-radius:12px;background:var(--soft);color:#675a54;font-size:11px}.card-note b{color:var(--deep)}
+.card-actions{display:grid;grid-template-columns:1fr auto;gap:8px;margin-top:15px}
+.open,.official{min-height:44px;display:flex;align-items:center;justify-content:center;padding:9px 13px;border-radius:12px;text-decoration:none;font-size:10px;font-weight:950}
+.open{color:#fff;background:linear-gradient(135deg,var(--deep),var(--brand2))}.official{color:var(--deep);border:1px solid var(--line);background:var(--soft)}
+.flow{margin-top:14px;padding:19px;border:1px solid var(--line);border-radius:19px;background:#fff;box-shadow:var(--shadow)}
+.flow-grid{display:grid;grid-template-columns:repeat(var(--flow-cols,5),minmax(0,1fr));gap:8px}
+.flow-step{padding:12px;border-radius:12px;background:var(--soft)}.flow-step b{display:block;color:var(--brand);font-size:10px}.flow-step strong{display:block;margin-top:4px;font-size:11px}.flow-step.same{border:1px dashed #cdbfb6}
+.footer{margin-top:26px;color:#82736c;font-size:10px;text-align:center}
+@media(max-width:900px){.flow-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:760px){.hero{padding:25px 20px}.demo-info,.grid,.flow-grid{grid-template-columns:1fr}}
+@media(max-width:420px){.page{width:min(100% - 16px,1140px)}.card-actions{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<main class="page">
+<section class="hero">
+  <div class="kicker">PUBLIC OPERATION DEMO / V1.0</div>
+  <h1 id="heroTitle"></h1>
+  <p id="heroCopy"></p>
+  <div class="hero-actions">
+    <a class="button button-light" id="officialLink">公式の機能・料金説明を見る</a>
+    <a class="button button-ghost" id="primaryDemoLink">まず体験する</a>
+  </div>
+</section>
+
+<div class="notice" id="notice"></div>
+
+<section class="demo-info" id="quickInfo" aria-label="デモ利用情報"></section>
+
+<div class="section-head">
+  <small>CHOOSE A SCREEN</small>
+  <h2>確認する画面を選択</h2>
+  <p id="screenIntro"></p>
+</div>
+
+<section class="grid" id="screenGrid"></section>
+
+<div class="section-head">
+  <small>RECOMMENDED JOURNEY</small>
+  <h2>おすすめの確認順</h2>
+  <p id="journeyIntro"></p>
+</div>
+<section class="flow"><div class="flow-grid" id="flowGrid"></div></section>
+
+<div class="footer" id="footer"></div>
+</main>
+
+<script>
+/*
+  DPRO LIVE DEMO COMMON TEMPLATE V1.0
+  ------------------------------------------------------------
+  変更してよいのは CONFIG の値とCSS変数のブランド色のみ。
+  DOM骨格・セクション順・公開注意・CHOOSE A SCREEN・
+  RECOMMENDED JOURNEYはCOMMON TEMPLATE V1.0 LOCK対象。
+*/
+const CONFIG = {
+  "systemName": "DPRO 社労士・顧問先対応 LINE",
+  "pageTitle": "DPRO 社労士・顧問先対応 LINE｜公開操作デモ・画面一覧",
+  "heroCopy": "顧問先の労務相談・手続き依頼を、必要書類・期限・進捗まで事務所と共有。面談、顧問先マイページ、担当者ワーク、オーナー管理までを実在する4画面・5ステップで確認できます。",
+  "officialUrl": "https://dpromstk2000-lab.github.io/dpro-line-systems-site/systems/sharoushi.html",
+  "primaryDemoUrl": "index.html?purpose=consultation",
+  "notice": "公開デモでは、実在する会社名・担当者名・従業員名・電話番号・メールアドレス・マイナンバー・本人確認書類・診断書・口座情報・社会保険等の個人番号を入力・添付しないでください。必ず架空の営業デモ情報だけを使用してください。",
+  "screenIntro": "最初に01で労務相談または手続き依頼を送り、02の顧問先マイページで必要書類・期限・進捗を確認します。事務所側はデモ管理コード1234で担当者ワーク→オーナーPCへ進みます。",
+  "journeyIntro": "相談・手続き依頼がメールに散らばる課題を、顧問先受付から必要書類・期限・担当者業務・管理まで5ステップで確認します。",
+  "adminCode": "1234",
+  "quickInfo": [
+    {
+      "label": "CLIENT FLOW",
+      "text": "労務相談／手続き依頼 → 顧問先マイページ"
+    },
+    {
+      "label": "ADMIN CODE",
+      "text": "事務所側デモ管理コード：1234"
+    },
+    {
+      "label": "SCREEN STRUCTURE",
+      "text": "4画面で受付・必要書類・期限・担当者管理を5ステップ確認"
+    }
+  ],
+  "screens": [
+    {
+      "step": "01 / CLIENT REQUEST / PRIMARY EXPERIENCE",
+      "title": "顧問先｜労務相談・手続き依頼",
+      "description": "労務相談、入社・退職・社会保険等の手続き依頼、面談予約を同じ顧問先受付から選べます。LPの最重要訴求である「相談／手続き依頼を一つの入口にする」価値を最初に確認します。",
+      "tags": [
+        "労務相談",
+        "手続き依頼",
+        "面談予約"
+      ],
+      "note": "<b>最初にここから：</b>画面内の営業デモ用サンプルを使用してください。機密情報・個人番号・本人確認書類等は入力しないでください。",
+      "url": "index.html?purpose=consultation",
+      "cta": "相談・手続き受付を開く",
+      "officialUrl": "https://dpromstk2000-lab.github.io/dpro-line-systems-site/lp-sharoushi.html"
+    },
+    {
+      "step": "02 / CLIENT PORTAL",
+      "title": "顧問先マイページ｜必要書類・期限・進捗・面談",
+      "description": "対応中の相談・手続き、今後の面談、要確認書類をまとめて確認し、手続きの必要書類や事務所からの進捗連絡を追えます。",
+      "tags": [
+        "必要書類",
+        "手続き進捗",
+        "面談予定"
+      ],
+      "note": "<b>営業デモ：</b>画面に用意された架空会社のデモボタンを使用してください。実在顧問先の情報は入力しないでください。",
+      "url": "member.html",
+      "cta": "顧問先マイページを開く",
+      "officialUrl": "https://dpromstk2000-lab.github.io/dpro-line-systems-site/lp-sharoushi.html"
+    },
+    {
+      "step": "03 / STAFF WORK",
+      "title": "担当者ワーク｜案件・必要書類・期限タスク",
+      "description": "担当者ごとに本日の面談、期限タスク、担当中の労務相談・手続きを集約し、相談回答や手続き進捗、次回連絡まで管理します。",
+      "tags": [
+        "担当相談",
+        "手続き案件",
+        "期限タスク"
+      ],
+      "note": "<b>デモ管理コード：</b>1234。公開デモではサンプル案件のみを操作し、実在する労務情報を登録しないでください。",
+      "url": "staff.html",
+      "cta": "担当者ワークを開く",
+      "officialUrl": "https://dpromstk2000-lab.github.io/dpro-line-systems-site/lp-sharoushi.html"
+    },
+    {
+      "step": "04–05 / OWNER PC / SAME SCREEN",
+      "title": "オーナーPC｜期限・案件／顧問先・担当者管理",
+      "description": "新着相談、手続き、面談、期限タスクを管理し、顧問先・案件検索、必要書類、担当者、電話・来所受付まで同じPC管理画面で確認します。04と05は同一画面です。",
+      "tags": [
+        "期限・必要書類",
+        "顧問先・案件検索",
+        "担当者管理"
+      ],
+      "note": "<b>デモ管理コード：</b>1234。04「期限・案件」と05「顧問先／担当者管理」は同じowner.html内で確認します。",
+      "url": "owner.html",
+      "cta": "オーナーPCを開く",
+      "officialUrl": "https://dpromstk2000-lab.github.io/dpro-line-systems-site/lp-sharoushi.html"
+    }
+  ],
+  "journey": [
+    {
+      "step": "01",
+      "text": "顧問先が労務相談・手続きを依頼"
+    },
+    {
+      "step": "02",
+      "text": "マイページで必要書類・期限・進捗を確認"
+    },
+    {
+      "step": "03",
+      "text": "担当者が相談・手続き・期限タスクを処理"
+    },
+    {
+      "step": "04",
+      "text": "オーナーが案件・期限・必要書類を管理"
+    },
+    {
+      "step": "05",
+      "text": "同じPCで顧問先・担当者管理を確認",
+      "sameScreen": true
+    }
+  ]
+};
+
+document.documentElement.style.setProperty("--flow-cols", String(Math.min(CONFIG.journey.length, 7)));
+document.title = CONFIG.pageTitle;
+document.getElementById("heroTitle").innerHTML = `${CONFIG.systemName}<br>公開操作デモ・画面一覧`;
+document.getElementById("heroCopy").textContent = CONFIG.heroCopy;
+document.getElementById("officialLink").href = CONFIG.officialUrl;
+document.getElementById("primaryDemoLink").href = CONFIG.primaryDemoUrl;
+document.getElementById("notice").textContent = CONFIG.notice;
+document.getElementById("screenIntro").textContent = CONFIG.screenIntro;
+document.getElementById("journeyIntro").textContent = CONFIG.journeyIntro;
+document.getElementById("footer").textContent = `${CONFIG.systemName}｜PUBLIC OPERATION DEMO V1.0`;
+
+document.getElementById("quickInfo").innerHTML = CONFIG.quickInfo.map(x =>
+  `<div><small>${x.label}</small><strong>${x.text}</strong></div>`
+).join("");
+
+document.getElementById("screenGrid").innerHTML = CONFIG.screens.map(x => `
+  <article class="card">
+    <div class="card-number">${x.step}</div>
+    <h3>${x.title}</h3>
+    <p>${x.description}</p>
+    <div class="pills">${x.tags.map(t => `<span>${t}</span>`).join("")}</div>
+    <div class="card-note">${x.note}</div>
+    <div class="card-actions">
+      <a class="open" href="${x.url}">${x.cta}</a>
+      <a class="official" href="${x.officialUrl}">説明</a>
+    </div>
+  </article>
+`).join("");
+
+document.getElementById("flowGrid").innerHTML = CONFIG.journey.map(x => `
+  <div class="flow-step${x.sameScreen ? " same" : ""}">
+    <b>${x.step}${x.sameScreen ? " / SAME SCREEN" : ""}</b>
+    <strong>${x.text}</strong>
+  </div>
+`).join("");
+</script>
+</body>
+</html>

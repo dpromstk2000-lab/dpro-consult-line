@@ -1,0 +1,5 @@
+DPRO SHAROUSHI STATIC SAFE DEMO
+version=SHAROUSHI-PR3-STATIC-SAFE-DEMO-20260823
+source_commit=7c024207744f09b6f954a4d54f304dda4fecf2ce
+gateway=https://ropwvdnohadwxfbkcopx.supabase.co/functions/v1/dpro-sharoushi-control-gateway-v2
+generated_by=GitHub Actions
