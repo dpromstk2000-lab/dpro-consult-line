@@ -1,0 +1,14 @@
+{
+  "checkedAt": "2026-08-30T02:49:03Z",
+  "sourceHead": "84fa3b70ac084051a188d7f1324ae2ab08cfcc98",
+  "r5ContentHead": "c02b329181b78ad9168858fb1f1c4274b70f9826",
+  "tutorialStart": "https://dpromstk2000-lab.github.io/dpro-consult-line/product-ready-demo/index.html?purpose=consultation#tutorial=1",
+  "guideCenter": "https://dpromstk2000-lab.github.io/dpro-consult-line/product-ready-demo/guide-center.html",
+  "quickStartPdf": "https://dpromstk2000-lab.github.io/dpro-consult-line/product-ready-demo/manuals/DPRO_TUTORIAL_CONSULT_QUICK_START_V1.0.pdf",
+  "detailedManualPdf": "https://dpromstk2000-lab.github.io/dpro-consult-line/product-ready-demo/manuals/DPRO_TUTORIAL_CONSULT_DETAILED_MANUAL_V1.0.pdf",
+  "tutorialHttp": 200,
+  "guideHttp": 200,
+  "quickPdfHttp": 200,
+  "detailedPdfHttp": 200,
+  "allFourPublicReachable": true
+}
