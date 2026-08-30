@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<meta name="theme-color" content="#0f766e">
+<title>DPRO 社労士・顧問先対応｜Guide Center</title>
+<link rel="stylesheet" href="./tutorial-v1.1.css?v=CONSULT-TUTORIAL-STANDARD-V1.1-20260830">
+<style>
+:root{--bg:#eef7f5;--card:#fff;--ink:#172421;--muted:#66736f;--line:#d6e6e2;--brand:#0f766e;--deep:#0b5f58;--soft:#e8f7f3}
+*{box-sizing:border-box}html{background:var(--bg)}body{margin:0;color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans JP","Yu Gothic UI",Meiryo,sans-serif;line-height:1.7;background:linear-gradient(180deg,#fff,var(--bg));min-width:320px}.wrap{width:min(1120px,calc(100% - 24px));margin:0 auto;padding:24px 0 56px}.hero{padding:30px;border-radius:24px;background:linear-gradient(135deg,var(--deep),var(--brand));color:#fff}.eyebrow{font-size:11px;font-weight:900;letter-spacing:.12em;opacity:.88}.hero h1{margin:8px 0 0;font-size:clamp(28px,5vw,44px);line-height:1.25}.hero p{max-width:820px;margin:12px 0 0;font-size:13px;opacity:.9}.controls{display:flex;flex-wrap:wrap;gap:9px;margin-top:18px}.controls button,.back-link{min-height:46px;padding:10px 16px;border:1px solid rgba(255,255,255,.35);border-radius:999px;background:#fff;color:var(--deep);cursor:pointer;text-decoration:none;font:inherit;font-size:12px;font-weight:900}.controls button.secondary,.back-link{background:rgba(255,255,255,.08);color:#fff}.controls button:focus-visible,.guide-card:focus-visible,.back-link:focus-visible{outline:3px solid #60a5fa;outline-offset:3px}.status{margin-top:14px;padding:12px 14px;border:1px solid var(--line);border-radius:13px;background:#fff;font-size:12px;font-weight:800}.section-head{margin:30px 0 13px}.section-head small{color:var(--brand);font-size:10px;font-weight:900;letter-spacing:.1em}.section-head h2{margin:4px 0 0;font-size:27px}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.guide-card{padding:18px;border:1px solid var(--line);border-radius:18px;background:var(--card);box-shadow:0 9px 26px rgba(15,95,88,.07)}.guide-no{display:flex;align-items:center;justify-content:space-between;gap:8px;color:var(--brand);font-size:10px;font-weight:900}.guide-card h3{margin:7px 0 0;font-size:18px}.guide-card p{margin:7px 0 0;color:var(--muted);font-size:11px}.meta{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}.meta span{padding:4px 7px;border-radius:999px;background:var(--soft);color:var(--deep);font-size:9px;font-weight:850}.footer{margin-top:26px;color:var(--muted);font-size:10px;text-align:center}@media(max-width:720px){.wrap{width:min(100% - 16px,1120px);padding-top:8px}.hero{padding:23px 18px}.grid{grid-template-columns:1fr}.guide-card{padding:16px}.controls{display:grid;grid-template-columns:1fr 1fr}.controls button,.back-link{width:100%;text-align:center}.controls .wide{grid-column:1/-1}}@media(max-width:360px){.controls{grid-template-columns:1fr}.controls .wide{grid-column:auto}}
+</style>
+</head>
+<body>
+<main class="wrap">
+<section class="hero">
+  <div class="eyebrow">DPRO TUTORIAL / GUIDE CENTER / STANDARD V1.1</div>
+  <h1>社労士・顧問先対応<br>Guide Center</h1>
+  <p>First10と同じ10ステップ・同じ状態管理で、Start / Resume / Replayを行います。業務データの登録・更新は行いません。</p>
+  <div class="controls" aria-label="Tutorial controls">
+    <button id="guide-start" type="button">Start</button>
+    <button id="guide-resume" class="secondary" type="button">Resume</button>
+    <button id="guide-replay" class="secondary" type="button">Replay</button>
+    <a class="back-link wide" href="./demo-guide.html">公開デモ一覧へ戻る</a>
+  </div>
+</section>
+<div class="status" id="guide-status" role="status" aria-live="polite">状態を確認しています。</div>
+<div class="section-head"><small>FIRST10 / EXACT ALIGNMENT</small><h2>10ステップ</h2></div>
+<section class="grid" id="guide-grid">
+  <article class="guide-card" tabindex="0" data-step-id="CONSULT-T01"><div class="guide-no"><span>01 / CONSULT-T01</span><span>CLIENT</span></div><h3>受付画面の全体像</h3><p>相談・手続き依頼・面談予約を一つの入口から始める画面です。</p><div class="meta"><span>index.html</span><span>.hero</span></div></article>
+  <article class="guide-card" tabindex="0" data-step-id="CONSULT-T02"><div class="guide-no"><span>02 / CONSULT-T02</span><span>CLIENT</span></div><h3>機密情報を入力しない</h3><p>マイナンバー等を入力・添付しない運用を確認します。</p><div class="meta"><span>index.html</span><span>#privacy-notice</span></div></article>
+  <article class="guide-card" tabindex="0" data-step-id="CONSULT-T03"><div class="guide-no"><span>03 / CONSULT-T03</span><span>CLIENT</span></div><h3>労務相談の入口</h3><p>受付目的の選択肢を確認します。Tutorialは自動クリックしません。</p><div class="meta"><span>index.html</span><span>[data-purpose=consultation]</span></div></article>
+  <article class="guide-card" tabindex="0" data-step-id="CONSULT-T04"><div class="guide-no"><span>04 / CONSULT-T04</span><span>CLIENT</span></div><h3>必要事項を確認する</h3><p>顧問先番号・担当者情報・相談内容の入力領域を説明します。</p><div class="meta"><span>index.html</span><span>#main-panel</span></div></article>
+  <article class="guide-card" tabindex="0" data-step-id="CONSULT-T05"><div class="guide-no"><span>05 / CONSULT-T05</span><span>CLIENT</span></div><h3>対応状況をまとめて確認</h3><p>相談・手続き・面談・必要書類を確認するマイページです。</p><div class="meta"><span>member.html</span><span>.hero</span></div></article>
+  <article class="guide-card" tabindex="0" data-step-id="CONSULT-T06"><div class="guide-no"><span>06 / CONSULT-T06</span><span>CLIENT</span></div><h3>顧問先確認</h3><p>顧問先番号と登録電話番号による確認領域を説明します。</p><div class="meta"><span>member.html</span><span>#login-panel</span></div></article>
+  <article class="guide-card" tabindex="0" data-step-id="CONSULT-T07"><div class="guide-no"><span>07 / CONSULT-T07</span><span>STAFF</span></div><h3>担当者ワークの入口</h3><p>担当者PIN画面を説明し、自動ログインは行いません。</p><div class="meta"><span>staff.html</span><span>#login-overlay .login-card</span></div></article>
+  <article class="guide-card" tabindex="0" data-step-id="CONSULT-T08"><div class="guide-no"><span>08 / CONSULT-T08</span><span>OWNER PC</span></div><h3>事務所管理画面の入口</h3><p>管理コード画面を説明し、営業前デモ準備や更新操作を実行しません。</p><div class="meta"><span>owner.html</span><span>#login-overlay .login-card</span></div></article>
+  <article class="guide-card" tabindex="0" data-step-id="CONSULT-T09"><div class="guide-no"><span>09 / CONSULT-T09</span><span>OWNER iPad</span></div><h3>受付iPadの入口</h3><p>受付・来所対応の入口を説明し、受付登録や状態変更を実行しません。</p><div class="meta"><span>owner-ipad.html</span><span>#login-overlay .login-card</span></div></article>
+  <article class="guide-card" tabindex="0" data-step-id="CONSULT-T10"><div class="guide-no"><span>10 / CONSULT-T10</span><span>GUIDE</span></div><h3>画面一覧と推奨確認順</h3><p>公開デモ4画面と確認順を見てFirst10を完了します。</p><div class="meta"><span>demo-guide.html</span><span>#screenGrid</span></div></article>
+</section>
+<div class="footer">DPRO CONSULT Tutorial Guide Center / business mutation 0</div>
+</main>
+<script src="./tutorial-v1.1.js?v=CONSULT-TUTORIAL-STANDARD-V1.1-20260830"></script>
+<script>
+(() => {
+  'use strict';
+  const status = document.getElementById('guide-status');
+  function api(){ return window.DPRO_TUTORIAL_CONSULT_V11; }
+  function render(){
+    const a=api(); if(!a){status.textContent='Tutorial engineを読み込んでいます。';return;}
+    const s=a.getState();
+    const label=s.status==='active'?`進行中：${s.step+1}/10`:(s.status==='completed'?'完了：Replayできます。':(s.status==='skipped'?'スキップ済み：Replayできます。':'未開始：Startで開始します。'));
+    status.textContent=`${label} / STANDARD V1.1 / business mutation 0`;
+  }
+  document.getElementById('guide-start').addEventListener('click',()=>api()?.start());
+  document.getElementById('guide-resume').addEventListener('click',()=>api()?.resume());
+  document.getElementById('guide-replay').addEventListener('click',()=>api()?.replay());
+  addEventListener('dpro:tutorial-state',render);
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',render,{once:true});else render();
+  setTimeout(render,0);
+})();
+</script>
+</body>
+</html>
