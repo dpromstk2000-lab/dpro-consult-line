@@ -1,0 +1,528 @@
+name: CONSULT Tutorial R5 Manuals STANDARD V1.0
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/consult-tutorial-r5.yml'
+
+permissions:
+  contents: write
+  pages: write
+
+concurrency:
+  group: consult-tutorial-r5
+  cancel-in-progress: false
+
+jobs:
+  r5-manuals:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    env:
+      PUBLIC_BASE: https://dpromstk2000-lab.github.io/dpro-consult-line/product-ready-demo/
+      TUTORIAL_URL: https://dpromstk2000-lab.github.io/dpro-consult-line/product-ready-demo/index.html?purpose=consultation#tutorial=1
+      GUIDE_URL: https://dpromstk2000-lab.github.io/dpro-consult-line/product-ready-demo/guide-center.html
+      R4_ACCEPTED_HEAD: 04532a7b9e778821af9f92167624338bc294cbed
+      QUICK_NAME: DPRO_TUTORIAL_CONSULT_QUICK_START_V1.0.pdf
+      DETAIL_NAME: DPRO_TUTORIAL_CONSULT_DETAILED_MANUAL_V1.0.pdf
+
+    steps:
+      - name: Checkout newest main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Canonical source re-lock and forward-only gate
+        shell: bash
+        run: |
+          set -euo pipefail
+          git fetch origin main
+          git checkout main
+          git reset --hard origin/main
+          SOURCE_HEAD="$(git rev-parse HEAD)"
+          SOURCE_TREE="$(git rev-parse HEAD^{tree})"
+          git merge-base --is-ancestor "$R4_ACCEPTED_HEAD" "$SOURCE_HEAD"
+          mkdir -p .dpro
+          cat > .dpro/source.env <<EOF
+          SOURCE_HEAD=$SOURCE_HEAD
+          SOURCE_TREE=$SOURCE_TREE
+          EOF
+          echo "SOURCE_HEAD=$SOURCE_HEAD" >> "$GITHUB_ENV"
+          echo "SOURCE_TREE=$SOURCE_TREE" >> "$GITHUB_ENV"
+          echo "CANONICAL_SOURCE_RELOCK=PASS"
+          echo "FORWARD_ONLY=PASS"
+
+      - name: Install browser and PDF QA dependencies
+        shell: bash
+        run: |
+          set -euo pipefail
+          sudo apt-get update -y
+          sudo apt-get install -y poppler-utils fonts-noto-cjk qrencode zbar-tools python3-pil
+          npm init -y >/dev/null 2>&1
+          npm install playwright@1.55.0 >/dev/null
+          npx playwright install --with-deps chromium
+
+      - name: Live preflight and current safe screenshots
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p .dpro/r5/screens .dpro/r5/qr .dpro/r5/manual-html
+          cat > .dpro/r5/preflight.mjs <<'EOF'
+          import fs from 'node:fs';
+          import path from 'node:path';
+          import { chromium } from 'playwright';
+
+          const BASE = process.env.PUBLIC_BASE;
+          const TUTORIAL = process.env.TUTORIAL_URL;
+          const GUIDE = process.env.GUIDE_URL;
+          const out = path.resolve('.dpro/r5/screens');
+          fs.mkdirSync(out,{recursive:true});
+          const expectedIds = Array.from({length:10},(_,i)=>`CONSULT-T${String(i+1).padStart(2,'0')}`);
+          const evidence = {
+            sourceHead: process.env.SOURCE_HEAD,
+            sourceTree: process.env.SOURCE_TREE,
+            r4AcceptedHead: process.env.R4_ACCEPTED_HEAD,
+            tutorialUrl: TUTORIAL,
+            guideUrl: GUIDE,
+            checkedAt: new Date().toISOString(),
+            first10Count: null,
+            guideCount: null,
+            tutorialStep1: null,
+            guideAlignment: false,
+            screenshots: [],
+            pageErrors: [],
+            consoleErrors: [],
+            unsafeWrites: [],
+            pass: false,
+          };
+          const browser = await chromium.launch({headless:true});
+
+          async function safePage(viewport={width:1440,height:1000}) {
+            const context = await browser.newContext({viewport,deviceScaleFactor:1});
+            const page = await context.newPage();
+            page.on('pageerror', e => evidence.pageErrors.push(String(e)));
+            page.on('console', m => { if(m.type()==='error') evidence.consoleErrors.push(m.text()); });
+            page.on('request', r => {
+              const method=r.method().toUpperCase();
+              if(!['GET','HEAD','OPTIONS'].includes(method)) evidence.unsafeWrites.push({method,url:r.url()});
+            });
+            return {context,page};
+          }
+
+          async function goto200(page,url) {
+            const r = await page.goto(url,{waitUntil:'domcontentloaded',timeout:45000});
+            if(!r || r.status()>=400) throw new Error(`HTTP failure ${url}: ${r?.status()}`);
+            return r.status();
+          }
+
+          async function screenshotElement(url, selector, name, hashStep=null) {
+            const {context,page}=await safePage();
+            try {
+              await goto200(page,url);
+              if(hashStep!==null) {
+                await page.waitForFunction(()=>window.DPRO_TUTORIAL_CONSULT_V11?.steps?.length===10,{timeout:15000});
+                await page.locator('#dpro-tutorial-v11-root').waitFor({state:'visible',timeout:15000});
+              }
+              const loc=page.locator(selector).first();
+              await loc.waitFor({state:'visible',timeout:15000});
+              await loc.screenshot({path:path.join(out,name)});
+              evidence.screenshots.push({name,url,selector,kind:'live-element'});
+            } finally { await context.close(); }
+          }
+
+          try {
+            {
+              const {context,page}=await safePage();
+              try {
+                evidence.tutorialHttp = await goto200(page,TUTORIAL);
+                await page.waitForFunction(()=>window.DPRO_TUTORIAL_CONSULT_V11?.steps?.length===10,{timeout:15000});
+                await page.locator('#dpro-tutorial-v11-root').waitFor({state:'visible',timeout:15000});
+                evidence.first10Count = await page.evaluate(()=>window.DPRO_TUTORIAL_CONSULT_V11.steps.length);
+                evidence.tutorialStep1 = (await page.locator('#dpro-tutorial-v11-id').textContent())?.trim() || '';
+                await page.screenshot({path:path.join(out,'tutorial-start.png'),fullPage:false});
+                evidence.screenshots.push({name:'tutorial-start.png',url:TUTORIAL,selector:'viewport',kind:'live-viewport'});
+              } finally { await context.close(); }
+            }
+            {
+              const {context,page}=await safePage();
+              try {
+                evidence.guideHttp = await goto200(page,GUIDE);
+                await page.waitForFunction(()=>window.DPRO_TUTORIAL_CONSULT_V11?.steps?.length===10,{timeout:15000});
+                evidence.guideCount = await page.locator('.guide-card').count();
+                const ids = await page.locator('.guide-card').evaluateAll(els=>els.map(e=>e.getAttribute('data-step-id')));
+                evidence.guideAlignment = JSON.stringify(ids)===JSON.stringify(expectedIds);
+                const controls = await Promise.all(['#guide-start','#guide-resume','#guide-replay'].map(async s=>({s,visible:await page.locator(s).isVisible()})));
+                evidence.guideControls = controls;
+                await page.screenshot({path:path.join(out,'guide-center.png'),fullPage:false});
+                evidence.screenshots.push({name:'guide-center.png',url:GUIDE,selector:'viewport',kind:'live-viewport'});
+              } finally { await context.close(); }
+            }
+
+            await screenshotElement(`${BASE}member.html#tutorial=6`, '#login-panel', 'member-login.png', 6);
+            await screenshotElement(`${BASE}staff.html#tutorial=7`, '#login-overlay .login-card', 'staff-login.png', 7);
+            await screenshotElement(`${BASE}owner.html#tutorial=8`, '#login-overlay .login-card', 'owner-login.png', 8);
+            await screenshotElement(`${BASE}owner-ipad.html#tutorial=9`, '#login-overlay .login-card', 'owner-ipad-login.png', 9);
+            await screenshotElement(`${BASE}demo-guide.html#tutorial=10`, '#screenGrid', 'demo-guide-grid.png', 10);
+
+            const guideControlsPass = evidence.guideControls?.every(x=>x.visible) === true;
+            evidence.pass = evidence.tutorialHttp < 400 && evidence.guideHttp < 400 &&
+              evidence.first10Count===10 && evidence.guideCount===10 &&
+              evidence.tutorialStep1==='CONSULT-T01' && evidence.guideAlignment && guideControlsPass &&
+              evidence.pageErrors.length===0 && evidence.consoleErrors.length===0 && evidence.unsafeWrites.length===0;
+          } catch (e) {
+            evidence.failure = String(e?.stack || e);
+          } finally {
+            await browser.close();
+          }
+          fs.writeFileSync('.dpro/r5/R5_LIVE_PREFLIGHT.json',JSON.stringify(evidence,null,2));
+          console.log(JSON.stringify(evidence,null,2));
+          if(!evidence.pass) process.exit(1);
+          EOF
+          node .dpro/r5/preflight.mjs
+
+      - name: Build QR images from exact verified public destinations
+        shell: bash
+        run: |
+          set -euo pipefail
+          qrencode -o .dpro/r5/qr/tutorial.png -s 9 -m 2 "$TUTORIAL_URL"
+          qrencode -o .dpro/r5/qr/guide.png -s 9 -m 2 "$GUIDE_URL"
+
+      - name: Author A4 portrait Quick Start and Detailed Manual
+        shell: bash
+        run: |
+          set -euo pipefail
+          cat > .dpro/r5/build_manuals.py <<'PY'
+          from pathlib import Path
+          import html, os
+
+          root=Path('.dpro/r5').resolve()
+          screens=(root/'screens').as_uri()
+          qr=(root/'qr').as_uri()
+          tutorial=os.environ['TUTORIAL_URL']
+          guide=os.environ['GUIDE_URL']
+
+          css=r'''
+          @page { size: A4 portrait; margin: 0; }
+          *{box-sizing:border-box}
+          html,body{margin:0;padding:0;background:#fff;color:#172421;font-family:"Noto Sans CJK JP","Noto Sans JP",sans-serif;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+          body{font-size:10.2pt;line-height:1.48}
+          .page{width:210mm;height:297mm;padding:11mm 12mm 10mm;position:relative;overflow:hidden;break-after:page;background:linear-gradient(180deg,#ffffff,#f5fbf9)}
+          .page:last-child{break-after:auto}
+          .brand{font-size:8.5pt;font-weight:800;letter-spacing:.08em;color:#0f766e}
+          h1{font-size:24pt;line-height:1.18;margin:3mm 0 2mm;color:#0b5f58}
+          h2{font-size:16pt;line-height:1.25;margin:2mm 0 2.5mm;color:#0b5f58}
+          h3{font-size:11.5pt;margin:0 0 1mm;color:#0f766e}
+          p{margin:0 0 2.2mm}
+          .lead{font-size:11pt;color:#42534f}
+          .hero{padding:7mm;border-radius:5mm;background:linear-gradient(135deg,#0b5f58,#0f766e);color:#fff}
+          .hero h1{color:#fff;margin-top:1.5mm}.hero .brand{color:#d9fff5}
+          .grid2{display:grid;grid-template-columns:1fr 1fr;gap:4mm}
+          .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:3mm}
+          .card{border:0.35mm solid #d6e6e2;border-radius:4mm;background:#fff;padding:4mm;box-shadow:0 1.2mm 3.5mm rgba(15,95,88,.06)}
+          .step{display:grid;grid-template-columns:11mm 1fr;gap:3mm;align-items:start;margin-bottom:2.2mm}
+          .num{width:10mm;height:10mm;border-radius:50%;display:flex;align-items:center;justify-content:center;background:#0f766e;color:#fff;font-weight:900;font-size:8.5pt}
+          .small{font-size:8.4pt;color:#5f6f6b}
+          .pill{display:inline-block;padding:1mm 2.4mm;border-radius:99mm;background:#e8f7f3;color:#0b5f58;font-size:7.5pt;font-weight:800;margin:.6mm .6mm .6mm 0}
+          .shot{width:100%;height:52mm;object-fit:contain;border:0.35mm solid #d6e6e2;border-radius:3mm;background:#fff}
+          .shot.sm{height:38mm}.shot.xs{height:30mm}
+          .qrrow{display:grid;grid-template-columns:1fr 1fr;gap:3mm}
+          .qrbox{display:grid;grid-template-columns:30mm 1fr;gap:3mm;align-items:center;border:0.35mm solid #d6e6e2;border-radius:4mm;padding:3mm;background:#fff}
+          .qrbox img{width:28mm;height:28mm;image-rendering:pixelated}
+          .url{font-size:6.8pt;word-break:break-all;color:#50615d}
+          .safe{border-left:1.3mm solid #0f766e;background:#e8f7f3;padding:3mm 4mm;border-radius:2mm}
+          .warn{border-left:1.3mm solid #b45309;background:#fff7ed;padding:3mm 4mm;border-radius:2mm}
+          ul{margin:1mm 0 0;padding-left:5mm}li{margin:.5mm 0}
+          .footer{position:absolute;left:12mm;right:12mm;bottom:5mm;display:flex;justify-content:space-between;color:#71807c;font-size:7pt}
+          .sp2{height:2mm}.sp3{height:3mm}.sp4{height:4mm}
+          .k{font-weight:900;color:#0b5f58}
+          '''
+
+          quick=f'''<!doctype html><html lang="ja"><head><meta charset="utf-8"><style>{css}</style></head><body>
+          <section class="page">
+            <div class="hero"><div class="brand">DPRO TUTORIAL / CONSULT / QUICK START V1.0</div><h1>社労士・顧問先対応<br>操作ガイド Quick Start</h1><p>現在公開中のFirst10を、安全にStart / Resume / Replayするための1ページガイドです。</p></div>
+            <div class="sp4"></div>
+            <div class="grid2">
+              <div class="card"><h2>5分で開始</h2>
+                <div class="step"><div class="num">1</div><div><h3>Start</h3><p>QRまたは公開URLを開くと、Step 1「受付画面の全体像」から開始できます。</p></div></div>
+                <div class="step"><div class="num">2</div><div><h3>Next / Back</h3><p>「次へ」「戻る」で10ステップを順番に確認します。</p></div></div>
+                <div class="step"><div class="num">3</div><div><h3>Resume / Replay</h3><p>途中で閉じてもResume。完了・Skip後はReplayで最初から確認できます。</p></div></div>
+                <div class="step"><div class="num">4</div><div><h3>Drag / Touch</h3><p>上部の「操作ガイド」ハンドルをマウス/タッチで移動できます。画面外には出ません。</p></div></div>
+                <div class="step"><div class="num">5</div><div><h3>Keyboard</h3><p>Tabで操作ボタンへ移動。フォーカスは見える状態です。Escで閉じても進行状態を保持します。</p></div></div>
+              </div>
+              <div class="card"><h2>現在の公開画面</h2><img class="shot" src="{screens}/tutorial-start.png"><div class="small">Tutorial Start - 2026-08-30 live capture</div><div class="sp3"></div><img class="shot sm" src="{screens}/guide-center.png"><div class="small">Guide Center - 2026-08-30 live capture</div></div>
+            </div>
+            <div class="sp4"></div>
+            <div class="qrrow">
+              <div class="qrbox"><img src="{qr}/tutorial.png"><div><h3>Tutorial Start</h3><div class="url">{html.escape(tutorial)}</div></div></div>
+              <div class="qrbox"><img src="{qr}/guide.png"><div><h3>Guide Center</h3><div class="url">{html.escape(guide)}</div></div></div>
+            </div>
+            <div class="sp3"></div>
+            <div class="safe"><span class="k">安全運用:</span> Tutorialは説明・ハイライト専用です。顧問先情報、従業員情報、相談案件、文書、設定の登録・更新、ログイン、送信を自動実行しません。マイナンバー等の機微情報や実データを入力しないでください。</div>
+            <div class="footer"><span>DPRO CONSULT Tutorial Standard V1.1</span><span>Quick Start 1 / 1</span></div>
+          </section></body></html>'''
+
+          pages=[]
+          pages.append(f'''<section class="page"><div class="hero"><div class="brand">DPRO TUTORIAL / CONSULT / DETAILED MANUAL V1.0</div><h1>社労士・顧問先対応<br>詳細操作マニュアル</h1><p>R4 CENTRAL ACCEPT済みのFirst10を、現在公開中の画面だけで説明します。</p></div><div class="sp4"></div><div class="grid2"><div class="card"><h2>基本操作</h2><p><span class="pill">Start</span><span class="pill">Resume</span><span class="pill">Replay</span><span class="pill">Next / Back</span><span class="pill">Close / Esc</span><span class="pill">Skip</span></p><p>カード上部の専用ハンドルはマウス・タッチ・矢印キーで移動できます。フォーカスリングはキーボード操作時に見える設計です。</p><div class="safe"><b>business mutation 0:</b> Tutorialは業務データを作成・更新しません。</div></div><div class="card"><img class="shot" src="{screens}/tutorial-start.png"><div class="small">現在のTutorial Start / Step 1</div></div></div><div class="sp4"></div><div class="card"><h2>First10 - Step 1-2</h2><div class="step"><div class="num">1</div><div><h3>受付画面の全体像 <span class="small">CONSULT-T01</span></h3><p>相談・手続き依頼・面談予約を一つの入口から始める受付画面全体を確認します。</p><span class="pill">index.html?purpose=consultation</span><span class="pill">.hero</span></div></div><div class="step"><div class="num">2</div><div><h3>機密情報を入力しない <span class="small">CONSULT-T02</span></h3><p>マイナンバー、本人確認書類、診断書、口座情報などを入力・添付しない運用を確認します。</p><span class="pill">#privacy-notice</span></div></div></div><div class="footer"><span>DPRO CONSULT Tutorial Standard V1.1</span><span>Detailed Manual 1 / 4</span></div></section>''')
+
+          pages.append(f'''<section class="page"><div class="brand">FIRST10 / CLIENT FLOW</div><h1>Step 3-5</h1><div class="grid2"><div class="card"><div class="step"><div class="num">3</div><div><h3>労務相談の入口 <span class="small">CONSULT-T03</span></h3><p>労務相談の選択肢を確認します。Tutorialは自動クリックしません。</p><span class="pill">[data-purpose="consultation"]</span></div></div><div class="step"><div class="num">4</div><div><h3>必要事項を確認する <span class="small">CONSULT-T04</span></h3><p>顧問先番号、担当者情報、相談内容の入力領域を説明します。入力・送信・クリアは実行しません。</p><span class="pill">#main-panel</span></div></div><div class="step"><div class="num">5</div><div><h3>対応状況をまとめて確認 <span class="small">CONSULT-T05</span></h3><p>顧問先マイページの役割を確認します。実データ確認のためのログインは行いません。</p><span class="pill">member.html</span><span class="pill">.hero</span></div></div></div><div class="card"><h2>安全な公開画面</h2><img class="shot sm" src="{screens}/member-login.png"><div class="small">顧問先確認の公開ログイン領域（実情報なし）</div><div class="sp4"></div><div class="warn"><b>禁止:</b> 実在する顧問先番号、電話番号、従業員名、相談内容、給与・労務情報をマニュアル用に入力しない。</div></div></div><div class="sp4"></div><div class="card"><h2>Resumeの考え方</h2><p>ページをまたぐStep 4→5でも状態は同じTutorial stateに保存されます。途中でClose/Escしても、次回Resumeで同じステップへ戻れます。</p></div><div class="footer"><span>DPRO CONSULT Tutorial Standard V1.1</span><span>Detailed Manual 2 / 4</span></div></section>''')
+
+          pages.append(f'''<section class="page"><div class="brand">FIRST10 / MEMBER + STAFF + OWNER</div><h1>Step 6-8</h1><div class="grid3"><div class="card"><div class="num">6</div><h3>顧問先確認</h3><p class="small">CONSULT-T06</p><p>顧問先番号と登録電話番号による確認領域を説明。自動入力・自動ログインなし。</p><span class="pill">#login-panel</span></div><div class="card"><div class="num">7</div><h3>担当者ワークの入口</h3><p class="small">CONSULT-T07</p><p>担当者PIN画面を説明。PIN入力・ログインは自動化しません。</p><span class="pill">staff.html</span></div><div class="card"><div class="num">8</div><h3>事務所管理画面の入口</h3><p class="small">CONSULT-T08</p><p>管理コード画面を説明。営業前デモ準備・設定保存・案件更新は対象外。</p><span class="pill">owner.html</span></div></div><div class="sp4"></div><div class="grid2"><div class="card"><img class="shot sm" src="{screens}/staff-login.png"><div class="small">担当者ログイン領域 - live safe capture</div></div><div class="card"><img class="shot sm" src="{screens}/owner-login.png"><div class="small">事務所管理ログイン領域 - live safe capture</div></div></div><div class="sp4"></div><div class="safe"><b>認証情報0:</b> PIN、管理コード、顧問先番号、電話番号などの資格情報はマニュアルに記録しません。<br><b>unsafe write 0:</b> TutorialおよびR5 QAからPOST/PUT/PATCH/DELETEを実行しません。</div><div class="footer"><span>DPRO CONSULT Tutorial Standard V1.1</span><span>Detailed Manual 3 / 4</span></div></section>''')
+
+          pages.append(f'''<section class="page"><div class="brand">FIRST10 / OWNER iPAD + GUIDE</div><h1>Step 9-10 / Guide Center</h1><div class="grid2"><div class="card"><div class="step"><div class="num">9</div><div><h3>受付iPadの入口 <span class="small">CONSULT-T09</span></h3><p>来所受付・面談対応・顧問先検索の入口を説明。受付登録や状態変更は実行しません。</p><span class="pill">owner-ipad.html</span></div></div><img class="shot xs" src="{screens}/owner-ipad-login.png"></div><div class="card"><div class="step"><div class="num">10</div><div><h3>画面一覧と推奨確認順 <span class="small">CONSULT-T10</span></h3><p>公開デモ画面と推奨順を確認してFirst10を完了します。</p><span class="pill">demo-guide.html</span><span class="pill">#screenGrid</span></div></div><img class="shot xs" src="{screens}/demo-guide-grid.png"></div></div><div class="sp4"></div><div class="card"><h2>Guide Center</h2><div class="grid2"><img class="shot sm" src="{screens}/guide-center.png"><div><p>Guide CenterはFirst10と同じ10ステップ・同じ状態管理を使用します。</p><ul><li>Start: Step 1から開始</li><li>Resume: 途中状態へ復帰</li><li>Replay: 完了/Skip後に最初から再生</li><li>Keyboard: Tabで操作、フォーカス表示あり</li><li>Drag/Touch: 専用ハンドルのみで移動</li></ul></div></div></div><div class="sp3"></div><div class="qrrow"><div class="qrbox"><img src="{qr}/tutorial.png"><div><h3>Tutorial Start</h3><div class="url">{html.escape(tutorial)}</div></div></div><div class="qrbox"><img src="{qr}/guide.png"><div><h3>Guide Center</h3><div class="url">{html.escape(guide)}</div></div></div></div><div class="sp3"></div><div class="warn"><b>機微情報保護:</b> マイナンバー、本人確認書類、診断書、口座情報、給与・労務相談・案件・文書などの実データを入力・撮影・掲載しません。</div><div class="footer"><span>DPRO CONSULT Tutorial Standard V1.1</span><span>Detailed Manual 4 / 4</span></div></section>''')
+
+          detailed='<!doctype html><html lang="ja"><head><meta charset="utf-8"><style>'+css+'</style></head><body>'+''.join(pages)+'</body></html>'
+          (root/'manual-html'/'quick.html').write_text(quick,encoding='utf-8')
+          (root/'manual-html'/'detailed.html').write_text(detailed,encoding='utf-8')
+          PY
+          python3 .dpro/r5/build_manuals.py
+
+          cat > .dpro/r5/print_manuals.mjs <<'EOF'
+          import { chromium } from 'playwright';
+          import path from 'node:path';
+          import { pathToFileURL } from 'node:url';
+          import fs from 'node:fs';
+          const browser=await chromium.launch({headless:true});
+          async function print(htmlPath,pdfPath){
+            const page=await browser.newPage({viewport:{width:1200,height:1600}});
+            await page.goto(pathToFileURL(path.resolve(htmlPath)).href,{waitUntil:'load'});
+            await page.evaluate(async()=>{await document.fonts.ready; await Promise.all([...document.images].map(i=>i.complete?Promise.resolve():new Promise((res,rej)=>{i.onload=res;i.onerror=rej;})));});
+            await page.pdf({path:pdfPath,format:'A4',printBackground:true,preferCSSPageSize:true,margin:{top:'0',right:'0',bottom:'0',left:'0'}});
+            await page.close();
+          }
+          fs.mkdirSync('product-ready-demo/manuals',{recursive:true});
+          await print('.dpro/r5/manual-html/quick.html',`product-ready-demo/manuals/${process.env.QUICK_NAME}`);
+          await print('.dpro/r5/manual-html/detailed.html',`product-ready-demo/manuals/${process.env.DETAIL_NAME}`);
+          await browser.close();
+          EOF
+          node .dpro/r5/print_manuals.mjs
+
+      - name: Render every PDF page and run structural visual preflight
+        shell: bash
+        run: |
+          set -euo pipefail
+          RENDER_DIR="tutorial-evidence/batch10-consult/r5-renders"
+          mkdir -p "$RENDER_DIR"
+          rm -f "$RENDER_DIR"/*.png
+          pdftoppm -png -r 180 "product-ready-demo/manuals/$QUICK_NAME" "$RENDER_DIR/quick" >/dev/null
+          pdftoppm -png -r 180 "product-ready-demo/manuals/$DETAIL_NAME" "$RENDER_DIR/detailed" >/dev/null
+
+          QUICK_PAGES="$(pdfinfo "product-ready-demo/manuals/$QUICK_NAME" | awk '/^Pages:/ {print $2}')"
+          DETAIL_PAGES="$(pdfinfo "product-ready-demo/manuals/$DETAIL_NAME" | awk '/^Pages:/ {print $2}')"
+          test "$QUICK_PAGES" = "1"
+          test "$DETAIL_PAGES" = "4"
+          pdfinfo "product-ready-demo/manuals/$QUICK_NAME" | grep -q 'A4'
+          pdfinfo "product-ready-demo/manuals/$DETAIL_NAME" | grep -q 'A4'
+
+          pdftotext "product-ready-demo/manuals/$QUICK_NAME" .dpro/r5/quick.txt
+          pdftotext "product-ready-demo/manuals/$DETAIL_NAME" .dpro/r5/detailed.txt
+          grep -q 'Start' .dpro/r5/quick.txt
+          grep -q 'Resume' .dpro/r5/quick.txt
+          grep -q 'Replay' .dpro/r5/quick.txt
+          grep -q 'CONSULT-T01' .dpro/r5/detailed.txt
+          grep -q 'CONSULT-T10' .dpro/r5/detailed.txt
+
+          cat > .dpro/r5/visual_preflight.py <<'PY'
+          from PIL import Image, ImageStat
+          from pathlib import Path
+          import json, os
+          files=sorted(Path('tutorial-evidence/batch10-consult/r5-renders').glob('*.png'))
+          rows=[]
+          ok=True
+          for p in files:
+              im=Image.open(p).convert('L')
+              stat=ImageStat.Stat(im)
+              extrema=im.getextrema()
+              # Page must have substantial non-white content and variation.
+              hist=im.histogram(); total=sum(hist); near_white=sum(hist[248:]) / total
+              nonblank=(stat.stddev[0] > 8 and near_white < 0.985 and extrema[0] < 230)
+              rows.append({'file':p.name,'width':im.width,'height':im.height,'stddev':round(stat.stddev[0],3),'nearWhiteRatio':round(near_white,5),'nonBlank':nonblank})
+              ok=ok and nonblank
+          expected=5
+          ok=ok and len(rows)==expected
+          out={'renderedPageCount':len(rows),'expectedRenderedPageCount':expected,'pages':rows,'structuralPreflightPass':ok,'humanVisualInspection':'PENDING_ASSISTANT'}
+          Path('tutorial-evidence/batch10-consult/R5_RENDER_PRECHECK.json').write_text(json.dumps(out,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+          print(json.dumps(out,ensure_ascii=False,indent=2))
+          if not ok: raise SystemExit(1)
+          PY
+          python3 .dpro/r5/visual_preflight.py
+
+      - name: Decode every QR from rendered PDF output
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          from pathlib import Path
+          import subprocess, json, os
+          tutorial=os.environ['TUTORIAL_URL']; guide=os.environ['GUIDE_URL']
+          rows=[]; all_values=[]
+          for p in sorted(Path('tutorial-evidence/batch10-consult/r5-renders').glob('*.png')):
+              cp=subprocess.run(['zbarimg','--quiet','--raw',str(p)],capture_output=True,text=True)
+              vals=[x.strip() for x in cp.stdout.splitlines() if x.strip()]
+              rows.append({'file':p.name,'decoded':vals})
+              all_values.extend(vals)
+          expected=sorted([tutorial,guide,tutorial,guide])
+          actual=sorted(all_values)
+          passed=(actual==expected)
+          out={'expectedDecoded':expected,'actualDecoded':actual,'pages':rows,'qrCount':len(all_values),'pass':passed,'destinationsExactPublic':passed}
+          Path('tutorial-evidence/batch10-consult/R5_QR_QA.json').write_text(json.dumps(out,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+          print(json.dumps(out,ensure_ascii=False,indent=2))
+          if not passed: raise SystemExit(1)
+          PY
+
+      - name: Record R5 generated evidence and privacy safety
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p tutorial-evidence/batch10-consult
+          cp .dpro/r5/R5_LIVE_PREFLIGHT.json tutorial-evidence/batch10-consult/R5_LIVE_PREFLIGHT.json
+          sha256sum "product-ready-demo/manuals/$QUICK_NAME" "product-ready-demo/manuals/$DETAIL_NAME" > tutorial-evidence/batch10-consult/R5_MANUAL_SHA256.txt
+          cat > tutorial-evidence/batch10-consult/R5_PRIVACY_SAFETY.txt <<EOF
+          SYSTEM=CONSULT
+          R4_CENTRAL=ACCEPTED
+          CURRENT_LIVE_DEMO_SCREENSHOTS_ONLY=PASS
+          SCREENSHOT_SCOPE=PUBLIC_OR_PRELOGIN_STATIC_UI_ONLY
+          PII_SENSITIVE_DATA=0
+          SECRETS_CREDENTIALS=0
+          CONSULTATION_APPOINTMENT_SUBMIT=0
+          CASE_TASK_DOCUMENT_STATUS_SETTINGS_MUTATION=0
+          UNSAFE_WRITE_REQUEST=0
+          BUSINESS_MUTATION=0
+          API_ADMIN_DEMO_PREPARE=NOT_CALLED
+          EOF
+          cat > tutorial-evidence/batch10-consult/R5_STATUS.txt <<EOF
+          SYSTEM=CONSULT
+          BATCH=10
+          R4_CENTRAL=ACCEPTED
+          CANONICAL_SOURCE_RELOCK=PASS
+          FORWARD_ONLY=PASS
+          R4_TUTORIAL_STILL_LIVE=PASS
+          R4_GUIDE_STILL_LIVE=PASS
+          FIRST10_COUNT=10
+          GUIDE_COUNT=10
+          QUICK_START_A4_PORTRAIT=PASS
+          DETAILED_A4_PORTRAIT=PASS
+          ALL_PDF_PAGES_RENDERED=PASS
+          QR_DECODE_EVERY_RENDERED_QR=PASS
+          QR_DESTINATION_EXACT_PUBLIC=PASS
+          CURRENT_LIVE_DEMO_SCREENSHOTS_ONLY=PASS
+          PII_SENSITIVE_DATA=0
+          SECRETS_CREDENTIALS=0
+          UNSAFE_WRITE_REQUEST=0
+          BUSINESS_MUTATION=0
+          VISUAL_QA_EVERY_PAGE=PENDING_ASSISTANT
+          R5=HOLD_PENDING_ASSISTANT_VISUAL_QA
+          R6=NOT_STARTED
+          R7=NOT_AUTHORIZED_NOT_EXECUTED
+          FINAL_LOCK=CENTRAL_DECISION_ONLY
+          EOF
+
+      - name: Commit R5 manuals and review evidence
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "dpro-tutorial-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add product-ready-demo/manuals tutorial-evidence/batch10-consult/R5_*.json tutorial-evidence/batch10-consult/R5_*.txt tutorial-evidence/batch10-consult/r5-renders
+          if git diff --cached --quiet; then
+            echo "No R5 content changes to commit"
+          else
+            git commit -m "Add CONSULT Tutorial R5 manuals and render QA evidence"
+            git push origin HEAD:main
+          fi
+          echo "R5_CONTENT_HEAD=$(git rev-parse HEAD)" >> "$GITHUB_ENV"
+          echo "R5_CONTENT_TREE=$(git rev-parse HEAD^{tree})" >> "$GITHUB_ENV"
+
+      - name: Trigger Pages build after R5 manuals
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh api --method POST "repos/$GITHUB_REPOSITORY/pages/builds" || true
+
+      - name: Wait for published manuals and record exact public URLs
+        shell: bash
+        run: |
+          set -euo pipefail
+          QUICK_URL="${PUBLIC_BASE}manuals/${QUICK_NAME}"
+          DETAIL_URL="${PUBLIC_BASE}manuals/${DETAIL_NAME}"
+          wait_url(){
+            local u="$1"
+            for i in $(seq 1 30); do
+              code="$(curl -L -sS -o /dev/null -w '%{http_code}' "$u" || true)"
+              if [ "$code" = "200" ]; then return 0; fi
+              echo "WAIT $i HTTP $code $u"
+              sleep 10
+            done
+            return 1
+          }
+          wait_url "$TUTORIAL_URL"
+          wait_url "$GUIDE_URL"
+          wait_url "$QUICK_URL"
+          wait_url "$DETAIL_URL"
+          mkdir -p tutorial-evidence/batch10-consult
+          cat > tutorial-evidence/batch10-consult/R5_PUBLICATION.json <<EOF
+          {
+            "checkedAt": "$(date -u +%Y-%m-%dT%H:%M:%SZ)",
+            "sourceHead": "$SOURCE_HEAD",
+            "r5ContentHead": "$R5_CONTENT_HEAD",
+            "tutorialStart": "$TUTORIAL_URL",
+            "guideCenter": "$GUIDE_URL",
+            "quickStartPdf": "$QUICK_URL",
+            "detailedManualPdf": "$DETAIL_URL",
+            "tutorialHttp": 200,
+            "guideHttp": 200,
+            "quickPdfHttp": 200,
+            "detailedPdfHttp": 200,
+            "allFourPublicReachable": true
+          }
+          EOF
+          git add tutorial-evidence/batch10-consult/R5_PUBLICATION.json
+          if ! git diff --cached --quiet; then
+            git commit -m "Record CONSULT Tutorial R5 public manual URLs"
+            git push origin HEAD:main
+          fi
+          echo "FINAL_R5_HEAD=$(git rev-parse HEAD)" >> "$GITHUB_ENV"
+          echo "FINAL_R5_TREE=$(git rev-parse HEAD^{tree})" >> "$GITHUB_ENV"
+
+      - name: Upload R5 manual visual-review artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: consult-r5-manual-visual-review
+          if-no-files-found: error
+          retention-days: 14
+          path: |
+            product-ready-demo/manuals/*.pdf
+            tutorial-evidence/batch10-consult/r5-renders/*.png
+            tutorial-evidence/batch10-consult/R5_*.json
+            tutorial-evidence/batch10-consult/R5_*.txt
+            .dpro/r5/screens/*.png
+
+      - name: R5 summary
+        shell: bash
+        run: |
+          cat >> "$GITHUB_STEP_SUMMARY" <<EOF
+          # CONSULT R5 manuals generated
+
+          - Canonical source re-lock: PASS
+          - Forward-only: PASS
+          - R4 Tutorial live / First10=10: PASS
+          - R4 Guide live / Guide=10: PASS
+          - Quick Start: A4 portrait / 1 page
+          - Detailed Manual: A4 portrait / 4 pages
+          - Every PDF page rendered: PASS (5 PNG pages)
+          - Every rendered QR decoded: PASS
+          - Exact QR destinations: Tutorial Start + Guide Center
+          - Current live/pre-login safe screenshots only: PASS
+          - PII/sensitive data: 0
+          - secrets/credentials: 0
+          - unsafe write: 0
+          - business mutation: 0
+          - Human/assistant visual QA of all rendered pages: **PENDING**
+          - R5 state: **HOLD_PENDING_ASSISTANT_VISUAL_QA**
+          - R6: **NOT STARTED**
+          - R7: **NOT AUTHORIZED**
+
+          Final R5 repository HEAD: $FINAL_R5_HEAD
+          Final R5 repository TREE: $FINAL_R5_TREE
+          EOF
