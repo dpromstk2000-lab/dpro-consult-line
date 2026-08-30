@@ -410,6 +410,12 @@
       if (state.status === 'active' && onStepRoute(state.step)) showStep(state.step);
     }
     addEventListener('keydown',(e)=>{ if(e.key==='Escape'){ const root=document.getElementById(ROOT_ID); if(root && !root.hidden){close(); e.preventDefault();}} },true);
+    addEventListener('hashchange',()=>{
+      const nextHashStep = parseHashStep();
+      if (nextHashStep === null) return;
+      writeState({status:'active',step:nextHashStep});
+      showStep(nextHashStep);
+    });
     addEventListener('resize',onResizeOrScroll,{passive:true});
     addEventListener('scroll',onResizeOrScroll,{passive:true});
     addEventListener('dpro:tutorial-state',updateLauncher);
