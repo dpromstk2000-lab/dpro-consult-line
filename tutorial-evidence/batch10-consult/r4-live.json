@@ -1,0 +1,363 @@
+{
+  "mode": "r4",
+  "version": "CONSULT-TUTORIAL-STANDARD-V1.1-20260830",
+  "base": "https://dpromstk2000-lab.github.io/dpro-consult-line/product-ready-demo/",
+  "checkedAt": "2026-08-30T00:46:54.194Z",
+  "sourceCommit": "4ed1786468f44619417280a473431b251fd1a425",
+  "first10Count": 10,
+  "guideCount": 10,
+  "viewports": [
+    {
+      "name": "desktop1440",
+      "width": 1440,
+      "height": 1000,
+      "pass": true,
+      "errors": [],
+      "functional": {
+        "guideCount": 10,
+        "alignment": true,
+        "start": true,
+        "resume": true,
+        "replay": true,
+        "keyboardFocus": true,
+        "productRegression": [
+          {
+            "route": "index.html?purpose=consultation",
+            "status": 200,
+            "metrics": {
+              "innerWidth": 1440,
+              "documentScrollWidth": 1440,
+              "bodyScrollWidth": 1440,
+              "scrollX": 0
+            }
+          },
+          {
+            "route": "member.html",
+            "status": 200,
+            "metrics": {
+              "innerWidth": 1440,
+              "documentScrollWidth": 1440,
+              "bodyScrollWidth": 1440,
+              "scrollX": 0
+            }
+          },
+          {
+            "route": "staff.html",
+            "status": 200,
+            "metrics": {
+              "innerWidth": 1440,
+              "documentScrollWidth": 1440,
+              "bodyScrollWidth": 1440,
+              "scrollX": 0
+            }
+          },
+          {
+            "route": "owner.html",
+            "status": 200,
+            "metrics": {
+              "innerWidth": 1440,
+              "documentScrollWidth": 1440,
+              "bodyScrollWidth": 1440,
+              "scrollX": 0
+            }
+          },
+          {
+            "route": "owner-ipad.html",
+            "status": 200,
+            "metrics": {
+              "innerWidth": 1440,
+              "documentScrollWidth": 1440,
+              "bodyScrollWidth": 1440,
+              "scrollX": 0
+            }
+          },
+          {
+            "route": "demo-guide.html",
+            "status": 200,
+            "metrics": {
+              "innerWidth": 1440,
+              "documentScrollWidth": 1440,
+              "bodyScrollWidth": 1440,
+              "scrollX": 0
+            }
+          }
+        ]
+      },
+      "metrics": {
+        "innerWidth": 1440,
+        "documentScrollWidth": 1440,
+        "bodyScrollWidth": 1440,
+        "scrollX": 0
+      },
+      "positiveHorizontalOverflow": 0,
+      "pageErrors": [],
+      "consoleErrors": [],
+      "unsafeWrites": []
+    },
+    {
+      "name": "tablet1024",
+      "width": 1024,
+      "height": 768,
+      "pass": true,
+      "errors": [],
+      "functional": {
+        "guideCount": 10,
+        "alignment": true,
+        "start": true,
+        "resume": true,
+        "replay": true,
+        "keyboardFocus": true,
+        "productRegression": [
+          {
+            "route": "index.html?purpose=consultation",
+            "status": 200,
+            "metrics": {
+              "innerWidth": 1024,
+              "documentScrollWidth": 1024,
+              "bodyScrollWidth": 1024,
+              "scrollX": 0
+            }
+          },
+          {
+            "route": "member.html",
+            "status": 200,
+            "metrics": {
+              "innerWidth": 1024,
+              "documentScrollWidth": 1024,
+              "bodyScrollWidth": 1024,
+              "scrollX": 0
+            }
+          },
+          {
+            "route": "staff.html",
+            "status": 200,
+            "metrics": {
+              "innerWidth": 1024,
+              "documentScrollWidth": 1024,
+              "bodyScrollWidth": 1024,
+              "scrollX": 0
+            }
+          },
+          {
+            "route": "owner.html",
+            "status": 200,
+            "metrics": {
+              "innerWidth": 1024,
+              "documentScrollWidth": 1024,
+              "bodyScrollWidth": 1024,
+              "scrollX": 0
+            }
+          },
+          {
+            "route": "owner-ipad.html",
+            "status": 200,
+            "metrics": {
+              "innerWidth": 1024,
+              "documentScrollWidth": 1024,
+              "bodyScrollWidth": 1024,
+              "scrollX": 0
+            }
+          },
+          {
+            "route": "demo-guide.html",
+            "status": 200,
+            "metrics": {
+              "innerWidth": 1024,
+              "documentScrollWidth": 1024,
+              "bodyScrollWidth": 1024,
+              "scrollX": 0
+            }
+          }
+        ]
+      },
+      "metrics": {
+        "innerWidth": 1024,
+        "documentScrollWidth": 1024,
+        "bodyScrollWidth": 1024,
+        "scrollX": 0
+      },
+      "positiveHorizontalOverflow": 0,
+      "pageErrors": [],
+      "consoleErrors": [],
+      "unsafeWrites": []
+    },
+    {
+      "name": "mobile390",
+      "width": 390,
+      "height": 844,
+      "pass": true,
+      "errors": [],
+      "functional": {
+        "guideCount": 10,
+        "alignment": true,
+        "start": true,
+        "resume": true,
+        "replay": true,
+        "keyboardFocus": true,
+        "productRegression": [
+          {
+            "route": "index.html?purpose=consultation",
+            "status": 200,
+            "metrics": {
+              "innerWidth": 390,
+              "documentScrollWidth": 390,
+              "bodyScrollWidth": 390,
+              "scrollX": 0
+            }
+          },
+          {
+            "route": "member.html",
+            "status": 200,
+            "metrics": {
+              "innerWidth": 390,
+              "documentScrollWidth": 390,
+              "bodyScrollWidth": 390,
+              "scrollX": 0
+            }
+          },
+          {
+            "route": "staff.html",
+            "status": 200,
+            "metrics": {
+              "innerWidth": 390,
+              "documentScrollWidth": 390,
+              "bodyScrollWidth": 390,
+              "scrollX": 0
+            }
+          },
+          {
+            "route": "owner.html",
+            "status": 200,
+            "metrics": {
+              "innerWidth": 390,
+              "documentScrollWidth": 390,
+              "bodyScrollWidth": 390,
+              "scrollX": 0
+            }
+          },
+          {
+            "route": "owner-ipad.html",
+            "status": 200,
+            "metrics": {
+              "innerWidth": 390,
+              "documentScrollWidth": 390,
+              "bodyScrollWidth": 390,
+              "scrollX": 0
+            }
+          },
+          {
+            "route": "demo-guide.html",
+            "status": 200,
+            "metrics": {
+              "innerWidth": 390,
+              "documentScrollWidth": 390,
+              "bodyScrollWidth": 390,
+              "scrollX": 0
+            }
+          }
+        ]
+      },
+      "metrics": {
+        "innerWidth": 390,
+        "documentScrollWidth": 390,
+        "bodyScrollWidth": 390,
+        "scrollX": 0
+      },
+      "positiveHorizontalOverflow": 0,
+      "pageErrors": [],
+      "consoleErrors": [],
+      "unsafeWrites": []
+    },
+    {
+      "name": "mobile320",
+      "width": 320,
+      "height": 720,
+      "pass": true,
+      "errors": [],
+      "functional": {
+        "guideCount": 10,
+        "alignment": true,
+        "start": true,
+        "resume": true,
+        "replay": true,
+        "keyboardFocus": true,
+        "productRegression": [
+          {
+            "route": "index.html?purpose=consultation",
+            "status": 200,
+            "metrics": {
+              "innerWidth": 320,
+              "documentScrollWidth": 320,
+              "bodyScrollWidth": 320,
+              "scrollX": 0
+            }
+          },
+          {
+            "route": "member.html",
+            "status": 200,
+            "metrics": {
+              "innerWidth": 320,
+              "documentScrollWidth": 320,
+              "bodyScrollWidth": 320,
+              "scrollX": 0
+            }
+          },
+          {
+            "route": "staff.html",
+            "status": 200,
+            "metrics": {
+              "innerWidth": 321,
+              "documentScrollWidth": 321,
+              "bodyScrollWidth": 321,
+              "scrollX": 0
+            }
+          },
+          {
+            "route": "owner.html",
+            "status": 200,
+            "metrics": {
+              "innerWidth": 320,
+              "documentScrollWidth": 320,
+              "bodyScrollWidth": 320,
+              "scrollX": 0
+            }
+          },
+          {
+            "route": "owner-ipad.html",
+            "status": 200,
+            "metrics": {
+              "innerWidth": 320,
+              "documentScrollWidth": 320,
+              "bodyScrollWidth": 320,
+              "scrollX": 0
+            }
+          },
+          {
+            "route": "demo-guide.html",
+            "status": 200,
+            "metrics": {
+              "innerWidth": 320,
+              "documentScrollWidth": 320,
+              "bodyScrollWidth": 320,
+              "scrollX": 0
+            }
+          }
+        ]
+      },
+      "metrics": {
+        "innerWidth": 320,
+        "documentScrollWidth": 320,
+        "bodyScrollWidth": 320,
+        "scrollX": 0
+      },
+      "positiveHorizontalOverflow": 0,
+      "pageErrors": [],
+      "consoleErrors": [],
+      "unsafeWrites": []
+    }
+  ],
+  "overallPass": true,
+  "businessMutation": 0,
+  "unsafeWriteRequestCount": 0,
+  "failures": []
+}
