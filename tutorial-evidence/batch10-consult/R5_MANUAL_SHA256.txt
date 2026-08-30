@@ -1,0 +1,2 @@
+812da5126d402f2282f9abdb33b5e57ba3327447ee45f62fcfba96ea777bf97b  product-ready-demo/manuals/DPRO_TUTORIAL_CONSULT_QUICK_START_V1.0.pdf
+7df71e2b9695c6a16fab7a1b39e136dfb05b43f3a1c25a3fd3fdce785014aea7  product-ready-demo/manuals/DPRO_TUTORIAL_CONSULT_DETAILED_MANUAL_V1.0.pdf

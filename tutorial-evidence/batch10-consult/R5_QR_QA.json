@@ -1,0 +1,45 @@
+{
+  "expectedDecoded": [
+    "https://dpromstk2000-lab.github.io/dpro-consult-line/product-ready-demo/guide-center.html",
+    "https://dpromstk2000-lab.github.io/dpro-consult-line/product-ready-demo/guide-center.html",
+    "https://dpromstk2000-lab.github.io/dpro-consult-line/product-ready-demo/index.html?purpose=consultation#tutorial=1",
+    "https://dpromstk2000-lab.github.io/dpro-consult-line/product-ready-demo/index.html?purpose=consultation#tutorial=1"
+  ],
+  "actualDecoded": [
+    "https://dpromstk2000-lab.github.io/dpro-consult-line/product-ready-demo/guide-center.html",
+    "https://dpromstk2000-lab.github.io/dpro-consult-line/product-ready-demo/guide-center.html",
+    "https://dpromstk2000-lab.github.io/dpro-consult-line/product-ready-demo/index.html?purpose=consultation#tutorial=1",
+    "https://dpromstk2000-lab.github.io/dpro-consult-line/product-ready-demo/index.html?purpose=consultation#tutorial=1"
+  ],
+  "pages": [
+    {
+      "file": "detailed-1.png",
+      "decoded": []
+    },
+    {
+      "file": "detailed-2.png",
+      "decoded": []
+    },
+    {
+      "file": "detailed-3.png",
+      "decoded": []
+    },
+    {
+      "file": "detailed-4.png",
+      "decoded": [
+        "https://dpromstk2000-lab.github.io/dpro-consult-line/product-ready-demo/index.html?purpose=consultation#tutorial=1",
+        "https://dpromstk2000-lab.github.io/dpro-consult-line/product-ready-demo/guide-center.html"
+      ]
+    },
+    {
+      "file": "quick-1.png",
+      "decoded": [
+        "https://dpromstk2000-lab.github.io/dpro-consult-line/product-ready-demo/index.html?purpose=consultation#tutorial=1",
+        "https://dpromstk2000-lab.github.io/dpro-consult-line/product-ready-demo/guide-center.html"
+      ]
+    }
+  ],
+  "qrCount": 4,
+  "pass": true,
+  "destinationsExactPublic": true
+}

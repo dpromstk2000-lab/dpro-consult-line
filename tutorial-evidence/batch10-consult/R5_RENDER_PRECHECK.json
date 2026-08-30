@@ -1,0 +1,48 @@
+{
+  "renderedPageCount": 5,
+  "expectedRenderedPageCount": 5,
+  "pages": [
+    {
+      "file": "detailed-1.png",
+      "width": 1488,
+      "height": 2105,
+      "stddev": 65.144,
+      "nearWhiteRatio": 0.7225,
+      "nonBlank": true
+    },
+    {
+      "file": "detailed-2.png",
+      "width": 1488,
+      "height": 2105,
+      "stddev": 29.492,
+      "nearWhiteRatio": 0.93137,
+      "nonBlank": true
+    },
+    {
+      "file": "detailed-3.png",
+      "width": 1488,
+      "height": 2105,
+      "stddev": 28.719,
+      "nearWhiteRatio": 0.85927,
+      "nonBlank": true
+    },
+    {
+      "file": "detailed-4.png",
+      "width": 1488,
+      "height": 2105,
+      "stddev": 42.796,
+      "nearWhiteRatio": 0.86627,
+      "nonBlank": true
+    },
+    {
+      "file": "quick-1.png",
+      "width": 1488,
+      "height": 2105,
+      "stddev": 70.911,
+      "nearWhiteRatio": 0.65397,
+      "nonBlank": true
+    }
+  ],
+  "structuralPreflightPass": true,
+  "humanVisualInspection": "PENDING_ASSISTANT"
+}

@@ -1,0 +1,76 @@
+{
+  "sourceHead": "84fa3b70ac084051a188d7f1324ae2ab08cfcc98",
+  "sourceTree": "ec47ed3b60b5d91f6785aac5958200224c48982f",
+  "r4AcceptedHead": "04532a7b9e778821af9f92167624338bc294cbed",
+  "tutorialUrl": "https://dpromstk2000-lab.github.io/dpro-consult-line/product-ready-demo/index.html?purpose=consultation#tutorial=1",
+  "guideUrl": "https://dpromstk2000-lab.github.io/dpro-consult-line/product-ready-demo/guide-center.html",
+  "checkedAt": "2026-08-30T02:48:00.233Z",
+  "first10Count": 10,
+  "guideCount": 10,
+  "tutorialStep1": "CONSULT-T01",
+  "guideAlignment": true,
+  "screenshots": [
+    {
+      "name": "tutorial-start.png",
+      "url": "https://dpromstk2000-lab.github.io/dpro-consult-line/product-ready-demo/index.html?purpose=consultation#tutorial=1",
+      "selector": "viewport",
+      "kind": "live-viewport"
+    },
+    {
+      "name": "guide-center.png",
+      "url": "https://dpromstk2000-lab.github.io/dpro-consult-line/product-ready-demo/guide-center.html",
+      "selector": "viewport",
+      "kind": "live-viewport"
+    },
+    {
+      "name": "member-login.png",
+      "url": "https://dpromstk2000-lab.github.io/dpro-consult-line/product-ready-demo/member.html#tutorial=6",
+      "selector": "#login-panel",
+      "kind": "live-element"
+    },
+    {
+      "name": "staff-login.png",
+      "url": "https://dpromstk2000-lab.github.io/dpro-consult-line/product-ready-demo/staff.html#tutorial=7",
+      "selector": "#login-overlay .login-card",
+      "kind": "live-element"
+    },
+    {
+      "name": "owner-login.png",
+      "url": "https://dpromstk2000-lab.github.io/dpro-consult-line/product-ready-demo/owner.html#tutorial=8",
+      "selector": "#login-overlay .login-card",
+      "kind": "live-element"
+    },
+    {
+      "name": "owner-ipad-login.png",
+      "url": "https://dpromstk2000-lab.github.io/dpro-consult-line/product-ready-demo/owner-ipad.html#tutorial=9",
+      "selector": "#login-overlay .login-card",
+      "kind": "live-element"
+    },
+    {
+      "name": "demo-guide-grid.png",
+      "url": "https://dpromstk2000-lab.github.io/dpro-consult-line/product-ready-demo/demo-guide.html#tutorial=10",
+      "selector": "#screenGrid",
+      "kind": "live-element"
+    }
+  ],
+  "pageErrors": [],
+  "consoleErrors": [],
+  "unsafeWrites": [],
+  "pass": true,
+  "tutorialHttp": 200,
+  "guideHttp": 200,
+  "guideControls": [
+    {
+      "s": "#guide-start",
+      "visible": true
+    },
+    {
+      "s": "#guide-resume",
+      "visible": true
+    },
+    {
+      "s": "#guide-replay",
+      "visible": true
+    }
+  ]
+}
