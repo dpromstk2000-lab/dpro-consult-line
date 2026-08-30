@@ -44,7 +44,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          mkdir -p product-ready-demo /tmp/dpro-consult-r3r4
+          mkdir -p product-ready-demo /tmp/dpro-consult-r3r4 .dpro
 
           base64 -d > product-ready-demo/tutorial-v1.1.js <<'DPRO_JS_B64'
           KCgpID0+IHsKICAndXNlIHN0cmljdCc7CgogIGNvbnN0IFZFUlNJT04gPSAnQ09OU1VMVC1UVVRP
@@ -458,7 +458,7 @@ jobs:
           aWdodHt0cmFuc2l0aW9uOm5vbmV9fQo=
           DPRO_CSS_B64
 
-          base64 -d > /tmp/dpro-consult-r3r4/consult-tutorial-r3-r4-qa.mjs <<'DPRO_QA_B64'
+          base64 -d > .dpro/consult-tutorial-r3-r4-qa.mjs <<'DPRO_QA_B64'
           aW1wb3J0IGZzIGZyb20gJ25vZGU6ZnMnOwppbXBvcnQgeyBjaHJvbWl1bSB9IGZyb20gJ3BsYXl3
           cmlnaHQnOwoKY29uc3QgbW9kZSA9IChwcm9jZXNzLmFyZ3ZbMl0gfHwgJ3IzJykudG9Mb3dlckNh
           c2UoKTsKY29uc3QgQkFTRSA9IHByb2Nlc3MuZW52LlBVQkxJQ19CQVNFIHx8ICdodHRwczovL2Rw
@@ -923,7 +923,7 @@ jobs:
           set -euo pipefail
           test -f product-ready-demo/tutorial-v1.1.js
           test -f product-ready-demo/tutorial-v1.1.css
-          test -f /tmp/dpro-consult-r3r4/consult-tutorial-r3-r4-qa.mjs
+          test -f .dpro/consult-tutorial-r3-r4-qa.mjs
           test -f /tmp/dpro-consult-r3r4/guide-center.html
           grep -Fq 'CONSULT-TUTORIAL-STANDARD-V1.1-20260830' product-ready-demo/tutorial-v1.1.js
           test "$(grep -o "id:'CONSULT-T[0-9][0-9]'" product-ready-demo/tutorial-v1.1.js | sort -u | wc -l | tr -d ' ')" = "10"
@@ -1022,7 +1022,7 @@ jobs:
           SOURCE_COMMIT: ${{ steps.r3commit.outputs.sha }}
         run: |
           set -euo pipefail
-          node /tmp/dpro-consult-r3r4/consult-tutorial-r3-r4-qa.mjs r3
+          node .dpro/consult-tutorial-r3-r4-qa.mjs r3
           cat /tmp/r3-live.json
 
       - name: Implement R4 Guide Center only after R3 PASS
@@ -1071,7 +1071,7 @@ jobs:
           SOURCE_COMMIT: ${{ steps.r4commit.outputs.sha }}
         run: |
           set -euo pipefail
-          node /tmp/dpro-consult-r3r4/consult-tutorial-r3-r4-qa.mjs r4
+          node .dpro/consult-tutorial-r3-r4-qa.mjs r4
           cat /tmp/r4-live.json
 
       - name: Record R4 QA evidence
