@@ -3824,6 +3824,8 @@
 
       async function updateStatus(type, form) {
         const fd = Object.fromEntries(new FormData(form).entries());
+        const terminalByType={consultation:new Set(["completed","closed"]),procedure:new Set(["submitted","completed","cancelled","closed"]),appointment:new Set(["completed","cancelled","no_show"])};
+        if(terminalByType[type]?.has(fd.status)&&!confirm(`状態を「${fd.status}」へ変更しますか？`))return;
         const endpoint = {
           consultation: app().API_ENDPOINTS.ADMIN_CONSULTATION_STATUS,
           procedure: app().API_ENDPOINTS.ADMIN_PROCEDURE_STATUS,
@@ -3856,6 +3858,7 @@
       }
 
       async function quickAppointmentStatus(id, status) {
+        if(["completed","cancelled","no_show"].includes(status)&&!confirm(`面談状態を「${status}」へ変更しますか？`))return;
         try {
           const result = await app().apiFetch(app().API_ENDPOINTS.ADMIN_APPOINTMENT_STATUS, {
             method: "POST", admin: true, body: { id, status, progress_title: "面談状況を更新", visible_to_client: true },
@@ -3868,6 +3871,7 @@
       }
 
       async function completeTask(id) {
+        if(!confirm("このタスクを完了しますか？"))return;
         try {
           const result = await app().apiFetch(app().API_ENDPOINTS.ADMIN_TASK_STATUS, {
             method: "POST", admin: true, body: { id, status: "completed" },
